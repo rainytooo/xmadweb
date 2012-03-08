@@ -76,6 +76,7 @@ namespace :custom do
 end
 
 # 常用的任务
+# $ cap deploy:setup
 # $ cap deploy
 # $ cap deploy:migrate
 # $ cap deploy:migration

@@ -1,4 +1,10 @@
 Xmadweb::Application.routes.draw do
+  resources :clicks
+
+  resources :advertisements
+  
+  match "adclick", :to => "adclick#index", :via => [:get]
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

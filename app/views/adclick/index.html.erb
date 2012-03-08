@@ -1,0 +1,32 @@
+<h1>广告情况</h1>
+点击产生日期:<%= @date_1 %>
+<table>
+	<tr>
+		<td>id</td>
+		<td>标签名称</td>
+		<td>详细信息</td>
+		<td>显示类型</td>
+		<td>所在域名</td>
+		<td>所在页面名称</td>
+		<td>点击量</td>
+		<td>产生时间</td>
+	</tr>
+
+<% @clicks.each do |adclick| %>
+	
+	<tr>
+		<td><%= adclick.id %></td>
+		<td><%= adclick.tagname %></td>
+		<td><%= adclick.beizhu %></td>
+		<td><%= adclick.display_type %></td>
+		<td><%= adclick.domain %></td>
+		<td><%= adclick.pagename %></td>
+		<td><%= adclick.clicks %></td>
+		<td><%= adclick.record_date %></td>
+	</tr>
+<% end %>
+
+</table>
+
+<br />
+

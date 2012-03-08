@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Tagname:</b>
+  <%= @click.tagname %>
+</p>
+
+<p>
+  <b>Clicks:</b>
+  <%= @click.clicks %>
+</p>
+
+
+<%= link_to 'Edit', edit_click_path(@click) %> |
+<%= link_to 'Back', clicks_path %>

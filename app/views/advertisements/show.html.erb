@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Domain:</b>
+  <%= @advertisement.domain %>
+</p>
+
+<p>
+  <b>Pagename:</b>
+  <%= @advertisement.pagename %>
+</p>
+
+<p>
+  <b>Seqnum:</b>
+  <%= @advertisement.seqnum %>
+</p>
+
+<p>
+  <b>Tagname:</b>
+  <%= @advertisement.tagname %>
+</p>
+
+<p>
+  <b>Display type:</b>
+  <%= @advertisement.display_type %>
+</p>
+
+<p>
+  <b>Beizhu:</b>
+  <%= @advertisement.beizhu %>
+</p>
+
+
+<%= link_to 'Edit', edit_advertisement_path(@advertisement) %> |
+<%= link_to 'Back', advertisements_path %>
