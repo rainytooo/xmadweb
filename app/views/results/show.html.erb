@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+	<div>学生姓名:<%= @student.name %></div>
+</p>
+<p>
+	<div>督导姓名:<%= current_user.name %></div>
+</p>
+<p>
+	<div>测试成绩日期:<%= @result.result_date.strftime('%Y-%m-%d') %></div>
+</p>
+<p>
+	<div>单词课前测:<%= @result.words_score1 %></div>
+</p>
+<p>
+	<div>单词课后测:<%= @result.words_score2 %></div>
+</p>
+<p>
+	<div>听力单词测:<%= @result.listen_words_score1 %></div>
+</p>
+<p>
+	<div>写作单词测:<%= @result.write_words_score1 %></div>
+</p>
+<p>
+	<div>阅读单词测:<%= @result.read_words_score1 %></div>
+</p>
+<p>
+	<div>口语单词测:<%= @result.spoken_words_score1 %></div>
+</p>
+<p>
+	<div>听力课后测:<%= @result.listen_score1 %></div>
+</p>
+<p>
+	<div>写作课后测:<%= @result.write_score1 %></div>
+</p>
+<p>
+	<div>阅读课后测:<%= @result.read_score1 %></div>
+</p>
+<p>
+	<div>口语课后测:<%= @result.spoken_score1 %></div>
+</p>
+<%= link_to '编辑', edit_student_result_path(@student,@result) %> |
+<%= link_to '返回所有成绩', student_results_path(@student) %>

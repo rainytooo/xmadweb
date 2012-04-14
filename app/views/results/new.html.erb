@@ -1,0 +1,78 @@
+<h1>创建每日成绩-<%= @student.name%></h1>
+<div style="font-color: red;">
+	注意:<br/>
+	<p><font color="#FF0000">1.不是所有的必填,只填写你当天要上交的 </font></p>
+	<p><font color="#FF0000">2.未完成和完成的暂时记为0和100 </font></p>
+	<p><font color="#FF0000">3.无论什么情况没有拿到成绩的都填0</font></p>
+	<p><font color="#FF0000">4.别忘记填写出测试成绩的日期</font></p>
+</div>
+
+	<script>
+		$(function() {
+			$( "#datepicker" ).datepicker();
+			$( "#datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
+		});
+	</script>
+<%= form_for([@student,@result], :url => student_results_path(@student)) do |f| %>
+
+  <% if @result.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@result.errors.count, "error") %> prohibited this result from being saved:</h2>
+
+      <ul>
+      <% @result.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+	
+    </div>
+  <% end %>
+	<p>
+	<%= f.label :words_score1	, '单词课前测' %>
+	<%= f.text_field :words_score1	 %>
+	</p>
+	<p>
+	<%= f.label :words_score2	, '单词课后测' %>
+	<%= f.text_field :words_score2	 %>
+	</p>
+	<p>
+	<%= f.label :listen_words_score1	, '听力单词测' %>
+	<%= f.text_field :listen_words_score1	 %>
+	</p>
+	<p>
+	<%= f.label :write_words_score1	, '写作单词测' %>
+	<%= f.text_field :write_words_score1	 %>
+	</p>
+	<p>
+	<%= f.label :read_words_score1	, '阅读单词测' %>
+	<%= f.text_field :read_words_score1	 %>
+	</p>
+	<p>
+	<%= f.label :spoken_words_score1	, '口语单词测' %>
+	<%= f.text_field :spoken_words_score1	 %>
+	</p>
+	<p>
+	<%= f.label :listen_score1	, '听力课后测' %>
+	<%= f.text_field :listen_score1	 %>
+	</p>
+	<p>
+	<%= f.label :write_score1	, '写作课后测' %>
+	<%= f.text_field :write_score1	 %>
+	</p>
+	<p>
+	<%= f.label :read_score1	, '阅读课后测' %>
+	<%= f.text_field :read_score1	 %>
+	</p>
+	<p>
+	<%= f.label :spoken_score1	, '口语课后测' %>
+	<%= f.text_field :spoken_score1	 %>
+	</p>
+	
+	<p>日期: <input type="text" id="datepicker" name="result[result_date]"></p>
+
+  <div class="actions">
+    <%= f.submit '保存' %>
+  </div>
+<% end %>
+
+<%= link_to '返回学生所有测试成绩', student_results_path(@student) %>

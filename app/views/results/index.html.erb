@@ -1,0 +1,22 @@
+<h1>所有<%=  @student.name %>的每日成绩</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @results.each do |result| %>
+  <tr>
+	<td><%= result.result_date.strftime('%Y-%m-%d') %></td>
+    <td><%= link_to '查看', student_result_path(@student,result) %></td>
+    <td><%= link_to '编辑', edit_student_result_path(@student,result) %></td>
+    <td><%= link_to '删除', student_result_path(@student,result), confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+<%=h will_paginate @result, :previous_label => '上一页',  :next_label => '下一页'%>
+<br />
+
+<%= link_to '创建学生成绩', new_student_result_path %>

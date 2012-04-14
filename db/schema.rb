@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120308034404) do
+ActiveRecord::Schema.define(:version => 20120413095208) do
 
   create_table "advertisements", :force => true do |t|
     t.string   "domain"
@@ -29,5 +29,46 @@ ActiveRecord::Schema.define(:version => 20120308034404) do
     t.integer "clicks"
     t.date    "record_date"
   end
+
+  create_table "results", :force => true do |t|
+    t.integer  "words_score1"
+    t.integer  "words_score2"
+    t.integer  "words_score3"
+    t.integer  "words_score4"
+    t.integer  "listen_score1"
+    t.integer  "listen_words_score1"
+    t.integer  "write_score1"
+    t.integer  "write_words_score1"
+    t.integer  "read_score1"
+    t.integer  "read_words_score1"
+    t.integer  "spoken_score1"
+    t.integer  "spoken_words_score1"
+    t.datetime "result_date"
+    t.integer  "jpm_id"
+    t.integer  "student_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "email",                               :default => "",    :null => false
+    t.string   "encrypted_password",                  :default => "",    :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                       :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                                             :null => false
+    t.datetime "updated_at",                                             :null => false
+    t.string   "name"
+    t.boolean  "admin",                               :default => false
+    t.integer  "role",                   :limit => 3, :default => 0
+  end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end

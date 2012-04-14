@@ -1,0 +1,73 @@
+<h1>Editing result</h1>
+
+	<script>
+		$(function() {
+			$( "#datepicker" ).datepicker();
+			$( "#datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
+			$( "#datepicker" ).datepicker("setDate",'<%= @result.result_date.strftime('%Y-%m-%d') %>');
+		});
+	</script>
+<%= form_for([@student,@result], :url => student_result_path(@student,@result)) do |f| %>
+
+  <% if @result.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@result.errors.count, "error") %> prohibited this result from being saved:</h2>
+
+      <ul>
+      <% @result.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+	
+    </div>
+  <% end %>
+	<p>
+	<%= f.label :words_score1	, '单词课前测' %>
+	<%= f.text_field :words_score1	 %>
+	</p>
+	<p>
+	<%= f.label :words_score2	, '单词课后测' %>
+	<%= f.text_field :words_score2	 %>
+	</p>
+	<p>
+	<%= f.label :listen_words_score1	, '听力单词测' %>
+	<%= f.text_field :listen_words_score1	 %>
+	</p>
+	<p>
+	<%= f.label :write_words_score1	, '写作单词测' %>
+	<%= f.text_field :write_words_score1	 %>
+	</p>
+	<p>
+	<%= f.label :read_words_score1	, '阅读单词测' %>
+	<%= f.text_field :read_words_score1	 %>
+	</p>
+	<p>
+	<%= f.label :spoken_words_score1	, '口语单词测' %>
+	<%= f.text_field :spoken_words_score1	 %>
+	</p>
+	<p>
+	<%= f.label :listen_score1	, '听力课后测' %>
+	<%= f.text_field :listen_score1	 %>
+	</p>
+	<p>
+	<%= f.label :write_score1	, '写作课后测' %>
+	<%= f.text_field :write_score1	 %>
+	</p>
+	<p>
+	<%= f.label :read_score1	, '阅读课后测' %>
+	<%= f.text_field :read_score1	 %>
+	</p>
+	<p>
+	<%= f.label :spoken_score1	, '口语课后测' %>
+	<%= f.text_field :spoken_score1	 %>
+	</p>
+	
+	<p>日期: <input type="text" id="datepicker" name="result[result_date]" ></p>
+
+  <div class="actions">
+    <%= f.submit '保存' %>
+  </div>
+<% end %>
+
+<%= link_to '显示', student_result_path(@student,@result) %> |
+<%= link_to '返回所有成绩', student_results_path(@student) %>

@@ -1,0 +1,10 @@
+<h1>学员过程追踪管理-学生列表</h1>
+<ul>
+<% @users.each do |user| %>
+	<li>
+		<%= link_to user.name, [:admin, user] %>
+		<a href="/students/<%= user.id %>/results">成绩管理</a>
+		
+	</li>
+<% end %>
+</ul>
