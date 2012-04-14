@@ -47,6 +47,7 @@ set :keep_releases, 5
 task :symlink_database_yml do
   run "rm #{release_path}/config/database.yml"
   run "ln -sfn #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+  run "ln -sfn #{shared_path}/config/environments/production.rb #{release_path}/config/environments/production.rb"
 end
 
 after "bundle:install", "symlink_database_yml"
