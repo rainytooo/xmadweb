@@ -8,6 +8,7 @@ set :rvm_ruby_string, '1.9.3-p125@rails322_193_01'
 set :rvm_path, '/usr/local/rvm/'
 set :rvm_bin_path, "#{rvm_path}/bin"
 set :rvm_lib_path, "#{rvm_path}/lib"
+set :deploy_via, :remote_cache
 
 set :normalize_asset_timestamps, false
 # set :default_environment, {
