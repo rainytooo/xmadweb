@@ -5,7 +5,7 @@ class ResultsController < ApplicationController
   # GET /results
   # GET /results.json
   def index
-    @results = Result.where(:jpm_id => current_user.id, :student_id => @student.id)
+    @results = Result.where(:student_id => @student.id)
       .order('result_date desc')
       .paginate(:page => params[:page], :per_page => 20)
 
