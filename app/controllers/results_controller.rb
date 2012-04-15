@@ -67,10 +67,10 @@ class ResultsController < ApplicationController
     @result = Result.find(params[:id])
     @result.student = @student
     @result.jpm = current_user
+    date1 = params[:result][:result_date].to_datetime.change(:hour => 1)
+    params[:result][:result_date] = date1
     respond_to do |format|
       if @result.update_attributes(params[:result])
-        date1 = params[:result][:result_date].to_datetime.change(:hour => 1)
-        @result.result_date = date1
         format.html { redirect_to student_results_path(@student), notice: 'Result was successfully updated.' }
         format.json { head :no_content }
       else
