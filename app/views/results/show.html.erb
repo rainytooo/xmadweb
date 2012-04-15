@@ -7,7 +7,7 @@
 	<div>督导姓名:<%= current_user.name %></div>
 </p>
 <p>
-	<div>测试成绩日期:<%= @result.result_date.strftime('%Y-%m-%d') %></div>
+	<div>测试成绩日期:<% if @result.result_date %><%= @result.result_date.strftime('%Y-%m-%d') %><% end %></div>
 </p>
 <p>
 	<div>单词课前测:<%= @result.words_score1 %></div>

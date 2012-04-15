@@ -4,7 +4,11 @@
 		$(function() {
 			$( "#datepicker" ).datepicker();
 			$( "#datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
+			<% if @result.result_date %>
 			$( "#datepicker" ).datepicker("setDate",'<%= @result.result_date.strftime('%Y-%m-%d') %>');
+			
+			<% end %>
+			
 		});
 	</script>
 <%= form_for([@student,@result], :url => student_result_path(@student,@result)) do |f| %>

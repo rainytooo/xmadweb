@@ -9,7 +9,7 @@
 
 <% @results.each do |result| %>
   <tr>
-	<td><%= result.result_date.strftime('%Y-%m-%d') %></td>
+	<td><% if result.result_date %><%= result.result_date.strftime('%Y-%m-%d') %><% end %></td>
     <td><%= link_to '查看', student_result_path(@student,result) %></td>
     <td><%= link_to '编辑', edit_student_result_path(@student,result) %></td>
     <td><%= link_to '删除', student_result_path(@student,result), confirm: 'Are you sure?', method: :delete %></td>
