@@ -1,0 +1,34 @@
+<h1>所有学生的成绩 按日查询</h1>
+
+<table border="1" cellspacing="5" cellpadding="5">
+	<tr>
+		<th>日期</th>
+		<th>姓名</th>
+		<th>单词课前测</th>
+		<th>单词课后测</th>
+		<th>听力单词测</th>
+		<th>写作单词测</th>
+		<th>阅读单词测</th>
+		<th>口语单词测</th>
+		<th>听力课后测</th>
+		<th>写作课后测</th>
+		<th>阅读课后测</th>
+		<th>口语课后测</th>
+	</tr>
+<% @results.each do |result| %>
+	<tr>
+		<td><% if result.result_date %><%= result.result_date.strftime('%Y-%m-%d') %><% end %></td>
+		<td><%= result.student.name %></td>
+		<td><%= result.words_score1 %></td>
+		<td><%= result.words_score2 %></td>
+		<td><%= result.listen_words_score1 %></td>
+		<td><%= result.write_words_score1 %></td>
+		<td><%= result.read_words_score1 %></td>
+		<td><%= result.spoken_words_score1 %></td>
+		<td><%= result.listen_score1 %></td>
+		<td><%= result.write_score1 %></td>
+		<td><%= result.read_score1 %></td>
+		<td><%= result.spoken_score1 %></td>
+	</tr>
+<% end %>
+</table>

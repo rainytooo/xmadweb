@@ -1,7 +1,7 @@
 # encoding: utf-8
 class ResultsController < ApplicationController
   before_filter :authorize_not_student!
-  before_filter :find_student
+  before_filter :find_student, :except => [:all_by_day]
   # GET /results
   # GET /results.json
   def index
@@ -86,6 +86,13 @@ class ResultsController < ApplicationController
       format.html { redirect_to student_results_path(@student) }
       format.json { head :no_content }
     end
+  end
+  # 查询成绩 按日期
+  def all_by_day
+    date_org = params[:result_date].to_datetime
+    date1 = date_org.change(:hour => 0, :min => 0, :sec => 0)
+    date2 = date_org.change(:hour => 23, :min => 59, :sec => 59)
+    @results = Result.where(:result_date => date1.to_time..date2.to_time)
   end
   
   private

@@ -11,7 +11,12 @@ Xmadweb::Application.routes.draw do
   resources :students do
     # 成绩管理
     resources :results
+    collection do
+      get 'view'
+    end    
   end
+  # 学生成绩按日汇总查询
+  match "students/results_by_day", :to => "results#all_by_day", :via => [:post], :as => "results_all_by_day"
 
   
   root :to => "home#index"

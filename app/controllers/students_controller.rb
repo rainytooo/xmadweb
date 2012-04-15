@@ -4,4 +4,8 @@ class StudentsController < ApplicationController
   def index
     @users = User.where("role = 1").order("email DESC").paginate(:page => params[:page], :per_page => 20)
   end
+  # 查询页面
+  def view
+    
+  end
 end
