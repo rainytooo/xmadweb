@@ -46,6 +46,8 @@ class ResultsController < ApplicationController
   # POST /results.json
   def create
     @result = Result.new(params[:result])
+    date1 = params[:result][:result_date].to_datetime.change(:hour => 1)
+    @result.result_date = date1
     @result.student = @student
     @result.jpm = current_user
     respond_to do |format|
@@ -63,6 +65,8 @@ class ResultsController < ApplicationController
   # PUT /results/1.json
   def update
     @result = Result.find(params[:id])
+    date1 = params[:result][:result_date].to_datetime.change(:hour => 1)
+    @result.result_date = date1
     @result.student = @student
     @result.jpm = current_user
     respond_to do |format|
