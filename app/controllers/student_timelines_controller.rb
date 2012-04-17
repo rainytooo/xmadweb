@@ -47,11 +47,15 @@ class StudentTimelinesController < ApplicationController
   # POST /student_timelines.json
   def create
     @student_timeline = StudentTimeline.new(params[:student_timeline])
-    date1 = DateTime.strptime(params[:student_timeline][:arrival_time] + " CCT", "%Y-%m-%d %H:%M %Z")
-    date2 = DateTime.strptime(params[:student_timeline][:leave_time] + " CCT", "%Y-%m-%d %H:%M %Z")
-    
-    @student_timeline.arrival_time = date1
-    @student_timeline.leave_time = date2
+    # 时间处理 需要判断是否填写
+    if params[:student_timeline][:arrival_time].to_s != ""
+      date1 = DateTime.strptime(params[:student_timeline][:arrival_time] + " CCT", "%Y-%m-%d %H:%M %Z")   
+      @student_timeline.arrival_time = date1
+    end
+    if params[:student_timeline][:leave_time].to_s != ""
+      date2 = DateTime.strptime(params[:student_timeline][:leave_time] + " CCT", "%Y-%m-%d %H:%M %Z")
+      @student_timeline.leave_time = date2
+    end
     
     @student_timeline.student = @student
     @student_timeline.jpm = current_user
@@ -70,10 +74,14 @@ class StudentTimelinesController < ApplicationController
   # PUT /student_timelines/1.json
   def update
     @student_timeline = StudentTimeline.find(params[:id])
-    date1 = DateTime.strptime(params[:student_timeline][:arrival_time] + " CCT", "%Y-%m-%d %H:%M %Z")
-    params[:student_timeline][:arrival_time] = date1
-    date2 = DateTime.strptime(params[:student_timeline][:leave_time] + " CCT", "%Y-%m-%d %H:%M %Z")
-    params[:student_timeline][:leave_time] = date2
+    if params[:student_timeline][:arrival_time].to_s != ""
+      date1 = DateTime.strptime(params[:student_timeline][:arrival_time] + " CCT", "%Y-%m-%d %H:%M %Z")
+      params[:student_timeline][:arrival_time] = date1
+    end
+    if params[:student_timeline][:leave_time].to_s != ""
+      date2 = DateTime.strptime(params[:student_timeline][:leave_time] + " CCT", "%Y-%m-%d %H:%M %Z")
+      params[:student_timeline][:leave_time] = date2
+    end
     respond_to do |format|
       if @student_timeline.update_attributes(params[:student_timeline])
         format.html { redirect_to student_student_timeline_path(@student,@student_timeline), notice: 'Student timeline was successfully updated.' }
