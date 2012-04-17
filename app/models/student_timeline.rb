@@ -19,6 +19,8 @@ class StudentTimeline < ActiveRecord::Base
       "教室"
     when 2
       "自习室"
+    when 3
+      "已经离校"
     end
   end
   # 简单获取行为名称
@@ -30,6 +32,8 @@ class StudentTimeline < ActiveRecord::Base
       "上课"
     when 2
       "自习"
+    when 3
+      "已经离校"
     end
   end
 end
