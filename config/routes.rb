@@ -3,6 +3,8 @@ Xmadweb::Application.routes.draw do
 
   
 
+  
+
   namespace :admin do
       root :to => "base#index"
       resources :users
@@ -13,7 +15,9 @@ Xmadweb::Application.routes.draw do
     resources :results
     collection do
       get 'view'
-    end    
+    end   
+    # 学生时间表追踪管理
+    resources :student_timelines 
   end
   # 学生成绩按日汇总查询
   match "students/results_by_day", :to => "results#all_by_day", :via => [:post], :as => "results_all_by_day"

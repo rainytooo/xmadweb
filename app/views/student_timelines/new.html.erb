@@ -1,0 +1,96 @@
+<h1>创建时间记录-<%= @student.name%></h1>
+
+	<script>
+		$(function() {
+			$( "#datepicker_1" ).datetimepicker();
+			$( "#datepicker_1" ).datetimepicker( "option", "dateFormat", "yy-mm-dd" );
+			$( "#datepicker_2" ).datetimepicker();
+			$( "#datepicker_2" ).datetimepicker( "option", "dateFormat", "yy-mm-dd" );
+		});
+	</script>
+<%= form_for([@student,@student_timeline], :url => student_student_timelines_path(@student)) do |f| %>
+
+  <% if @student_timeline.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@student_timeline.errors.count, "error") %> prohibited this result from being saved:</h2>
+
+      <ul>
+      <% @student_timeline.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+	
+    </div>
+  <% end %>
+	<p>
+	到校时间: <input type="text" id="datepicker_1" name="student_timeline[arrival_time]">
+	离校时间: <input type="text" id="datepicker_2" name="student_timeline[leave_time]">
+	</p>
+	
+	
+	<p>
+	<h4>第一节课 8:30-10:30</h4>
+	<%= f.label :action_type_1, "学生行为" %>
+	<%= f.select(:action_type_1, options_for_select({"未知" => "0","上课" => "1","自习" => "2"}, "1") ) %>
+	<%= f.label :location_type_1, "所在地点" %>
+	<%= f.select(:location_type_1, options_for_select({"未知" => "0","教室" => "1","自习室" => "2"}, "1") ) %>
+	<%= f.label :action_spec_1	, '行为描述和补充' %>
+	<%= f.text_field :action_spec_1, :size => 60 %>
+	</p>
+	
+	<p>
+	<h4>第二节课 10:40-12:40</h4>
+	<%= f.label :action_type_2, "学生行为" %>
+	<%= f.select(:action_type_2, options_for_select({"未知" => "0","上课" => "1","自习" => "2"}, "1") ) %>
+	<%= f.label :location_type_2, "所在地点" %>
+	<%= f.select(:location_type_2, options_for_select({"未知" => "0","教室" => "1","自习室" => "2"}, "1") ) %>
+	<%= f.label :action_spec_2	, '行为描述和补充' %>
+	<%= f.text_field :action_spec_2, :size => 60 %>
+	</p>
+	
+	<p>
+	<h4>第三节课 13:30-15:30</h4>
+	<%= f.label :action_type_3, "学生行为" %>
+	<%= f.select(:action_type_3, options_for_select({"未知" => "0","上课" => "1","自习" => "2"}, "1") ) %>
+	<%= f.label :location_type_3, "所在地点" %>
+	<%= f.select(:location_type_3, options_for_select({"未知" => "0","教室" => "1","自习室" => "2"}, "1") ) %>
+	<%= f.label :action_spec_3	, '行为描述和补充' %>
+	<%= f.text_field :action_spec_3, :size => 60 %>
+	</p>
+	
+	
+	<p>
+	<h4>第四节课 15:40-17:40</h4>
+	<%= f.label :action_type_4, "学生行为" %>
+	<%= f.select(:action_type_4, options_for_select({"未知" => "0","上课" => "1","自习" => "2"}, "1") ) %>
+	<%= f.label :location_type_4, "所在地点" %>
+	<%= f.select(:location_type_4, options_for_select({"未知" => "0","教室" => "1","自习室" => "2"}, "1") ) %>
+	<%= f.label :action_spec_4	, '行为描述和补充' %>
+	<%= f.text_field :action_spec_4, :size => 60 %>
+	</p>
+	
+	<p>
+	<h4>第五节课 18:30-20:30</h4>
+	<%= f.label :action_type_5, "学生行为" %>
+	<%= f.select(:action_type_5, options_for_select({"未知" => "0","上课" => "1","自习" => "2"}, "1") ) %>
+	<%= f.label :location_type_5, "所在地点" %>
+	<%= f.select(:location_type_5, options_for_select({"未知" => "0","教室" => "1","自习室" => "2"}, "1") ) %>
+	<%= f.label :action_spec_5	, '行为描述和补充' %>
+	<%= f.text_field :action_spec_5, :size => 60 %>
+	</p>
+	
+	<p>
+		<%= f.label :remarks	, '异动和其他情况补充说明' %>
+		<br/>
+		<%= f.text_area  :remarks, :cols => 100, :rows => 10 %>	
+	</p>
+	
+	
+
+  <div class="actions">
+    <%= f.submit '保存' %>
+  </div>
+<% end %>
+
+<%= link_to '返回此学生所有时间记录', student_student_timelines_path(@student) %>
+

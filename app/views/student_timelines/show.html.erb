@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+	<div>学生姓名:<%= @student.name %></div>
+</p>
+<p>
+	<div>督导姓名:<%= @student_timeline.jpm.name %></div>
+</p>
+
+<p>
+	<div>到校时间:<% if @student_timeline.arrival_time %><%= @student_timeline.arrival_time.strftime('%Y-%m-%d %H:%M') %><% end %></div>
+</p>
+<p>
+	<div>离校时间:<% if @student_timeline.leave_time %><%= @student_timeline.leave_time.strftime('%Y-%m-%d %H:%M') %><% end %></div>
+</p>
+<p>
+	<div>
+		第一节课 8:30-10:30----[地点:<%= @student_timeline.location_name(@student_timeline.location_type_1) %>]
+		[行为:<%= @student_timeline.action_name(@student_timeline.action_type_1) %>]
+		[补充说明:<%= @student_timeline.action_spec_1 %>]
+	</div>
+	<div>
+		第二节课 10:40-12:40----[地点:<%= @student_timeline.location_name(@student_timeline.location_type_2) %>]
+		[行为:<%= @student_timeline.action_name(@student_timeline.action_type_2) %>]
+		[补充说明:<%= @student_timeline.action_spec_2 %>]
+	</div>
+	<div>
+		第三节课 13:30-15:30----[地点:<%= @student_timeline.location_name(@student_timeline.location_type_3) %>]
+		[行为:<%= @student_timeline.action_name(@student_timeline.action_type_3) %>]
+		[补充说明:<%= @student_timeline.action_spec_3 %>]
+	</div>
+	<div>
+		第四节课 15:40-17:40----[地点:<%= @student_timeline.location_name(@student_timeline.location_type_4) %>]
+		[行为:<%= @student_timeline.action_name(@student_timeline.action_type_4) %>]
+		[补充说明:<%= @student_timeline.action_spec_4 %>]
+	</div>
+	<div>
+		第五节课 18:30-20:30----[地点:<%= @student_timeline.location_name(@student_timeline.location_type_5) %>]
+		[行为:<%= @student_timeline.action_name(@student_timeline.action_type_5) %>]
+		[补充说明:<%= @student_timeline.action_spec_5 %>]
+	</div>
+	<div>
+		其他说明:<br/>
+		<%= @student_timeline.remarks %>
+	</div>
+	
+</p>
+
+<%= link_to '编辑', edit_student_student_timeline_path(@student,@student_timeline) %> |
+<%= link_to '返回', student_student_timelines_path(@student) %>

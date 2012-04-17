@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120413095208) do
+ActiveRecord::Schema.define(:version => 20120416025854) do
 
   create_table "advertisements", :force => true do |t|
     t.string   "domain"
@@ -48,6 +48,31 @@ ActiveRecord::Schema.define(:version => 20120413095208) do
     t.integer  "student_id"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+  end
+
+  create_table "student_timelines", :force => true do |t|
+    t.datetime "arrival_time"
+    t.datetime "leave_time"
+    t.integer  "action_type_1"
+    t.string   "action_spec_1"
+    t.integer  "location_type_1"
+    t.integer  "action_type_2"
+    t.string   "action_spec_2"
+    t.integer  "location_type_2"
+    t.integer  "action_type_3"
+    t.string   "action_spec_3"
+    t.integer  "location_type_3"
+    t.integer  "action_type_4"
+    t.string   "action_spec_4"
+    t.integer  "location_type_4"
+    t.integer  "action_type_5"
+    t.string   "action_spec_5"
+    t.integer  "location_type_5"
+    t.string   "remarks"
+    t.integer  "jpm_id"
+    t.integer  "student_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "users", :force => true do |t|
