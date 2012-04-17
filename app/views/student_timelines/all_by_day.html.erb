@@ -1,0 +1,33 @@
+<h1>所有学生的考勤 按日查询</h1>
+
+<table border="1" cellspacing="5" cellpadding="5">
+	<tr>
+		<th>日期</th>
+		<th>姓名</th>
+		<th>督导</th>
+		<th>到校时间</th>
+		<th>离校时间</th>
+		<th>第一节课</th>
+		<th>第二节课</th>
+		<th>第三节课</th>
+		<th>第四节课</th>
+		<th>第五节课</th>
+		<th>操作</th>
+	</tr>
+<% @student_timelines.each do |student_timeline| %>
+	<tr>
+		<td><%= student_timeline.created_at.strftime('%Y-%m-%d') %></td>
+		<td><%= student_timeline.student.name %></td>
+		<td><%= student_timeline.jpm.name %></td>
+		<td><% if student_timeline.arrival_time %><%= student_timeline.arrival_time.strftime('%Y-%m-%d %H:%M') %><% end %></td>
+		<td><% if student_timeline.leave_time %><%= student_timeline.leave_time.strftime('%Y-%m-%d %H:%M') %><% end %></td>
+		<td><%= student_timeline.location_name(student_timeline.location_type_1) %>,<%= student_timeline.action_name(student_timeline.action_type_1) %></td>
+		<td><%= student_timeline.location_name(student_timeline.location_type_2) %>,<%= student_timeline.action_name(student_timeline.action_type_2) %></td>
+		<td><%= student_timeline.location_name(student_timeline.location_type_3) %>,<%= student_timeline.action_name(student_timeline.action_type_3) %></td>
+		<td><%= student_timeline.location_name(student_timeline.location_type_4) %>,<%= student_timeline.action_name(student_timeline.action_type_4) %></td>
+		<td><%= student_timeline.location_name(student_timeline.location_type_5) %>,<%= student_timeline.action_name(student_timeline.action_type_5) %></td>
+		
+		<td><%= link_to '查看细节', student_student_timeline_path(student_timeline.student,student_timeline) %></td>
+	</tr>
+<% end %>
+</table>

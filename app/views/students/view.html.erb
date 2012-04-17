@@ -2,10 +2,23 @@
 	$(function() {
 		$( "#datepicker" ).datepicker();
 		$( "#datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
+		$( "#datepicker_2" ).datepicker();
+		$( "#datepicker_2" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
 	});
 </script>
 <h1>学生数据,查询汇总</h1>
+
+<h2>成绩查询</h2>
 <%= form_tag(results_all_by_day_path, :method => "post") do %>
   <p>日期: <input type="text" id="datepicker" name="result_date"></p>
-  <%= submit_tag("Search") %>
+  <%= submit_tag("查询") %>
 <% end %>
+
+<h2>考勤查询</h2>
+<%= form_tag(student_timelines_all_by_day_path, :method => "post") do %>
+  <p>日期: <input type="text" id="datepicker_2" name="timeline_date"></p>
+  <%= submit_tag("查询") %>
+<% end %>
+
+
+

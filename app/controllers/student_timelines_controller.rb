@@ -2,7 +2,7 @@
 # 学生时间线
 class StudentTimelinesController < ApplicationController
   before_filter :authorize_not_student!
-  before_filter :find_student
+  before_filter :find_student, :except => [:all_by_day]
   # GET /student_timelines
   # GET /student_timelines.json
   def index
@@ -95,6 +95,13 @@ class StudentTimelinesController < ApplicationController
       format.html { redirect_to student_student_timelines_path(@student) }
       format.json { head :no_content }
     end
+  end
+  
+  def all_by_day
+    date_org = params[:timeline_date].to_datetime
+    date1 = date_org.change(:hour => 0, :min => 0, :sec => 0)
+    date2 = date_org.change(:hour => 23, :min => 59, :sec => 59)
+    @student_timelines = StudentTimeline.where(:arrival_time => date1.to_time..date2.to_time)
   end
   
   private
