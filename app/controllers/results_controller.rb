@@ -93,7 +93,8 @@ class ResultsController < ApplicationController
   end
   # 查询成绩 按日期
   def all_by_day
-    date_org = params[:result_date].to_datetime
+    #date_org = params[:result_date].to_datetime
+    date_org = DateTime.strptime(params[:result_date] + " CCT", "%Y-%m-%d %Z")
     date1 = date_org.change(:hour => 0, :min => 0, :sec => 0)
     date2 = date_org.change(:hour => 23, :min => 59, :sec => 59)
     @results = Result.where(:result_date => date1.to_time..date2.to_time)

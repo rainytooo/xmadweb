@@ -106,7 +106,8 @@ class StudentTimelinesController < ApplicationController
   end
   
   def all_by_day
-    date_org = params[:timeline_date].to_datetime
+    #date_org = params[:timeline_date].to_datetime
+    date_org = DateTime.strptime(params[:timeline_date] + " CCT", "%Y-%m-%d %Z")
     date1 = date_org.change(:hour => 0, :min => 0, :sec => 0)
     date2 = date_org.change(:hour => 23, :min => 59, :sec => 59)
     @student_timelines = StudentTimeline.where(:arrival_time => date1.to_time..date2.to_time)
