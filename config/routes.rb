@@ -1,10 +1,6 @@
 # encoding: utf-8
 Xmadweb::Application.routes.draw do
-
   
-
-  
-
   namespace :admin do
       root :to => "base#index"
       resources :users
@@ -15,9 +11,12 @@ Xmadweb::Application.routes.draw do
     resources :results
     collection do
       get 'view'
+      get 'my'
     end   
     # 学生时间表追踪管理
-    resources :student_timelines 
+    resources :student_timelines
+    # 学生分配督导和客户经理
+    resources :student_distributes  
   end
   # 学生成绩按日汇总查询
   match "students/results_by_day", :to => "results#all_by_day", :via => [:post], :as => "results_all_by_day"

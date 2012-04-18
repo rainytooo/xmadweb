@@ -16,12 +16,12 @@
 <%= f.label :password_confirmation, '密码确认' %>
 <%= f.password_field :password_confirmation %>
 </p>
-<!--
+<%= admins_only do %>
 <p>
 <%= f.check_box :admin %>
 <%= f.label :admin, "是否是管理员?" %>
 </p>
--->
+<% end %>
 <p>
 <%= f.select(:role, options_for_select({"学生" => "1","教师" => "2","督导助理" => "3","督导" => "4","客户经理" => "5"}, "学生") ) %>
 <%= f.label :role, "用户角色" %>

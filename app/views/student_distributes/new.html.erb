@@ -1,0 +1,31 @@
+<h1>给<%=  @student.name %>分配督导 </h1>
+
+
+<%= form_tag(student_student_distributes_path, :method => "post") do %>
+  <p>
+	选择督导:
+	<% @jpms.each do |jpm| %>
+	<% if @student.jpm %>
+	<input id="jpm_<%= jpm.id%>" name="jpm_id" type="radio" value="<%= jpm.id %>" <%= @student.jpm.id == jpm.id ? "checked" : "" %>/>
+	<% else %>
+	<input id="jpm_<%= jpm.id%>" name="jpm_id" type="radio" value="<%= jpm.id %>" />  
+	<% end %>	
+	<label for="jpm_<%= jpm.id%>"><%= jpm.name %></label>
+	<% end %>
+  </p>
+  <p>
+	选择客户经理:
+	<% @spms.each do |spm| %>
+	<% if @student.spm %>
+	<input id="spm_<%= spm.id%>" name="spm_id" type="radio" value="<%= spm.id %>" <%= @student.spm.id == spm.id ? "checked" : "" %>/>
+	<% else %>
+	<input id="spm_<%= spm.id%>" name="spm_id" type="radio" value="<%= spm.id %>" />
+	<% end %>
+	<label for="spm_<%= spm.id%>"><%= spm.name %></label>
+	<% end %>
+  </p>
+  <%= submit_tag("保存") %>
+<% end %>
+
+
+<%= link_to '返回', student_student_distributes_path %>

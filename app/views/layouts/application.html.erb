@@ -8,6 +8,7 @@
   <script type="text/javascript" src="<%= Xmadweb::Application.config.staticfile_server_url %>jquery_ujs.js"></script>
   <script type="text/javascript" src="<%= Xmadweb::Application.config.staticfile_server_url %>jquery/jquery-ui-timepicker-addon.js"></script>
   <link rel="stylesheet" href="<%= Xmadweb::Application.config.staticfile_server_url %>jquery/ui-lightness/jquery-ui-1.8.18.custom.css" type="text/css"/>
+  <link rel="stylesheet" href="<%= Xmadweb::Application.config.staticfile_server_url %>style.css" type="text/css"/>
   <style type="text/css" media="screen">
   	/* css for timepicker */
 	.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
@@ -20,26 +21,53 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<!-- devise的提示信息 start -->
-	<div>
-		<p class="notice"><%= notice %></p>
-		<p class="alert"><%= alert %></p>
-	</div>
-	<!-- devise的提示信息 end -->
-	<!-- 导航 -->
-
 	
-	<% if user_signed_in? %>
-	<ul>
-		<li><p>您好,<%= current_user.name %> &nbsp;<%= admins_only do %>您当前的身份为管理员.<%= link_to "后台管理", admin_root_path %><% end %></p></li>
-		<li><%= link_to "学员过程跟踪管理", students_path %></li>
-		<li><%= link_to "[退出登录]", destroy_user_session_path, :method => :delete %></li>
-	</ul>					
-	<% else %>
-	<ul>
-		<li><%= link_to "[登录]", new_user_session_path, :method => :get %></li>
-	</ul>
-	<% end %>
+	<!-- 导航 -->
+	<div class="top-nav">
+	  <div class="bd">
+		<div class="top-nav-info">
+			<% if user_signed_in? %>
+		    您好,<%= current_user.name %>,[我的职位是<%= current_user.rolename %>]
+		    <%= link_to "[退出]", destroy_user_session_path, :method => :delete %>
+			<% else %>
+			<%= link_to "[登录]", new_user_session_path, :method => :get %>
+			<% end %>	
+		</div>
+
+
+	    <div class="top-nav-items">
+	        <ul>
+	                    
+	                    <li>
+	                    <%= link_to "学生管理", students_path %>
+	                    </li>
+
+
+	                    <li>
+	                    <%= admins_only do %><%= link_to "后台管理", admin_root_path %><% end %>
+	                    </li>
+
+	        </ul>
+	    </div>
+	  </div>
+	</div>
+	<!-- 导航 end -->
+	
+	<!-- devise的提示信息 start -->
+	
+		<% if flash[:notice] %>
+		<p class="notice"><%= notice %></p>
+		<% end %>
+		<% if flash[:alert] %>
+		<p class="alert"><%= alert %></p>
+		<% end %>
+		<% if flash[:error] %>
+		<p class="error"><%= flash[:error] %></p>
+		<% end %>
+		<% if flash[:success] %>
+		<p class="success"><%= flash[:success] %></p>
+		<% end %>
+	<!-- devise的提示信息 end -->
 	
 <%= yield %>
 

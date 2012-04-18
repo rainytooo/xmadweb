@@ -1,0 +1,9 @@
+<h1><%=  @student.name %>的督导分配情况</h1>
+
+
+<h4>督导:<%=  @student.jpm ? @student.jpm.name : "" %></h4>
+<h4>客户经理:<%= @student.spm ? @student.spm.name : "" %></h4>
+
+<br/>
+
+<%= link_to '编辑学生的督导', new_student_student_distribute_path %>

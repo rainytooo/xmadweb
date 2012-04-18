@@ -6,9 +6,9 @@
 		$( "#datepicker_2" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
 	});
 </script>
-<h1>学生数据,查询汇总</h1>
+<p>学生数据,查询汇总</p>
 
-<h2>成绩查询</h2>
+<h4>成绩查询</h4>
 <%= form_tag(results_all_by_day_path, :method => "post") do %>
   <p>日期: <input type="text" id="datepicker" name="result_date"></p>
   <%= submit_tag("查询") %>
