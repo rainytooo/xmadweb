@@ -1,0 +1,11 @@
+# encoding: utf-8 
+cn:
+    activerecord:
+        errors:
+            messages:
+                record_invalid: "输入不合法"
+                
+    devise:
+        sessions:
+            user:
+                signed_out: "您已经成功退出登录"
