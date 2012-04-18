@@ -46,6 +46,10 @@
 	                    <li>
 	                    <%= admins_only do %><%= link_to "后台管理", admin_root_path %><% end %>
 	                    </li>
+						
+						<li>
+						<%= admins_only do %><%= link_to "用户管理", admin_users_path %><% end %>
+						</li>
 
 	        </ul>
 	    </div>

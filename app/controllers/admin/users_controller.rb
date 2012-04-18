@@ -4,7 +4,7 @@ class Admin::UsersController < Admin::BaseController
   before_filter :find_user, :only => [:show, :edit, :update, :destroy]
   
   def index
-    @users = User.all(:order => "email")
+    @users = User.paginate(:page => params[:page], :per_page => 20)
   end
   
   # 新建用户
