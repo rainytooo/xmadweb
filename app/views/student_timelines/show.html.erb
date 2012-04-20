@@ -1,7 +1,7 @@
-<p id="notice"><%= notice %></p>
+<h1>考勤详细</h1>
 
 <p>
-	<div>学生姓名:<%= @student.name %></div>
+	<div>学生姓名:<%= link_to @student.name, student_path(@student) %></div>
 </p>
 <p>
 	<div>督导姓名:<%= @student_timeline.jpm.name %></div>

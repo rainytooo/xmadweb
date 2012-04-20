@@ -15,8 +15,8 @@
 
 <% @users.each do |user| %>
 	<tr>
-		<td><%= link_to user.name, [:admin, user] %></td>
-		<td><%= link_to user.email, [:admin, user] %></td>
+		<td><%= link_to user.name, student_path(user) %>></td>
+		<td><%= link_to user.email, student_path(user) %></td>
 		<td>
 			
 			<% if user.jpm %>

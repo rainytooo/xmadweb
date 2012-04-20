@@ -1,24 +1,51 @@
-<h1>所有<%=  @student.name %>的时间记录</h1>
+<h1>所有<%= link_to @student.name, student_path(@student) %>的考勤</h1>
+
 
 <table border="1" cellspacing="5" cellpadding="5">
-  <tr>
-	<th>到校时间</th>
-    <th>离校时间</th>
-    <th>操作</th>
-  </tr>
-
+	<tr>
+		<th>上课日期</th>
+		<th>填写人</th>
+		<th>督导</th>
+		<th>到校时间</th>
+		<th>离校时间</th>
+		<th>第一节课</th>
+		<th>第二节课</th>
+		<th>第三节课</th>
+		<th>第四节课</th>
+		<th>第五节课</th>
+		<th>操作</th>
+	</tr>
 <% @student_timelines.each do |student_timeline| %>
-  <tr>
-	<td><% if student_timeline.arrival_time %><%= student_timeline.arrival_time.strftime('%Y-%m-%d %H:%M') %><% end %></td>
-	<td><% if student_timeline.leave_time %><%= student_timeline.leave_time.strftime('%Y-%m-%d %H:%M') %><% end %></td>
-    <td>
-	<%= link_to '查看', student_student_timeline_path(@student,student_timeline) %>
-    <%= link_to '编辑', edit_student_student_timeline_path(@student,student_timeline) %>
-    <%= link_to '删除', student_student_timeline_path(@student,student_timeline), confirm: 'Are you sure?', method: :delete %>
-	</td>
-  </tr>
+	<tr>
+		<td><%= student_timeline.created_at.strftime('%Y-%m-%d') %></td>
+		<td><%= student_timeline.jpm.name %></td>
+		<td>
+			<% if @student.jpm %>
+				<%= @student.jpm.name%>
+			<% else %>
+				<a href="/students/<%= @student.id %>/student_distributes">现在分配</a>
+			<% end %>
+		</td>
+		<td><% if student_timeline.arrival_time %><%= student_timeline.arrival_time.strftime('%Y-%m-%d %H:%M') %><% end %></td>
+		<td><% if student_timeline.leave_time %><%= student_timeline.leave_time.strftime('%Y-%m-%d %H:%M') %><% end %></td>
+		<td><%= student_timeline.location_name(student_timeline.location_type_1) %>,<%= student_timeline.action_name(student_timeline.action_type_1) %></td>
+		<td><%= student_timeline.location_name(student_timeline.location_type_2) %>,<%= student_timeline.action_name(student_timeline.action_type_2) %></td>
+		<td><%= student_timeline.location_name(student_timeline.location_type_3) %>,<%= student_timeline.action_name(student_timeline.action_type_3) %></td>
+		<td><%= student_timeline.location_name(student_timeline.location_type_4) %>,<%= student_timeline.action_name(student_timeline.action_type_4) %></td>
+		<td><%= student_timeline.location_name(student_timeline.location_type_5) %>,<%= student_timeline.action_name(student_timeline.action_type_5) %></td>
+		
+		<td>
+			<%= link_to '查看细节', student_student_timeline_path(student_timeline.student,student_timeline) %>
+			|
+			<%= link_to '编辑', edit_student_student_timeline_path(@student,student_timeline) %>
+			|
+		    <%= link_to '删除', student_student_timeline_path(@student,student_timeline), confirm: 'Are you sure?', method: :delete %>
+		</td>
+	</tr>
 <% end %>
 </table>
+
+
 
 <%=h will_paginate @result, :previous_label => '上一页',  :next_label => '下一页'%>
 <br />

@@ -1,7 +1,8 @@
 <p>学员过程追踪管理-学生列表</p>
 <h5>
 <%= link_to '按日浏览学生成绩', view_students_path %>  |  
-<%= link_to '只查看我的学生', my_students_path %>	
+<%= link_to '只查看我的学生', my_students_path %>	|
+<%= link_to '有延迟成绩的', result_delay_students_path %>	
 </h5>
 <table border="1" cellspacing="5" cellpadding="5">
 	<tr>
@@ -15,8 +16,8 @@
 
 <% @users.each do |user| %>
 	<tr>
-		<td><%= link_to user.name, [:admin, user] %></td>
-		<td><%= link_to user.email, [:admin, user] %></td>
+		<td><%= link_to user.name, student_path(user) %></td>
+		<td><%= link_to user.email, student_path(user) %></td>
 		<td>
 			
 			<% if user.jpm %>
@@ -26,7 +27,7 @@
 			<% end %>
 		</td>
 		<td>
-			<% if user.jpm %>
+			<% if user.spm %>
 				<%= user.spm.name%>
 			<% else %>
 				<a href="/students/<%= user.id %>/student_distributes">现在分配</a>

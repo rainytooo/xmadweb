@@ -1,10 +1,11 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-	<div>学生姓名:<%= @student.name %></div>
+	<div>学生姓名:<%= link_to @student.name, student_path(@student) %></div>
 </p>
 <p>
-	<div>督导姓名:<%= @result.jpm.name %></div>
+	<div>提交数据者:<%= @result.jpm.name %></div>
+</p>
+<p>
+	<div>督导:<%= @result.student.jpm ? @result.student.jpm.name : "未分配" %></div>
 </p>
 <p>
 	<div>测试成绩日期:<% if @result.result_date %><%= @result.result_date.strftime('%Y-%m-%d') %><% end %></div>
@@ -39,5 +40,16 @@
 <p>
 	<div>口语课后测:<%= @result.spoken_score1 %></div>
 </p>
+<p>
+	<div>是否有成绩延时提交:<%= (@result.has_exception == 1) ? "有" : "没有" %></div>
+</p>
+<p>
+	<div>延时提交原因:<%= @result.exception %></div>
+</p>
+
+<p>
+	<div>情况详细:<br/><%= @result.remark %></div>
+</p>
+
 <%= link_to '编辑', edit_student_result_path(@student,@result) %> |
 <%= link_to '返回所有成绩', student_results_path(@student) %>

@@ -8,6 +8,10 @@ class StudentsController < ApplicationController
   def view
     
   end
+  # 学生的信息页
+  def show
+    @student = User.find(params[:id])
+  end
   # 我的学生
   def my
     if current_user.role == 4
@@ -18,5 +22,9 @@ class StudentsController < ApplicationController
       @users = User.where(:role => 1, :spm_id => current_user.id).order("email DESC").paginate(:page => params[:page], :per_page => 20)
       flash[:alert] = "对不起!您的身份没有学生"
     end
+  end
+  # 有延时成绩的列表
+  def result_delay
+    @results = Result.where(:has_exception => 1).paginate(:page => params[:page], :per_page => 20)
   end
 end

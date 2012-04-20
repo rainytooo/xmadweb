@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120418040553) do
+ActiveRecord::Schema.define(:version => 20120420040831) do
 
   create_table "advertisements", :force => true do |t|
     t.string   "domain"
@@ -48,6 +48,9 @@ ActiveRecord::Schema.define(:version => 20120418040553) do
     t.integer  "student_id"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+    t.string   "remark"
+    t.integer  "exception_type"
+    t.integer  "has_exception"
   end
 
   create_table "student_timelines", :force => true do |t|

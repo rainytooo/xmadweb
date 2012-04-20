@@ -1,18 +1,43 @@
-<h1>所有<%=  @student.name %>的每日成绩</h1>
+<h1>所有<%= link_to @student.name, student_path(@student) %>的每日成绩</h1>
 
 <table>
   <tr>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>上课时间</th>
+    <th>督导</th>
+	<th>单词A</th>
+	<th>单词B</th>
+	<th>听力A</th>
+	<th>写作A</th>
+	<th>阅读A</th>
+	<th>口语A</th>
+	<th>听力B</th>
+	<th>写作B</th>
+	<th>阅读B</th>
+	<th>口语B</th>
+	<th>延时</th>
+	<th>原因</th>
+    <th>操作</th>
   </tr>
 
 <% @results.each do |result| %>
   <tr>
 	<td><% if result.result_date %><%= result.result_date.strftime('%Y-%m-%d') %><% end %></td>
-    <td><%= link_to '查看', student_result_path(@student,result) %></td>
-    <td><%= link_to '编辑', edit_student_result_path(@student,result) %></td>
-    <td><%= link_to '删除', student_result_path(@student,result), confirm: 'Are you sure?', method: :delete %></td>
+	<td><%= result.student.jpm ? result.student.jpm.name : "未分配" %></td>
+	<td><%= result.words_score1 %></td>
+	<td><%= result.words_score2 %></td>
+	<td><%= result.listen_words_score1 %></td>
+	<td><%= result.write_words_score1 %></td>
+	<td><%= result.read_words_score1 %></td>
+	<td><%= result.spoken_words_score1 %></td>
+	<td><%= result.listen_score1 %></td>
+	<td><%= result.write_score1 %></td>
+	<td><%= result.read_score1 %></td>
+	<td><%= result.spoken_score1 %></td>
+	<td><%= result.has_exception ? result.has_exception_str : "" %></td>
+	<td><%= result.exception_type ? result.exception : "" %></td>
+    <td><%= link_to '查看', student_result_path(@student,result) %> |
+    	<%= link_to '编辑', edit_student_result_path(@student,result) %> |
+    	<%= link_to '删除', student_result_path(@student,result), confirm: 'Are you sure?', method: :delete %>
   </tr>
 <% end %>
 </table>

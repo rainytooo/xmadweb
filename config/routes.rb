@@ -12,6 +12,7 @@ Xmadweb::Application.routes.draw do
     collection do
       get 'view'
       get 'my'
+      get 'result_delay'
     end   
     # 学生时间表追踪管理
     resources :student_timelines

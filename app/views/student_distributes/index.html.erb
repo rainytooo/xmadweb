@@ -1,4 +1,4 @@
-<h1><%=  @student.name %>的督导分配情况</h1>
+<h1><%= link_to @student.name, student_path(@student) %>的督导分配情况</h1>
 
 
 <h4>督导:<%=  @student.jpm ? @student.jpm.name : "" %></h4>

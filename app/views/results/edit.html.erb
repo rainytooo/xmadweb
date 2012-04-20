@@ -1,4 +1,4 @@
-<h1>Editing result</h1>
+<h1>编辑<%= link_to @student.name, student_path(@student) %>的成绩</h1>
 
 	<script>
 		$(function() {
@@ -64,6 +64,22 @@
 	<p>
 	<%= f.label :spoken_score1	, '口语课后测' %>
 	<%= f.text_field :spoken_score1	 %>
+	</p>
+	
+	<p>
+	<%= f.label :has_exception, "是否有延迟测试" %>
+	<%= f.select(:has_exception, options_for_select({"没有" => "0","有" => "1"}, @result.has_exception ? @result.has_exception : 0) ) %>
+	</p>
+	
+	<p>
+	<%= f.label :exception_type, "成绩延迟原因" %>
+	<%= f.select(:exception_type, options_for_select({"没有延迟" => "0", "老师未发邮件" => "1","学生未完成" => "2","学生异常" => "3", "测试时间为第二天或者推迟" => "4", "其他" => "5"},  @result.exception_type ?  @result.exception_type : 0) ) %>
+	</p>
+	
+	<p>
+		<%= f.label :remark	, '未出成绩说明(请填写科目,任课老师等等信息,如果学生异动,请补充说明)' %>
+		<br/>
+		<%= f.text_area  :remark, :cols => 100, :rows => 10 %>	
 	</p>
 	
 	<p>日期: <input type="text" id="datepicker" name="result[result_date]" ></p>

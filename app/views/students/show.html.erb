@@ -1,0 +1,50 @@
+<h1><%= @student.name %></h1>
+<table border="1" cellspacing="5" cellpadding="5">
+	<tr>
+		<th>学生姓名</th>
+		<th>邮箱</th>
+		<th>督导</th>
+		<th>客户经理</th>
+		<th>学员创建时间</th>
+		<th>学员更新时间</th>
+		<th>操作</th>
+		<th>快捷查询</th>
+	</tr>
+	
+	<tr>
+		<td><%= link_to @student.name, [:admin, @student] %></td>
+		
+		<td><%= link_to @student.email, [:admin, @student] %></td>
+
+		<td>
+			<% if @student.jpm %>
+				<%= @student.jpm.name%>
+			<% else %>
+				<a href="/students/<%= @student.id %>/student_distributes">现在分配</a>
+			<% end %>
+		</td>
+
+		<td>
+			<% if @student.spm %>
+				<%= @student.spm.name%>
+			<% else %>
+				<a href="/students/<%= @student.id %>/student_distributes">现在分配</a>
+			<% end %>
+		</td>
+
+		<td><%= @student.created_at.strftime('%Y-%m-%d %H:%M') %></td>
+
+		<td><%= @student.created_at.strftime('%Y-%m-%d %H:%M') %></td>
+		
+		<td>
+			<%= link_to "编辑信息", [:admin, @student] %>
+		</td>
+		
+		<td>
+			<%= link_to '所有成绩', student_results_path(@student) %> 
+			|
+			<%= link_to '所有考勤', student_student_timelines_path(@student) %>
+		</td>
+		
+	</tr>
+</table>

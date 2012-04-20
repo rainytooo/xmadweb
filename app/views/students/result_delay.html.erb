@@ -1,8 +1,8 @@
-<h1>所有学生的成绩 按日查询</h1>
+<h1>有延迟提交成绩的列表</h1>
 
 <table border="1" cellspacing="5" cellpadding="5">
 	<tr>
-		<th>日期</th>
+		<th>上课时间</th>
 		<th>姓名</th>
 		<th>督导</th>
 		<th>单词A</th>
@@ -43,3 +43,5 @@
 	</tr>
 <% end %>
 </table>
+<br/>
+<%=h will_paginate @results, :previous_label => '上一页',  :next_label => '下一页'%>
