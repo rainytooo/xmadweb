@@ -111,8 +111,8 @@ class StudentTimelinesController < ApplicationController
     date_org = DateTime.strptime(params[:timeline_date] + " CCT", "%Y-%m-%d %Z")
     date1 = date_org.change(:hour => 0, :min => 0, :sec => 0)
     date2 = date_org.change(:hour => 23, :min => 59, :sec => 59)
-    @student_timelines = StudentTimeline.joins('LEFT OUTER JOIN Users ON Users.id = student_id')
-      .where(:arrival_time => date1.to_time..date2.to_time, 'Users.is_activity' => true)
+    @student_timelines = StudentTimeline.joins('LEFT OUTER JOIN users ON users.id = student_id')
+      .where(:arrival_time => date1.to_time..date2.to_time, 'users.is_activity' => true)
   end
   
   private
