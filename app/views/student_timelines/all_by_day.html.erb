@@ -1,8 +1,7 @@
-<h1>所有学生的考勤 按日查询</h1>
+<h1>所有学生的考勤 <%= @student_timelines[0].created_at.strftime('%Y-%m-%d') %></h1>
 
 <table border="1" cellspacing="5" cellpadding="5">
 	<tr>
-		<th>日期</th>
 		<th>姓名</th>
 		<th>填写人</th>
 		<th>督导</th>
@@ -17,7 +16,6 @@
 	</tr>
 <% @student_timelines.each do |student_timeline| %>
 	<tr>
-		<td><%= student_timeline.created_at.strftime('%Y-%m-%d') %></td>
 		<td><%= link_to student_timeline.student.name, student_path(student_timeline.student) %></td>
 		<td><%= student_timeline.jpm.name %></td>
 		<td>
