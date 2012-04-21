@@ -2,6 +2,7 @@
 # 学生的督导分配
 class StudentDistributesController < ApplicationController
   before_filter :authorize_not_student!
+  before_filter :authorize_activity!
   before_filter :find_student
   # 查看学生的督导分配情况
   def index

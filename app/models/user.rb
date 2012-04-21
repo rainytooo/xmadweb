@@ -6,7 +6,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :admin, :role, :name, :jpm_id, :spm_id
+  attr_accessible :email, :password, :password_confirmation, :remember_me, 
+          :admin, :role, :name, :jpm_id, :spm_id, :is_activity
   # 新添加的role 0是默认 1 学生 2 教师 3 督导助理 4 督导 5 客户经理 
   # 显示用户的方法
   def to_s

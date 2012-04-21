@@ -1,6 +1,7 @@
 # encoding: utf-8
-class ResultsController < ApplicationController
+class ResultsController < ApplicationController 
   before_filter :authorize_not_student!
+  before_filter :authorize_activity!
   before_filter :find_student, :except => [:all_by_day]
   # GET /results
   # GET /results.json
@@ -97,7 +98,8 @@ class ResultsController < ApplicationController
     date_org = DateTime.strptime(params[:result_date] + " CCT", "%Y-%m-%d %Z")
     date1 = date_org.change(:hour => 0, :min => 0, :sec => 0)
     date2 = date_org.change(:hour => 23, :min => 59, :sec => 59)
-    @results = Result.where(:result_date => date1.to_time..date2.to_time)
+    @results = Result.joins('LEFT OUTER JOIN Users ON Users.id = student_id')
+      .where(:result_date => date1.to_time..date2.to_time, 'Users.is_activity' => true)
   end
   
   private

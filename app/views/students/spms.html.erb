@@ -1,25 +1,9 @@
-<p>学员过程追踪管理-学生列表</p>
+<p><%= @spm.name%>的学生</p>
 <h5>
 <%= link_to '快捷查询', view_students_path %>  |  
 <%= link_to '我的学生', my_students_path %>	|
 <%= link_to '补交成绩', result_delay_students_path %>
 </h5>
-<br/>
-
-<h6>现有督导:</h6>
-<div>
-	<% @active_jpms.each do |single_jpm| %>
-	<%= link_to single_jpm.name, students_by_jpm_path(single_jpm) %>
-	<% end %>
-</div>
-<h6>现有客户经理:</h6>
-<div>
-	<% @active_spms.each do |single_spm| %>
-	<%= link_to single_spm.name, students_by_spm_path(single_spm) %>
-	<% end %>
-</div>
-	
-
 <table border="1" cellspacing="5" cellpadding="5">
 	<tr>
 		<th>姓名</th>
@@ -43,7 +27,7 @@
 			<% end %>
 		</td>
 		<td>
-			<% if user.spm %>
+			<% if user.jpm %>
 				<%= user.spm.name%>
 			<% else %>
 				<a href="/students/<%= user.id %>/student_distributes">现在分配</a>

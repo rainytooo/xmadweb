@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120420040831) do
+ActiveRecord::Schema.define(:version => 20120420101601) do
 
   create_table "advertisements", :force => true do |t|
     t.string   "domain"
@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(:version => 20120420040831) do
     t.integer  "role",                   :limit => 3, :default => 0
     t.integer  "jpm_id"
     t.integer  "spm_id"
+    t.boolean  "is_activity",                         :default => true
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

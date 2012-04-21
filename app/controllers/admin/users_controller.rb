@@ -1,7 +1,7 @@
 # encoding: utf-8
 # 管理员操作控制器
 class Admin::UsersController < Admin::BaseController
-  before_filter :find_user, :only => [:show, :edit, :update, :destroy]
+  before_filter :find_user, :only => [:show, :edit, :update, :destroy, :activity]
   
   def index
     @users = User.paginate(:page => params[:page], :per_page => 20)
@@ -58,6 +58,15 @@ class Admin::UsersController < Admin::BaseController
     else
       @user.destroy
       flash[:notice] = "用户已经成功删除."
+    end
+    redirect_to admin_users_path
+  end
+  # 生效或者失效
+  def activity
+    if @user.is_activity
+      @user.update_attributes(:is_activity => false)
+    else
+      @user.update_attributes(:is_activity => true)
     end
     redirect_to admin_users_path
   end
