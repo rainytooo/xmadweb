@@ -11,9 +11,9 @@
 :confirm => "你确定要删除此用户?" %>
 |
 <% if @user.is_activity %>
-	<%= link_to "失效", admin_user_activity_path(@user), :method => :post,
+	<%= link_to "失效", activity_admin_user_path(@user), :method => :post,
 	:confirm => "你确定要让此用户失效?" %>
 <% else %>
-	<%= link_to "生效", admin_user_activity_path(@user), :method => :post,
+	<%= link_to "生效", activity_admin_user_path(@user), :method => :post,
 	:confirm => "你确定要让此用户生效?" %>
 <% end %>	
