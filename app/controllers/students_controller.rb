@@ -43,6 +43,6 @@ class StudentsController < ApplicationController
   end
   # 有延时成绩的列表
   def result_delay
-    @results = Result.where(:has_exception => 1).paginate(:page => params[:page], :per_page => 20)
+    @results = Result.where(:has_exception => 1, :exception_handle => false).paginate(:page => params[:page], :per_page => 20)
   end
 end

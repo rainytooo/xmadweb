@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120420101601) do
+ActiveRecord::Schema.define(:version => 20120423064151) do
 
   create_table "advertisements", :force => true do |t|
     t.string   "domain"
@@ -46,11 +46,12 @@ ActiveRecord::Schema.define(:version => 20120420101601) do
     t.datetime "result_date"
     t.integer  "jpm_id"
     t.integer  "student_id"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
     t.string   "remark"
     t.integer  "exception_type"
     t.integer  "has_exception"
+    t.boolean  "exception_handle",    :default => false
   end
 
   create_table "student_timelines", :force => true do |t|

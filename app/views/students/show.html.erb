@@ -38,6 +38,8 @@
 		
 		<td>
 			<%= link_to "编辑信息", [:admin, @student] %>
+			|
+			<a href="/students/<%= @student.id %>/student_distributes">分配督导</a>
 		</td>
 		
 		<td>

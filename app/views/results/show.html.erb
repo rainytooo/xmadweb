@@ -51,5 +51,9 @@
 	<div>情况详细:<br/><%= @result.remark %></div>
 </p>
 
+<p>
+	<div>补交完毕:<%= @result.exception_handle_str %></div>
+</p>
+
 <%= link_to '编辑', edit_student_result_path(@student,@result) %> |
 <%= link_to '返回所有成绩', student_results_path(@student) %>

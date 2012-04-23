@@ -30,4 +30,15 @@ class Result < ActiveRecord::Base
       "有"
     end
   end
+  
+  # 补交完毕了吗
+  def exception_handle_str
+    case exception_handle
+      when true
+        "完毕"
+      when false
+        "没有"
+    end
+    
+  end
 end

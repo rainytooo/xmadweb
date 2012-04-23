@@ -82,6 +82,12 @@
 		<%= f.text_area  :remark, :cols => 100, :rows => 10 %>	
 	</p>
 	
+	<p>
+		<%= f.label :exception_handle	, '补交完毕' %>
+		<br/>
+		<%= f.check_box  :exception_handle%>	
+	</p>
+	
 	<p>日期: <input type="text" id="datepicker" name="result[result_date]" ></p>
 
   <div class="actions">
