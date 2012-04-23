@@ -17,6 +17,11 @@
 	.ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
 	.ui-timepicker-div td { font-size: 90%; }
 	.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+	
+	.css1 { font-size: 1.0em; }
+	.css2 { font-size: 1.2em; }
+	.css3 { font-size: 1.4em; }
+	.css4 { font-size: 1.6em; }
   </style>
   <%= csrf_meta_tags %>
 </head>
@@ -49,6 +54,9 @@
 						
 						<li>
 						<%= admins_only do %><%= link_to "用户管理", admin_users_path %><% end %>
+						</li>
+						<li>
+						<%= admins_only do %><%= link_to "教材管理", teaching_materials_path %><% end %>
 						</li>
 
 	        </ul>

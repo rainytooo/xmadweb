@@ -1,0 +1,37 @@
+<h1>所有标签为<%= @tagname%>的教材列表</h1>
+
+<table>
+  <tr>
+    <th>名称</th>
+    <th>考试标签</th>
+	<th>科目标签</th>
+    <th>操作</th>
+  </tr>
+
+<% @teaching_materials.each do |teaching_material| %>
+  <tr>
+	<td>
+		<%= teaching_material.name %>
+	</td>
+	<td>
+		<% teaching_material.exam_list.each do |exam_tag| %>
+		<%= link_to exam_tag, teaching_materials_by_tagname_path(exam_tag) %>
+		<% end %>
+	</td>
+	<td>
+		<% teaching_material.subject_list.each do |subject_tag| %>
+		<%= link_to subject_tag, teaching_materials_by_tagname_path(subject_tag) %>
+		<% end %>
+	</td>
+    <td><%= link_to '查看', teaching_material %>
+	|
+    <%= link_to '编辑', edit_teaching_material_path(teaching_material) %>
+	|
+    <%= link_to '删除', teaching_material, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to '新建', new_teaching_material_path %>

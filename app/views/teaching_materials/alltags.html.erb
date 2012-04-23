@@ -1,0 +1,16 @@
+<h1>所有教材的标签</h1>
+
+
+<div>
+	<h6>考试</h6>
+	<% @exam_tags.each do |exam_tag| %>
+	<%= link_to exam_tag, teaching_materials_by_tagname_path(exam_tag.name) %>
+	<% end %>
+</div>
+
+<div>
+	<h6>科目</h6>
+	<% @subject_tags.each do |subject_tag| %>
+	<%= link_to subject_tag, teaching_materials_by_tagname_path(subject_tag.name) %>
+	<% end %>
+</div>

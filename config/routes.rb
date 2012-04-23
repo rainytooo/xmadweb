@@ -1,6 +1,12 @@
 # encoding: utf-8
 Xmadweb::Application.routes.draw do
-  
+  # 教材
+  resources :teaching_materials do
+    get 'alltags', :on => :collection
+  end
+  match 'teaching_materials/tags/:name' , :to => 'teaching_materials#search_by_tag_name', 
+    :via => [:get], :as => "teaching_materials_by_tagname"
+
   namespace :admin do
       root :to => "base#index"
       resources :users do

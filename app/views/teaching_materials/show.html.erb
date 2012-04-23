@@ -1,0 +1,18 @@
+
+<p>
+	<h4>名称:</h4><%= @teaching_material.name %>
+	<br>
+	<h4>考试:</h4>
+	<% @teaching_material.exam_list.each do |exam_tag| %>
+	<%= link_to exam_tag, teaching_materials_by_tagname_path(exam_tag) %>
+	<% end %>
+	<br>
+	<h4>科目:</h4>
+	<% @teaching_material.subject_list.each do |subject_tag| %>
+	<%= link_to subject_tag, teaching_materials_by_tagname_path(subject_tag) %>
+	<% end %>
+</p>
+
+
+<%= link_to '编辑', edit_teaching_material_path(@teaching_material) %> |
+<%= link_to '返回', teaching_materials_path %>
