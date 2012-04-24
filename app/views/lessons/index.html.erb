@@ -4,6 +4,7 @@
   <tr>
     <th>名称</th>
     <th>编号</th>
+	<th>课程耗时</th>
     <th>操作</th>
   </tr>
 
@@ -14,6 +15,9 @@
 	</td>
 	<td>
 		<%= link_to lesson.code, teaching_material_lesson_path(@teaching_material,lesson) %>
+	</td>
+	<td>
+		<%= lesson.consuming_time %>
 	</td>
     <td><%= link_to '查看', teaching_material_lesson_path(@teaching_material,lesson) %>
 		|
