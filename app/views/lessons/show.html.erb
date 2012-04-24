@@ -1,0 +1,9 @@
+<p>
+	<h4>名称:</h4><%= @lesson.name %>
+	<h4>编号:</h4><%= @lesson.code %>
+	<br>
+</p>
+
+
+<%= link_to '编辑', edit_teaching_material_lesson_path(@teaching_material,@lesson) %> |
+<%= link_to '返回', teaching_material_lessons_path(@teaching_material) %>

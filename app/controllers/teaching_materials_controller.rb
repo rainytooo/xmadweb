@@ -6,7 +6,7 @@ class TeachingMaterialsController < ApplicationController
   # GET /teaching_materials
   # GET /teaching_materials.json
   def index
-    @teaching_materials = TeachingMaterial.all
+    @teaching_materials = TeachingMaterial.order("created_at desc").paginate(:page => params[:page], :per_page => 20)
 
     respond_to do |format|
       format.html # index.html.erb

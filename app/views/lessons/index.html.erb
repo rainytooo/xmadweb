@@ -1,0 +1,32 @@
+<h1>所有[<%= link_to @teaching_material.name, teaching_material_path(@teaching_material) %>]的课程 </h1>
+
+<table>
+  <tr>
+    <th>名称</th>
+    <th>编号</th>
+    <th>操作</th>
+  </tr>
+
+<% @lessons.each do |lesson| %>
+  <tr>
+	<td>
+		<%= link_to lesson.name, teaching_material_lesson_path(@teaching_material,lesson) %>
+	</td>
+	<td>
+		<%= link_to lesson.code, teaching_material_lesson_path(@teaching_material,lesson) %>
+	</td>
+    <td><%= link_to '查看', teaching_material_lesson_path(@teaching_material,lesson) %>
+		|
+    	<%= link_to '编辑', edit_teaching_material_lesson_path(@teaching_material,lesson) %>
+		|
+    	<%= link_to '删除', teaching_material_lesson_path(@teaching_material, lesson), confirm: 'Are you sure?', method: :delete %>
+	</td>
+  </tr>
+<% end %>
+</table>
+
+<%=h will_paginate @teaching_materials, :previous_label => '上一页',  :next_label => '下一页'%>
+<br />
+<br />
+
+<%= link_to '新建课程', new_teaching_material_lesson_path %>

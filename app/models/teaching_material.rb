@@ -5,4 +5,6 @@ class TeachingMaterial < ActiveRecord::Base
   acts_as_taggable
   # 考试标签 科目标签
   acts_as_taggable_on :exams, :subjects
+  # 有课程
+  has_many :lessons
 end

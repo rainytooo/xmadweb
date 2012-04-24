@@ -3,6 +3,7 @@
 <table>
   <tr>
     <th>名称</th>
+	<th>编号</th>	
     <th>考试标签</th>
 	<th>科目标签</th>
     <th>操作</th>
@@ -11,7 +12,10 @@
 <% @teaching_materials.each do |teaching_material| %>
   <tr>
 	<td>
-		<%= teaching_material.name %>
+		<%= link_to teaching_material.name, teaching_material %>
+	</td>
+	<td>
+		<%= teaching_material.code %>
 	</td>
 	<td>
 		<% teaching_material.exam_list.each do |exam_tag| %>

@@ -4,15 +4,20 @@
 <table>
   <tr>
     <th>名称</th>
+	<th>编号</th>
     <th>考试标签</th>
 	<th>科目标签</th>
+	<th>课程操作</th>
     <th>操作</th>
   </tr>
 
 <% @teaching_materials.each do |teaching_material| %>
   <tr>
 	<td>
-		<%= teaching_material.name %>
+		<%= link_to teaching_material.name, teaching_material %>
+	</td>
+	<td>
+		<%= teaching_material.code %>
 	</td>
 	<td>
 		<% teaching_material.exam_list.each do |exam_tag| %>
@@ -24,6 +29,9 @@
 		<%= link_to subject_tag, teaching_materials_by_tagname_path(subject_tag) %>
 		<% end %>
 	</td>
+	<td>
+		<%= link_to '编排课程', teaching_material_lessons_path(teaching_material) %>
+	</td>
     <td><%= link_to '查看', teaching_material %>
 	|
     <%= link_to '编辑', edit_teaching_material_path(teaching_material) %>
@@ -32,7 +40,8 @@
   </tr>
 <% end %>
 </table>
-
+<%=h will_paginate @teaching_materials, :previous_label => '上一页',  :next_label => '下一页'%>
+<br />
 
 <br/>
 <%= link_to '新建教材', new_teaching_material_path %>

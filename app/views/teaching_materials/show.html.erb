@@ -1,6 +1,7 @@
 
 <p>
 	<h4>名称:</h4><%= @teaching_material.name %>
+	<h4>编号:</h4><%= @teaching_material.code %>
 	<br>
 	<h4>考试:</h4>
 	<% @teaching_material.exam_list.each do |exam_tag| %>
@@ -13,6 +14,6 @@
 	<% end %>
 </p>
 
-
+<%= link_to '编排课程', teaching_material_lessons_path(@teaching_material) %> |
 <%= link_to '编辑', edit_teaching_material_path(@teaching_material) %> |
 <%= link_to '返回', teaching_materials_path %>

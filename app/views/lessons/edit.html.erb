@@ -1,0 +1,6 @@
+<h1>编辑<%= @teaching_material.name %>的课程</h1>
+
+<%= render 'form' %>
+
+<%= link_to '查看', teaching_material_lesson_path(@teaching_material,@lesson) %> |
+<%= link_to '返回', teaching_material_lessons_path(@teaching_material) %>

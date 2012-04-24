@@ -1,8 +1,13 @@
 # encoding: utf-8
 Xmadweb::Application.routes.draw do
+  
+
   # 教材
   resources :teaching_materials do
+    # 所有的标签
     get 'alltags', :on => :collection
+    # 课程
+    resources :lessons
   end
   match 'teaching_materials/tags/:name' , :to => 'teaching_materials#search_by_tag_name', 
     :via => [:get], :as => "teaching_materials_by_tagname"
