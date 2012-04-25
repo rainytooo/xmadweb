@@ -21,7 +21,7 @@ class TeachingProblem < ActiveRecord::Base
       when 3
         "学生迟到或者早退"
       when 4
-        "老师没有批改"
+        "老师没有批改或提交"
       when 5
         "老师没有布置作业或侧试"
       when 6
