@@ -1,7 +1,7 @@
 <p>
 	<h6>日期:</h6><%= @teaching_problem.created_at.strftime('%Y-%m-%d') %>
 	<h6>学生:</h6><%= link_to @teaching_problem.student.name , student_path(@teaching_problem.student.id)%>
-	<h6>教师:</h6><%= if @teaching_problem.teacher ? @teaching_problem.teacher.name : ""%>
+	<h6>教师:</h6><%= @teaching_problem.teacher ? @teaching_problem.teacher.name : ""%>
 	
 	<h6>督导:</h6>
 	<% if @teaching_problem.student.jpm %>
