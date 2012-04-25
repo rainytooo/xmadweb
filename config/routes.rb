@@ -1,6 +1,13 @@
 # encoding: utf-8
 Xmadweb::Application.routes.draw do
   
+  # 教学问题
+  resources :teaching_problems do
+    get 'closed', :on => :collection
+  end
+  # 教学问题的标签
+  match 'teaching_problems/tags/:name' , :to => 'teaching_problems#search_by_tag_name', 
+    :via => [:get], :as => "teaching_problems_by_tagname"
 
   # 教材
   resources :teaching_materials do
@@ -9,6 +16,7 @@ Xmadweb::Application.routes.draw do
     # 课程
     resources :lessons
   end
+  # 教材的标签
   match 'teaching_materials/tags/:name' , :to => 'teaching_materials#search_by_tag_name', 
     :via => [:get], :as => "teaching_materials_by_tagname"
 

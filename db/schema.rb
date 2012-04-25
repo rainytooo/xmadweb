@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120424073922) do
+ActiveRecord::Schema.define(:version => 20120425075603) do
 
   create_table "advertisements", :force => true do |t|
     t.string   "domain"
@@ -110,6 +110,17 @@ ActiveRecord::Schema.define(:version => 20120424073922) do
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
     t.string   "code",       :limit => 32
+  end
+
+  create_table "teaching_problems", :force => true do |t|
+    t.integer  "student_id"
+    t.integer  "teacher_id"
+    t.boolean  "sloved",       :default => false
+    t.string   "slove_spec"
+    t.string   "problem_spec"
+    t.integer  "problem_type"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   create_table "users", :force => true do |t|

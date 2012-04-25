@@ -1,0 +1,30 @@
+<p>
+	<h6>日期:</h6><%= @teaching_problem.created_at.strftime('%Y-%m-%d') %>
+	<h6>学生:</h6><%= link_to @teaching_problem.student.name , student_path(@teaching_problem.student.id)%>
+	<h6>教师:</h6><%= @teaching_problem.teacher.name %>
+	
+	<h6>督导:</h6>
+	<% if @teaching_problem.student.jpm %>
+		<%= @teaching_problem.student.jpm.name%>
+	<% else %>
+		<a href="/students/<%= @teaching_problem.student.id %>/student_distributes">现在分配</a>
+	<% end %>
+
+    <h6>经理:</h6>
+	<% if @teaching_problem.student.spm %>
+		<%= @teaching_problem.student.spm.name%>
+	<% else %>
+		<a href="/students/<%= @teaching_problem.student.id %>/student_distributes">现在分配</a>
+	<% end %>
+	<h6>问题部门:</h6><%= link_to @teaching_problem.dept_list, teaching_problems_by_tagname_path(@teaching_problem.dept_list) %>
+	<h6>问题科目:</h6><%= link_to @teaching_problem.subject_list, teaching_problems_by_tagname_path(@teaching_problem.subject_list) %>
+	<h6>问题类型:</h6><%= @teaching_problem.problem_type_str %>
+	<h6>问题描述:</h6><%= @teaching_problem.problem_spec %>
+	<h6><%= @teaching_problem.sloved ? "已关闭" : "未关闭" %></h6>
+	<h6>解决描述:</h6><%= @teaching_problem.slove_spec %>
+	
+</td>
+</p>
+
+<%= link_to '编辑', edit_teaching_problem_path(@teaching_problem) %> |
+<%= link_to '返回', teaching_problems_path %>

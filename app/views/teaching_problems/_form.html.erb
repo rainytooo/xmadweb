@@ -1,0 +1,111 @@
+<%= form_for(@teaching_problem) do |f| %>
+  <% if @teaching_problem.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@teaching_problem.errors.count, "error") %> prohibited this teaching_problem from being saved:</h2>
+
+      <ul>
+      <% @teaching_problem.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+  
+  <p>
+	<h6>选择学生</h6>
+	<% @students.each do |student| %>	
+  	<%= f.radio_button(:student_id, student.id) %>
+	<%= f.label :student_id, student.name %>
+	<% end %>
+  </p>
+
+  <p>
+	<h6>选择老师</h6>
+	<% @teachers.each do |teacher| %>	
+  	<%= f.radio_button(:teacher_id, teacher.id) %>
+	<%= f.label :teacher_id, teacher.name %>
+	<% end %>
+  </p>
+
+  <p>
+	<h6>问题科目</h6>	
+  	<%= f.radio_button(:subject_list, "听力") %>
+	<%= f.label :subject_list, "听力" %>
+	<%= f.radio_button(:subject_list, "阅读") %>
+	<%= f.label :subject_list, "阅读" %>
+	<%= f.radio_button(:subject_list, "口语") %>
+	<%= f.label :subject_list, "口语" %>
+	<%= f.radio_button(:subject_list, "写作") %>
+	<%= f.label :subject_list, "写作" %>
+	<%= f.radio_button(:subject_list, "单词") %>
+	<%= f.label :subject_list, "单词" %>
+	<%= f.radio_button(:subject_list, "其他") %>
+	<%= f.label :subject_list, "其他" %>
+  </p>
+
+  <p>
+	<h6>问题部门</h6>	
+  	<%= f.radio_button(:dept_list, "督导") %>
+	<%= f.label :dept_list, "督导" %>
+	<%= f.radio_button(:dept_list, "教学") %>
+	<%= f.label :dept_list, "教学" %>
+	<%= f.radio_button(:dept_list, "质检") %>
+	<%= f.label :dept_list, "质检" %>
+	<%= f.radio_button(:dept_list, "其他") %>
+	<%= f.label :dept_list, "其他" %>
+  </p>
+
+  <p>
+	<h6>问题类型</h6>	
+  	<%= f.radio_button(:problem_type, 1) %>
+	<%= f.label :problem_type, "学生作业未完成" %>
+	<br>
+	<%= f.radio_button(:problem_type, 2) %>
+	<%= f.label :problem_type, "学生测试未完成" %>
+	<br>
+	<%= f.radio_button(:problem_type, 3) %>
+	<%= f.label :problem_type, "学生迟到或者早退" %>
+	<br>
+	<%= f.radio_button(:problem_type, 4) %>
+	<%= f.label :problem_type, "老师没有批改" %>
+	<br>
+	<%= f.radio_button(:problem_type, 5) %>
+	<%= f.label :problem_type, "老师没有布置作业或侧试" %>
+	<br>
+	<%= f.radio_button(:problem_type, 6) %>
+	<%= f.label :problem_type, "单词不合格" %>
+	<br>
+	<%= f.radio_button(:problem_type, 7) %>
+	<%= f.label :problem_type, "测试不合格" %>
+	<br>
+	<%= f.radio_button(:problem_type, 0) %>
+	<%= f.label :problem_type, "其他情况" %>
+	<br>
+  </p>
+
+
+  
+  
+  <p>
+	<h6>问题详细描述或者补充</h6>	
+  	<%= f.text_area(:problem_spec, :cols => 100, :rows => 10) %>
+  </p>
+
+  <hr>
+
+  <p>
+		<%= f.check_box  :sloved %>
+		<%= f.label :sloved	, '已解决,关闭' %>			
+  </p>
+
+  <p>
+	<h6>解决方法或者描述</h6>	
+  	<%= f.text_area(:slove_spec, :cols => 100, :rows => 10) %>
+  </p>
+
+  <div class="actions">
+    <%= f.submit "保存" %>
+  </div>
+<% end %>

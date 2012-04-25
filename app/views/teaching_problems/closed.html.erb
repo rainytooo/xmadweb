@@ -1,0 +1,63 @@
+<h1>已经关闭的教学问题</h1>
+
+<table>
+  <tr>
+    <th>日期</th>
+    <th>学生</th>
+	<th>督导</th>
+	<th>经理</th>
+	<th>教师</th>
+	<th>问题部门</th>
+	<th>科目</th>
+	<th>问题类型</th>
+    <th>操作</th>
+  </tr>
+
+<% @teaching_problems.each do |teaching_problem| %>
+  <tr>
+	<td>
+		<%= teaching_problem.created_at.strftime('%Y-%m-%d') %>
+	</td>
+	<td>
+		<%= link_to teaching_problem.student.name , student_path(teaching_problem.student.id)%>
+	</td>
+	<td>
+		<% if teaching_problem.student.jpm %>
+			<%= teaching_problem.student.jpm.name%>
+		<% else %>
+			<a href="/students/<%= teaching_problem.student.id %>/student_distributes">现在分配</a>
+		<% end %>
+	</td>
+	<td>
+		<% if teaching_problem.student.spm %>
+			<%= teaching_problem.student.spm.name%>
+		<% else %>
+			<a href="/students/<%= teaching_problem.student.id %>/student_distributes">现在分配</a>
+		<% end %>
+	</td>
+	
+	<td>
+		<%= teaching_problem.teacher.name %>
+	</td>
+	<td>
+		<%= link_to teaching_problem.dept_list, teaching_problems_by_tagname_path(teaching_problem.dept_list) %>
+	</td>
+	<td>
+		<%= link_to teaching_problem.subject_list, teaching_problems_by_tagname_path(teaching_problem.subject_list) %>
+	</td>
+	<td>
+		<%= teaching_problem.problem_type_str %>
+	</td>
+    <td>
+		<%= link_to '查看', teaching_problem %>
+		|
+    	<%= link_to '编辑或关闭', edit_teaching_problem_path(teaching_problem) %>
+		|
+    	<%= link_to '删除', teaching_problem, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+<%=h will_paginate @users, :previous_label => '上一页',  :next_label => '下一页'%>
+<br />
+
+<%= link_to '新建问题', new_teaching_problem_path %>
