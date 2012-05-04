@@ -9,20 +9,6 @@
   <script type="text/javascript" src="<%= Xmadweb::Application.config.staticfile_server_url %>jquery/jquery-ui-timepicker-addon.js"></script>
   <link rel="stylesheet" href="<%= Xmadweb::Application.config.staticfile_server_url %>jquery/ui-lightness/jquery-ui-1.8.18.custom.css" type="text/css"/>
   <link rel="stylesheet" href="<%= Xmadweb::Application.config.staticfile_server_url %>style.css" type="text/css"/>
-  <style type="text/css" media="screen">
-  	/* css for timepicker */
-	.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
-	.ui-timepicker-div dl { text-align: left; }
-	.ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; }
-	.ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
-	.ui-timepicker-div td { font-size: 90%; }
-	.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
-	
-	.css1 { font-size: 1.0em; }
-	.css2 { font-size: 1.2em; }
-	.css3 { font-size: 1.4em; }
-	.css4 { font-size: 1.6em; }
-  </style>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -46,7 +32,6 @@
 	                    <li>
 	                    <%= link_to "学生管理", students_path %>
 	                    </li>
-
 
 	                    <li>
 	                    <%= admins_only do %><%= link_to "后台管理", admin_root_path %><% end %>
@@ -85,8 +70,16 @@
 		<p class="success"><%= flash[:success] %></p>
 		<% end %>
 	<!-- devise的提示信息 end -->
-	
-<%= yield %>
+	<div id="content">	
+		<%= yield %>
+	</div>
+	<div id="footer">
+		<p>
+			Copyright &#169; 2012 <a href="http://www.xiaoma.com">小马过河国际教育</a>
+			|
+			Powered by <a href="http://rubyonrails.org/">Ruby On Rails</a>
+		</p>
+	</div>
 
 </body>
 </html>

@@ -159,6 +159,12 @@ body{
     color:#4C4C4C; 
 }
 
+#content {
+	height:auto   !important;   
+	height:400px;   
+	min-height:400px;
+}
+
 h2,h3,h4,h5,h6{
     margin-top:40px;
 
@@ -271,3 +277,25 @@ footer{
 .timestamp{
 margin:0;
 }
+#footer {
+	border-top: 1px dashed #D4D4D4;
+	width: 960px;
+	text-align: center;
+	margin: 0 auto;
+	padding-top: 1em;
+	margin-top: 1.5em;
+	margin-bottom: 1.5em;
+}
+
+/* css for timepicker */
+.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
+.ui-timepicker-div dl { text-align: left; }
+.ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; }
+.ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
+.ui-timepicker-div td { font-size: 90%; }
+.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+
+.css1 { font-size: 1.0em; }
+.css2 { font-size: 1.2em; }
+.css3 { font-size: 1.4em; }
+.css4 { font-size: 1.6em; }
