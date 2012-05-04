@@ -19,6 +19,12 @@
 		<th>原因</th>
 		<th>操作</th>
 	</tr>
+	<%  
+		total_words_score1 = 0
+		total_words_num1 = 0
+		total_words_score2 = 0
+		total_words_num2 = 0
+	%>
 <% @results.each do |result| %>
 	<tr>
 		<td><% if result.result_date %><%= result.result_date.strftime('%Y-%m-%d') %><% end %></td>
@@ -41,5 +47,18 @@
 			<%= link_to '编辑', edit_student_result_path(result.student,result) %>
 		</td>
 	</tr>
+	<% 
+		if result.words_score1 
+			total_words_score1 += result.words_score1
+			total_words_num1 += 1
+ 		end
+		if result.words_score2 
+			total_words_score2 += result.words_score2
+			total_words_num2 += 1
+ 		end 
+	%>
 <% end %>
 </table>
+
+<h6>单词A的平均成绩<%= (total_words_num1 != 0) ? (total_words_score1/total_words_num1).to_i : 0%></h6>
+<h6>单词B的平均成绩<%= (total_words_num2 != 0) ? (total_words_score2/total_words_num2).to_i : 0%></h6>

@@ -5,6 +5,7 @@
     <th>名称</th>
     <th>编号</th>
 	<th>课程耗时</th>
+	<th>单词数量</th>
     <th>操作</th>
   </tr>
 
@@ -18,6 +19,9 @@
 	</td>
 	<td>
 		<%= lesson.consuming_time %>
+	</td>
+	<td>
+		<%= lesson.wordcounts %>
 	</td>
     <td><%= link_to '查看', teaching_material_lesson_path(@teaching_material,lesson) %>
 		|

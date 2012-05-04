@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120425075603) do
+ActiveRecord::Schema.define(:version => 20120503035256) do
 
   create_table "advertisements", :force => true do |t|
     t.string   "domain"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20120425075603) do
     t.integer  "teaching_material_id"
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
+    t.integer  "wordcounts"
   end
 
   create_table "results", :force => true do |t|
