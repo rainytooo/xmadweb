@@ -1,3 +1,4 @@
+# encoding: utf-8
 class AdclickController < ApplicationController
   def index
     # 查询昨天的点击情况
