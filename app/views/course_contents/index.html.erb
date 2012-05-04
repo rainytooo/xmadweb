@@ -1,0 +1,21 @@
+<h1>Listing course_contents</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @course_contents.each do |course_content| %>
+  <tr>
+    <td><%= link_to 'Show', course_content %></td>
+    <td><%= link_to 'Edit', edit_course_content_path(course_content) %></td>
+    <td><%= link_to 'Destroy', course_content, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Course content', new_course_content_path %>

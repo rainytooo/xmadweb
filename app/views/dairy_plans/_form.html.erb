@@ -1,0 +1,17 @@
+<%= form_for(@dairy_plan) do |f| %>
+  <% if @dairy_plan.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@dairy_plan.errors.count, "error") %> prohibited this dairy_plan from being saved:</h2>
+
+      <ul>
+      <% @dairy_plan.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

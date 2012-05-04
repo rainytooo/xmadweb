@@ -1,0 +1,30 @@
+<h1>创建每日成绩-<%= link_to @student.name, student_path(@student) %></h1>
+
+	<script>
+		$(function() {
+			$( "#datepicker" ).datepicker();
+			$( "#datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
+		});
+	</script>
+<%= form_for([@student,@dairy_plan], :url => student_dairy_plans_path(@student)) do |f| %>
+
+  <% if @dairy_plan.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@dairy_plan.errors.count, "error") %> prohibited this dairy_plan from being saved:</h2>
+
+      <ul>
+      <% @dairy_plan.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+	<p>日期: <input type="text" id="datepicker" name="dairy_plan[plan_date]"></p>
+	
+  <div class="actions">
+    <%= f.submit '保存' %>
+  </div>
+<% end %>
+
+<%= link_to '返回学生所有学习计划', student_dairy_plans_path(@student) %>
+

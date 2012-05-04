@@ -1,6 +1,6 @@
 # encoding: utf-8
 Xmadweb::Application.routes.draw do
-  
+
   # 教学问题
   resources :teaching_problems do
     get 'closed', :on => :collection
@@ -38,7 +38,12 @@ Xmadweb::Application.routes.draw do
     # 学生时间表追踪管理
     resources :student_timelines
     # 学生分配督导和客户经理
-    resources :student_distributes  
+    resources :student_distributes
+    # 学习计划
+    resources :dairy_plans do
+      # 课程内容
+      resources :course_contents
+    end
   end
   # 督导的学生
   match 'students/jpms/:id(.:format)', :to => 'students#jpms', :via => [:get], :as => "students_by_jpm"

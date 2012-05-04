@@ -1,0 +1,49 @@
+<h1>所有<%= @student.name%>的学习计划</h1>
+<% if @dairy_plans.length > 0 %>
+<table>
+  <tr>
+    <th>日期</th>
+	<th>第一节课</th>
+	<th>第二节课</th>
+	<th>第三节课</th>
+	<th>第四节课</th>
+	<th>第五节课</th>
+    <th>操作</th>
+  </tr>
+<% else %>
+  <h5>没有任何计划</h5>
+<% end %>
+<% @dairy_plans.each do |dairy_plan| %>
+  <tr>
+	<td>
+		<%= dairy_plan.plan_date.strftime('%Y-%m-%d') %>
+	</td>
+	<td>
+		<%= link_to "内容安排", new_student_dairy_plan_course_content_path(@student,dairy_plan,:course_num => 1)  %>
+	</td>
+	<td>
+		<a href="#">安排内容</a>
+	</td>
+	<td>
+		<a href="#">安排内容</a>
+	</td>
+	<td>
+		<a href="#">安排内容</a>
+	</td>
+	<td>
+		<a href="#">安排内容</a>
+	</td>
+    <td>
+		<%= link_to '查看', student_dairy_plan_path(@student, dairy_plan) %>
+		|
+    	<%= link_to '编辑', edit_student_dairy_plan_path(@student, dairy_plan) %>
+		|
+    	<%= link_to '删除', student_dairy_plan_path(@student, dairy_plan), confirm: 'Are you sure?', method: :delete %>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to '新建学习计划', new_student_dairy_plan_path(@student) %>

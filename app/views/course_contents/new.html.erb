@@ -1,0 +1,21 @@
+<h1>课程内容安排</h1>
+
+<%= form_for([@student,@dairy_plan,@course_content], :url => student_dairy_plan_course_conents_path(@student,@dairy_plan)) do |f| %>
+  <% if @course_content.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@course_content.errors.count, "error") %> prohibited this course_content from being saved:</h2>
+
+      <ul>
+      <% @course_content.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit "保存"%>
+  </div>
+<% end %>
+
+<%= link_to '返回', student_dairy_plan_course_conents_path(@student,@dairy_plan) %>
