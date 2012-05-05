@@ -13,6 +13,8 @@ Xmadweb::Application.routes.draw do
   resources :teaching_materials do
     # 所有的标签
     get 'alltags', :on => :collection
+    # 用来级联选择的
+    get 'tagselect', :on => :collection
     # 课程
     resources :lessons
   end

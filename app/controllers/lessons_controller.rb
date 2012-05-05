@@ -6,7 +6,7 @@ class LessonsController < ApplicationController
   # GET /lessons
   # GET /lessons.json
   def index
-    @lessons = Lesson.order("created_at desc").paginate(:page => params[:page], :per_page => 20)
+    @lessons = Lesson.where(:teaching_material_id => @teaching_material.id).order("created_at desc").paginate(:page => params[:page], :per_page => 20)
 
     respond_to do |format|
       format.html # index.html.erb

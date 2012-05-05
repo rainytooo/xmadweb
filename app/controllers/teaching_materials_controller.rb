@@ -35,6 +35,24 @@ class TeachingMaterialsController < ApplicationController
     @exam_tags = TeachingMaterial.exam_counts
     @subject_tags = TeachingMaterial.subject_counts
   end
+  # 级联选择的时候用的
+  def tagselect
+    course_exam_type_id = params[:s_course_exam_type] 
+    teaching_material_id = params[:s_teaching_material_tag_name]
+    # 如果是选择了考试类型 则返回相应的教材
+    if course_exam_type_id
+      teaching_materials = TeachingMaterial.tagged_with(course_exam_type_id, :any => true)
+      @json_str  = Hash[teaching_materials.collect{ |p| [p.id, p.name] }]
+    end
+    # 如果是选择了教材
+    if teaching_material_id
+      # 拿出这个教材下的所有课程
+      lessons = Lesson.where(:teaching_material_id => teaching_material_id).order("created_at desc")
+      @json_str  = Hash[lessons.collect{ |p| [p.name, p.name] }]
+    end
+    
+    render :json => @json_str
+  end
   
  
 

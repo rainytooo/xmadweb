@@ -28,7 +28,8 @@ class CourseContentsController < ApplicationController
   # GET /course_contents/new.json
   def new
     @course_content = CourseContent.new
-
+    # 查询出所有的教材标签
+    @teaching_exam_tags = TeachingMaterial.exam_counts   
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @course_content }

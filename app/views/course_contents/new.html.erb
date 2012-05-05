@@ -1,5 +1,10 @@
-<h1>课程内容安排</h1>
-
+<h1>为<%= @student.name%>安排课程内容</h1>
+<script>
+	$(function() {
+		$( "#datepicker" ).datepicker();
+		$( "#datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
+	});
+</script>
 <%= form_for([@student,@dairy_plan,@course_content], :url => student_dairy_plan_course_conents_path(@student,@dairy_plan)) do |f| %>
   <% if @course_content.errors.any? %>
     <div id="error_explanation">
@@ -12,10 +17,56 @@
       </ul>
     </div>
   <% end %>
+  
 
+  <p>上课日期: <input type="text" id="datepicker" name="course_content[plan_date]"></p>
+
+  <p>
+	<h6>选择内容安排</h6>	
+  	<%= f.radio_button(:action_type, 1) %>
+	<%= f.label :action_type, "上课" %>
+	<%= f.radio_button(:action_type, 2) %>
+	<%= f.label :action_type, "背单词" %>
+	<%= f.radio_button(:action_type, 3) %>
+	<%= f.label :action_type, "写作业" %>
+	<%= f.radio_button(:action_type, 4) %>
+	<%= f.label :action_type, "测试" %>
+  </p>
+  
+  <!-- 如果选择上课 显示这个 -->
+  <div id="course_material_select">
+  	  <p>
+		<h6>选择上课教材</h6>
+		<span>考试:</span>
+		<select id="s_course_exam_type" name="s_course_exam_type">
+			<option value selected="selected">选择一个考试</option>
+			<% @teaching_exam_tags.each do |teaching_exam_tag| %>
+			<option value="<%= teaching_exam_tag %>"><%= teaching_exam_tag %></option>
+			<% end %>
+		</select>
+		
+		<span>教材:</span>
+		<select id="s_teaching_material_tag_name" name="s_teaching_material_tag_name" disabled>
+			<option value selected="selected">选择一个教材</option>
+		</select>
+		<span>课程:</span>
+		<select id="s_lesson_tag_name" name="s_lesson_tag_name" disabled>
+			<option value selected="selected">选择一个课程</option>
+		</select>
+	  </p>	
+  </div>
+  
   <div class="actions">
     <%= f.submit "保存"%>
   </div>
 <% end %>
+
+<script type="text/javascript" charset="utf-8">
+	$("#new_course_content").relatedSelects({
+	    onChangeLoad: '<%= Xmadweb::Application.config.host_url %>/teaching_materials/tagselect',
+	    selects: ['s_course_exam_type', 's_teaching_material_tag_name', 's_lesson_tag_name']
+	});
+</script>
+
 
 <%= link_to '返回', student_dairy_plan_course_conents_path(@student,@dairy_plan) %>
