@@ -1,2 +1,26 @@
+<h1>教学计划 - <%= @student.name %> - <%= @dairy_plan.plan_date.strftime('%Y-%m-%d') %></h1>
+
+<table border="1" cellspacing="5" cellpadding="5">
+	<tr>
+		<th>课程时间安排</th>
+		<th>计划的内容安排</th>
+		<th>操作</th>
+	</tr>
+
+	<tr>
+		<td>
+			第一节课
+		</td>
+		<td>
+			
+		</td>
+		<td>
+			
+		</td>
+	</tr>
+	<% end %>
+</table>
+
+
 <%= link_to '编辑', edit_student_dairy_plan_path(@student, @dairy_plan) %> |
 <%= link_to '新建学习计划', new_student_dairy_plan_path(@student) %>

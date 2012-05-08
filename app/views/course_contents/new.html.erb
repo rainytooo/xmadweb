@@ -4,8 +4,36 @@
 		$( "#datepicker" ).datepicker();
 		$( "#datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
 	});
+	$(document).ready(function() {
+	  // 隐藏所有的选择
+	  $("#course_material_select").hide();
+	  $("#word_material_select").hide();
+	  $("input[name='course_content[action_type]']").change(function() {	  
+		  var selectedvalue = $("input[name='course_content[action_type]']:checked").val();
+		  //alert('Handler for .change() called.' + selectedvalue);
+		  if (selectedvalue == 1){
+			$("#course_material_select").show();
+			$("#word_material_select").hide();
+			$("#new_course_content").relatedSelects({
+			    onChangeLoad: '<%= Xmadweb::Application.config.host_url %>/teaching_materials/tagselect',
+			    selects: ['s_course_exam_type', 's_teaching_material_tag_name', 's_lesson_tag_name']
+			});
+		  } else if (selectedvalue == 2) {
+			$("#course_material_select").hide();
+			$("#word_material_select").show();
+			$("#new_course_content").relatedSelects({
+			    onChangeLoad: '<%= Xmadweb::Application.config.host_url %>/teaching_materials/tagselect',
+			    selects: ['s_word_exam_type', 's_word_material_tag_name', 's_word_lesson_tag_name']
+			});
+		  } else {
+			$("#course_material_select").hide();
+			$("#word_material_select").hide();
+		  }
+		  
+		});
+	});
 </script>
-<%= form_for([@student,@dairy_plan,@course_content], :url => student_dairy_plan_course_conents_path(@student,@dairy_plan)) do |f| %>
+<%= form_for([@student,@dairy_plan,@course_content], :url => student_dairy_plan_course_contents_path(@student,@dairy_plan)) do |f| %>
   <% if @course_content.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@course_content.errors.count, "error") %> prohibited this course_content from being saved:</h2>
@@ -18,9 +46,9 @@
     </div>
   <% end %>
   
+  <%= hidden_field_tag("course_content[course_num]", @course_num) %>
 
-  <p>上课日期: <input type="text" id="datepicker" name="course_content[plan_date]"></p>
-
+  <p><h5>上课日期:<%= @dairy_plan.plan_date.strftime('%Y-%m-%d')%></h5></p>
   <p>
 	<h6>选择内容安排</h6>	
   	<%= f.radio_button(:action_type, 1) %>
@@ -55,6 +83,29 @@
 		</select>
 	  </p>	
   </div>
+
+  <!-- 如果选择上课 显示这个 -->
+  <div id="word_material_select">
+  	  <p>
+		<h6>选择单词教材</h6>
+		<span>考试:</span>
+		<select id="s_word_exam_type" name="s_word_exam_type">
+			<option value selected="selected">选择一个考试</option>
+			<% @teaching_exam_tags.each do |teaching_exam_tag| %>
+			<option value="<%= teaching_exam_tag %>"><%= teaching_exam_tag %></option>
+			<% end %>
+		</select>
+		
+		<span>词汇书:</span>
+		<select id="s_word_material_tag_name" name="s_word_material_tag_name" disabled>
+			<option value selected="selected">选择一个词汇书</option>
+		</select>
+		<span>组:</span>
+		<select id="s_word_lesson_tag_name" name="s_word_lesson_tag_name" disabled>
+			<option value selected="selected">选择一组</option>
+		</select>
+	  </p>	
+  </div>
   
   <div class="actions">
     <%= f.submit "保存"%>
@@ -62,11 +113,9 @@
 <% end %>
 
 <script type="text/javascript" charset="utf-8">
-	$("#new_course_content").relatedSelects({
-	    onChangeLoad: '<%= Xmadweb::Application.config.host_url %>/teaching_materials/tagselect',
-	    selects: ['s_course_exam_type', 's_teaching_material_tag_name', 's_lesson_tag_name']
-	});
+	
+	
 </script>
 
 
-<%= link_to '返回', student_dairy_plan_course_conents_path(@student,@dairy_plan) %>
+<%= link_to '返回', student_dairy_plan_course_contents_path(@student,@dairy_plan) %>

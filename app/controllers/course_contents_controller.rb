@@ -2,10 +2,11 @@
 class CourseContentsController < ApplicationController
   before_filter :find_student
   before_filter :find_dairy_plan
+  before_filter :check_exist_course_content_with_same_course_num, :only => [:create]
   # GET /course_contents
   # GET /course_contents.json
   def index
-    @course_contents = CourseContent.all
+    @course_contents = CourseContent.where(:student_id => @student.id, :dairy_plan_id => @dairy_plan.id)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -28,6 +29,7 @@ class CourseContentsController < ApplicationController
   # GET /course_contents/new.json
   def new
     @course_content = CourseContent.new
+    @course_num = params[:course_num].to_i
     # 查询出所有的教材标签
     @teaching_exam_tags = TeachingMaterial.exam_counts   
     respond_to do |format|
@@ -44,12 +46,25 @@ class CourseContentsController < ApplicationController
   # POST /course_contents
   # POST /course_contents.json
   def create
-    @course_content = CourseContent.new(params[:course_content])
-
+    @course_content = CourseContent.new(params[:course_content])  
+    # 日期 学生 客户经理 教学计划 
+    @course_content.plan_date = @dairy_plan.plan_date
+    @course_content.student = @student
+    @course_content.spm = @dairy_plan.spm
+    @course_content.dairy_plan = @dairy_plan
+    # 如果是上课 
+    if @course_content.action_type.to_s == '1'
+      @course_content.teaching_material_id = params[:s_teaching_material_tag_name] ? params[:s_teaching_material_tag_name] : nil
+      @course_content.lesson_id = params[:s_lesson_tag_name] ? params[:s_lesson_tag_name] : nil
+    end
+    # 如果是背单词
+    if @course_content.action_type.to_s == '2'
+      @course_content.word_material_id = params[:s_word_material_tag_name] ? params[:s_word_material_tag_name] : nil
+    end
     respond_to do |format|
       if @course_content.save
-        format.html { redirect_to @course_content, notice: 'Course content was successfully created.' }
-        format.json { render json: @course_content, status: :created, location: @course_content }
+        format.html { redirect_to student_dairy_plan_path(@student,@dairy_plan), notice: 'Course content was successfully created.' }
+        format.json { render json: student_dairy_plan_path(@student,@dairy_plan), status: :created, location: @course_content }
       else
         format.html { render action: "new" }
         format.json { render json: @course_content.errors, status: :unprocessable_entity }
@@ -92,5 +107,14 @@ class CourseContentsController < ApplicationController
   # 查找计划
   def find_dairy_plan
     @dairy_plan = DairyPlan.find(params[:dairy_plan_id])
+  end
+  # 查看是否有相同时间段的课程计划
+  def check_exist_course_content_with_same_course_num
+    course_num = params[:course_content][:course_num]
+    course_count_check = CourseContent.where(:dairy_plan_id => @dairy_plan.id, :course_num => course_num)   
+    if course_count_check
+      flash[:notice] = "这节课已经存在,不能在同一时间段做两个课程计划"
+      redirect_to student_dairy_plans_path(@student)
+    end
   end
 end

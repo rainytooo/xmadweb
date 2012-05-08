@@ -4,8 +4,7 @@ class DairyPlansController < ApplicationController
   # GET /dairy_plans
   # GET /dairy_plans.json
   def index
-    @dairy_plans = DairyPlan.all
-
+    @dairy_plans = DairyPlan.where(:student_id => @student.id)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @dairy_plans }
@@ -16,7 +15,8 @@ class DairyPlansController < ApplicationController
   # GET /dairy_plans/1.json
   def show
     @dairy_plan = DairyPlan.find(params[:id])
-
+    # 查询所有的课程内容安排
+    @course_contents = CourseContent.where(:dairy_plan_id => @dairy_plan.id).order("course_num asc")
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @dairy_plan }
@@ -43,6 +43,8 @@ class DairyPlansController < ApplicationController
   # POST /dairy_plans.json
   def create
     @dairy_plan = DairyPlan.new(params[:dairy_plan])
+    @dairy_plan.spm = @student.spm
+    @dairy_plan.student = @student
     # 时间处理 需要判断是否填写
     if params[:dairy_plan][:plan_date].to_s != ""
       date1 = DateTime.strptime(params[:dairy_plan][:plan_date] + " CCT", "%Y-%m-%d %Z")   
@@ -50,8 +52,8 @@ class DairyPlansController < ApplicationController
     end
     respond_to do |format|
       if @dairy_plan.save
-        format.html { redirect_to student_dairy_plans_path(@dairy_plan), notice: 'Dairy plan was successfully created.' }
-        format.json { render json: student_dairy_plans_path(@dairy_plan), status: :created, location: @dairy_plan }
+        format.html { redirect_to student_dairy_plans_path(@student), notice: 'Dairy plan was successfully created.' }
+        format.json { render json: student_dairy_plans_path(@student), status: :created, location: @dairy_plan }
       else
         format.html { render action: "new" }
         format.json { render json: @dairy_plan.errors, status: :unprocessable_entity }
