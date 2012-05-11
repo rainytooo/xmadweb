@@ -10,14 +10,14 @@ h3 {font-size: 1.6em; color: #333333;}
 h4 {font-size: 1.4em; color: #333333;}
 h5 {font-size: 1.3em; color: #989898;}
 h6 {font-size: 1.2em; color: #9c9c9c;}
-p, pre, blockquote, table, ul, ol, dl {margin-top: 1em; margin-bottom: 1em;}
+p, pre, blockquote, .common_table table, ul, ol, dl {margin-top: 1em; margin-bottom: 1em;}
 ul ul, ul ol, ol ol, ol ul {margin-top: 0.5em; margin-bottom: 0.5em;}
 dt {font-weight: bold;}
 img {border: none;}
 pre {border-left: 1px solid #ccc; margin-left: 2em; padding-left: 0.5em;}
 blockquote {padding: 0.4em; background-color: #f6f5eb;}
-th, td {border: 1px solid #ccc; padding: 0.3em;}
-th {background-color: #f0f0f0;}
+.common_table th,.common_table td {border: 1px solid #ccc; padding: 0.3em;}
+.common_table th {background-color: #f0f0f0;}
 hr {border: none; border-top: 1px solid #ccc; width: 100%;}
 del {text-decoration: line-through; color: #777777;}
 .toc li {}
@@ -27,7 +27,7 @@ del {text-decoration: line-through; color: #777777;}
 .center {margin-left: auto; margin-right: auto;}
 
 /* My style.css */
-table {
+.common_table table {
 	font: 12px Arial,Helvetica,sans-serif;
 }
 
@@ -285,6 +285,10 @@ margin:0;
 	padding-top: 1em;
 	margin-top: 1.5em;
 	margin-bottom: 1.5em;
+}
+
+span.red {
+	color: red;
 }
 
 /* css for timepicker */

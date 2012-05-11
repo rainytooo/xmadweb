@@ -1,26 +1,198 @@
+<%
+	# 获取当天的日期和javascript的进行互换
+	current_date_sec = @dairy_plan.plan_date.to_f*1000	
+%>
+
+
+<script type="text/javascript" charset="utf-8">
+		$(document).ready(function() {
+			
+			var date = new Date(<%= current_date_sec%>);
+			var d = date.getDate();
+			var m = date.getMonth();
+			var y = date.getFullYear();
+
+			$('#plan_calendar').fullCalendar({				
+				header: {					
+					center: 'title',
+					right:  ''
+				},
+				defaultView: 'agendaDay',
+				year: y,
+				month: m,
+				date: d,
+				theme: true,
+				timeFormat: 'H(:mm){ - H(:mm)}',
+				axisFormat: 'H:mm TT',
+				allDayText: "全天",
+				buttonText:{
+				     prev:     '向前',
+				     next:     '向后',
+				     prevYear: '去年',
+				     nextYear: '明年',
+				     today:    '今天',
+				     month:    '月',
+				     week:     '周',
+				     day:      '日'
+				},
+				monthNames: ['一月', '二月', '三月', '四月', '五月', '六月', '七月',
+				 '八月', '九月', '十月', '十一月', '十二月'],
+				monthNamesShort: ['一月', '二月', '三月', '四月', '五月', '六月', '七月',
+				 '八月', '九月', '十月', '十一月', '十二月'],
+				dayNames: ['周日', '周一', '周二', '周三',
+				 '周四', '周五', '周六'],
+				dayNamesShort: ['周日', '周一', '周二', '周三',
+				 '周四', '周五', '周六'],
+				events: [
+				<% if @course_content_1 %>
+					{
+						id: 1,
+						title: "<%= @course_content_1.action_name %>"
+						<% if @course_content_1.action_type == 1 %>	
+							+ " - <%= @course_content_1.teaching_material.name %>(<%= @course_content_1.teaching_material.code %>) - <%= @course_content_1.teaching_lesson.name %>"
+						<% elsif @course_content_1.action_type == 2 %>
+							+ " - <%= @course_content_1.word_material.name %>(<%= @course_content_1.word_material.code %>) - <%= @course_content_1.word_lesson.name %>"
+						<% end %>
+							,
+						start: new Date(y, m, d, 8, 30),
+						end: new Date(y, m, d, 10, 30),
+						url: "<%= edit_student_dairy_plan_course_content_url(@student,@dairy_plan,@course_content_1, :course_num => 1) %>",
+						allDay: false
+					},
+				<% else %>
+					{
+						id: 1,
+						title: "没有安排",
+						start: new Date(y, m, d, 8, 30),
+						end: new Date(y, m, d, 10, 30),
+						url: "<%= new_student_dairy_plan_course_content_url(@student,@dairy_plan,:course_num => 1) %>",
+						color: '#ADADAD',
+						allDay: false
+					},		  
+				<% end %>
+				<% if @course_content_2 %>
+					{
+						id: 2,
+						title: "<%= @course_content_2.action_name %>"
+						<% if @course_content_2.action_type == 1 %>	
+							+ " - <%= @course_content_2.teaching_material.name %>(<%= @course_content_2.teaching_material.code %>) - <%= @course_content_2.teaching_lesson.name %>"
+						<% elsif @course_content_2.action_type == 2 %>
+							+ " - <%= @course_content_2.word_material.name %>(<%= @course_content_2.word_material.code %>) - <%= @course_content_2.word_lesson.name %>"
+						<% end %>
+							,
+						start: new Date(y, m, d, 10, 40),
+						end: new Date(y, m, d, 12, 40),
+						url: "<%= edit_student_dairy_plan_course_content_url(@student,@dairy_plan,@course_content_2, :course_num => 2) %>",
+						allDay: false
+					},
+				<% else %>
+					{
+						id: 2,
+						title: "没有安排",
+						start: new Date(y, m, d, 10, 40),
+						end: new Date(y, m, d, 12, 40),
+						url: "<%= new_student_dairy_plan_course_content_url(@student,@dairy_plan,:course_num => 2) %>",
+						color: '#ADADAD',
+						allDay: false
+					},		  
+				<% end %>
+				<% if @course_content_3 %>
+					{
+						id: 3,
+						title: "<%= @course_content_3.action_name %>"
+						<% if @course_content_3.action_type == 1 %>	
+							+ " - <%= @course_content_3.teaching_material.name %>(<%= @course_content_3.teaching_material.code %>) - <%= @course_content_3.teaching_lesson.name %>"
+						<% elsif @course_content_3.action_type == 2 %>
+							+ " - <%= @course_content_3.word_material.name %>(<%= @course_content_3.word_material.code %>) - <%= @course_content_3.word_lesson.name %>"
+						<% end %>
+							,
+						start: new Date(y, m, d, 13, 30),
+						end: new Date(y, m, d, 15, 30),
+						url: "<%= edit_student_dairy_plan_course_content_url(@student,@dairy_plan,@course_content_3, :course_num => 3) %>",
+						allDay: false
+					},
+				<% else %>
+					{
+						id: 3,
+						title: "没有安排",
+						start: new Date(y, m, d, 13, 30),
+						end: new Date(y, m, d, 15, 30),
+						url: "<%= new_student_dairy_plan_course_content_url(@student,@dairy_plan,:course_num => 3) %>",
+						color: '#ADADAD',
+						allDay: false
+					},		  
+				<% end %>
+				<% if @course_content_4 %>
+					{
+						id: 4,
+						title: "<%= @course_content_4.action_name %>"
+						<% if @course_content_4.action_type == 1 %>	
+							+ " - <%= @course_content_4.teaching_material.name %>(<%= @course_content_4.teaching_material.code %>) - <%= @course_content_4.teaching_lesson.name %>"
+						<% elsif @course_content_4.action_type == 2 %>
+							+ " - <%= @course_content_4.word_material.name %>(<%= @course_content_4.word_material.code %>) - <%= @course_content_4.word_lesson.name %>"
+						<% end %>
+							,
+						start: new Date(y, m, d, 16, 30),
+						end: new Date(y, m, d, 18, 30),
+						url: "<%= edit_student_dairy_plan_course_content_url(@student,@dairy_plan,@course_content_4, :course_num => 4) %>",
+						allDay: false
+					},
+				<% else %>
+					{
+						id: 4,
+						title: "没有安排",
+						start: new Date(y, m, d, 16, 30),
+						end: new Date(y, m, d, 18, 30),
+						url: "<%= new_student_dairy_plan_course_content_url(@student,@dairy_plan,:course_num => 4) %>",
+						color: '#ADADAD',
+						allDay: false
+					},		  
+				<% end %>
+				<% if @course_content_5 %>
+					{
+						id: 5,
+						title: "<%= @course_content_5.action_name %>"
+						<% if @course_content_5.action_type == 1 %>	
+							+ " - <%= @course_content_5.teaching_material.name %>(<%= @course_content_5.teaching_material.code %>) - <%= @course_content_5.teaching_lesson.name %>"
+						<% elsif @course_content_5.action_type == 2 %>
+							+ " - <%= @course_content_5.word_material.name %>(<%= @course_content_5.word_material.code %>) - <%= @course_content_5.word_lesson.name %>"
+						<% end %>
+							,
+						start: new Date(y, m, d, 18, 40),
+						end: new Date(y, m, d, 20, 40),
+						url: "<%= edit_student_dairy_plan_course_content_url(@student,@dairy_plan,@course_content_5, :course_num => 5) %>",
+						allDay: false
+					}
+				<% else %>
+					{
+						id: 5,
+						title: "没有安排",
+						start: new Date(y, m, d, 18, 40),
+						end: new Date(y, m, d, 20, 40),
+						url: "<%= new_student_dairy_plan_course_content_url(@student,@dairy_plan,:course_num => 5) %>",
+						color: '#ADADAD',
+						allDay: false
+					}		  
+				<% end %>
+				]
+			});
+
+		});
+</script>
 <h1>教学计划 - <%= @student.name %> - <%= @dairy_plan.plan_date.strftime('%Y-%m-%d') %></h1>
 
-<table border="1" cellspacing="5" cellpadding="5">
-	<tr>
-		<th>课程时间安排</th>
-		<th>计划的内容安排</th>
-		<th>操作</th>
-	</tr>
+<h6>
+	快速链接: 
+	<%= link_to '返回', student_dairy_plans_path(@student) %> 
+	|
+	<%= link_to '编辑', edit_student_dairy_plan_path(@student,@dairy_plan) %>
+	|
+	<%= link_to '新建', new_student_dairy_plan_path(@student) %>
+	|
+	<%= link_to '删除', student_dairy_plan_path(@student, @dairy_plan), confirm: '确定删除?所有计划内容也将删除!!', method: :delete %>
+</h6>
 
-	<tr>
-		<td>
-			第一节课
-		</td>
-		<td>
-			
-		</td>
-		<td>
-			
-		</td>
-	</tr>
-	<% end %>
-</table>
+<hr>
 
-
-<%= link_to '编辑', edit_student_dairy_plan_path(@student, @dairy_plan) %> |
-<%= link_to '新建学习计划', new_student_dairy_plan_path(@student) %>
+<!-- 日历 -->
+<div id="plan_calendar"></div>

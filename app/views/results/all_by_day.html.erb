@@ -1,5 +1,5 @@
 <h1>所有学生的成绩 按日查询</h1>
-
+<div class="common_table">
 <table border="1" cellspacing="5" cellpadding="5">
 	<tr>
 		<th>日期</th>
@@ -59,6 +59,6 @@
 	%>
 <% end %>
 </table>
-
+</div>
 <h6>单词A的平均成绩<%= (total_words_num1 != 0) ? (total_words_score1/total_words_num1).to_i : 0%></h6>
 <h6>单词B的平均成绩<%= (total_words_num2 != 0) ? (total_words_score2/total_words_num2).to_i : 0%></h6>

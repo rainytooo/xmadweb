@@ -43,8 +43,13 @@ Xmadweb::Application.routes.draw do
     resources :student_distributes
     # 学习计划
     resources :dairy_plans do
+      # calendar的计划用到的json数据格式
+      get 'get_plan_json', :on => :collection
       # 课程内容
-      resources :course_contents
+      resources :course_contents do 
+        # 获取课程安排的event给fullcalendar使用
+        get 'get_course_content_json', :on => :collection
+      end
     end
   end
   # 督导的学生

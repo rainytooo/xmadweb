@@ -1,5 +1,6 @@
 <h1>有延迟提交成绩的列表</h1>
 
+<div class="common_table">
 <table border="1" cellspacing="5" cellpadding="5">
 	<tr>
 		<th>上课时间</th>
@@ -43,5 +44,5 @@
 	</tr>
 <% end %>
 </table>
-<br/>
+</div>
 <%=h will_paginate @results, :previous_label => '上一页',  :next_label => '下一页'%>

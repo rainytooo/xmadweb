@@ -1,4 +1,4 @@
-<h1>为<%= @student.name%>安排课程内容</h1>
+
 <script>
 	$(function() {
 		$( "#datepicker" ).datepicker();
@@ -33,6 +33,17 @@
 		});
 	});
 </script>
+
+<h1>为<%= @student.name%>安排课程内容</h1>
+
+<h6>
+	快速链接:
+	<%= link_to '返回此计划', student_dairy_plan_path(@student,@dairy_plan) %>
+</h6>
+
+<hr>
+
+
 <%= form_for([@student,@dairy_plan,@course_content], :url => student_dairy_plan_course_contents_path(@student,@dairy_plan)) do |f| %>
   <% if @course_content.errors.any? %>
     <div id="error_explanation">
@@ -118,4 +129,4 @@
 </script>
 
 
-<%= link_to '返回', student_dairy_plan_course_contents_path(@student,@dairy_plan) %>
+

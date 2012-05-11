@@ -37,10 +37,20 @@ class CourseContentsController < ApplicationController
       format.json { render json: @course_content }
     end
   end
+  
+  # TODO 给fullcalendar异步调用 获取指定日期内的课程内容安排
+  def get_course_content_json
+    # 拿出时间start 和 end
+    #start_sec = params[:start]
+    #puts start_sec
+  end
 
   # GET /course_contents/1/edit
   def edit
     @course_content = CourseContent.find(params[:id])
+    @course_num = params[:course_num].to_i
+    # 查询出所有的教材标签
+    @teaching_exam_tags = TeachingMaterial.exam_counts
   end
 
   # POST /course_contents
@@ -60,10 +70,11 @@ class CourseContentsController < ApplicationController
     # 如果是背单词
     if @course_content.action_type.to_s == '2'
       @course_content.word_material_id = params[:s_word_material_tag_name] ? params[:s_word_material_tag_name] : nil
+      @course_content.word_counts = params[:s_word_lesson_tag_name] ? params[:s_word_lesson_tag_name] : nil
     end
     respond_to do |format|
       if @course_content.save
-        format.html { redirect_to student_dairy_plan_path(@student,@dairy_plan), notice: 'Course content was successfully created.' }
+        format.html { redirect_to student_dairy_plan_path(@student,@dairy_plan), notice: '成功创建课程安排' }
         format.json { render json: student_dairy_plan_path(@student,@dairy_plan), status: :created, location: @course_content }
       else
         format.html { render action: "new" }
@@ -76,10 +87,22 @@ class CourseContentsController < ApplicationController
   # PUT /course_contents/1.json
   def update
     @course_content = CourseContent.find(params[:id])
-
+    update_attr = {}
+    # 如果是上课 
+    update_attr[:action_type] = params[:course_content][:action_type].to_i
+    if params[:course_content][:action_type].to_s == '1'
+      puts 'asdasdasdas'
+      update_attr[:teaching_material_id] = params[:s_teaching_material_tag_name] ? params[:s_teaching_material_tag_name] : nil
+      update_attr[:lesson_id] = params[:s_lesson_tag_name] ? params[:s_lesson_tag_name] : nil
+    end
+    # 如果是背单词
+    if params[:course_content][:action_type].to_s == '2'
+      update_attr[:word_material_id] = params[:s_word_material_tag_name] ? params[:s_word_material_tag_name] : nil
+      update_attr[:word_counts] =params[:s_word_lesson_tag_name] ? params[:s_word_lesson_tag_name] : nil
+    end
     respond_to do |format|
-      if @course_content.update_attributes(params[:course_content])
-        format.html { redirect_to @course_content, notice: 'Course content was successfully updated.' }
+      if @course_content.update_attributes(update_attr)
+        format.html { redirect_to student_dairy_plan_path(@student,@dairy_plan), notice: 'Course content was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -95,7 +118,7 @@ class CourseContentsController < ApplicationController
     @course_content.destroy
 
     respond_to do |format|
-      format.html { redirect_to course_contents_url }
+      format.html { redirect_to student_dairy_plan_path(@student,@dairy_plan) }
       format.json { head :no_content }
     end
   end
@@ -112,7 +135,7 @@ class CourseContentsController < ApplicationController
   def check_exist_course_content_with_same_course_num
     course_num = params[:course_content][:course_num]
     course_count_check = CourseContent.where(:dairy_plan_id => @dairy_plan.id, :course_num => course_num)   
-    if course_count_check
+    if course_count_check.size > 0
       flash[:notice] = "这节课已经存在,不能在同一时间段做两个课程计划"
       redirect_to student_dairy_plans_path(@student)
     end

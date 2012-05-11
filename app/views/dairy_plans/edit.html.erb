@@ -1,5 +1,13 @@
-<h1>编辑每日成绩-<%= link_to @student.name, student_path(@student) %></h1>
+<h1>编辑计划-<%= link_to @student.name, student_path(@student) %></h1>
+<h6>
+	快速链接:
+	
+	<%= link_to '查看具体', student_dairy_plan_path(@student,@dairy_plan) %> 
+	|
+	<%= link_to '所有学习计划', student_dairy_plans_path(@student) %>
+</h6>
 
+<hr>
 <script>
 	$(function() {
 		$( "#datepicker" ).datepicker();
@@ -31,5 +39,3 @@
 <% end %>
 
 
-<%= link_to '查看', student_dairy_plan_path(@student,@dairy_plan) %> |
-<%= link_to '返回学生所有学习计划', student_dairy_plans_path(@student) %>

@@ -1,6 +1,6 @@
 <h1>所有学生的考勤 <%= @student_timelines[0].created_at.strftime('%Y-%m-%d') %></h1>
-
-<table border="1" cellspacing="5" cellpadding="5">
+<div class="common_table">
+<table border="1" cellspacing="0" cellpadding="0">
 	<tr>
 		<th>姓名</th>
 		<th>填写人</th>
@@ -37,3 +37,4 @@
 	</tr>
 <% end %>
 </table>
+</div>

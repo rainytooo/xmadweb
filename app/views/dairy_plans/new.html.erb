@@ -1,5 +1,11 @@
 <h1>创建每日成绩-<%= link_to @student.name, student_path(@student) %></h1>
 
+<h6>
+	快速链接:
+	<%= link_to '所有学习计划', student_dairy_plans_path(@student) %>
+</h6>
+
+<hr>
 	<script>
 		$(function() {
 			$( "#datepicker" ).datepicker();
@@ -26,5 +32,5 @@
   </div>
 <% end %>
 
-<%= link_to '返回学生所有学习计划', student_dairy_plans_path(@student) %>
+
 

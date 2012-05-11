@@ -1,6 +1,6 @@
 <h1>所有<%= link_to @student.name, student_path(@student) %>的考勤</h1>
 
-
+<div class="common_table">
 <table border="1" cellspacing="5" cellpadding="5">
 	<tr>
 		<th>上课日期</th>
@@ -44,7 +44,7 @@
 	</tr>
 <% end %>
 </table>
-
+</div>
 
 
 <%=h will_paginate @result, :previous_label => '上一页',  :next_label => '下一页'%>

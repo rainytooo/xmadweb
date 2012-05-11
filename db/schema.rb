@@ -30,21 +30,6 @@ ActiveRecord::Schema.define(:version => 20120504105317) do
     t.date    "record_date"
   end
 
-  create_table "course_conents", :force => true do |t|
-    t.datetime "plan_date"
-    t.integer  "course_num"
-    t.integer  "action_type"
-    t.integer  "lesson_id"
-    t.integer  "teaching_material_id"
-    t.integer  "spm_id"
-    t.integer  "student_id"
-    t.integer  "dairy_plan_id"
-    t.integer  "word_material_id"
-    t.integer  "word_counts"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
-  end
-
   create_table "course_contents", :force => true do |t|
     t.datetime "plan_date"
     t.integer  "course_num"
