@@ -1,5 +1,7 @@
 # encoding: utf-8
 class DairyPlansController < ApplicationController
+  before_filter :authorize_not_student!
+  before_filter :authorize_activity!
   before_filter :find_student
   # GET /dairy_plans
   # GET /dairy_plans.json

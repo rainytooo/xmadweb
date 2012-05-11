@@ -1,5 +1,7 @@
 # encoding: utf-8
 class CourseContentsController < ApplicationController
+  before_filter :authorize_not_student!
+  before_filter :authorize_activity!
   before_filter :find_student
   before_filter :find_dairy_plan
   before_filter :check_exist_course_content_with_same_course_num, :only => [:create]
