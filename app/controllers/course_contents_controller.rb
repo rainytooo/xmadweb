@@ -32,6 +32,7 @@ class CourseContentsController < ApplicationController
   def new
     @course_content = CourseContent.new
     @course_num = params[:course_num].to_i
+    @teachers = User.where(:role => 2, :is_activity => true).order("email DESC")
     # 查询出所有的教材标签
     @teaching_exam_tags = TeachingMaterial.exam_counts   
     respond_to do |format|
@@ -51,6 +52,7 @@ class CourseContentsController < ApplicationController
   def edit
     @course_content = CourseContent.find(params[:id])
     @course_num = params[:course_num].to_i
+    @teachers = User.where(:role => 2, :is_activity => true).order("email DESC")
     # 查询出所有的教材标签
     @teaching_exam_tags = TeachingMaterial.exam_counts
   end
@@ -93,15 +95,17 @@ class CourseContentsController < ApplicationController
     # 如果是上课 
     update_attr[:action_type] = params[:course_content][:action_type].to_i
     if params[:course_content][:action_type].to_s == '1'
-      puts 'asdasdasdas'
       update_attr[:teaching_material_id] = params[:s_teaching_material_tag_name] ? params[:s_teaching_material_tag_name] : nil
       update_attr[:lesson_id] = params[:s_lesson_tag_name] ? params[:s_lesson_tag_name] : nil
+      # 老师
+      update_attr[:teacher_id] = params[:course_content][:teacher_id] ? params[:course_content][:teacher_id] : nil
     end
     # 如果是背单词
     if params[:course_content][:action_type].to_s == '2'
       update_attr[:word_material_id] = params[:s_word_material_tag_name] ? params[:s_word_material_tag_name] : nil
       update_attr[:word_counts] =params[:s_word_lesson_tag_name] ? params[:s_word_lesson_tag_name] : nil
     end
+    update_attr[:notes] = params[:course_content][:notes] ? params[:course_content][:notes] : nil
     respond_to do |format|
       if @course_content.update_attributes(update_attr)
         format.html { redirect_to student_dairy_plan_path(@student,@dairy_plan), notice: 'Course content was successfully updated.' }

@@ -66,6 +66,8 @@
 	<%= f.radio_button(:action_type, 4) %>
 	<%= f.label :action_type, "测试" %>
   </p>
+
+  
   
   <!-- 如果选择上课 显示这个 -->
   <div id="course_material_select">
@@ -87,6 +89,13 @@
 		<select id="s_lesson_tag_name" name="s_lesson_tag_name" disabled>
 			<option value selected="selected">选择一个课程</option>
 		</select>
+	  </p>
+	  <p>
+		<h6>选择老师</h6>
+		<% @teachers.each do |teacher| %>	
+	  	<%= f.radio_button(:teacher_id, teacher.id) %>
+		<%= f.label :teacher_id, teacher.name %>
+		<% end %>
 	  </p>	
   </div>
 
@@ -112,6 +121,11 @@
 		</select>
 	  </p>	
   </div>
+  <p>
+		<%= f.label :notes	, '备注信息' %>
+		<br/>
+		<%= f.text_area  :notes, :cols => 100, :rows => 10 %>	
+  </p>
   
   <div class="actions">
     <%= f.submit "保存"%>

@@ -15,6 +15,8 @@ class CourseContent < ActiveRecord::Base
       :foreign_key => "word_material_id"
   belongs_to :word_lesson, :class_name => "Lesson",
       :foreign_key => "word_counts"
+  belongs_to :teacher, :class_name => "User",
+      :foreign_key => "teacher_id"
   
   # 课程的节 字符串
   def course_num_str

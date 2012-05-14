@@ -17,6 +17,7 @@ class DairyPlansController < ApplicationController
   # GET /dairy_plans/1.json
   def show
     @dairy_plan = DairyPlan.find(params[:id])
+    @simple_view = params[:cal] ? false : true
     # 查询所有的课程内容安排  一天五节课
     @course_content_1 = CourseContent.where(:dairy_plan_id => @dairy_plan.id, :course_num => 1).first
     @course_content_2 = CourseContent.where(:dairy_plan_id => @dairy_plan.id, :course_num => 2).first
