@@ -16,6 +16,7 @@
 		<th>客户经理</th>
 		<th>成绩管理</th>
 		<th>考勤管理</th>
+		<th>附加属性</th>
 		<th>计划</th>
 	</tr>
 
@@ -40,6 +41,7 @@
 		</td>
 		<td><a href="/students/<%= user.id %>/results">成绩管理</a></td>
 		<td><a href="/students/<%= user.id %>/student_timelines">时间管理</a></td>
+		<td><%= link_to "附加属性" , student_ext_attributes_path(user) %></td>
 		<td><%= link_to "学习计划管理", student_dairy_plans_path(user) %></td>
 	</tr>
 <% end %>

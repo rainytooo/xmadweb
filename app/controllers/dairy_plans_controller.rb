@@ -3,6 +3,8 @@ class DairyPlansController < ApplicationController
   before_filter :authorize_not_student!
   before_filter :authorize_activity!
   before_filter :find_student
+  before_filter :get_student_course_count_sp
+  before_filter :get_student_ext_attributes
   # GET /dairy_plans
   # GET /dairy_plans.json
   def index
@@ -32,7 +34,7 @@ class DairyPlansController < ApplicationController
   # calendar的json数据获取
   def get_plan_json
     # 查询所有此学生的计划
-    @dairy_plans = DairyPlan.where(:student_id => @student.id)
+    @dairy_plans = DairyPlan.where("student_id = ? and ( plantype is null or plantype = ? ) ", @student.id, 1  )
     @json_array = []
     @dairy_plans.each do |plan|
       obj_hash = plan.attributes
@@ -44,7 +46,57 @@ class DairyPlansController < ApplicationController
     #@hash_org = @dairy_plans.to_hash
     render:json => @json_array
   end
-
+  
+  def get_plan_json_for_exam
+    # 查询所有此学生的计划
+    @dairy_plans = DairyPlan.where("student_id = ? and plantype = ?", @student.id, 2)
+    @json_array = []
+    @dairy_plans.each do |plan|
+      obj_hash = plan.attributes
+      obj_hash[:title] = "正式考试"
+      obj_hash[:start] = plan.plan_date.strftime('%Y-%m-%d')
+      obj_hash[:url] = student_dairy_plan_url(@student, plan)
+      @json_array.push obj_hash
+    end
+    #@hash_org = @dairy_plans.to_hash
+    render:json => @json_array
+  end
+  
+  # json 查询有模拟考试的
+  def get_plan_json_for_mockexam
+    # 查询所有此学生的计划
+    
+    # course_contents = CourseContent.where("student_id = ? and action_type = ?", @student.id, 5)
+    @dairy_plans = DairyPlan.joins(:course_contents).where("course_contents.student_id = ? and course_contents.action_type = ?", @student.id, 5)
+    #.where("student_id = ? and plantype = ?", @student.id, 2)
+    @json_array = []
+    @dairy_plans.each do |plan|
+      obj_hash = plan.attributes
+      obj_hash[:title] = "有模拟考试"
+      obj_hash[:start] = plan.plan_date.strftime('%Y-%m-%d')
+      obj_hash[:url] = student_dairy_plan_url(@student, plan)
+      @json_array.push obj_hash
+    end
+    #@hash_org = @dairy_plans.to_hash
+    render:json => @json_array
+  end
+  
+  # 获取学生成绩
+  def get_result_json
+    @json_results = Result.where(:student_id => @student.id)
+    @json_array = []
+    @json_results.each do |result|
+        obj_hash = result.attributes
+        obj_hash[:title] = "课后成绩"
+        obj_hash[:start] = result.result_date.strftime('%Y-%m-%d')
+        obj_hash[:url] = student_result_url(@student, result)
+        @json_array.push obj_hash
+    end
+    #@hash_org = @dairy_plans.to_hash
+    render:json => @json_array
+  end
+  
+  # 
   # GET /dairy_plans/new
   # GET /dairy_plans/new.json
   def new

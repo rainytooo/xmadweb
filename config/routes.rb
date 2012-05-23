@@ -1,6 +1,8 @@
 # encoding: utf-8
 Xmadweb::Application.routes.draw do
 
+  
+
   # 教学问题
   resources :teaching_problems do
     get 'closed', :on => :collection
@@ -30,6 +32,8 @@ Xmadweb::Application.routes.draw do
   end
   # 学生功能管理
   resources :students do
+    # 附加属性
+    resources :ext_attributes
     # 成绩管理
     resources :results
     collection do
@@ -45,6 +49,9 @@ Xmadweb::Application.routes.draw do
     resources :dairy_plans do
       # calendar的计划用到的json数据格式
       get 'get_plan_json', :on => :collection
+      get 'get_plan_json_for_exam', :on => :collection
+      get 'get_plan_json_for_mockexam', :on => :collection
+      get 'get_result_json', :on => :collection
       # 课程内容
       resources :course_contents do 
         # 获取课程安排的event给fullcalendar使用

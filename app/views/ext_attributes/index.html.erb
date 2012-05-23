@@ -1,0 +1,11 @@
+<h1>学生<%= @student.name %>的附加属性</h1>
+<h6>
+	快速链接:
+	<% if @ext_attribute %>	
+		<%= link_to '编辑', new_student_ext_attribute_path(@student, @ext_attribute) %>
+	<% else %>
+	    <%= link_to '添加', new_student_ext_attribute_path(@student) %>
+	<% end %>
+</h6>
+
+<hr>

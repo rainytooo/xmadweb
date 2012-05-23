@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120514103005) do
+ActiveRecord::Schema.define(:version => 20120521083336) do
 
   create_table "advertisements", :force => true do |t|
     t.string   "domain"
@@ -54,6 +54,38 @@ ActiveRecord::Schema.define(:version => 20120514103005) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "notes"
+    t.integer  "plantype"
+  end
+
+  create_table "ext_attributes", :force => true do |t|
+    t.integer  "student_id"
+    t.integer  "total_class_count"
+    t.integer  "listen_course_count"
+    t.integer  "read_course_count"
+    t.integer  "write_course_count"
+    t.integer  "speak_course_count"
+    t.integer  "completion_course_count"
+    t.integer  "syntax_course_count"
+    t.integer  "listen_teacher_id"
+    t.integer  "read_teacher_id"
+    t.integer  "write_teacher_id"
+    t.integer  "speak_teacher_id"
+    t.integer  "completion_teacher_id"
+    t.integer  "syntax_teacher_id"
+    t.integer  "listen_goal_score"
+    t.integer  "read_goal_score"
+    t.integer  "write_goal_score"
+    t.integer  "speak_goal_score"
+    t.integer  "completion_goal_score"
+    t.integer  "syntax_goal_score"
+    t.integer  "total_goal_score"
+    t.integer  "last_exam_score"
+    t.string   "notes"
+    t.string   "parent_name"
+    t.string   "parent_email"
+    t.string   "parent_tel"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
   end
 
   create_table "lessons", :force => true do |t|

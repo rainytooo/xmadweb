@@ -1,0 +1,142 @@
+<h1>创建学生<%= @student.name %>的附加属性</h1>
+
+
+<h6>
+		
+</h6>
+
+<hr>
+
+
+<%= form_for([@student,@ext_attribute], :url => student_ext_attributes_path(@student)) do |f| %>
+  <% if @ext_attribute.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ext_attribute.errors.count, "error") %> prohibited this ext_attribute from being saved:</h2>
+
+      <ul>
+      <% @ext_attribute.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+	<h6>选择考试</h6>	
+  	<%= f.radio_button(:exam_list, "托福") %>
+	<%= f.label :exam_list, "托福" %>
+	<%= f.radio_button(:exam_list, "SAT") %>
+	<%= f.label :exam_list, "SAT" %>
+	<%= f.radio_button(:exam_list, "SSAT") %>
+	<%= f.label :exam_list, "SSAT" %>
+  </p>
+  <p>
+	<%= f.label :last_exam_score	, '最后考试分数' %>
+	<%= f.text_field :last_exam_score	 %>
+  </p>
+
+  <p>
+	<h6>目标分数</h6>
+	<%= f.label :listen_goal_score	, '听力' %>
+	<%= f.text_field :listen_goal_score	 %>
+	<br>
+	<%= f.label :write_goal_score	, '写作' %>
+	<%= f.text_field :write_goal_score	 %>
+	<br>
+	<%= f.label :speak_goal_score	, '口语' %>
+	<%= f.text_field :speak_goal_score	 %>
+	<br>
+	<%= f.label :read_goal_score	, '阅读' %>
+	<%= f.text_field :read_goal_score	 %>
+	<br>
+	<%= f.label :completion_goal_score	, '填空' %>
+	<%= f.text_field :completion_goal_score	 %>
+	<br>
+	<%= f.label :syntax_goal_score	, '语法' %>
+	<%= f.text_field :syntax_goal_score	 %>
+  </p>
+
+  <p>
+	<h6>课时分配</h6>
+	<%= f.label :listen_course_count	, '听力' %>
+	<%= f.text_field :listen_course_count	 %>
+	<br>
+	<%= f.label :write_course_count	, '写作' %>
+	<%= f.text_field :write_course_count	 %>
+	<br>
+	<%= f.label :speak_course_count	, '口语' %>
+	<%= f.text_field :speak_course_count	 %>
+	<br>
+	<%= f.label :read_course_count	, '阅读' %>
+	<%= f.text_field :read_course_count	 %>
+	<br>
+	<%= f.label :completion_course_count	, '填空' %>
+	<%= f.text_field :completion_course_count	 %>
+	<br>
+	<%= f.label :syntax_course_count	, '语法' %>
+	<%= f.text_field :syntax_course_count	 %>
+  </p>
+
+  <p>
+	<h6>老师分配</h6>
+	<span>听力:</span>
+	<% @teachers.each do |teacher| %>	
+  	<%= f.radio_button(:listen_teacher_id, teacher.id) %>
+	<%= f.label :listen_teacher_id, teacher.name %>
+	<% end %>
+	<br>
+	<span>写作:</span>
+	<% @teachers.each do |teacher| %>	
+  	<%= f.radio_button(:write_teacher_id, teacher.id) %>
+	<%= f.label :write_teacher_id, teacher.name %>
+	<% end %>
+	<br>
+	<span>口语:</span>
+	<% @teachers.each do |teacher| %>	
+  	<%= f.radio_button(:speak_teacher_id, teacher.id) %>
+	<%= f.label :speak_teacher_id, teacher.name %>
+	<% end %>
+	<br>
+	<span>阅读:</span>
+	<% @teachers.each do |teacher| %>	
+  	<%= f.radio_button(:read_teacher_id, teacher.id) %>
+	<%= f.label :read_teacher_id, teacher.name %>
+	<% end %>
+	<br>
+	<span>填空:</span>
+	<% @teachers.each do |teacher| %>	
+  	<%= f.radio_button(:completion_teacher_id, teacher.id) %>
+	<%= f.label :completion_teacher_id, teacher.name %>
+	<% end %>
+	<br>
+	<span>语法:</span>
+	<% @teachers.each do |teacher| %>	
+  	<%= f.radio_button(:syntax_teacher_id, teacher.id) %>
+	<%= f.label :syntax_teacher_id, teacher.name %>
+	<% end %>
+	<br>
+  </p>
+  
+  <p>
+	<h6>家长信息</h6>
+	<%= f.label :parent_name	, '家长姓名' %>
+	<%= f.text_field :parent_name	 %>
+	<br>
+	<%= f.label :parent_email	, '家长邮箱' %>
+	<%= f.text_field :parent_email	 %>
+	<br>
+	<%= f.label :parent_tel	, '家长电话' %>
+	<%= f.text_field :parent_tel	 %>
+  </p>
+
+
+  <p>
+		<%= f.label :notes	, '备注信息' %>
+		<br/>
+		<%= f.text_area  :notes, :cols => 100, :rows => 10 %>	
+  </p>
+  
+  <div class="actions">
+    <%= f.submit "保存"%>
+  </div>
+<% end %>
+

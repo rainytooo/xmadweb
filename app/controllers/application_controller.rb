@@ -37,5 +37,21 @@ class ApplicationController < ActionController::Base
         redirect_to root_path
       end
     end 
+    # 获取学生消耗的课时
+    def get_student_course_count_sp
+      #@student = User.find(params[:student_id])
+      @sp_count = Hash.new
+      @sp_count["listen"] = Result.where(" student_id = ? and  listen_score1 is not null",params[:student_id]).count
+      @sp_count["read"] = Result.where(" student_id = ? and  read_score1 is not null",params[:student_id]).count
+      @sp_count["write"] = Result.where(" student_id = ? and  write_score1 is not null",params[:student_id]).count
+      @sp_count["speak"] = Result.where(" student_id = ? and  spoken_score1 is not null",params[:student_id]).count
+      #@sp_count["completion"] = Result.where(" student_id = ? and  listen_score1 is not null",params[:student_id]).count
+      #@sp_count["syntax"] = Result.where(" student_id = ? and  listen_score1 is not null",params[:student_id]).count
+      @sp_count["total"] = @sp_count["listen"]  + @sp_count["read"] + @sp_count["write"] + @sp_count["speak"] #+ @sp_count["completion"] + @sp_count["syntax"]
+    end
+    # 查询学生的附加属性 
+    def get_student_ext_attributes
+      @stu_ext = ExtAttribute.where(:student_id => params[:student_id]).first
+    end
   
 end

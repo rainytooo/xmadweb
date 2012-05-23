@@ -1,0 +1,126 @@
+<h1>学生<%= @student.name %>的附加属性</h1>
+
+
+<h6>
+	快速链接:
+	<%= link_to '编辑', edit_student_ext_attribute_path(@student,@ext_attribute) %>
+	|
+	<%= link_to '删除', student_ext_attribute_path(@student, @ext_attribute), confirm: '确定删除?', method: :delete %>
+</h6>
+
+<hr>
+
+<div class="common_table">
+<table border="1" cellspacing="0" cellpadding="0">
+	<tr>
+		<td>最后考试分数</td>
+		<td><%= @ext_attribute.last_exam_score %></td>
+	</tr>
+	<tr>
+		<td>家长姓名</td>
+		<td><%= @ext_attribute.parent_name %></td>
+	</tr>
+	<tr>
+		<td>家长电话</td>
+		<td><%= @ext_attribute.parent_tel %></td>
+	</tr>
+	<tr>
+		<td>家长邮箱</td>
+		<td><%= @ext_attribute.parent_email %></td>
+	</tr>
+	<tr>
+		<td>考试类型</td>
+		<td><%= @ext_attribute.exam_list %></td>
+	</tr>
+	<tr>
+		<td>总课时</td>
+		<td><%= @ext_attribute.total_class_count %></td>
+	</tr>
+	<tr>
+		<td>听力课时</td>
+		<td><%= @ext_attribute.listen_course_count %></td>
+	</tr>
+	<tr>
+		<td>阅读课时</td>
+		<td><%= @ext_attribute.read_course_count %></td>
+	</tr>
+	<tr>
+		<td>写作课时</td>
+		<td><%= @ext_attribute.write_course_count %></td>
+	</tr>
+	<tr>
+		<td>口语课时</td>
+		<td><%= @ext_attribute.speak_course_count %></td>
+	</tr>
+	<tr>
+		<td>填空课时</td>
+		<td><%= @ext_attribute.completion_course_count %></td>
+	</tr>
+	<tr>
+		<td>语法课时</td>
+		<td><%= @ext_attribute.syntax_course_count %></td>
+	</tr>
+	
+	<tr>
+		<td>目标分数</td>
+		<td><%= @ext_attribute.total_goal_score %></td>
+	</tr>
+	<tr>
+		<td>听力分数</td>
+		<td><%= @ext_attribute.listen_goal_score %></td>
+	</tr>
+	<tr>
+		<td>阅读分数</td>
+		<td><%= @ext_attribute.read_goal_score %></td>
+	</tr>
+	<tr>
+		<td>写作分数</td>
+		<td><%= @ext_attribute.write_goal_score %></td>
+	</tr>
+	<tr>
+		<td>口语分数</td>
+		<td><%= @ext_attribute.speak_goal_score %></td>
+	</tr>
+	<tr>
+		<td>填空分数</td>
+		<td><%= @ext_attribute.completion_goal_score %></td>
+	</tr>
+	<tr>
+		<td>语法分数</td>
+		<td><%= @ext_attribute.syntax_goal_score %></td>
+	</tr>
+	
+	<tr>
+		<td>听力老师</td>
+		<td><%= @ext_attribute.listen_teacher ? @ext_attribute.listen_teacher.name : "" %></td>
+	</tr>
+	<tr>
+		<td>阅读老师</td>
+		<td><%= @ext_attribute.read_teacher ? @ext_attribute.read_teacher.name : "" %></td>
+	</tr>
+	<tr>
+		<td>写作老师</td>
+		<td><%= @ext_attribute.write_teacher ? @ext_attribute.write_teacher.name : "" %></td>
+	</tr>
+	<tr>
+		<td>口语老师</td>
+		<td><%= @ext_attribute.speak_teacher ? @ext_attribute.speak_teacher.name : "" %></td>
+	</tr>
+	<tr>
+		<td>填空老师</td>
+		<td><%= @ext_attribute.completion_teacher ? @ext_attribute.completion_teacher.name : "" %></td>
+	</tr>
+	<tr>
+		<td>语法老师</td>
+		<td><%= @ext_attribute.syntax_teacher ? @ext_attribute.syntax_teacher.name : "" %></td>
+	</tr>
+	
+	
+</table>	
+</div>
+
+<p>	
+		<h6>备注</h6>
+		<%= @ext_attribute.notes %>
+</p>
+

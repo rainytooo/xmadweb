@@ -5,4 +5,5 @@ class DairyPlan < ActiveRecord::Base
       :foreign_key => "spm_id"
   belongs_to :student, :class_name => "User",
       :foreign_key => "student_id"
+  has_many :course_contents
 end

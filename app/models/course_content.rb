@@ -35,6 +35,8 @@ class CourseContent < ActiveRecord::Base
       "写作业"
     when 4
       "做课后测试"
+    when 5
+      "模拟考试"
     end
   end
 end

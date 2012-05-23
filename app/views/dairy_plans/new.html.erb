@@ -25,7 +25,13 @@
       </ul>
     </div>
   <% end %>
-	<p>日期: <input type="text" id="datepicker" name="dairy_plan[plan_date]"></p>
+  <p>日期: <input type="text" id="datepicker" name="dairy_plan[plan_date]"></p>
+  <p>
+	<%= f.radio_button(:plantype, 1) %>
+	<%= f.label :plantype, "上课" %>
+	<%= f.radio_button(:plantype, 2) %>
+	<%= f.label :plantype, "考试" %>
+  </p>
   <p>
 		<%= f.label :notes	, '备注信息' %>
 		<br/>

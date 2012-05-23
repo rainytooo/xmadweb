@@ -24,7 +24,27 @@
 				 '周四', '周五', '周六'],
 				dayNamesShort: ['周日', '周一', '周二', '周三',
 				 '周四', '周五', '周六'],
-				events: "<%= get_plan_json_student_dairy_plans_url(@student)%>",
+				eventSources: [
+					{
+						url: '<%= get_plan_json_for_exam_student_dairy_plans_url(@student)%>', // use the `url` property
+			            color: 'yellow',    // an option!
+			            textColor: 'black'  // an option
+					},
+					{
+						url: '<%= get_plan_json_for_mockexam_student_dairy_plans_url(@student)%>', // use the `url` property
+			            color: 'brown',    // an option!
+			            textColor: 'white'  // an option
+					},
+					{
+						url: '<%= get_result_json_student_dairy_plans_url(@student)%>', // use the `url` property
+			            color: 'Violet',    // an option!
+			            textColor: 'white'  // an option
+					},
+					{
+						url: '<%= get_plan_json_student_dairy_plans_url(@student)%>', // use the `url` property
+					}
+				],
+				//events: "<%= get_plan_json_student_dairy_plans_url(@student)%>",
 				loading: function(bool) {
 					if (bool) $('#loading').show();
 					else $('#loading').hide();
@@ -42,5 +62,48 @@
 
 
 <hr>
+
+	<div class="common_table">
+		<table border="1" cellspacing="0" cellpadding="0">
+			<tr>
+				<th>科目</th>
+				<th>总课时</th>
+				<th>已消耗</th>
+				<th>剩余课时数</th>
+			</tr>
+			<tr>
+				<td>全部</td>
+				<td><%= @stu_ext.total_class_count  %></td>
+				<td><%= @sp_count["total"] %></td>
+				<td><%= @stu_ext.total_class_count - @sp_count["total"] %></td>
+			</tr>
+			<tr>
+				<td>听力</td>
+				<td><%= @stu_ext.listen_course_count %></td>
+				<td><%= @sp_count["listen"] %></td>
+				<td><%= @stu_ext.listen_course_count - @sp_count["listen"] %></td>
+			</tr>
+			<tr>
+				<td>阅读</td>
+				<td><%= @stu_ext.read_course_count %></td>
+				<td><%= @sp_count["read"] %></td>
+				<td><%= @stu_ext.read_course_count - @sp_count["read"] %></td>
+			</tr>
+			<tr>
+				<td>写作</td>
+				<td><%= @stu_ext.write_course_count %></td>
+				<td><%= @sp_count["write"] %></td>
+				<td><%= @stu_ext.write_course_count - @sp_count["write"] %></td>
+			</tr>
+			<tr>
+				<td>口语</td>
+				<td><%= @stu_ext.speak_course_count %></td>
+				<td><%= @sp_count["speak"] %></td>
+				<td><%= @stu_ext.speak_course_count - @sp_count["speak"] %></td>
+			</tr>
+		</table>	
+	</div>
+	
+
 <div id='loading' style='display:none'>loading...</div>
 <div id="plan_calendar">
