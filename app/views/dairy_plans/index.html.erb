@@ -71,6 +71,8 @@
 				<th>已消耗</th>
 				<th>剩余课时数</th>
 			</tr>
+			<% if @stu_ext %>
+			
 			<tr>
 				<td>全部</td>
 				<td><%= @stu_ext.total_class_count  %></td>
@@ -101,6 +103,14 @@
 				<td><%= @sp_count["speak"] %></td>
 				<td><%= @stu_ext.speak_course_count - @sp_count["speak"] %></td>
 			</tr>
+			<% else %>
+			<tr>
+				<td>未初始化</td>
+				<td>未初始化</td>
+				<td>未初始化</td>
+				<td><%= link_to "现在初始化" , student_ext_attributes_path(@student) %></td>
+			</tr>
+			<% end %>
 		</table>	
 	</div>
 	
