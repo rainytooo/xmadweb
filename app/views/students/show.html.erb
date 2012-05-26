@@ -45,7 +45,7 @@
 			|
 			<a href="/students/<%= @student.id %>/student_distributes">分配督导</a>
 		</td>
-		<td><%= link_to "附加属性" , student_ext_attributes_path(user) %></td>
+		<td><%= link_to "附加属性" , student_ext_attributes_path(student) %></td>
 		<td><%= link_to "学习计划管理", student_dairy_plans_path(@student) %></td>
 		<td>
 			<%= link_to '所有成绩', student_results_path(@student) %> 
