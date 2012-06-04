@@ -5,6 +5,8 @@
 		$( "#datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
 	});
 	$(document).ready(function() {
+	  // 加类型的基本验证
+	  $("input[name='course_content[action_type]']").addClass("validate[required] radio");
 	  // 隐藏所有的选择
 	  $("#course_material_select").hide();
 	  $("#word_material_select").hide();
@@ -18,6 +20,14 @@
 			    onChangeLoad: '<%= Xmadweb::Application.config.host_url %>/teaching_materials/tagselect',
 			    selects: ['s_course_exam_type', 's_teaching_material_tag_name', 's_lesson_tag_name']
 			});
+			// 上课教材验证
+			$("#s_course_exam_type").addClass("validate[required]");
+			$("#s_teaching_material_tag_name").addClass("validate[required]");
+			$("#s_lesson_tag_name").addClass("validate[required]");
+			$("input[name='course_content[teacher_id]']").addClass("validate[required] radio");
+			$("#s_word_exam_type").removeClass("validate[required]");
+			$("#s_word_material_tag_name").removeClass("validate[required]");
+			$("#s_word_lesson_tag_name").removeClass("validate[required]");
 		  } else if (selectedvalue == 2) {
 			$("#course_material_select").hide();
 			$("#word_material_select").show();
@@ -25,12 +35,29 @@
 			    onChangeLoad: '<%= Xmadweb::Application.config.host_url %>/teaching_materials/tagselect',
 			    selects: ['s_word_exam_type', 's_word_material_tag_name', 's_word_lesson_tag_name']
 			});
+			// 单词教材验证
+			$("#s_course_exam_type").removeClass("validate[required]");
+			$("#s_teaching_material_tag_name").removeClass("validate[required]");
+			$("#s_lesson_tag_name").removeClass("validate[required]");
+			$("input[name='course_content[teacher_id]']").removeClass("validate[required] radio");
+			$("#s_word_exam_type").addClass("validate[required]");
+			$("#s_word_material_tag_name").addClass("validate[required]");
+			$("#s_word_lesson_tag_name").addClass("validate[required]");
 		  } else {
 			$("#course_material_select").hide();
 			$("#word_material_select").hide();
+			// 验证的部分修改,都不需要验证
+			$("#s_course_exam_type").removeClass("validate[required]");
+			$("#s_teaching_material_tag_name").removeClass("validate[required]");
+			$("#s_lesson_tag_name").removeClass("validate[required]");
+			$("input[name='course_content[teacher_id]']").removeClass("validate[required] radio");
+			$("#s_word_exam_type").removeClass("validate[required]");
+			$("#s_word_material_tag_name").removeClass("validate[required]");
+			$("#s_word_lesson_tag_name").removeClass("validate[required]");
 		  }
 		  
 		});
+		jQuery("#new_course_content").validationEngine();
 	});
 </script>
 
@@ -73,6 +100,9 @@
 	<%= f.radio_button(:action_type, 5) %>
 	<%= f.label :action_type, "模拟考试" %>
   </p>
+	<p>
+		<!-- <input type="hidden" name="jiaocai_hidden_for_validation" value="" id="jiaocai_hidden_for_validation" class="validate[required]"> -->
+	</p>
   
   <!-- 如果选择上课 显示这个 -->
   <div id="course_material_select">
@@ -80,7 +110,7 @@
 		<h6>选择上课教材</h6>
 		<span>考试:</span>
 		<select id="s_course_exam_type" name="s_course_exam_type">
-			<option value selected="selected">选择一个考试</option>
+			<option value>选择一个考试</option>
 			<% @teaching_exam_tags.each do |teaching_exam_tag| %>
 			<option value="<%= teaching_exam_tag %>"><%= teaching_exam_tag %></option>
 			<% end %>
@@ -92,7 +122,7 @@
 		</select>
 		<span>课程:</span>
 		<select id="s_lesson_tag_name" name="s_lesson_tag_name" disabled>
-			<option value selected="selected">选择一个课程</option>
+			<option value>选择一个课程</option>
 		</select>
 	  </p>
 	  <p>
@@ -122,7 +152,7 @@
 		</select>
 		<span>组:</span>
 		<select id="s_word_lesson_tag_name" name="s_word_lesson_tag_name" disabled>
-			<option value selected="selected">选择一组</option>
+			<option value>选择一组</option>
 		</select>
 	  </p>	
   </div>

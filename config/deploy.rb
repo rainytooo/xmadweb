@@ -81,4 +81,4 @@ end
 # $ cap deploy:setup
 # $ cap deploy
 # $ cap deploy:migrate
-# $ cap deploy:migration
+# $ cap deploy:migrations

@@ -1,3 +1,18 @@
+<script type="text/javascript" charset="utf-8">
+	jQuery(document).ready(function(){
+		// binds form submission and fields to the validation engine
+		jQuery("#new_dairy_plan").validationEngine();
+	});
+
+</script>
+
+<script>
+	$(function() {
+		$( "#datepicker" ).datepicker();
+		$( "#datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
+	});
+</script>
+
 <h1>创建每日成绩-<%= link_to @student.name, student_path(@student) %></h1>
 
 <h6>
@@ -6,12 +21,7 @@
 </h6>
 
 <hr>
-	<script>
-		$(function() {
-			$( "#datepicker" ).datepicker();
-			$( "#datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
-		});
-	</script>
+
 <%= form_for([@student,@dairy_plan], :url => student_dairy_plans_path(@student)) do |f| %>
 
   <% if @dairy_plan.errors.any? %>
@@ -25,11 +35,11 @@
       </ul>
     </div>
   <% end %>
-  <p>日期: <input type="text" id="datepicker" name="dairy_plan[plan_date]"></p>
+  <p>日期: <input type="text" id="datepicker" name="dairy_plan[plan_date]" class="validate[required,custom[date]]"></p>
   <p>
-	<%= f.radio_button(:plantype, 1) %>
+	<%= f.radio_button(:plantype, 1, :class => "validate[required] radio") %>
 	<%= f.label :plantype, "上课" %>
-	<%= f.radio_button(:plantype, 2) %>
+	<%= f.radio_button(:plantype, 2, :class => "validate[required] radio") %>
 	<%= f.label :plantype, "考试" %>
   </p>
   <p>

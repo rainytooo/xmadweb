@@ -77,31 +77,31 @@
 				<td>全部</td>
 				<td><%= @stu_ext.total_class_count  %></td>
 				<td><%= @sp_count["total"] %></td>
-				<td><%= @stu_ext.total_class_count - @sp_count["total"] %></td>
+				<td><%= @stu_ext.total_class_count ? @stu_ext.total_class_count - @sp_count["total"] : 0 %></td>
 			</tr>
 			<tr>
 				<td>听力</td>
 				<td><%= @stu_ext.listen_course_count %></td>
 				<td><%= @sp_count["listen"] %></td>
-				<td><%= @stu_ext.listen_course_count - @sp_count["listen"] %></td>
+				<td><%= @stu_ext.listen_course_count ? @stu_ext.listen_course_count - @sp_count["listen"] : 0 %></td>
 			</tr>
 			<tr>
 				<td>阅读</td>
 				<td><%= @stu_ext.read_course_count %></td>
 				<td><%= @sp_count["read"] %></td>
-				<td><%= @stu_ext.read_course_count - @sp_count["read"] %></td>
+				<td><%= @stu_ext.read_course_count ? @stu_ext.read_course_count - @sp_count["read"] : 0 %></td>
 			</tr>
 			<tr>
 				<td>写作</td>
 				<td><%= @stu_ext.write_course_count %></td>
 				<td><%= @sp_count["write"] %></td>
-				<td><%= @stu_ext.write_course_count - @sp_count["write"] %></td>
+				<td><%= @stu_ext.write_course_count ? @stu_ext.write_course_count - @sp_count["write"] : 0 %></td>
 			</tr>
 			<tr>
 				<td>口语</td>
 				<td><%= @stu_ext.speak_course_count %></td>
 				<td><%= @sp_count["speak"] %></td>
-				<td><%= @stu_ext.speak_course_count - @sp_count["speak"] %></td>
+				<td><%= @stu_ext.speak_course_count ? @stu_ext.speak_course_count - @sp_count["speak"] : 0 %></td>
 			</tr>
 			<% else %>
 			<tr>
