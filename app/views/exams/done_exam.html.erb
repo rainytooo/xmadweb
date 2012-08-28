@@ -1,0 +1,13 @@
+<h1>已完成的考试</h1>
+
+<%= link_to "Back", student_student_exams_path(current_user)%>
+<table>
+<% @done_exams.each do |p| %>
+    <tr>
+        <td><%= p.paper.name %></td>
+        <td><%= p.start_time.strftime("%Y-%m-%d %H:%M") %></td>
+        <td>分数:未出分</td>
+    </tr>
+<% end %>
+</table>
+<%=h will_paginate @done_exams, :previous_label => '上一页',  :next_label => '下一页'%>

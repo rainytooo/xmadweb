@@ -1,0 +1,25 @@
+<h1>词库列表</h1>
+
+<table>
+  <tr>
+    <th>编号</th>
+    <th>词性</th>
+    <th>单词</th>
+    <th>音标</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @words.each do |word| %>
+  <tr>
+    <td><%= word.id %></td>
+    <td><%= word.word_property.name%></td>
+    <td><%= link_to word.content, word %></td>
+    <td><%= word.phonogram %></td>
+    <td><%= link_to '编辑', edit_word_path(word) %></td>
+    <td><%= link_to '删除', word, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<%=h will_paginate @words, :previous_label => '上一页',  :next_label => '下一页'%>

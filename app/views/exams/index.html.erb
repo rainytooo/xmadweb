@@ -1,0 +1,56 @@
+<h1>考试列表</h1>
+<script type="text/javascript">
+    $(function(){
+        var date_now = new Date().getTime();
+        $('.endTime').each(function(){
+                  if((date_now/1000 - $(this).html())> 0){
+                      $(this).parent().css('color','red');
+                  }else{
+                      $(this).parent().css('color', '#364')
+                  }
+        });
+    })
+</script>
+<%= link_to '新建一次考试', new_student_exam_path(@student) %>
+<table>
+    <tr>
+        <th>试卷名称</th>
+        <th>开始时间</th>
+        <th>时间(min)</th>
+        <th>分数</th>
+        <th>正确率</th>
+        <th>状态</th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+    <% @exams.each do |exam| %>
+    <% @rp = ResultPaper.find_by_exam_id(exam.id) %>
+    <tr class="change_color">
+        <td><%= exam.paper.name %></td>
+        <td><%= exam.start_time.strftime("%Y-%m-%d %H:%M") %></td>
+        <td class="endTime" style="display:none;"><%= exam.finish_time.to_i %></td>
+        <td><%= exam.set_time %></td>
+        <td><% if @rp %><%= @rp.score %><% end %></td>
+        <td><% if @rp %><%= "#{@rp.rate}%" %><% end %></td>
+        <% if exam.status == 0 %>
+            <td><%="未开始" %></td>
+            <td><%= link_to '查看', student_exam_path(@student, exam) %></td>
+            <td><%= link_to '编辑', edit_student_exam_path(@student, exam) %></td>
+            <td><%= link_to '删除', student_exam_path(@student, exam), confirm: 'Are you sure?', method: :delete %></td>
+        <% elsif exam.status == 1%>
+            <td><%= "正在进行" %></td>
+            <td><%= link_to '查看', student_exam_path(@student, exam) %></td>
+        <% elsif exam.status == 2%>
+            <td><%= "已结束" %></td>
+            <td><%= link_to '查看', student_exam_path(@student, exam) %></td>
+        <% elsif exam.status == 3%>
+            <td><%= "已批改" %></td>
+            <td><%= link_to '查看', "/students/#{@student.id}/result_papers/#{@rp.id}/result_words  " %></td>
+        <% else %>
+            <td><%= "状态错误" %></td>
+        <% end  %>
+    </tr>
+    <% end %>
+</table>
+<%=h will_paginate @exams, :previous_label => '上一页',  :next_label => '下一页'%>

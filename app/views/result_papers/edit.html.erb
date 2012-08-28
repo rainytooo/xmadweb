@@ -1,0 +1,84 @@
+<h1>手动批改试卷</h1>
+<%= link_to 'Back', student_result_papers_path(@student) %>
+<script type="text/javascript">
+    $(function(){
+        $("div.holder").jPages({
+            containerID : "itemContainer"
+        });
+    });
+</script>
+
+<style type="text/css">
+    .main {
+      display: table;
+      border-collapse: collapse;
+    }
+
+    .nav {
+      display: table-cell;
+      width: 60px;
+    }
+
+    .extras {
+      display: table-cell;
+      width: 120px;
+      padding-left: 10px;
+      border-right: 1px dotted #d7ad7b;
+    }
+
+    .content {
+      display: table-cell;
+      width: 120px;
+      padding-left: 10px;
+    }
+</style>
+<%= form_tag("/students/#{@student.id}/result_papers/#{@result_paper.id}", :method => "put") do %>
+
+<div class="holder"></div>
+<div  class="main">
+    <div class="nav">编号</div>
+    <div class="extras">单词</div>
+    <div class="content">考生答案</div>
+    <div class="content">正确答案</div>
+    <div class="content">判断正误</div>
+    <div class="extras">添加新意思</div>
+</div>
+<br />
+<div id="dialog" title="Add New Meaning">
+    
+</div>
+<!-- display the paper -->
+<% i=1 %>
+<div id="itemContainer">
+    <% @result_paper.result_words.each do |p| %>
+    <div  class="main">
+        <div class="nav"> <%= i %></div>
+        <div class="extras"> <%= Word.find(p.word_id).content  %> </div>
+        <div class="content"> <%= (p.answer.empty?)?"空":p.answer%></div>
+        <div class="content">
+          <% Word.find(p.word_id).meanings.each do |f| %>
+            <div><%= f.content %></div>
+          <% end %>
+        </div>
+        <div class="content">
+          <% if p.is_right ==1 %>
+            <%= "正确" %>
+          <% elsif p.is_right ==2 %>
+            <div>
+              <input  name="is_right<%= p.word_id %>" type="radio" value="1" />正确|
+              <input  name="is_right<%= p.word_id %>" type="radio" value="0" checked="true"/>错误
+            </div>
+          <%  end %>
+        </div>
+        <div class="extras">
+          <% if (p.is_right==2)%>
+              <%=  check_box_tag 'add_new_meaning[]', "#{p.word_id}" %>添加
+          <% end %>
+        </div>
+        <% i = i+1 %>
+    </div>
+    <% end %>
+</div>
+<%= submit_tag("确认批改") %>
+<% end %>
+<div class="holder"></div>

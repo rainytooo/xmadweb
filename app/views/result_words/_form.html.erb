@@ -1,0 +1,33 @@
+<%= form_for(@result_word) do |f| %>
+  <% if @result_word.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@result_word.errors.count, "error") %> prohibited this result_word from being saved:</h2>
+
+      <ul>
+      <% @result_word.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :word_id %><br />
+    <%= f.number_field :word_id %>
+  </div>
+  <div class="field">
+    <%= f.label :result_paper_id %><br />
+    <%= f.number_field :result_paper_id %>
+  </div>
+  <div class="field">
+    <%= f.label :is_right %><br />
+    <%= f.number_field :is_right %>
+  </div>
+  <div class="field">
+    <%= f.label :answer %><br />
+    <%= f.text_field :answer %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

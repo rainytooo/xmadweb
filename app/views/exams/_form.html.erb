@@ -1,0 +1,36 @@
+<%= form_for(@exam) do |f| %>
+  <% if @exam.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@exam.errors.count, "error") %> prohibited this exam from being saved:</h2>
+
+      <ul>
+      <% @exam.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <script>
+          $(function() {
+                  $( "#datepicker_1" ).datetimepicker();
+                  $( "#datepicker_1" ).datetimepicker( "option", "dateFormat", "yy-mm-dd" );
+          });
+  </script>
+  <div class="field">
+    <%= f.label :paper_id %><br />
+    <%= f.number_field :paper_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :start_time, '考试开始时间:'%><br />
+    <input type="text" id="datepicker_1" name="exam[start_time]" />
+  </div>
+
+  <div class="field">
+    <%= f.label :set_time, "设定时间(min)"%><br />
+	<%= f.select(:set_time, [['10', 10],['15', 15],['20', 20],['25', 25],['30', 30]])  %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

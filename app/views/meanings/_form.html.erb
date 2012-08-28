@@ -1,0 +1,29 @@
+<%= form_for(@meaning) do |f| %>
+  <% if @meaning.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@meaning.errors.count, "error") %> prohibited this meaning from being saved:</h2>
+
+      <ul>
+      <% @meaning.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :word_id %><br />
+    <%= f.number_field :word_id %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br />
+    <%= f.text_field :content %>
+  </div>
+  <div class="field">
+    <%= f.label :is_confirmed %><br />
+    <%= f.number_field :is_confirmed %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

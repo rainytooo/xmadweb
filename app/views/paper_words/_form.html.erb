@@ -1,0 +1,25 @@
+<%= form_for(@paper_word) do |f| %>
+  <% if @paper_word.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@paper_word.errors.count, "error") %> prohibited this paper_word from being saved:</h2>
+
+      <ul>
+      <% @paper_word.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :paper_id %><br />
+    <%= f.number_field :paper_id %>
+  </div>
+  <div class="field">
+    <%= f.label :word_group_id %><br />
+    <%= f.number_field :word_group_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

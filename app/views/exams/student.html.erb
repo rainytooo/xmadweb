@@ -1,0 +1,6 @@
+<h1>List of Exam</h1>
+
+<h3><%= link_to "正在进行的考试", doing_exam_student_exams_path(current_user)%></h3>
+<h3><%= link_to "未开始的考试", todo_exam_student_exams_path(current_user)%></h3>
+<h3><%= link_to "已经答完的考试", done_exam_student_exams_path(current_user)%></h3>
+<h3><%= link_to "已经批改的考试", corrected_exam_student_exams_path(current_user)%></h3>

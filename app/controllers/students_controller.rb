@@ -45,4 +45,12 @@ class StudentsController < ApplicationController
   def result_delay
     @results = Result.where(:has_exception => 1, :exception_handle => false).paginate(:page => params[:page], :per_page => 20)
   end
+
+  # distribute exam to student
+  def exam
+    session[:user_id] = params[:id]
+    
+    redirect_to new_result_paper_path
+  end
+
 end

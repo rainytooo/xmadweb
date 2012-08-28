@@ -1,0 +1,92 @@
+<script type="text/javascript">
+      $(function(){
+          $("form").submit(function(){
+              if($("#paper_name").val() == ""){
+                  alert("试卷名称!");
+                  $("#paper_name").focus();
+                  return false;
+              }
+              var partten = /^\d+$/;
+              var start = $("#paper_start_word");
+              if(start.val() == ""){
+                  alert("起始单词编号!");
+                  $("#paper_start_word").focus();
+                  return false;
+              }else if(!partten.test(start.val())){
+                  alert("请输入数字!");
+                  start.focus();
+                  return false;
+              }
+
+              <!-- check the input-->
+              var end = $("#paper_end_word")
+              if(end.val() == ""){
+                  alert("终止单词编号!");
+                  end.focus();
+                  return false;
+              }else if(!partten.test(end.val())){
+                  alert("请输入数字!");
+                  end.focus();
+                  return false;
+              }else if(end.val() > <%= @total_word %>){
+                  alert("超出最大单词编号！");
+                  end.focus();
+                  return false;
+              }else if((end.val() - start.val()) < 11){
+                  alert("考卷至少要10个单词！");
+                  start.focus();
+                  return false;
+              }
+          })
+      })
+
+</script>
+<h1>新建试卷</h1>
+<%= link_to 'Back', papers_path %>
+
+<%= form_for(@paper) do |f| %>
+  <% if @paper.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@paper.errors.count, "error") %> prohibited this paper from being saved:</h2>
+
+      <ul>
+      <% @paper.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name ,"试卷名称"%><br />
+    <%= f.text_field :name, :size => 20 %>
+  </div>
+  <div>最大单词编号:<%= @total_word %></div>
+  <div class="field">
+    <%= f.label :start_word ,"起始单词编号" %><br />
+    <%= f.text_field :start_word, :maxlength => 5 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :end_word ,"终止单词编号"%><br />
+    <%= f.text_field :end_word, :maxlength => 5 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :is_before ,"测试类型"%><br />
+    顺序:<%= f.radio_button :is_before, "0", :checked => true %>
+    随机:<%= f.radio_button :is_before, "1" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :exam_type_id ,"选择考试种类"%><br />
+    <%= f.select(:exam_type_id, ExamType.all.collect {|p| [ p.name, p.id ] })  %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+

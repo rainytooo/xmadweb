@@ -1,0 +1,12 @@
+<h1>正在进行的考试</h1>
+<%= link_to "Back", student_student_exams_path(current_user)%>
+<table>
+<% @doing_exams.each do |p| %>
+    <tr>
+        <td><%= link_to p.paper.name, "/students/#{current_user.id}/result_papers/new?id=#{p.id}" %></td>
+        <td><%= p.start_time.strftime("%Y-%m-%d %H:%M") %></td>
+        <td></td>
+    </tr>
+<% end %>
+</table>
+<%=h will_paginate @doing_exams, :previous_label => '上一页',  :next_label => '下一页'%>

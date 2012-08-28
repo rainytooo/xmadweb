@@ -1,0 +1,36 @@
+<h1>考试结果列表</h1>
+<div>考生:<%= @user.name %></div>
+<table>
+  <tr>
+    <th>试卷名称</th>
+    <th>分数</th>
+    <th>正确率</th>
+    <th>试卷状态</th>
+    <th></th>
+  </tr>
+
+<% @result_papers.each do |result_paper| %>
+  <tr>
+    <td><%= Paper.find(result_paper.paper_id).name %></td>
+    <td><%= result_paper.score %></td>
+    <td><%= result_paper.rate %><%= (result_paper.rate== nil)?"":"%"%></td>
+
+    <% if result_paper.status == 0 %>
+      <td><%="未开始" %></td>
+      <td><%= link_to '查看试卷', result_paper %></td>
+    <% elsif result_paper.status == 1%>
+      <td><%= "正在进行" %></td>
+    <% elsif result_paper.status == 2%>
+      <td><%= "已结束" %></td>
+      <td><%= link_to '查看试卷', "/result_papers/pre_show?id=#{result_paper.id}" %></td>
+      <td><%= link_to '手动批改', edit_result_paper_path(result_paper) %></td>
+      <td><%= link_to '删除试卷', result_paper, confirm: 'Are you sure?', method: :delete %></td>
+    <% elsif result_paper.status == 3%>
+      <td><%= "Corrected" %></td>
+      <td><%= link_to '查看试卷', "/result_papers/pre_show?id=#{result_paper.id}" %></td>
+    <% else %>
+      <td><%= "状态错误" %></td>
+    <% end  %>
+  </tr>
+<% end %>
+</table>

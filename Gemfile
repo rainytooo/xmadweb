@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+#source 'http://ruby.taobao.org'
 
 gem 'rails', '3.2.2'
 
@@ -16,7 +17,7 @@ gem 'execjs'
 
 gem 'therubyracer'
 
-gem 'devise'
+gem 'devise', '2.0.4'
 
 gem "will_paginate"
 
@@ -66,3 +67,6 @@ end
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+
+# use to read xml
+gem "spreadsheet", "~> 0.7.3"

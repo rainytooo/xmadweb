@@ -1,0 +1,96 @@
+<h1><%= @exam.paper.name%></h1>
+<script type="text/javascript">
+  $(function(){
+    $("div.holder").jPages({
+      containerID : "itemContainer"
+    });
+    $('#counter').countdown({
+      format: 'mm:ss',
+      startTime: "<%= @exam.set_time %>:00",
+      digitImages: 6,
+      digitWidth: 53,
+      digitHeight: 77,
+      timerEnd: function() {
+         alert("Time out!");
+         $("form").submit();
+      },
+      image: "/images/digits.png"
+    });
+ });
+</script>
+
+<style type="text/css">
+  .main {
+    display: table;
+    border-collapse: collapse;
+  }
+
+  .nav {
+    display: table-cell;
+    width: 60px;
+  }
+
+  .extras {
+    display: table-cell;
+    width: 180px;
+    padding-left: 10px;
+    border-right: 1px dotted #d7ad7b;
+  }
+
+  .content {
+    display: table-cell;
+    width: 380px;
+    padding-left: 10px;
+  }
+
+  .cntSeparator {
+        font-size: 54px;
+        margin: 10px 7px;
+        color: #000;
+      }
+  .desc { margin: 7px 3px; }
+  .desc div {
+    float: left;
+    font-family: Arial;
+    width: 70px;
+    margin-right: 65px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #000;
+  }
+</style>
+
+
+<!-- show clock count-->
+<div id="counter"></div>
+<div class="desc">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+
+
+<div class="holder"></div>
+    <%= form_tag('/result_words') do %>
+<div id="itemContainer">
+    <% @paper_words.each do |p| %>
+        <div class="main">
+          <div class="nav">
+          </div>
+          <div class="extras">
+            <%= p.word_group.word.content %>
+          </div>
+          <div class="content">
+            <%= text_field_tag "answer[]" %>
+          </div>
+        </div>
+        <%= hidden_field_tag "word_id[]", "#{p.word_group.word.id}" %>
+    <%  end %>
+    <%= hidden_field_tag 'exam_id', "#{@exam.id}"  %>
+</div>
+
+
+<div class="holder"></div>
+    <%= submit_tag 'tijiao shijuan' %>
+<% end %>

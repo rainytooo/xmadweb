@@ -24,6 +24,10 @@ class User < ActiveRecord::Base
   belongs_to :spm, :class_name => "User",
       :foreign_key => "spm_id"
 
+  has_many :exams, :dependent => :destroy
+
+  has_many :result_papers, :dependent => :destroy
+
   def rolename
     case role
     when 1

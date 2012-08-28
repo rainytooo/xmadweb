@@ -1,0 +1,33 @@
+<%= form_for(@result_paper) do |f| %>
+  <% if @result_paper.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@result_paper.errors.count, "error") %> prohibited this result_paper from being saved:</h2>
+
+      <ul>
+      <% @result_paper.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :paper_id %><br />
+    <%= f.number_field :paper_id %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br />
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :score %><br />
+    <%= f.number_field :score %>
+  </div>
+  <div class="field">
+    <%= f.label :rate %><br />
+    <%= f.text_field :rate %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
