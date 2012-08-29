@@ -105,8 +105,8 @@ class ExamsController < ApplicationController
   #  exams for student
   def student
       # check time
-      # time = Time.now.to_i
-      time = Time.now.gmtime.to_i
+      time = Time.now.getlocal.to_i
+
       @check = Exam.where("user_id=? and status in (0,1)",current_user.id)
       @check.each do |c|
           if time >= c.start_time.to_i && time <= c.finish_time.to_i
