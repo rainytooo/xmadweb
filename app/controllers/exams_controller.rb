@@ -49,6 +49,7 @@ class ExamsController < ApplicationController
   def create
     @user = User.find(params[:student_id])
     date1 = DateTime.strptime(params[:exam]['start_time'] + " CCT", "%Y-%m-%d %H:%M %Z")
+
     date2 = date1.advance(:minutes => params[:exam]['set_time'].to_i)
     params[:exam]['start_time'] = date1
     params[:exam]['finish_time'] = date2
@@ -106,15 +107,30 @@ class ExamsController < ApplicationController
   def student
       # check time
       t = Time.now.getutc
-      time = DateTime.new(t.year, t.month, t.day,t.hour, t.min, t.sec).in_time_zone("Beijing").to_i
+      time = DateTime.new(t.year, t.month, t.day,t.hour, t.min, t.sec).in_time_zone("Asia/Shanghai").to_i
+      
+      # time = DateTime.strptime(DateTime.parse(Time.now.to_s).to_s + " CCT", "%Y-%m-%d %H:%M %Z")
 
       @check = Exam.where("user_id=? and status in (0,1)",current_user.id)
       @check.each do |c|
-          if time >= c.start_time.to_i && time <= c.finish_time.to_i
+          # t0 = c.start_time
+          # time0 = DateTime.new(t0.year, t0.month, t0.day,t0.hour, t0.min, t0.sec).in_time_zone("Beijing")
+          time0 = c.start_time.to_i
+          # t1 = c.finish_time
+          # time1 = DateTime.new(t1.year, t1.month, t1.day,t1.hour, t1.min, t1.sec).in_time_zone("Beijing")
+          time1 = c.finish_time.to_i
+
+          puts "**************************************************"
+          # puts "----#{time.class}----#{time0.class}----#{time1.class}"
+          # puts "----#{time.zone}----#{time0.zone}----#{time1.zone}"
+          puts "----#{time.to_i}----#{time0.to_i}----#{time1.to_i}"
+          # puts "----#{time}----#{time0}----#{time1}"
+
+          if time >= time0 && time <= time1
               if c.status == 0
                   c.update_attributes(:status => 1)
               end
-          elsif time > c.finish_time.to_i
+          elsif time > time1
               @rp = ResultPaper.new(:paper_id => c.paper_id, :score => 0,:exam_id => c.id, :rate => "0.0",:user_id => current_user.id)
               @rp.save
               PaperWord.transaction do

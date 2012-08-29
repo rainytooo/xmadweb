@@ -38,7 +38,7 @@
 
   <% @result_words.each do |result_word| %>
       <tr>
-          <td><%= link_to result_word.word.content, student_result_paper_result_word_path(@student,result_word.result_paper,result_word ) %></td>
+          <td><%= result_word.word.content %></td>
           <td>
               <% result_word.word.meanings.each do |w|%>
                   <div><%=w.content %></div>
