@@ -120,10 +120,10 @@ class ExamsController < ApplicationController
           # time1 = DateTime.new(t1.year, t1.month, t1.day,t1.hour, t1.min, t1.sec).in_time_zone("Beijing")
           time1 = c.finish_time.to_i
 
-          puts "**************************************************"
+          # puts "**************************************************"
           # puts "----#{time.class}----#{time0.class}----#{time1.class}"
           # puts "----#{time.zone}----#{time0.zone}----#{time1.zone}"
-          puts "----#{time.to_i}----#{time0.to_i}----#{time1.to_i}"
+          # puts "----#{time.to_i}----#{time0.to_i}----#{time1.to_i}"
           # puts "----#{time}----#{time0}----#{time1}"
 
           if time >= time0 && time <= time1
