@@ -17,7 +17,7 @@
   <tr>
     <td><%= link_to paper.name, paper %></td>
     <td><%= paper.exam_type.name %></td>
-    <td><%= (paper.is_before == 0)?"是":"否" %></td>
+    <td><%= (paper.is_before == 1)? "是" : "否" %></td>
     <td><%= link_to '删除', paper, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
