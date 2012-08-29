@@ -1,7 +1,23 @@
 # encoding: utf-8
 Xmadweb::Application.routes.draw do
 
-  
+  resources :papers do
+    resources :paper_words
+  end
+
+  resources :word_groups
+
+  resources :word_meanings
+
+  resources :words do
+    resources :meanings
+  end
+
+  resources :book_names
+
+  resources :exam_types
+
+  resources :word_properties
 
   # 教学问题
   resources :teaching_problems do
@@ -40,6 +56,7 @@ Xmadweb::Application.routes.draw do
       get 'view'
       get 'my'
       get 'result_delay'
+      get 'exam'
     end   
     # 学生时间表追踪管理
     resources :student_timelines
@@ -58,6 +75,19 @@ Xmadweb::Application.routes.draw do
         get 'get_course_content_json', :on => :collection
       end
     end
+    # student attend the exams
+    resources :exams do
+        get 'student', :on => :collection
+        get 'todo_exam', :on => :collection
+        get 'doing_exam', :on => :collection
+        get 'done_exam', :on => :collection
+        get 'corrected_exam', :on => :collection
+    end
+    #students have many result_papers
+    resources :result_papers do
+        resources :result_words
+        get 'student', :on => :collection
+    end
   end
   # 督导的学生
   match 'students/jpms/:id(.:format)', :to => 'students#jpms', :via => [:get], :as => "students_by_jpm"
@@ -68,6 +98,9 @@ Xmadweb::Application.routes.draw do
   # 学生考情按日查询
   match "students/timelines_by_day", :to => "student_timelines#all_by_day", :via => [:post], :as => "student_timelines_all_by_day"
 
+  #批量上传词汇
+  get "upload_xml/index"
+  post "upload_xml/upload_file"
   
   root :to => "home#index"
   

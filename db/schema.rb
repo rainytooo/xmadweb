@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120521083336) do
+ActiveRecord::Schema.define(:version => 20120811052314) do
 
   create_table "advertisements", :force => true do |t|
     t.string   "domain"
@@ -57,6 +57,23 @@ ActiveRecord::Schema.define(:version => 20120521083336) do
     t.integer  "plantype"
   end
 
+  create_table "exam_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "exams", :force => true do |t|
+    t.integer  "paper_id"
+    t.datetime "start_time"
+    t.datetime "finish_time"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "set_time"
+    t.integer  "user_id"
+    t.integer  "status"
+  end
+
   create_table "ext_attributes", :force => true do |t|
     t.integer  "student_id"
     t.integer  "total_class_count"
@@ -96,6 +113,51 @@ ActiveRecord::Schema.define(:version => 20120521083336) do
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
     t.integer  "wordcounts"
+  end
+
+  create_table "meanings", :force => true do |t|
+    t.integer  "word_id"
+    t.string   "content"
+    t.integer  "is_confirmed"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "paper_words", :force => true do |t|
+    t.integer  "paper_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "word_id"
+  end
+
+  create_table "papers", :force => true do |t|
+    t.integer  "exam_type_id"
+    t.integer  "is_before"
+    t.string   "name"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "start_word"
+    t.integer  "end_word"
+  end
+
+  create_table "result_papers", :force => true do |t|
+    t.integer  "paper_id"
+    t.integer  "user_id"
+    t.integer  "score"
+    t.float    "rate"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "exam_id"
+    t.integer  "status"
+  end
+
+  create_table "result_words", :force => true do |t|
+    t.integer  "word_id"
+    t.integer  "result_paper_id"
+    t.integer  "is_right"
+    t.string   "answer"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "results", :force => true do |t|
@@ -205,5 +267,31 @@ ActiveRecord::Schema.define(:version => 20120521083336) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "word_meanings", :force => true do |t|
+    t.integer  "word_id"
+    t.integer  "meaning_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "word_properties", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "words", :force => true do |t|
+    t.integer  "book_name_id"
+    t.integer  "word_property_id"
+    t.string   "content"
+    t.string   "phonogram"
+    t.string   "prefix"
+    t.string   "infix"
+    t.string   "affix"
+    t.string   "root"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
 
 end

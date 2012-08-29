@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Paper:</b>
+  <%= @paper_word.paper_id %>
+</p>
+
+<p>
+  <b>Word group:</b>
+  <%= @paper_word.word_group_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_paper_word_path(@paper_word) %> |
+<%= link_to 'Back', paper_words_path %>

@@ -1,0 +1,49 @@
+<%= link_to '返回词库', words_path %>
+<p>
+  <b>单词:</b>
+  <%= @word.content %>
+</p>
+
+<p>
+  <b>词性:</b>
+  <%= @word.word_property.name %>
+</p>
+
+<p>
+  <b>音标:</b>
+  <%= @word.phonogram %>
+</p>
+
+<p>
+  <b>前缀:</b>
+  <%= @word.prefix %>
+</p>
+
+<p>
+  <b>中缀:</b>
+  <%= @word.infix %>
+</p>
+
+<p>
+  <b>后缀:</b>
+  <%= @word.affix %>
+</p>
+
+<p>
+  <b>词根:</b>
+  <%= @word.root %>
+</p>
+
+
+<p>
+  <b>词意:</b>
+<table cellspace="2px" cellpadding="3px">
+  <tr>
+  <% @word.meanings.each do |m| %>
+    <td><%= m.content %> </td>
+  <% end %>
+  </tr>
+</table>
+</p>
+
+

@@ -1,0 +1,29 @@
+<h1>试卷列表</h1>
+
+
+<%= link_to '创建试卷', new_paper_path %>
+
+<table>
+  <tr>
+    <th>试卷名称</th>
+    <th>考试类型</th>
+    <th>是否随机</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @papers.each do |paper| %>
+  <tr>
+    <td><%= link_to paper.name, paper %></td>
+    <td><%= paper.exam_type.name %></td>
+    <td><%= (paper.is_before == 0)?"是":"否" %></td>
+    <td><%= link_to '删除', paper, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<%=h will_paginate @words, :previous_label => '上一页',  :next_label => '下一页'%>
+
+

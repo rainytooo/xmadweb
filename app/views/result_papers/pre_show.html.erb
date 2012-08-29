@@ -1,0 +1,85 @@
+<script type="text/javascript">
+    $(function(){
+        $("div.holder").jPages({
+            containerID : "itemContainer"
+        });
+    });
+</script>
+
+<style type="text/css">
+    .main {
+      display: table;
+      border-collapse: collapse;
+    }
+
+    .nav {
+      display: table-cell;
+      width: 90px;
+    }
+
+    .extras {
+      display: table-cell;
+      width: 180px;
+      padding-left: 10px;
+      border-right: 1px dotted #d7ad7b;
+    }
+
+    .content {
+      display: table-cell;
+      width: 380px;
+      padding-left: 10px;
+      border-right: 1px dotted #d7ad7b;
+      border-bottom: 1px dotted #d7ad7b;
+    }
+</style>
+  <p>
+  <b>试卷名称:</b>
+    <%= @exam.paper.name %>
+  </p>
+
+  <p>
+  <b>考生姓名:</b>
+  <%= @student.name %>
+  </p>
+
+  <p>
+  <b>总分:</b>
+  <%= @result_paper.score %>
+  </p>
+  <p>
+  <b>正确率:</b>
+  <%= @result_paper.rate %><%= (@result_paper.rate == nil)?"":"%"%>
+  </p>
+    <p>
+  <b>考试开始时间:</b>
+  <%= @exam.start_time.strftime("%m-%d %H:%M") %>
+  </p>
+  <p>
+  <b>考试结束时间</b>
+  <%= @exam.finish_time.strftime("%m-%d %H:%M") %>
+  </p>
+
+  <div class="holder"></div>
+  <div  class="main">
+      <div class="nav">编号</div>
+      <div class="extras">单词</div>
+      <div class="content">right答案</div>
+      <div class="content">考生答案</div>
+  </div>
+  <!-- display the paper -->
+  <div id="itemContainer">
+      <% @result_paper.result_words.each do |p| %>
+      <div  class="main">
+          <div class="nav"></div>
+          <div class="extras"> <%= p.word.content  %> </div>
+          <div class="content">
+              <% p.word.meanings.each do |w|  %>
+                  <div><%= w.content %></div>
+              <% end %>
+          </div>
+          <div class="content"><%= p.answer %></div>
+      </div>
+      <% end %>
+  </div>
+  <div class="holder"></div>
+

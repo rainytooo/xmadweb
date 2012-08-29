@@ -1,0 +1,37 @@
+<h1>创建新考试</h1>
+<script type="text/javascript">
+    $(function() {
+            $( "#datepicker_1" ).datetimepicker();
+            $( "#datepicker_1" ).datetimepicker( "option", "dateFormat", "yy-mm-dd" );
+            $("form").submit(function(e){
+               if($( "#datepicker_1" ).val() == ""){
+                  alert("请选择考试开始时间!");
+                  $( "#datepicker_1" ).focus();
+                  return false;
+               }
+            });
+    });
+</script>
+<%= form_for([@student, @exam], :url => student_exams_path(@student)) do |f| %>
+
+  <div class="field">
+    <%= f.label :paper_id, '选择试卷' %><br />
+    <%= select_tag 'exam[paper_id]', options_for_select(@papers.collect{ |u| [u.name, u.id] }) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :start_time, '考试开始时间:'%><br />
+    <input type="text" id="datepicker_1" name="exam[start_time]" />
+  </div>
+
+
+  <div class="field">
+    <%= f.label :set_time, "设定考试时间(min)"%><br />
+    <%= f.select(:set_time, [['5', 5], ['10', 10],['15', 15],['20', 20],['25', 25],['30', 30]])  %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit('Submit') %>
+  </div>
+<% end %>
+

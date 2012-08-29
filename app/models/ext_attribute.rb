@@ -14,6 +14,7 @@ class ExtAttribute < ActiveRecord::Base
         :foreign_key => "syntax_teacher_id"
   belongs_to :student, :class_name => "User",
         :foreign_key => "student_id"
+        
   # 添加标签的功能
   acts_as_taggable
   # 考试标签

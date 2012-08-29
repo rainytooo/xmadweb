@@ -1,0 +1,12 @@
+<h1>未开始的考试</h1>
+<%= link_to "Back", student_student_exams_path(current_user)%>
+<table>
+<% @todo_exams.each do |p| %>
+    <tr>
+        <td><%= p.paper.name %></td>
+        <td><%= p.start_time.strftime("%Y-%m-%d %H:%M") %></td>
+        <td></td>
+    </tr>
+<% end %>
+</table>
+<%=h will_paginate @todo_exams, :previous_label => '上一页',  :next_label => '下一页'%>

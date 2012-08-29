@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>测试类型:</b>
+  <%= @paper.exam_type_id %>
+</p>
+
+<p>
+  <b>是否随机:</b>
+  <%= @paper.is_before %>
+</p>
+
+<p>
+  <b>考卷名称:</b>
+  <%= @paper.name %>
+</p>
+
+
+<%= link_to '编辑', edit_paper_path(@paper) %> |
+<%= link_to '返回', papers_path %>

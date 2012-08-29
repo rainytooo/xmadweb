@@ -1,0 +1,14 @@
+<h1>已批改考试</h1>
+
+<%= link_to "Back", student_student_exams_path(current_user)%>
+<table>
+<% @corrected_exams.each do |p| %>
+    <% @rp = ResultPaper.find_by_exam_id(p.id) %>
+    <tr>
+        <td><%= link_to p.paper.name, "/students/#{current_user.id}/result_papers/#{@rp.id}/result_words" %></td>
+        <td><%= p.start_time.strftime("%Y-%m-%d %H:%M") %></td>
+        <td>分数:<%= @rp.score %></td>
+    </tr>
+<% end %>
+</table>
+<%=h will_paginate @corrected_exams, :previous_label => '上一页',  :next_label => '下一页'%>

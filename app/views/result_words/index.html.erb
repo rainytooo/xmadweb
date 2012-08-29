@@ -1,0 +1,61 @@
+<h1>试卷答案</h1>
+  <%= link_to 'Back', :back %>
+  <p>
+  <b>试卷名称:</b>
+    <%=  @result_paper.paper.name%>
+  </p>
+  <p>
+  <b>考生姓名:</b>
+  <%= @student.name %>
+  </p>
+
+  <p>
+  <b>总分:</b>
+  <%= @result_paper.score %>
+  </p>
+  <p>
+  <b>正确率:</b>
+  <%= @result_paper.rate %><%= (@result_paper.rate == nil)?"":"%"%>
+  </p>
+  <p>
+  <b>考试开始时间:</b>
+  <%= Exam.find(@result_paper.exam_id).start_time.strftime("%Y-%m-%d %H:%M") %>
+  </p>
+  <p>
+  <b>考试结束时间</b>
+  <%= Exam.find(@result_paper.exam_id).finish_time.strftime("%Y-%m-%d %H:%M") %>
+  </p>
+  <table>
+      <tr>
+          <th>单词</th>
+          <th>释义</th>
+          <th>是否正确</th>
+          <th>答案</th>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+
+  <% @result_words.each do |result_word| %>
+      <tr>
+          <td><%= link_to result_word.word.content, student_result_paper_result_word_path(@student,result_word.result_paper,result_word ) %></td>
+          <td>
+              <% result_word.word.meanings.each do |w|%>
+                  <div><%=w.content %></div>
+              <% end %>
+          </td>
+          <td>
+	      <% if result_word.is_right==0 %>
+	         <%="错误" %>
+	      <% elsif result_word.is_right==1%>
+		 <%= "正确"%>
+	      <% else %>
+		 <%= "未确定"%>
+	      <% end %>
+	  </td>
+          <td><%= result_word.answer %></td>
+      </tr>
+  <% end %>
+  </table>
+
+  <%=h will_paginate @result_words, :previous_label => '上一页',  :next_label => '下一页'%>

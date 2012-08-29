@@ -1,0 +1,20 @@
+<h1>单词意思</h1>
+
+<table>
+  <tr>
+    <th>单词</th>
+    <th>意思</th>
+    <th>是否词典意思</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @meanings.each do |meaning| %>
+  <tr>
+    <td><%= meaning.word.content%></td>
+    <td><%= meaning.content %></td>
+    <td><%= (meaning.is_confirmed==1?"是":"否") %></td>
+  </tr>
+<% end %>
+</table>

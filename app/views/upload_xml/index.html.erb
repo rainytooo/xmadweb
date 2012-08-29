@@ -1,0 +1,8 @@
+<h1>词库管理</h1>
+<div><%= link_to "查看词库", words_path%></div>
+<div>
+<%= form_tag 'upload_file', :multipart => true do %>
+    <label for="upload_file">批量上传词汇:</label> <%= file_field_tag "upload_file" %>
+    <div><%=submit_tag %></div>
+<% end %>
+</div>

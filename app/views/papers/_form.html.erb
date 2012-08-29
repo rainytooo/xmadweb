@@ -1,0 +1,43 @@
+<%= form_for(@paper) do |f| %>
+  <% if @paper.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@paper.errors.count, "error") %> prohibited this paper from being saved:</h2>
+
+      <ul>
+      <% @paper.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name ,"试卷名称"%><br />
+    <%= f.text_field :name, :size => 20 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :start_word ,"Start" %><br />
+    <%= f.text_field :start_word, :size => 3 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :end_word ,"End"%><br />
+    <%= f.text_field :end_word, :size => 3 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :is_before ,"测试类型"%><br />
+    顺序:<%= f.radio_button :is_before, "0", :checked => true %>
+    随机:<%= f.radio_button :is_before, "1" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :exam_type_id ,"选择考试种类"%><br />
+    <%= f.select(:exam_type_id, ExamType.all.collect {|p| [ p.name, p.id ] })  %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

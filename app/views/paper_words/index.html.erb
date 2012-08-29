@@ -1,0 +1,25 @@
+<h1>Listing paper_words</h1>
+
+<table>
+  <tr>
+    <th>Paper</th>
+    <th>Word group</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @paper_words.each do |paper_word| %>
+  <tr>
+    <td><%= paper_word.paper_id %></td>
+    <td><%= paper_word.word_group_id %></td>
+    <td><%= link_to 'Show', paper_word %></td>
+    <td><%= link_to 'Edit', edit_paper_word_path(paper_word) %></td>
+    <td><%= link_to 'Destroy', paper_word, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Paper word', new_paper_word_path %>

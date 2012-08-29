@@ -1,0 +1,23 @@
+<h1>Listing word_properties</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @word_properties.each do |word_property| %>
+  <tr>
+    <td><%= word_property.name %></td>
+    <td><%= link_to 'Show', word_property %></td>
+    <td><%= link_to 'Edit', edit_word_property_path(word_property) %></td>
+    <td><%= link_to 'Destroy', word_property, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Word property', new_word_property_path %>

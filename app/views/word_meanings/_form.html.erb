@@ -1,0 +1,25 @@
+<%= form_for(@word_meaning) do |f| %>
+  <% if @word_meaning.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@word_meaning.errors.count, "error") %> prohibited this word_meaning from being saved:</h2>
+
+      <ul>
+      <% @word_meaning.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :word_id %><br />
+    <%= f.number_field :word_id %>
+  </div>
+  <div class="field">
+    <%= f.label :meaning_id %><br />
+    <%= f.number_field :meaning_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
