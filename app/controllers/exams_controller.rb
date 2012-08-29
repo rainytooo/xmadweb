@@ -105,8 +105,6 @@ class ExamsController < ApplicationController
   #  exams for student
   def student
       # check time
-      # t1 = Time.now.strftime("%Y-%m-%d %H:%M %Z")
-      # Time.zone = "Beijing"
       t = Time.now.getutc
       time = DateTime.new(t.year, t.month, t.day,t.hour, t.min, t.sec).in_time_zone("Beijing").to_i
 
