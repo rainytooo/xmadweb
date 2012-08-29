@@ -105,7 +105,8 @@ class ExamsController < ApplicationController
   #  exams for student
   def student
       # check time
-      time = Time.now.getlocal.to_i
+      Time.zone = "Beijing"
+      time = Time.zone.now.to_i
 
       @check = Exam.where("user_id=? and status in (0,1)",current_user.id)
       @check.each do |c|
