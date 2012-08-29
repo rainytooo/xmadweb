@@ -239,7 +239,7 @@ ActiveRecord::Schema.define(:version => 20120811052314) do
     t.boolean  "sloved",       :default => false
     t.string   "slove_spec"
     t.string   "problem_spec"
-    t.integer  "problem_type", :default => 0
+    t.integer  "problem_type"
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
   end
