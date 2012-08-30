@@ -8,10 +8,6 @@ class ExamsController < ApplicationController
     # 初始化试卷状态
     @student = User.find(params[:student_id])
     cur_time = DateTime.now().in_time_zone('Beijing')
-    @doing = Exam.where("user_id = ? and start_time <= ? and finish_time >= ?", @student.id, "#{cur_time}", "#{cur_time}").order("start_time desc").paginate(:page => params[:page], :per_page => 10)
-    @doing.each do |exam|
-      exam.update_attributes(:status => 1)
-    end
 
     @done = Exam.where("user_id = ? and finish_time < ?", @student.id, "#{cur_time}").order("start_time desc").paginate(:page => params[:page], :per_page => 10)
     @done.each do |c|
