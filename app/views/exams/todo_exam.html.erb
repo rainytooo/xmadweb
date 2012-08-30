@@ -1,7 +1,6 @@
 <h1>未开始的考试</h1>
 <%= link_to "Back", student_student_exams_path(current_user)%>
 <table>
-<%= @cur_time %>
 <% @todo_exams.each do |p| %>
     <tr>
         <td><%= p.paper.name %></td>
