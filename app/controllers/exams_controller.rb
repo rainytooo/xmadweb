@@ -128,8 +128,8 @@ class ExamsController < ApplicationController
 
   # 考试分类列表
   def todo_exam
-      cur_time = DateTime.now().in_time_zone('Beijing')
-      @todo_exams = Exam.where("user_id = ? and start_time > ?", current_user.id, "#{cur_time}").order("start_time desc").paginate(:page => params[:page], :per_page => 10)
+      @cur_time = DateTime.now().in_time_zone('Beijing')
+      @todo_exams = Exam.where("user_id = ? and start_time > ?", current_user.id, "#{@cur_time}").order("start_time desc").paginate(:page => params[:page], :per_page => 10)
   end
 
   def doing_exam
