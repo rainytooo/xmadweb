@@ -1,6 +1,6 @@
 # encoding: utf-8
 class ExamsController < ApplicationController
-  before_filter :authorize_not_student!, :except => [:index, :show, :student, :todo_exam, :doing_exam, :done_exam, :corrected_exam]
+  before_filter :authorize_not_student!, :except => [:show, :student, :todo_exam, :doing_exam, :done_exam, :corrected_exam]
   before_filter :authorize_activity!
   # GET /exams
   # GET /exams.json
@@ -31,6 +31,11 @@ class ExamsController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @exams }
     end
+  end
+
+  # 查看所有试卷
+  def show_all
+    @exams = Exam.all.order("start_time desc").paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /exams/1

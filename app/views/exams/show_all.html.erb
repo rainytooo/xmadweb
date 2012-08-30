@@ -1,0 +1,20 @@
+<h1>考试列表</h1>
+
+<table>
+    <tr>
+        <th>试卷名称</th>
+        <th>时间(min)</th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+    <% @exams.each do |exam| %>
+    <% @rp = ResultPaper.find_by_exam_id(exam.id) %>
+    <tr class="change_color">
+        <td><%= exam.paper.name %></td>
+        <td><%= exam.start_time.strftime("%Y-%m-%d %H:%M") %></td>     
+        <td><%= link_to '删除', student_exam_path(@student, exam), confirm: 'Are you sure?', method: :delete %></td>
+    </tr>
+    <% end %>
+</table>
+<%=h will_paginate @exams, :previous_label => '上一页',  :next_label => '下一页'%>
