@@ -1,41 +1,17 @@
 # encoding: utf-8
 class ExamsController < ApplicationController
-  before_filter :authorize_not_student!, :except => [:show, :student, :todo_exam, :doing_exam, :done_exam, :corrected_exam]
+  before_filter :authorize_not_student!, :except => [:show, :student, :todo_exam, :doing_exam, :done_exam, :never_done_exam, :corrected_exam]
   before_filter :authorize_activity!
   # GET /exams
   # GET /exams.json
   def index
-    # 初始化试卷状态
     @student = User.find(params[:student_id])
-    cur_time = DateTime.now().in_time_zone('Beijing')
-
-    @done = Exam.where("user_id = ? and finish_time < ?", @student.id, "#{cur_time}").order("start_time desc").paginate(:page => params[:page], :per_page => 10)
-    @done.each do |c|
-      if c.status == 0
-        @rp = ResultPaper.new(:paper_id => c.paper_id, :score => 0,:exam_id => c.id, :rate => "0.0",:user_id => @student.id)
-        @rp.save
-        PaperWord.transaction do
-            inserts = []
-            PaperWord.where(:paper_id => c.paper_id).each do |pw|
-                inserts.push "(#{pw.word_id}, #{@rp.id}, '', 0, '#{cur_time}', '#{cur_time}')"
-            end
-            PaperWord.connection.execute "INSERT INTO result_words (word_id, result_paper_id, answer, is_right, created_at, updated_at) values #{inserts.join(", ")}"
-        end
-      end
-      c.update_attributes(:status => 2)
-    end
-
     @exams = @student.exams.order("start_time desc").paginate(:page => params[:page], :per_page => 10)
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @exams }
     end
-  end
-
-  # 查看所有试卷
-  def show_all
-    @exams = Exam.all.order("start_time desc").paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /exams/1
@@ -131,12 +107,13 @@ class ExamsController < ApplicationController
   def student
   end
 
-  # 考试分类列表
+  # 即将参加的考试
   def todo_exam
       cur_time = DateTime.now().in_time_zone('Beijing')
       @todo_exams = Exam.where("user_id = ? and start_time > ?", current_user.id, "#{cur_time}").order("start_time desc").paginate(:page => params[:page], :per_page => 10)
   end
 
+  # 正在进行的考试
   def doing_exam
       cur_time = DateTime.now().in_time_zone('Beijing')
       @doing = Exam.where("user_id = ? and start_time <= ? and finish_time >= ?", current_user.id, "#{cur_time}", "#{cur_time}").order("start_time desc").paginate(:page => params[:page], :per_page => 10)
@@ -146,26 +123,24 @@ class ExamsController < ApplicationController
       @doing_exams = Exam.where("user_id = ? and start_time <= ? and finish_time >= ?", current_user.id, "#{cur_time}", "#{cur_time}").order("start_time desc").paginate(:page => params[:page], :per_page => 10)
   end
 
+  # 已经完成，没出分的考试
   def done_exam
-      cur_time = DateTime.now().in_time_zone('Beijing')
-      @done = Exam.where("user_id = ? and finish_time < ?", current_user.id, "#{cur_time}").order("start_time desc").paginate(:page => params[:page], :per_page => 10)
-      @done.each do |c|
-        if c.status == 0
-          @rp = ResultPaper.new(:paper_id => c.paper_id, :score => 0,:exam_id => c.id, :rate => "0.0",:user_id => current_user.id)
-          @rp.save
-          PaperWord.transaction do
-              inserts = []
-              PaperWord.where(:paper_id => c.paper_id).each do |pw|
-                  inserts.push "(#{pw.word_id}, #{@rp.id}, '', 0, '#{cur_time}', '#{cur_time}')"
-              end
-              PaperWord.connection.execute "INSERT INTO result_words (word_id, result_paper_id, answer, is_right, created_at, updated_at) values #{inserts.join(", ")}"
-          end
-        end
-        c.update_attributes(:status => 2)
-      end
       @done_exams = Exam.where("user_id = ? and status = 2", current_user.id).order("start_time desc").paginate(:page => params[:page], :per_page => 10)
   end
 
+  # 已经完成，没出分的考试
+  def never_done_exam
+      cur_time = DateTime.now().in_time_zone('Beijing')
+      @done = Exam.where("user_id = ? and finish_time < ?", current_user.id, "#{cur_time}").order("start_time desc").paginate(:page => params[:page], :per_page => 10)
+      @done.each do |exam|
+        if exam.status == 0
+          exam.update_attributes(:status => 4)
+        end
+      end
+      @never_done_exams = Exam.where("user_id = ? and status = 4 ", current_user.id).order("start_time desc").paginate(:page => params[:page], :per_page => 10)
+  end
+
+  # 已经批改的考试
   def corrected_exam
       cur_time = DateTime.now().in_time_zone('Beijing')
       @corrected_exams = Exam.where("user_id = ? and  status = 3", current_user.id).order("start_time desc").paginate(:page => params[:page], :per_page => 10)

@@ -82,6 +82,7 @@ Xmadweb::Application.routes.draw do
         get 'doing_exam', :on => :collection
         get 'done_exam', :on => :collection
         get 'corrected_exam', :on => :collection
+        get 'never_done_exam', :on => :collection
     end
     #students have many result_papers
     resources :result_papers do
