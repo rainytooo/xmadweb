@@ -1,5 +1,6 @@
 class ResultWordsController < ApplicationController
   before_filter :authorize_activity!
+  # before_filter :authorize_not_student!
   # GET /result_words
   # GET /result_words.json
   def index
