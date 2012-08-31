@@ -36,7 +36,6 @@
         <% if exam.status == 0 %>
             <td><%="未开始" %></td>
             <td><%= link_to '查看', student_exam_path(@student, exam) %></td>
-            <td><%= link_to '编辑', edit_student_exam_path(@student, exam) %></td>
             <td><%= link_to '删除', student_exam_path(@student, exam), confirm: 'Are you sure?', method: :delete %></td>
         <% elsif exam.status == 1%>
             <td><%= "正在进行" %></td>
@@ -46,7 +45,7 @@
             <td><%= link_to '查看', student_exam_path(@student, exam) %></td>
         <% elsif exam.status == 3%>
             <td><%= "已批改" %></td>
-            <td><%= link_to '查看', "/students/#{@student.id}/result_papers/#{@rp.id}/result_words  " %></td>
+            <td><%= link_to '查看', "/students/#{@student.id}/result_papers/#{@rp.id}/result_words" %></td>
         <% elsif exam.status == 4%>
             <td><%= "未参加" %></td>
             <td><%= link_to '查看', student_exam_path(@student, exam) %></td>

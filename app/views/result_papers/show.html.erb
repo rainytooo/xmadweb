@@ -1,72 +1,31 @@
+<p id="notice"><%= notice %></p>
+<%= link_to 'Back', student_exams_path(@student) %>
 <script type="text/javascript">
-    $(function(){
-        $("div.holder").jPages({
-            containerID : "itemContainer"
-        });
-    });
+  $(function(){
+      $("div.holder").jPages({
+          containerID : "itemContainer"
+      });
+  });
 </script>
 
-<style type="text/css">
-    .main {
-      display: table;
-      border-collapse: collapse;
-    }
-
-    .nav {
-      display: table-cell;
-      width: 60px;
-    }
-
-    .extras {
-      display: table-cell;
-      width: 180px;
-      padding-left: 10px;
-      border-right: 1px dotted #d7ad7b;
-    }
-
-    .content {
-      display: table-cell;
-      width: 380px;
-      padding-left: 10px;
-      border-right: 1px dotted #d7ad7b;
-      border-bottom: 1px dotted #d7ad7b;
-    }
-</style>
-  <p>
-  <b>试卷名称:</b>
-  <%= Paper.find(@result_paper.paper_id).name %>
-  </p>
-  <p>
-  <b>考试类型</b>
-  <%= Paper.find(@result_paper.paper_id).exam_type.name %>
-  </p>
-  <p>
-  <b>课前测试</b>
-  <%= Paper.find(@result_paper.paper_id).is_before==0?"是":"否" %>
-  </p>
+<div>试卷名称:<%= @exam.paper.name %></div>
+<div>考试时间:<%= @exam.set_time %>分钟</div>
+<div>开始时间:<%= @exam.start_time.strftime("%Y:%H:%M")  %></div>
+<div>结束时间:<%= @exam.finish_time.strftime("%Y:%H:%M") %></div>
 
 
-  <div class="holder"></div>
-  <div  class="main">
-      <div class="nav">编号</div>
-      <div class="extras">单词</div>
-      <div class="content">答案</div>
-  </div>
-  <!-- display the paper -->
-  <% i=1 %>
-  <div id="itemContainer">
-      <% @paper_word.each do |p| %>
-      <div  class="main">
-          <div class="nav"> <%= i %></div>
-          <div class="extras"> <%= Word.find(WordGroup.find(p.word_group_id).word_id).content  %> </div>
-          <div class="content">
-              <% Word.find(WordGroup.find(p.word_group_id).word_id).meanings.each do |w|  %>
-                <div><%= w.content %></div>
-              <% end %>
-          </div>
-          <% i = i+1 %>
-      </div>
-      <% end %>
-  </div>
-  <div class="holder"></div>
+<div class="holder"></div>
+<!-- display the paper -->
+<% i=1 %>
+<div id="itemContainer">
+<% @words.each do |word| %>
+    <div> <%= i %> : <%= word.content  %>
+          <% word.meanings.each do |ms| %>
+              <%= ms.content %>
+          <% end %>
+    </div>
+    <% i = i+1 %>
+<% end %>
+</div>
+<div class="holder"></div>
 

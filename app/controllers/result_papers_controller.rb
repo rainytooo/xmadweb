@@ -18,7 +18,9 @@ class ResultPapersController < ApplicationController
   def show
       @student = User.find(params[:student_id])
       @result_paper = ResultPaper.find(params[:id])
-      @paper_word = Paper.find(@result_paper.paper_id).paper_words
+      exam =  Exam.find(@result_paper.exam_id)
+      @words = Word.joins(:paper_words).where(:paper_words =>{:paper_id => exam.paper_id})
+
       respond_to do |format|
         format.html # show.html.erb
       end
