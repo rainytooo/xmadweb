@@ -18,8 +18,6 @@
 		<th>考勤管理</th>
 		<th>附加属性</th>
 		<th>计划</th>
-        <th>分配考试</th>
-        <th>考试</th>
 	</tr>
 
 <% @users.each do |user| %>
@@ -44,8 +42,6 @@
 		<td><a href="/students/<%= user.id %>/student_timelines">时间管理</a></td>
 		<td><%= link_to "附加属性" , student_ext_attributes_path(user) %></td>
 		<td><%= link_to "学习计划管理", student_dairy_plans_path(user) %></td>
-        <td><%= link_to "分配考试", student_exams_path(user) %></td>
-        <td><%= link_to "成绩管理", student_result_papers_path(user) %></td>
 	</tr>
 <% end %>
 
