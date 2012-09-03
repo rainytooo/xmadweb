@@ -116,11 +116,11 @@ class ExamsController < ApplicationController
   # 正在进行的考试
   def doing_exam
       cur_time = DateTime.now().in_time_zone('Beijing')
-      @doing = Exam.where("user_id = ? and start_time <= ? and finish_time >= ?", current_user.id, "#{cur_time}", "#{cur_time}").order("start_time desc").paginate(:page => params[:page], :per_page => 10)
+      @doing = Exam.where("user_id = ? and start_time <= ? and finish_time >= ? and status=0 ", current_user.id, "#{cur_time}", "#{cur_time}").order("start_time desc").paginate(:page => params[:page], :per_page => 10)
       @doing.each do |exam|
         exam.update_attributes(:status => 1)
       end
-      @doing_exams = Exam.where("user_id = ? and start_time <= ? and finish_time >= ?", current_user.id, "#{cur_time}", "#{cur_time}").order("start_time desc").paginate(:page => params[:page], :per_page => 10)
+      @doing_exams = Exam.where("user_id = ? and start_time <= ? and finish_time >= ? and status=1", current_user.id, "#{cur_time}", "#{cur_time}").order("start_time desc").paginate(:page => params[:page], :per_page => 10)
   end
 
   # 已经完成，没出分的考试
@@ -131,9 +131,9 @@ class ExamsController < ApplicationController
   # 已经完成，没出分的考试
   def never_done_exam
       cur_time = DateTime.now().in_time_zone('Beijing')
-      @done = Exam.where("user_id = ? and finish_time < ?", current_user.id, "#{cur_time}").order("start_time desc").paginate(:page => params[:page], :per_page => 10)
+      @done = Exam.where("user_id = ? and finish_time < ? and status in (0, 1)", current_user.id, "#{cur_time}").order("start_time desc").paginate(:page => params[:page], :per_page => 10)
       @done.each do |exam|
-        if exam.status == 0
+        if exam.status == 0 || exam.status == 1
           exam.update_attributes(:status => 4)
         end
       end

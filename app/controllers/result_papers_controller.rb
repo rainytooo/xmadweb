@@ -97,7 +97,7 @@ class ResultPapersController < ApplicationController
   
   end
 
-  # spm correct papers
+  # 督导批改试卷
   def update
     @result_paper = ResultPaper.find(params[:id])
     result_paper_id = params[:id]

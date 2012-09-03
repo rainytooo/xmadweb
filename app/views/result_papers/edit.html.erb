@@ -5,7 +5,42 @@
         $("div.holder").jPages({
             containerID : "itemContainer"
         });
-    });
+
+     $("div[class='content']").live('click',function(){
+     var divedit = $(this);
+     if (divedit.children("input").length > 0) {
+      return false;
+     }
+     var inputIns = $("<input type='text'/>");  //创建input 输入框
+     var oldtext = $(this).html();        //保存原有的值
+     inputIns.width(divedit.width()); //设置INPUT与DIV宽度一致
+     inputIns.val(divedit.html()); //将本来单元格DIV内容copy到插入的文本框INPUT中
+     divedit.html(""); //删除原来单元格DIV内容
+     inputIns.appendTo(divedit).focus().select(); //将需要插入的输入框代码插入DOM节点中
+     inputIns.click(function () {
+      return false;
+     });
+     //处理回车和ESC事件
+     inputIns.keyup(function (event) {
+      var keycode = event.which;
+      if (keycode == 13) {
+       divedit.html($(this).val());         //设置新值
+      }
+      if (keycode == 27) {
+       divedit.html(oldtext);         //返回旧值
+      }
+     }).blur( function (event) {
+        if($(this).val() != oldtext && window.confirm('是否保存修改值!')){
+            divedit.html($(this).val());
+                  }else{
+                  divedit.html(oldtext);
+                 }
+            }
+           );
+    
+      
+      });
+  });
 </script>
 
 <style type="text/css">
@@ -23,7 +58,6 @@
       display: table-cell;
       width: 120px;
       padding-left: 10px;
-      border-right: 1px dotted #d7ad7b;
     }
 
     .content {
@@ -38,9 +72,9 @@
 <div  class="main">
     <div class="nav">编号</div>
     <div class="extras">单词</div>
-    <div class="content">考生答案</div>
-    <div class="content">正确答案</div>
-    <div class="content">判断正误</div>
+    <div class="extras">考生答案</div>
+    <div class="extras">正确答案</div>
+    <div class="extras">判断正误</div>
     <div class="extras">添加新意思</div>
 </div>
 <br />
@@ -54,13 +88,17 @@
     <div  class="main">
         <div class="nav"> <%= i %></div>
         <div class="extras"> <%= Word.find(p.word_id).content  %> </div>
-        <div class="content"> <%= (p.answer.empty?)?"空":p.answer%></div>
-        <div class="content">
+        <% if p.answer.empty? %>
+          <div class="extras">空</div>
+        <% else%>
+          <div class="content"> <%= (p.answer.empty?)?"空":p.answer%></div>
+        <% end %>
+        <div class="extras">
           <% Word.find(p.word_id).meanings.each do |f| %>
             <div><%= f.content %></div>
           <% end %>
         </div>
-        <div class="content">
+        <div class="extras">
           <% if p.is_right ==1 %>
             <%= "正确" %>
           <% elsif p.is_right ==2 %>
@@ -72,7 +110,7 @@
         </div>
         <div class="extras">
           <% if (p.is_right==2)%>
-              <%=  check_box_tag 'add_new_meaning[]', "#{p.word_id}" %>添加
+            <%=  check_box_tag 'add_new_meaning[]', "#{p.word_id}" %>添加
           <% end %>
         </div>
         <% i = i+1 %>
