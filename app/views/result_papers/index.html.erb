@@ -33,6 +33,9 @@
         <% elsif exam.status == 3%>
           <td><%= "已批改" %></td>
            <td><%= link_to '查看试卷', "/students/#{@student.id}/result_papers/#{result_paper.id}/result_words" %></td>
+        <% elsif exam.status == 1%>
+          <td><%= "未参加" %></td>
+          <td><%= link_to '查看试卷', student_result_paper_path(@student, result_paper) %></td>
         <% else %>
           <td><%= "状态错误" %></td>
         <% end  %>

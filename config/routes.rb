@@ -7,8 +7,6 @@ Xmadweb::Application.routes.draw do
 
   resources :word_groups
 
-  resources :word_meanings
-
   resources :words do
     resources :meanings
   end

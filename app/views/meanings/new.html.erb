@@ -1,6 +1,6 @@
 <h1>添加单词意思</h1>
 
-<%= form_for(@meaning) do |f| %>
+<%= form_for([@word, @meaning]) do |f| %>
   <% if @meaning.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@meaning.errors.count, "error") %> prohibited this meaning from being saved:</h2>
@@ -18,14 +18,22 @@
     <%= f.hidden_field(:word_id, :value => "#{@word.id}") %>
   </div>
   <div class="field">
-    意思:<%= f.label :content, "#{@content}"%><br />
-    <%= f.hidden_field(:content, :value => "#{@content}") %>
+    意思:
+    <% @word.meanings.each do |w| %>
+      <%= w.content %>
+    <% end %>
   </div>
+  <div class="field">
+    <%= f.label :content, "意思："%><br />
+    <%= f.text_field(:content, :value => "#{@content}") %>
+  </div>
+ 
   <div class="field">
     <%= f.hidden_field(:is_confirmed, :value => 0) %>
   </div>
 
   <div class="actions">
-    <%= f.submit "添加" %>
+    <%= f.submit "添加新意思" %>
   </div>
+  <div>
 <% end %>
