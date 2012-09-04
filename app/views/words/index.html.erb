@@ -4,7 +4,6 @@
 <table>
   <tr>
     <th>编号</th>
-    <th>词性</th>
     <th>单词</th>
     <th>音标</th>
     <th></th>
@@ -14,7 +13,6 @@
 <% @words.each do |word| %>
   <tr>
     <td><%= word.id %></td>
-    <td><%= word.word_property.name%></td>
     <td><%= link_to word.content, word %></td>
     <td><%= word.phonogram %></td>
     <td><%= link_to '编辑', edit_word_path(word) %></td>

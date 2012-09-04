@@ -2,6 +2,14 @@
 Xmadweb::Application.routes.draw do
 
  
+  resources :web_pages
+
+  resources :tag_types
+
+  resources :positions
+
+  resources :campaigns
+
   #批量上传词汇
   get "upload_xml/index"
   post "upload_xml/upload_file"
