@@ -1,5 +1,5 @@
 <h1>添加单词意思</h1>
-
+<%= link_to "返回", word_path(@word) %>
 <%= form_for([@word, @meaning]) do |f| %>
   <% if @meaning.errors.any? %>
     <div id="error_explanation">
@@ -20,11 +20,11 @@
   <div class="field">
     意思:
     <% @word.meanings.each do |w| %>
-      <%= w.content %>
+      <div><%= w.content %></div>
     <% end %>
   </div>
   <div class="field">
-    <%= f.label :content, "意思："%><br />
+    <%= f.label :content, "输入新意思："%>
     <%= f.text_field(:content, :value => "#{@content}") %>
   </div>
  

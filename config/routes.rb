@@ -10,6 +10,8 @@ Xmadweb::Application.routes.draw do
   resources :words do
     # 每个单词有很多意思
     resources :meanings
+    # 删除所有单词的方法
+    get 'delete_all', :on => :collection
   end
 
   # 试卷

@@ -1,10 +1,14 @@
 
+<h3>
+    <%= link_to "删除所有",delete_all_words_path %>
+</h3>
 <h3><%= link_to "上传词汇",upload_xml_index_path %></h3>
 <h1><div style="color:black;">词库列表</div></h1>
+
+
 <table>
   <tr>
     <th>编号</th>
-    <th>词性</th>
     <th>单词</th>
     <th>音标</th>
     <th></th>
@@ -14,7 +18,6 @@
 <% @words.each do |word| %>
   <tr>
     <td><%= word.id %></td>
-    <td><%= word.word_property.name%></td>
     <td><%= link_to word.content, word %></td>
     <td><%= word.phonogram %></td>
     <td><%= link_to '编辑', edit_word_path(word) %></td>

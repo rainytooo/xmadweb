@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120904012320) do
+ActiveRecord::Schema.define(:version => 20120904070013) do
 
   create_table "advertisements", :force => true do |t|
     t.string   "domain"
@@ -28,6 +28,9 @@ ActiveRecord::Schema.define(:version => 20120904012320) do
     t.string  "tagname"
     t.integer "clicks"
     t.date    "record_date"
+    t.integer "tag_type"
+    t.integer "campaign"
+    t.integer "position"
   end
 
   create_table "course_contents", :force => true do |t|
@@ -284,16 +287,14 @@ ActiveRecord::Schema.define(:version => 20120904012320) do
   end
 
   create_table "words", :force => true do |t|
-    t.integer  "book_name_id"
-    t.integer  "word_property_id"
     t.string   "content"
     t.string   "phonogram"
     t.string   "prefix"
     t.string   "infix"
     t.string   "affix"
     t.string   "root"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

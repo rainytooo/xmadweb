@@ -83,4 +83,20 @@ class WordsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # 删除所有新建内容除了字典表
+  def delete_all
+    ActiveRecord::Base.connection.execute("TRUNCATE words")
+    ActiveRecord::Base.connection.execute("TRUNCATE meanings")
+    ActiveRecord::Base.connection.execute("TRUNCATE paper_words")
+    ActiveRecord::Base.connection.execute("TRUNCATE result_papers")
+    ActiveRecord::Base.connection.execute("TRUNCATE result_words")
+    ActiveRecord::Base.connection.execute("TRUNCATE exams")
+    ActiveRecord::Base.connection.execute("TRUNCATE papers")
+
+    respond_to do |format|
+      format.html { redirect_to words_url }
+      format.json { head :no_content }
+    end
+  end
 end

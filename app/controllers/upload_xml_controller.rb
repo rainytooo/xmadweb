@@ -56,12 +56,12 @@ class UploadXmlController < ApplicationController
       case value
           when "n" then  1
           when "v" then  2
-          when "vi" then 2
-          when "vt" then 2
-          when "adj" then 3
-          when "adv" then 4
-          when "pron" then 5
-          when "prep" then 6
+          when "vi" then 3
+          when "vt" then 4
+          when "adj" then 5
+          when "adv" then 6
+          when "pron" then 7
+          when "prep" then 8
       end
   end
 
@@ -77,42 +77,38 @@ class UploadXmlController < ApplicationController
               # 判断单词是不是已录入
               @word = Word.find_by_content(row[1].to_s.strip)
               if @word
-                  #if the word has been stored;the phonogram maybe updated
-                  # and if the word property is not the same create a new word
-                  if @word.word_property_id == getPt(row[3].to_s.strip)
+                  # 如果单词已经存在，要进行词性判断;如果已经存在可以更改发音
+                  if @word.word_properties.to_a.include?getPt(row[3].to_s.strip)
+                      # @word.meanings.word_property_id == getPt(row[3].to_s.strip)
                       @word.update_attributes(:phonogram => row[2].to_s.strip)
                   else
-                      # 保存单词
-                      @word = Word.new(:content => row[1].to_s.strip, :phonogram => row[2].to_s.strip, :word_property_id => getPt(row[3].to_s.strip))
-                      @word.save
-
                       # 保存单词意思
                       row[4].to_s.strip.split("，").each do |m|
-                          @meaning = Meaning.new(:content => m, :is_confirmed => 1)
+                          @meaning = Meaning.new(:content => m, :is_confirmed => 1, :word_property_id => getPt(row[3].to_s.strip))
                           @meaning.word = @word
                           @meaning.save
                       end
                   end
-      #           ----end of if----
+                  #----end of if----
               else
                   # 保存单词
-                  @word = Word.new(:content => row[1].to_s.strip, :phonogram => row[2].to_s.strip, :word_property_id => getPt(row[3].to_s.strip))
+                  @word = Word.new(:content => row[1].to_s.strip, :phonogram => row[2].to_s.strip)
                   @word.save
 
                   # 保存单词意思
                   row[4].to_s.strip.split("，").each do |m|
-                      @meaning = Meaning.new(:content => m, :is_confirmed => 1)
+                      @meaning = Meaning.new(:content => m, :is_confirmed => 1, :word_property_id => getPt(row[3].to_s.strip))
                       @meaning.word = @word
                       @meaning.save
                   end
               end
-    #         ----end of if----
+              #----end of if----
             end
-    #       ---- end sheet1 do ---
+            #---- end sheet1 do ---
           end
-    #     --- end of for
+          #--- end of for
         end
-    #   -------end of Spreadsheet-----
+        #-------end of Spreadsheet-----
 #      rescue
 #         render  :file=>"#{Rails.root}/public/404.html", :status=>404, :layout=>false
 #      end
@@ -120,4 +116,4 @@ class UploadXmlController < ApplicationController
   #  -------end of store_data-----
 
 end
-  #  --------end of class----
+#--------end of class----

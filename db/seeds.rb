@@ -9,5 +9,4 @@
 
 # BookName.create([{ name: "托福真题" }, { name: "托福基础" }, { name: "托福预测" }])
 ExamType.create([{ name: "TOEFL" }, { name: "SAT" }, { name: "SSAT" }])
-WordProperty.create([{ name: "n" }, { name: "v"}, { name: "adj" }, { name: "adv" }, { name: "pron" }, { name: "prep"}])
-
+WordProperty.create([{ name: "n" }, { name: "v"}, { name: "vi"}, { name: "vt"}, { name: "adj" }, { name: "adv" }, { name: "pron" }, { name: "prep"}])
