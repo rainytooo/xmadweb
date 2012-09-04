@@ -34,9 +34,9 @@ var JqueryDialog = {
 	"cBackgroundColor"			:	"#ffffff",
 	
 	//阴影距离(右)
-	"cShdowRight"				:	5,
+	"cShdowRight"				:	15,
 	//阴影距离(下)
-	"cShdowDown"				:	5,
+	"cShdowDown"				:	15,
 	
 	//边框尺寸(像素)
 	"cBorderSize"				:	2,

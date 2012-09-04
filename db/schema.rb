@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120811052314) do
+ActiveRecord::Schema.define(:version => 20120904012320) do
 
   create_table "advertisements", :force => true do |t|
     t.string   "domain"
@@ -119,8 +119,9 @@ ActiveRecord::Schema.define(:version => 20120811052314) do
     t.integer  "word_id"
     t.string   "content"
     t.integer  "is_confirmed"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.integer  "word_property_id"
   end
 
   create_table "paper_words", :force => true do |t|
@@ -271,8 +272,9 @@ ActiveRecord::Schema.define(:version => 20120811052314) do
   create_table "word_meanings", :force => true do |t|
     t.integer  "word_id"
     t.integer  "meaning_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.integer  "word_property_id"
   end
 
   create_table "word_properties", :force => true do |t|

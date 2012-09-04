@@ -1,17 +1,22 @@
 # encoding: utf-8
 Xmadweb::Application.routes.draw do
 
-  resources :papers do
-    resources :paper_words
-  end
+ 
+  #批量上传词汇
+  get "upload_xml/index"
+  post "upload_xml/upload_file"
 
-  resources :word_groups
-
+  # 单词
   resources :words do
+    # 每个单词有很多意思
     resources :meanings
   end
 
-  resources :book_names
+  # 试卷
+  resources :papers do
+    # 试卷里面的单词
+    resources :paper_words
+  end
 
   resources :exam_types
 
@@ -97,9 +102,6 @@ Xmadweb::Application.routes.draw do
   # 学生考情按日查询
   match "students/timelines_by_day", :to => "student_timelines#all_by_day", :via => [:post], :as => "student_timelines_all_by_day"
 
-  #批量上传词汇
-  get "upload_xml/index"
-  post "upload_xml/upload_file"
   
   root :to => "home#index"
   
