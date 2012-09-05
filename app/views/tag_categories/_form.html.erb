@@ -1,10 +1,10 @@
-<%= form_for(@position) do |f| %>
-  <% if @position.errors.any? %>
+<%= form_for(@tag_category) do |f| %>
+  <% if @tag_category.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@position.errors.count, "error") %> prohibited this position from being saved:</h2>
+      <h2><%= pluralize(@tag_category.errors.count, "error") %> prohibited this tag_category from being saved:</h2>
 
       <ul>
-      <% @position.errors.full_messages.each do |msg| %>
+      <% @tag_category.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -16,8 +16,8 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :upid, "上级"%><br />
-    <%= f.number_field :upid %>
+    <%= f.label :uid, "上级"%><br />
+    <%= f.number_field :uid %>
   </div>
   <div class="field">
     <%= f.label :description, "描述"%><br />

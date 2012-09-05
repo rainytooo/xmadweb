@@ -1,13 +1,13 @@
 # encoding: utf-8
 Xmadweb::Application.routes.draw do
 
- 
+  # 关联广告页面
   resources :web_pages
-
-  resources :tag_types
-
+  # 关联类类别
+  resources :tag_categories
+  # 关联位置
   resources :positions
-
+  # 关联活动
   resources :campaigns
 
   #批量上传词汇
@@ -18,6 +18,8 @@ Xmadweb::Application.routes.draw do
   resources :words do
     # 每个单词有很多意思
     resources :meanings
+    # 删除所有单词属性
+    get 'delete_all', :on => :collection
   end
 
   # 试卷

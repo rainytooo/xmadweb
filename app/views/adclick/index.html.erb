@@ -2,7 +2,7 @@
 点击产生日期:<%= @date_1 %>
 <table>
 	<tr>
-		<td>id</td>
+		<td>ID</td>
 		<td>标签名称</td>
 		<td>详细信息</td>
 		<td>显示类型</td>
@@ -10,6 +10,11 @@
 		<td>所在页面名称</td>
 		<td>点击量</td>
 		<td>产生时间</td>
+		<td>分类</td>
+		<td>父分类</td>
+		<td>页面</td>
+		<td>位置</td>
+		<td>活动</td>
 	</tr>
 
 <% @clicks.each do |adclick| %>
@@ -23,6 +28,11 @@
 		<td><%= adclick.pagename %></td>
 		<td><%= adclick.clicks %></td>
 		<td><%= adclick.record_date %></td>
+		<td><%= adclick.category%></td>
+		<td><%= adclick.upcategory%></td>
+		<td><%= adclick.page %></td>
+		<td><%= adclick.position %></td>
+		<td><%= adclick.campaigh %></td>
 	</tr>
 <% end %>
 

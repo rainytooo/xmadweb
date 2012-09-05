@@ -1,20 +1,16 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <b>Name:</b>
+  <b>页面名称:</b>
   <%= @position.name %>
 </p>
 
 <p>
-  <b>Upid:</b>
+  <b>上级名称:</b>
   <%= @position.upid %>
 </p>
 
 <p>
-  <b>Description:</b>
+  <b>描述:</b>
   <%= @position.description %>
 </p>
 
-
-<%= link_to 'Edit', edit_position_path(@position) %> |
-<%= link_to 'Back', positions_path %>
+<%= link_to '返回', positions_path %>

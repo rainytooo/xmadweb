@@ -70,42 +70,40 @@ class UploadXmlController < ApplicationController
       #保存读取的原excel,使用插件读取
       Spreadsheet.open(source_name, "rb+") do |g|
           # acquire all sheets
-          for i in  0..(g.worksheets.size - 19)
+          for i in  0..(g.worksheets.size - 1)
             sheet1 = g.worksheet(i)
             sheet1.each do |row|
 
-              # 判断单词是不是已录入
-              @word = Word.find_by_content(row[1].to_s.strip)
-              if @word
-                  #if the word has been stored;the phonogram maybe updated
-                  # and if the word property is not the same create a new word
-                  if @word.word_property_id == getPt(row[3].to_s.strip)
-                      @word.update_attributes(:phonogram => row[2].to_s.strip)
-                  else
-                      # 保存单词
-                      @word = Word.new(:content => row[1].to_s.strip, :phonogram => row[2].to_s.strip, :word_property_id => getPt(row[3].to_s.strip))
-                      @word.save
-
-                      # 保存单词意思
-                      row[4].to_s.strip.split("，").each do |m|
-                          @meaning = Meaning.new(:content => m, :is_confirmed => 1)
-                          @meaning.word = @word
-                          @meaning.save
-                      end
-                  end
-      #           ----end of if----
-              else
+      #         判断单词是不是已录入
+      #         @word = Word.find_by_content(row[1].to_s.strip)
+      #         if @word
+      #             #如果单词词性和意思都存在，不保存这个单词
+      #             if @word.word_properties.to_a.include?getPt(row[3].to_s.strip) 
+      #                 @word.update_attributes(:phonogram => row[2].to_s.strip)
+      #             else
+      #                 # 保存单词
+      #                 # @word = Word.new(:content => row[1].to_s.strip, :phonogram => row[2].to_s.strip, :word_property_id => getPt(row[3].to_s.strip))
+      #                 # @word.save
+      #                 # 保存单词意思
+      #                 row[4].to_s.strip.split("，").each do |m|
+      #                     @meaning = Meaning.new(:content => m, :is_confirmed => 1)
+      #                     @meaning.word = @word
+      #                     @meaning.save
+      #                 end
+      #             end
+      # #           ----end of if----
+      #         else
                   # 保存单词
-                  @word = Word.new(:content => row[1].to_s.strip, :phonogram => row[2].to_s.strip, :word_property_id => getPt(row[3].to_s.strip))
+                  @word = Word.new(:content => row[1].to_s.strip, :phonogram => row[2].to_s.strip)
                   @word.save
 
                   # 保存单词意思
                   row[4].to_s.strip.split("，").each do |m|
-                      @meaning = Meaning.new(:content => m, :is_confirmed => 1)
+                      @meaning = Meaning.new(:content => m, :is_confirmed => 1, :word_property_id => getPt(row[3].to_s.strip))
                       @meaning.word = @word
                       @meaning.save
                   end
-              end
+              # end
     #         ----end of if----
             end
     #       ---- end sheet1 do ---

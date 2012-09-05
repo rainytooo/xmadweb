@@ -1,0 +1,22 @@
+<h1>类别列表</h1>
+<%= link_to '新建分类', new_tag_category_path %>
+<table>
+  <tr>
+    <th>名称</th>
+    <th>上级ID</th>
+    <th>描述</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tag_categories.each do |tag_category| %>
+  <tr>
+    <td><%= link_to tag_category.name, tag_category %></td>
+    <td><%= tag_category.uid %></td>
+    <td><%= tag_category.description %></td>
+    <td><%= link_to '编辑', edit_tag_category_path(tag_category) %></td>
+    <td><%= link_to '删除', tag_category, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>

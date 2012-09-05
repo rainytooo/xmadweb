@@ -2,8 +2,7 @@
 class WordsController < ApplicationController
   before_filter :authorize_not_student!
   before_filter :authorize_activity!
-  # GET /words
-  # GET /words.json
+
   def index
     @words = Word.paginate(:page => params[:page], :per_page => 20)
 
@@ -13,8 +12,6 @@ class WordsController < ApplicationController
     end
   end
 
-  # GET /words/1
-  # GET /words/1.json
   def show
     @word = Word.find(params[:id])
 
@@ -24,8 +21,6 @@ class WordsController < ApplicationController
     end
   end
 
-  # GET /words/new
-  # GET /words/new.json
   def new
     @word = Word.new
 
@@ -40,8 +35,6 @@ class WordsController < ApplicationController
     @word = Word.find(params[:id])
   end
 
-  # POST /words
-  # POST /words.json
   def create
     @word = Word.new(params[:word])
 
@@ -56,8 +49,6 @@ class WordsController < ApplicationController
     end
   end
 
-  # PUT /words/1
-  # PUT /words/1.json
   def update
     @word = Word.find(params[:id])
 
@@ -72,14 +63,28 @@ class WordsController < ApplicationController
     end
   end
 
-  # DELETE /words/1
-  # DELETE /words/1.json
   def destroy
     @word = Word.find(params[:id])
     @word.destroy
 
     respond_to do |format|
       format.html { redirect_to words_url }
+      format.json { head :no_content }
+    end
+  end
+
+  # 清空所有单词相关数据
+  def delete_all
+    ActiveRecord::Base.connection.execute("truncate words")
+    ActiveRecord::Base.connection.execute("truncate meanings")
+    ActiveRecord::Base.connection.execute("truncate papers")
+    ActiveRecord::Base.connection.execute("truncate paper_words")
+    ActiveRecord::Base.connection.execute("truncate result_words")
+    ActiveRecord::Base.connection.execute("truncate result_papers")
+    ActiveRecord::Base.connection.execute("truncate exams")
+
+    respond_to do |format|
+      format.html { redirect_to words_url, notice: "考试相关所有数据全部重置！" }
       format.json { head :no_content }
     end
   end
