@@ -1,6 +1,4 @@
 class TagCategoriesController < ApplicationController
-  # GET /tag_categories
-  # GET /tag_categories.json
   def index
     @tag_categories = TagCategory.all
 

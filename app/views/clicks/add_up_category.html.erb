@@ -1,0 +1,26 @@
+<h1>选择类别</h1>
+<%= link_to "返回", clicks_path%>
+  <%= form_tag("/clicks/save_up_category") do%>
+  <table>
+    <tr>
+      <th>选择</th>
+      <th>名称</th>
+      <th>上级ID</th>
+      <th>描述</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+
+  <% @categories.each do |tag_category| %>
+    <tr>
+      <td><%= radio_button_tag 'up_categroy_id', tag_category.id %></td>
+      <td><%= tag_category.name %></td>
+      <td><%= tag_category.uid %></td>
+      <td><%= tag_category.description %></td>
+    </tr>
+  <% end %>
+  </table>
+  <%= hidden_field_tag 'click_id', @click %>
+  <%= submit_tag("确定")%>
+<% end %>

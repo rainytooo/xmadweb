@@ -10,11 +10,6 @@
 		<td>所在页面名称</td>
 		<td>点击量</td>
 		<td>产生时间</td>
-		<td>分类</td>
-		<td>父分类</td>
-		<td>页面</td>
-		<td>位置</td>
-		<td>活动</td>
 	</tr>
 
 <% @clicks.each do |adclick| %>
@@ -28,11 +23,6 @@
 		<td><%= adclick.pagename %></td>
 		<td><%= adclick.clicks %></td>
 		<td><%= adclick.record_date %></td>
-		<td><%= adclick.category%></td>
-		<td><%= adclick.upcategory%></td>
-		<td><%= adclick.page %></td>
-		<td><%= adclick.position %></td>
-		<td><%= adclick.campaigh %></td>
 	</tr>
 <% end %>
 
