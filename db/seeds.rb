@@ -9,4 +9,10 @@
 
 # BookName.create([{ name: "托福真题" }, { name: "托福基础" }, { name: "托福预测" }])
 ExamType.create([{ name: "TOEFL" }, { name: "SAT" }, { name: "SSAT" }])
+<<<<<<< HEAD
 WordProperty.create([{ name: "n" }, { name: "v"}, { name: "vi"}, { name: "vt"}, { name: "adj" }, { name: "adv" }, { name: "pron" }, { name: "prep"}])
+=======
+WordProperty.create([{ name: "n." }, { name: "v."}, { name: "a." },  { name: "ad." }, { name: "pron." }, { name: "prep."},
+ { name: "conj." },  { name: "int." }, { name: "num." },  { name: "art." }, 
+  { name: "abbr." },  { name: "vt." }])
+>>>>>>> feature/beidanci

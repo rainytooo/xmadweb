@@ -11,7 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20120904070013) do
+=======
+ActiveRecord::Schema.define(:version => 20120904095018) do
+>>>>>>> feature/beidanci
 
   create_table "advertisements", :force => true do |t|
     t.string   "domain"
@@ -24,13 +28,29 @@ ActiveRecord::Schema.define(:version => 20120904070013) do
     t.datetime "updated_at",   :null => false
   end
 
+  create_table "campaigns", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "clicks", :force => true do |t|
     t.string  "tagname"
     t.integer "clicks"
     t.date    "record_date"
+<<<<<<< HEAD
     t.integer "tag_type"
     t.integer "campaign"
     t.integer "position"
+=======
+    t.integer "campaign"
+    t.integer "position"
+    t.integer "page"
+    t.string  "tag_type"
+    t.integer "category"
+    t.integer "up_category"
+>>>>>>> feature/beidanci
   end
 
   create_table "course_contents", :force => true do |t|
@@ -72,9 +92,9 @@ ActiveRecord::Schema.define(:version => 20120904070013) do
     t.datetime "finish_time"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.integer  "set_time"
     t.integer  "user_id"
     t.integer  "status"
+    t.integer  "set_time"
   end
 
   create_table "ext_attributes", :force => true do |t|
@@ -142,6 +162,14 @@ ActiveRecord::Schema.define(:version => 20120904070013) do
     t.datetime "updated_at",   :null => false
     t.integer  "start_word"
     t.integer  "end_word"
+  end
+
+  create_table "positions", :force => true do |t|
+    t.string   "name"
+    t.integer  "upid"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "result_papers", :force => true do |t|
@@ -213,6 +241,22 @@ ActiveRecord::Schema.define(:version => 20120904070013) do
     t.datetime "updated_at",      :null => false
   end
 
+  create_table "tag_categories", :force => true do |t|
+    t.string   "name"
+    t.integer  "uid"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "tag_types", :force => true do |t|
+    t.string   "name"
+    t.text     "descrition"
+    t.integer  "upid"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
@@ -271,6 +315,13 @@ ActiveRecord::Schema.define(:version => 20120904070013) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "web_pages", :force => true do |t|
+    t.string   "domain"
+    t.integer  "categroy"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "word_meanings", :force => true do |t|
     t.integer  "word_id"

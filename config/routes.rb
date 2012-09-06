@@ -1,7 +1,15 @@
 # encoding: utf-8
 Xmadweb::Application.routes.draw do
 
- 
+  # 关联广告页面
+  resources :web_pages 
+  # 关联类类别
+  resources :tag_categories 
+  # 关联位置
+  resources :positions 
+  # 关联活动
+  resources :campaigns 
+
   #批量上传词汇
   get "upload_xml/index"
   post "upload_xml/upload_file"
@@ -10,7 +18,11 @@ Xmadweb::Application.routes.draw do
   resources :words do
     # 每个单词有很多意思
     resources :meanings
+<<<<<<< HEAD
     # 删除所有单词的方法
+=======
+    # 删除所有单词属性
+>>>>>>> feature/beidanci
     get 'delete_all', :on => :collection
   end
 
@@ -109,7 +121,33 @@ Xmadweb::Application.routes.draw do
   
   devise_for :users
 
-  resources :clicks
+  resources :clicks do
+    get 'add_campaign', :on => :collection
+    post 'save_campaign', :on => :collection
+
+    get 'add_position', :on => :collection
+    post 'save_position', :on => :collection
+
+    get 'add_campaign', :on => :collection
+    post 'add_campaign', :on => :collection
+
+    get 'add_page', :on => :collection
+    post 'save_page', :on => :collection
+
+    get 'add_category', :on => :collection
+    post 'save_category', :on => :collection
+
+    get 'add_up_category', :on => :collection
+    post 'save_up_category', :on => :collection
+
+
+    get 'sum_campaign', :on => :collection
+    get 'sum_position', :on => :collection
+    get 'sum_page', :on => :collection
+    get 'sum_category', :on => :collection
+    post 'sum_date', :on => :collection
+  end
+
 
   resources :advertisements
   

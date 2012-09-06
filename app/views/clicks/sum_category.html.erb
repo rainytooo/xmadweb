@@ -1,0 +1,14 @@
+<h1>分类统计总表</h1>
+<table>
+  <tr>
+    <th>名称</th>
+    <th>点击量</th>
+  </tr>
+
+<% @all.each do |t| %>
+  <tr>    
+  	<td><%= TagCategory.find(t.category).name %></td>
+    <td><%= t.sum_category %></td>
+  </tr>
+<% end %>
+</table>

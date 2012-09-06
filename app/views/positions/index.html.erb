@@ -1,0 +1,22 @@
+<h1>位置列表</h1>
+<%= link_to '新建位置', new_position_path %>
+<table>
+  <tr>
+    <th>名称</th>
+    <th>上级</th>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @positions.each do |position| %>
+  <tr>
+    <td><%= link_to position.name,position %></td>
+    <td><%= position.upid %></td>
+    <td><%= position.description %></td>
+    <td><%= link_to '编辑', edit_position_path(position) %></td>
+    <td><%= link_to '删除', position, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>

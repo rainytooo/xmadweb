@@ -1,0 +1,15 @@
+<h1>位置统计总表</h1>
+<%= link_to '返回', clicks_path %>
+<table>
+  <tr>
+    <th>名称</th>
+    <th>点击量</th>
+  </tr>
+
+<% @all.each do |p| %>
+  <tr>
+    <td><%= Position.find(p.position).name %></td>
+    <td><%= p.sum_position %></td>
+  </tr>
+<% end %>
+</table>

@@ -17,15 +17,24 @@
     单词:<%= f.label :word_id, "#{@word.content}"%><br />
     <%= f.hidden_field(:word_id, :value => "#{@word.id}") %>
   </div>
-  <div class="field">
-    意思:
+  <div class="field" style="margin:15px;">
+    <%= @word.meanings.size %>
     <% @word.meanings.each do |w| %>
+<<<<<<< HEAD
       <div><%= w.content %></div>
     <% end %>
   </div>
   <div class="field">
     <%= f.label :content, "输入新意思："%>
     <%= f.text_field(:content, :value => "#{@content}") %>
+=======
+      <div>意思:<%= w.content %>  词性:<%= w.word_property_id %></div>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :content, "添加新意思："%>
+    <%= f.text_field(:content) %>
+>>>>>>> feature/beidanci
   </div>
  
   <div class="field">

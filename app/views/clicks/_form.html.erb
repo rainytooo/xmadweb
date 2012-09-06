@@ -12,14 +12,41 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :tagname %><br />
+    <%= f.label :tagname, "标签名称"%><br />
     <%= f.text_field :tagname %>
   </div>
+
   <div class="field">
-    <%= f.label :clicks %><br />
+    <%= f.label :clicks, "点击" %><br />
     <%= f.number_field :clicks %>
   </div>
+
+  <div class="field">
+    <%= f.label :category, "分类" %><br />
+    <%= f.text_field :category %>
+  </div>
+
+  <div class="field">
+    <%= f.label :up_category, "上级分类" %><br />
+    <%= f.text_field :up_category %>
+  </div>
+
+  <div class="field">
+    <%= f.label :page, "页面" %><br />
+    <%= f.text_field :page %>
+  </div>
+
+  <div class="field">
+    <%= f.label :position, "位置" %><br />
+    <%= f.text_field :position %>
+  </div>
+
+  <div class="field">
+    <%= f.label :campaign, "活动" %><br />
+    <%= f.number_field :campaign %>
+  </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit("Submit") %>
   </div>
 <% end %>

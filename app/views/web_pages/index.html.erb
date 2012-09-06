@@ -1,0 +1,21 @@
+<h1>页面</h1>
+
+<%= link_to '新建页面', new_web_page_path %>
+<table>
+  <tr>
+    <th>域名</th>
+    <th>分类</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @web_pages.each do |web_page| %>
+  <tr>
+    <td><%= link_to web_page.domain, web_page%></td>
+    <td><%= web_page.categroy %></td>
+    <td><%= link_to '编辑', edit_web_page_path(web_page) %></td>
+    <td><%= link_to '删除', web_page, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>

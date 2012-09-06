@@ -1,0 +1,20 @@
+<h1>活动列表</h1>
+<%= link_to '新建活动', new_campaign_path %>
+<table>
+  <tr>
+    <th>名称</th>
+    <th>描述</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @campaigns.each do |campaign| %>
+  <tr>
+    <td><%= link_to campaign.name, campaign %></td>
+    <td><%= campaign.description %></td>
+    <td><%= link_to 'Edit', edit_campaign_path(campaign) %></td>
+    <td><%= link_to 'Destroy', campaign, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
