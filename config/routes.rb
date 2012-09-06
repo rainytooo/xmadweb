@@ -18,11 +18,7 @@ Xmadweb::Application.routes.draw do
   resources :words do
     # 每个单词有很多意思
     resources :meanings
-<<<<<<< HEAD
-    # 删除所有单词的方法
-=======
     # 删除所有单词属性
->>>>>>> feature/beidanci
     get 'delete_all', :on => :collection
   end
 
