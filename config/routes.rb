@@ -70,6 +70,7 @@ Xmadweb::Application.routes.draw do
       get 'my'
       get 'result_delay'
       get 'exam'
+      post 'search_index'
     end   
     # 学生时间表追踪管理
     resources :student_timelines

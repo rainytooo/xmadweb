@@ -7,6 +7,14 @@
 </h6>
 <hr/>
 
+<h4>根据学生姓名查询</h4>
+<%= form_tag(search_info_client_infos_path) do %>
+    <p>
+        客户名称: <input type="text"  name="name">
+    </p>
+  <%= submit_tag("查询") %>
+<% end %>
+
 <div class="common_table">
 <table border="1" cellspacing="5" cellpadding="5">
 	<tr>
@@ -18,6 +26,8 @@
 		<th>考勤管理</th>
 		<th>附加属性</th>
 		<th>计划</th>
+		<th>单词考试</th>
+        <th>单词成绩</th>
 	</tr>
 
 <% @users.each do |user| %>
@@ -42,6 +52,8 @@
 		<td><a href="/students/<%= user.id %>/student_timelines">时间管理</a></td>
 		<td><%= link_to "附加属性" , student_ext_attributes_path(user) %></td>
 		<td><%= link_to "学习计划管理", student_dairy_plans_path(user) %></td>
+		<td><%= link_to "单词考试", student_exams_path(user) %></td>
+        <td><%= link_to "单词成绩", student_result_papers_path(user) %></td>
 	</tr>
 <% end %>
 
