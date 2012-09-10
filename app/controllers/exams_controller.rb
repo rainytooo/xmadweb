@@ -120,7 +120,7 @@ class ExamsController < ApplicationController
       @doing.each do |exam|
         exam.update_attributes(:status => 1)
       end
-      @doing_exams = Exam.where("user_id = ? and start_time <= ? and finish_time >= ? and status=1", current_user.id, "#{cur_time}", "#{cur_time}").order("start_time desc").paginate(:page => params[:page], :per_page => 10)
+      @doing_exams = Exam.where("user_id = ? and start_time <= ? and finish_time >= ? and status=1", current_user.id, "#{@cur_time}", "#{@cur_time}").order("start_time desc").paginate(:page => params[:page], :per_page => 10)
   end
 
   # 已经完成，没出分的考试
