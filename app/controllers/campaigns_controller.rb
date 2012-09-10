@@ -1,5 +1,7 @@
 # encoding: utf-8
 class CampaignsController < ApplicationController
+  before_filter :authorize_not_student!
+  before_filter :authorize_activity!
 
   def index
     @campaigns = Campaign.all
