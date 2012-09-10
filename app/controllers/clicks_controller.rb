@@ -1,5 +1,8 @@
 # encoding: utf-8
 class ClicksController < ApplicationController
+  before_filter :authorize_not_student!
+  before_filter :authorize_activity!
+  
   # GET /clicks
   # GET /clicks.json
   def index

@@ -11,11 +11,8 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(:version => 20120904070013) do
-=======
-ActiveRecord::Schema.define(:version => 20120904095018) do
->>>>>>> feature/beidanci
+
+ActiveRecord::Schema.define(:version => 20120910022406) do
 
   create_table "advertisements", :force => true do |t|
     t.string   "domain"
@@ -39,18 +36,12 @@ ActiveRecord::Schema.define(:version => 20120904095018) do
     t.string  "tagname"
     t.integer "clicks"
     t.date    "record_date"
-<<<<<<< HEAD
-    t.integer "tag_type"
-    t.integer "campaign"
-    t.integer "position"
-=======
     t.integer "campaign"
     t.integer "position"
     t.integer "page"
     t.string  "tag_type"
     t.integer "category"
     t.integer "up_category"
->>>>>>> feature/beidanci
   end
 
   create_table "course_contents", :force => true do |t|
