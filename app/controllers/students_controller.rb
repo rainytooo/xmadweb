@@ -56,7 +56,7 @@ class StudentsController < ApplicationController
   # 查询学生
   def search_index
     # 所有激活的学生
-    @users = User.where(:role => 1, :is_activity => true).where(" name = ?", params[:name]).order("email DESC").paginate(:page => params[:page], :per_page => 20)
+    @users = User.where(:role => 1, :is_activity => true).where("name  like ?", "%#{params[:name]}%").order("email DESC").paginate(:page => params[:page], :per_page => 20)
     # 所有激活的督导
     @active_jpms = User.where(:role => 4, :is_activity => true).order("email DESC")
     # 所有激活的客户经理
