@@ -3,12 +3,12 @@
 <table>
   <tr>
     <th>名称</th>
-    <th>点击量</th>
+    <th>总点击量</th>
   </tr>
 
 <% @all.each do |p| %>
   <tr>
-    <td><%= Position.find(p.position).name %></td>
+    <td><%= link_to Position.find(p.position).name, "/positions/detail?id=#{p.position}"  %></td>
     <td><%= p.sum_position %></td>
   </tr>
 <% end %>

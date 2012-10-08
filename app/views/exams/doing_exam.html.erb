@@ -1,6 +1,6 @@
 <h1>正在进行的考试</h1>
 <%= link_to "Back", student_student_exams_path(current_user)%>
-当前时间：<%= @cur_time %>
+<div>当前时间：<%= @cur_time.strftime("%Y-%m-%d %H:%M")  %></div>
 <table>
 <% @doing_exams.each do |p| %>
     <tr>

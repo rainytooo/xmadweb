@@ -2,13 +2,13 @@
 <%= link_to '返回', clicks_path %>
 <table>
   <tr>
-    <th>名称</th>
-    <th>点击量</th>
+  	<th>页面</th>
+    <th>总点击量</th>
   </tr>
 
 <% @all.each do |p| %>
   <tr>    
-  	<td><%= WebPage.find(p.page).domain %></td>
+  	<td><%= link_to WebPage.find(p.page).content, "/web_pages/detail?id=#{p.page}"  %></td>
     <td><%= p.sum_page %></td>
   </tr>
 <% end %>

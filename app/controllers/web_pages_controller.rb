@@ -21,6 +21,19 @@ class WebPagesController < ApplicationController
     end
   end
 
+  # 显示出流量详情
+  def detail
+    @page = WebPage.find(params[:id])
+    if params[:start_date].nil?
+      time_range = (Time.now.midnight - 1.day)..Time.now.midnight
+    else
+      @t = DateTime.strptime(params[:start_date] + " CCT", "%Y-%m-%d")
+      time_range = (@t.midnight - 1.day + 1.second)..@t.midnight
+    end
+    @clicks = Click.where('record_date' => time_range).where("page = #{params[:id]}").paginate(:page => params[:page], :per_page => 10)
+    @total = Click.where('record_date' => time_range).where("page = #{params[:id]}").sum("clicks")
+  end
+
   # GET /web_pages/new
   # GET /web_pages/new.json
   def new

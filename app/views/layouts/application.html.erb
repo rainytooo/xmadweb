@@ -69,7 +69,15 @@
             </li>
 
             <li>
-              <% if current_user && current_user.role == 1 %><%= link_to "我的考试", student_student_exams_path(current_user) %> <% end %>
+              <% if current_user%>
+                  <%= link_to "流量管理", clicks_path %>
+              <% end %>
+            </li>
+
+            <li>
+              <% if current_user && current_user.role == 1 %>
+                  <%= link_to "我的考试", student_student_exams_path(current_user) %> 
+              <% end %>
             </li>
             
           </ul>

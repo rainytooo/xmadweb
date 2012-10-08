@@ -2,13 +2,27 @@
 Xmadweb::Application.routes.draw do
 
   # 关联广告页面
-  resources :web_pages 
+  resources :web_pages do
+    get 'all', :on => :collection
+    get 'detail', :on => :collection
+  end
   # 关联类类别
-  resources :tag_categories 
+  resources :tag_categories  do
+    get 'detail', :on => :collection
+    get 'all', :on => :collection
+  end
+
   # 关联位置
-  resources :positions 
+  resources :positions  do
+    get 'all', :on => :collection
+    get 'detail', :on => :collection
+  end
+
   # 关联活动
-  resources :campaigns 
+  resources :campaigns do 
+    get 'detail', :on => :collection
+    get 'all', :on => :collection
+  end
 
   #批量上传词汇
   get "upload_xml/index"
@@ -142,7 +156,7 @@ Xmadweb::Application.routes.draw do
     get 'sum_position', :on => :collection
     get 'sum_page', :on => :collection
     get 'sum_category', :on => :collection
-    post 'sum_date', :on => :collection
+    get 'sum_date', :on => :collection
   end
 
 
