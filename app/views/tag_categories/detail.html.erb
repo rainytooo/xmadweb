@@ -1,0 +1,69 @@
+<script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+    $( "#datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
+  });
+</script>
+
+
+<h1>分类流量详细列表</h1>
+<%= link_to '返回', sum_category_clicks_path %>
+<%= form_tag(detail_tag_categories_path, :method => :get) do %>
+  <p>
+    日期: <input type="text" id="datepicker" name="start_date" value="<%= @t%>"> 
+    <%= hidden_field_tag :id, "#{@category.id}"%>
+    <%= submit_tag("查询") %>
+  </p>
+<% end %>
+
+<h3>分类名称：<%= @category.name %></h3>
+<div>点击总量：<%= @total %></div>
+<table border="1">
+  <tr style="font-size:15pt;margin:5px;">
+    <th>标记名称</th>
+    <th>点击次数</th>
+    <td><%=  "父分类" %></td>
+    <td><%=  "页面" %></td>
+    <td><%=  "位置" %></td>
+    <td><%=  "活动" %></td>
+    <td>记录时间</td>
+  </tr>
+
+<% @clicks.each do |click| %>
+  <tr style="padding:5px">
+    <td><%= link_to click.tagname, click%></td>
+    <td><%= click.clicks %></td>
+    <td>
+      <% if click.up_category.nil? %>
+        <%= link_to "父类别", "clicks/add_up_category?id=#{click.id}" %>
+      <%else%>
+        <%= TagCategory.find(click.up_category).name %>
+      <% end %>
+    </td>
+    <td>
+      <% if click.page.nil? %>
+        <%= link_to "页面", "clicks/add_page?id=#{click.id}" %>
+      <%else%>
+        <%= WebPage.find(click.page).content %>
+      <% end %>     
+    </td>
+    <td>
+      <% if click.position.nil? %>
+        <%= link_to "位置", "clicks/add_position?id=#{click.id}" %>
+      <%else%>
+        <%= Position.find(click.position).name %>
+      <% end %>
+    </td>
+    <td>
+      <% if click.campaign.nil? %>
+        <%= link_to "活动", "clicks/add_campaign?id=#{click.id}" %>
+      <%else%>
+        <%= Campaign.find(click.campaign).name %>
+      <% end %>  
+    </td>
+    <td><%= click.record_date %></td>
+  </tr>
+<% end %>
+</table>
+
+<%=h will_paginate @clicks, :previous_label => '上一页',  :next_label => '下一页'%>

@@ -2,14 +2,13 @@ class PositionsController < ApplicationController
   # GET /positions
   # GET /positions.json
   def index
-    @positions = Position.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @positions }
-    end
+    @positions = Position.order("created_at desc").paginate(:page => params[:page], :per_page => 20)
   end
 
+  def all
+    time_range = (Time.now.midnight - 1.day)..Time.now.midnight
+    @positions = Click.where('created_at' => time_range).order("created_at desc").paginate(:page => params[:page], :per_page => 20)
+  end
   # GET /positions/1
   # GET /positions/1.json
   def show
@@ -19,6 +18,19 @@ class PositionsController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @position }
     end
+  end
+
+  # 显示出默认的
+  def detail
+    @position = Position.find(params[:id])
+    if params[:start_date].nil?
+      time_range = (Time.now.midnight - 1.day)..Time.now.midnight
+    else
+      @t = DateTime.strptime(params[:start_date] + " CCT", "%Y-%m-%d")
+      time_range = (@t.midnight - 1.day + 1.second)..@t.midnight
+    end
+    @clicks = Click.where('record_date' => time_range).where("position = #{params[:id]}").paginate(:page => params[:page], :per_page => 10)
+    @total = Click.where('record_date' => time_range).where("position = #{params[:id]}").sum("clicks")
   end
 
   # GET /positions/new

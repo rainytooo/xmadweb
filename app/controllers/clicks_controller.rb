@@ -6,7 +6,7 @@ class ClicksController < ApplicationController
   # GET /clicks
   # GET /clicks.json
   def index
-    @clicks = Click.paginate(:page => params[:page], :per_page => 10)
+    @clicks = Click.paginate(:page => params[:page], :per_page => 20)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,31 +14,61 @@ class ClicksController < ApplicationController
     end
   end
 
+  def detail
+
+  end
+
   # 查询出所有的活动点击量
   def sum_campaign
-    @all = Click.select("campaign, sum(clicks) as sum_campaign").group("campaign")
+    @all = Click.select("*, sum(clicks) as sum_campaign").group("campaign")
   end
 
   # 查询出所有位置点击量
   def sum_position
-    @all = Click.select("position, sum(clicks) as sum_position").group("position")
+    @all = Click.select("*, sum(clicks) as sum_position").group("position")
   end
 
   # 查询出所有的页面击量
   def sum_page
-    @all = Click.select("page, sum(clicks) as sum_page").group("page")
+    @all = Click.select("*, sum(clicks) as sum_page").group("page")
   end
 
   # 查询出所有的类别点击量
   def sum_category
-    @all = Click.select("category, sum(clicks) as sum_category").group("category")
+    @all = Click.select("*, sum(clicks) as sum_category").group("category")
   end
 
   # 查询出所在时间短的总流量
   def sum_date
-    # @all = Click.select("category, sum(clicks) as sum_category").group("category")
-    time_range = DateTime.strptime(params[:start_date] + " CCT", "%Y-%m-%d")..DateTime.strptime(params[:end_date] + " CCT", "%Y-%m-%d")
-    @all = Click.where('record_date' => time_range).sum("clicks")
+    conditions = " 1=1"
+    if !params[:web_page].empty?
+      @web_page = params[:web_page]
+      conditions << " and page = #{@web_page}"
+    end
+
+    if !params[:position].empty?
+      @position = params[:position]
+      conditions << " and position = #{@position}"
+    end
+
+    if !params[:campaign].empty?
+      @campaign = params[:campaign]
+      conditions << " and campaign = #{@campaign}"
+    end
+
+    if !params[:category].empty?
+      @category = params[:category]
+      conditions << " and category = #{@category}"
+    end
+
+    if !params[:start_date].empty?
+      t = DateTime.strptime(params[:start_date] + " CCT", "%Y-%m-%d")
+      time_range = (t.midnight - 1.day)..t.midnight
+      @all = Click.where('record_date' => time_range).where(conditions).sum("clicks")
+    else
+      @all = Click.where(conditions).sum("clicks")
+    end
+    
   end
 
   # 如果没有显示内容可以允许添加内容

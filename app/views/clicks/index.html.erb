@@ -2,18 +2,20 @@
   $(function() {
     $( "#datepicker" ).datepicker();
     $( "#datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
-    $( "#datepicker_2" ).datepicker();
-    $( "#datepicker_2" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
   });
 </script>
 <h1>点击量分类列表</h1>
 <%= link_to '新建', new_click_path %>
 
-<h4>根据日期查询</h4>
-<%= form_tag(sum_date_clicks_path) do %>
+<h4>根据条件查询</h4>
+<%= form_tag(sum_date_clicks_path, :method => :get) do %>
   <p>
-    开始日期: <input type="text" id="datepicker" name="start_date"> 
-    结束日期: <input type="text" id="datepicker_2" name="end_date">
+    日期: <input type="text" id="datepicker" name="start_date"> 
+    分类: <%= select_tag(:category, options_for_select(TagCategory.where("id NOT IN (1,2)").all.collect { |p| [p.name, p.id]}), { :include_blank => true })%>
+    页面: <%= select_tag(:web_page, options_for_select(WebPage.all.collect { |p| [p.content, p.id]}), { :include_blank => true })%>
+    位置: <%= select_tag(:position, options_for_select(Position.all.collect { |p| [p.name, p.id]}), { :include_blank => true })%>
+    活动: <%= select_tag(:campaign, options_for_select(Campaign.all.collect { |p| [p.name, p.id]}), { :include_blank => true })%>
+  </p>
     <%= submit_tag("查询") %>
   </p>
 <% end %>
@@ -27,7 +29,7 @@
     <th>标记名称</th>
     <th>点击次数</th>
     <td><%= link_to "分类", sum_category_clicks_path %></td>
-    <td><%= link_to "父分类", sum_category_clicks_path %></td>
+    <td>父分类</td>
     <td><%= link_to "页面", sum_page_clicks_path%></td>
     <td><%= link_to "位置", sum_position_clicks_path %></td>
     <td><%= link_to "活动", sum_campaign_clicks_path %></td>
@@ -58,7 +60,7 @@
       <% if click.page.nil? %>
         <%= link_to "页面", "clicks/add_page?id=#{click.id}" %>
       <%else%>
-        <%= WebPage.find(click.page).domain %>
+        <%= WebPage.find(click.page).content %>
       <% end %>     
     </td>
     <td>

@@ -12,7 +12,7 @@
 # It's strongly recommended to check this file into your version control system.
 
 
-ActiveRecord::Schema.define(:version => 20120910022406) do
+ActiveRecord::Schema.define(:version => 20120926091139) do
 
   create_table "advertisements", :force => true do |t|
     t.string   "domain"
@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(:version => 20120910022406) do
     t.integer "campaign"
     t.integer "position"
     t.integer "page"
-    t.string  "tag_type"
     t.integer "category"
     t.integer "up_category"
   end
@@ -312,6 +311,7 @@ ActiveRecord::Schema.define(:version => 20120910022406) do
     t.integer  "categroy"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "content"
   end
 
   create_table "word_meanings", :force => true do |t|
