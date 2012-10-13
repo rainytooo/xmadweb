@@ -11,7 +11,6 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-
 ActiveRecord::Schema.define(:version => 20120926091139) do
 
   create_table "advertisements", :force => true do |t|
@@ -38,9 +37,6 @@ ActiveRecord::Schema.define(:version => 20120926091139) do
     t.date    "record_date"
     t.integer "campaign"
     t.integer "position"
-    t.integer "page"
-    t.integer "category"
-    t.integer "up_category"
   end
 
   create_table "course_contents", :force => true do |t|
@@ -80,11 +76,9 @@ ActiveRecord::Schema.define(:version => 20120926091139) do
     t.integer  "paper_id"
     t.datetime "start_time"
     t.datetime "finish_time"
+    t.integer  "set_time"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.integer  "user_id"
-    t.integer  "status"
-    t.integer  "set_time"
   end
 
   create_table "ext_attributes", :force => true do |t|
@@ -139,9 +133,9 @@ ActiveRecord::Schema.define(:version => 20120926091139) do
 
   create_table "paper_words", :force => true do |t|
     t.integer  "paper_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "word_id"
+    t.integer  "word_group_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "papers", :force => true do |t|
@@ -150,8 +144,6 @@ ActiveRecord::Schema.define(:version => 20120926091139) do
     t.string   "name"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
-    t.integer  "start_word"
-    t.integer  "end_word"
   end
 
   create_table "positions", :force => true do |t|
@@ -169,8 +161,6 @@ ActiveRecord::Schema.define(:version => 20120926091139) do
     t.float    "rate"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "exam_id"
-    t.integer  "status"
   end
 
   create_table "result_words", :force => true do |t|
@@ -239,14 +229,6 @@ ActiveRecord::Schema.define(:version => 20120926091139) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "tag_types", :force => true do |t|
-    t.string   "name"
-    t.text     "descrition"
-    t.integer  "upid"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
@@ -277,7 +259,7 @@ ActiveRecord::Schema.define(:version => 20120926091139) do
     t.boolean  "sloved",       :default => false
     t.string   "slove_spec"
     t.string   "problem_spec"
-    t.integer  "problem_type"
+    t.integer  "problem_type", :default => 0
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
   end
@@ -314,14 +296,6 @@ ActiveRecord::Schema.define(:version => 20120926091139) do
     t.string   "content"
   end
 
-  create_table "word_meanings", :force => true do |t|
-    t.integer  "word_id"
-    t.integer  "meaning_id"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-    t.integer  "word_property_id"
-  end
-
   create_table "word_properties", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
@@ -329,14 +303,16 @@ ActiveRecord::Schema.define(:version => 20120926091139) do
   end
 
   create_table "words", :force => true do |t|
+    t.integer  "book_name_id"
+    t.integer  "word_property_id"
     t.string   "content"
     t.string   "phonogram"
     t.string   "prefix"
     t.string   "infix"
     t.string   "affix"
     t.string   "root"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
 end
