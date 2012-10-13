@@ -12,8 +12,7 @@
 		<td>产生时间</td>
 	</tr>
 
-<% @clicks.each do |adclick| %>
-	
+	<% @clicks.each do |adclick| %>
 	<tr>
 		<td><%= adclick.id %></td>
 		<td><%= adclick.tagname %></td>
@@ -24,8 +23,7 @@
 		<td><%= adclick.clicks %></td>
 		<td><%= adclick.record_date %></td>
 	</tr>
-<% end %>
-
+	<% end %>
 </table>
 
 <br />
