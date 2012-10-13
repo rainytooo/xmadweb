@@ -162,6 +162,7 @@ class ClicksController < ApplicationController
   end
 
   def create
+    params[:click]['up_category'] =  TagCategory.find(params[:click]['category']).uid
     @click = Click.new(params[:click])
 
     respond_to do |format|

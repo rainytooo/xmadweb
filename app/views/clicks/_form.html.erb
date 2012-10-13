@@ -1,3 +1,9 @@
+<script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+    $( "#datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
+  });
+</script>
 <%= form_for(@click) do |f| %>
   <% if @click.errors.any? %>
     <div id="error_explanation">
@@ -23,30 +29,33 @@
 
   <div class="field">
     <%= f.label :category, "分类" %><br />
-    <%= f.text_field :category %>
-  </div>
-
-  <div class="field">
-    <%= f.label :up_category, "上级分类" %><br />
-    <%= f.text_field :up_category %>
+    <%= f.select(:category, TagCategory.where("id != uid").collect {|p| [ p.name, p.id ] })  %>
   </div>
 
   <div class="field">
     <%= f.label :page, "页面" %><br />
-    <%= f.text_field :page %>
+    <%= f.select(:page, WebPage.all.collect {|p| [ p.content, p.id ] })  %>
   </div>
 
   <div class="field">
     <%= f.label :position, "位置" %><br />
-    <%= f.text_field :position %>
+    <%= f.select(:position, Position.all.collect {|p| [ p.name, p.id ] })  %>
   </div>
 
   <div class="field">
     <%= f.label :campaign, "活动" %><br />
-    <%= f.number_field :campaign %>
+    <%= f.select(:campaign, Campaign.all.collect {|p| [ p.name, p.id ] })  %>
   </div>
+
+  <div class="field">
+    日期<br />
+    <input type="text" id="datepicker" name="click[record_date]"> 
+  </div>
+
+  
 
   <div class="actions">
     <%= f.submit("Submit") %>
   </div>
+
 <% end %>

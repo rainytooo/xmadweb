@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120926091139) do
+ActiveRecord::Schema.define(:version => 20121013072521) do
 
   create_table "advertisements", :force => true do |t|
     t.string   "domain"
@@ -37,6 +37,9 @@ ActiveRecord::Schema.define(:version => 20120926091139) do
     t.date    "record_date"
     t.integer "campaign"
     t.integer "position"
+    t.integer "category"
+    t.integer "page"
+    t.integer "up_category"
   end
 
   create_table "course_contents", :force => true do |t|
@@ -229,6 +232,14 @@ ActiveRecord::Schema.define(:version => 20120926091139) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "tag_types", :force => true do |t|
+    t.string   "name"
+    t.text     "descrition"
+    t.integer  "upid"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
@@ -294,6 +305,14 @@ ActiveRecord::Schema.define(:version => 20120926091139) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "content"
+  end
+
+  create_table "word_meanings", :force => true do |t|
+    t.integer  "word_id"
+    t.integer  "meaning_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.integer  "word_property_id"
   end
 
   create_table "word_properties", :force => true do |t|

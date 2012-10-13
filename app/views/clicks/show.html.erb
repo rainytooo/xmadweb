@@ -1,13 +1,46 @@
 
 
 <p>
-  <b>Tagname:</b>
+  <b>标签名称:</b>
   <%= @click.tagname %>
 </p>
 
 <p>
-  <b>Clicks:</b>
+  <b>点击量:</b>
   <%= @click.clicks %>
+</p>
+
+<p>
+  <b>时间:</b>
+  <%= @click.record_date %>
+</p>
+
+<p>
+  <b>位置:</b>
+  <% if @click.position %>
+  <%= Position.find(@click.position).name %>
+  <% end %>
+</p>
+
+<p>
+  <b>页面:</b>
+  <% if @click.page %>
+  <%= WebPage.find(@click.page).content %>
+  <% end %>
+</p>
+
+<p>
+  <b>分类:</b>
+  <%if @click.category %>
+  <%= TagCategory.find(@click.category).name %>
+  <% end %>
+</p>
+
+<p>
+  <b>上级分类:</b>
+  <%if @click.up_category %>
+  <%= TagCategory.find(@click.up_category).name %>
+  <% end %>
 </p>
 
 
