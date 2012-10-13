@@ -232,14 +232,6 @@ ActiveRecord::Schema.define(:version => 20121013072521) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "tag_types", :force => true do |t|
-    t.string   "name"
-    t.text     "descrition"
-    t.integer  "upid"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
@@ -305,14 +297,6 @@ ActiveRecord::Schema.define(:version => 20121013072521) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "content"
-  end
-
-  create_table "word_meanings", :force => true do |t|
-    t.integer  "word_id"
-    t.integer  "meaning_id"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-    t.integer  "word_property_id"
   end
 
   create_table "word_properties", :force => true do |t|
