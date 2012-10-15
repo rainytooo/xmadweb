@@ -55,6 +55,8 @@ class StudentsController < ApplicationController
 
   # 查询学生
   def search_index
+    #保存查询条件
+    @name = params[:name]
     # 所有激活的学生
     @users = User.where(:role => 1, :is_activity => true).where("name  like ?", "%#{params[:name]}%").order("email DESC").paginate(:page => params[:page], :per_page => 20)
     # 所有激活的督导

@@ -8,7 +8,7 @@
 <br/>
 
 <h4>根据客户名称查询</h4>
-<%= form_tag(search_index_students_path) do %>
+<%= form_tag(search_index_students_path, :method => :get) do %>
     <p>
         客户名称: <input type="text"  name="name">
     </p>
