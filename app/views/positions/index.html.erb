@@ -2,6 +2,7 @@
 <%= link_to '新建位置', new_position_path %>
 <table>
   <tr>
+    <th>ID</th>
     <th>名称</th>
     <th>上级</th>
     <th>Description</th>
@@ -12,6 +13,7 @@
 
 <% @positions.each do |position| %>
   <tr>
+    <td><%= web_page.id%></td>
     <td><%= link_to position.name,position %></td>
     <td><%= position.upid %></td>
     <td><%= position.description %></td>

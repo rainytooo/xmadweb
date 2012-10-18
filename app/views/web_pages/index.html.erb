@@ -3,6 +3,7 @@
 <%= link_to '新建页面', new_web_page_path %>
 <table>
   <tr>
+    <th>ID</th>
     <th>网页</th>
     <th>域名</th>
     <th>分类</th>
@@ -13,6 +14,7 @@
 
 <% @web_pages.each do |web_page| %>
   <tr>
+    <td><%= web_page.id%></td>
     <td><%= link_to web_page.content, web_page %></td>
     <td><%= web_page.domain %></td>
     <td><%= web_page.categroy %></td>
