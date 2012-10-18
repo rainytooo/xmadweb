@@ -1,6 +1,6 @@
 class TagCategoriesController < ApplicationController
   def index
-    @tag_categories = TagCategory.all
+    @tag_categories = TagCategory.order("created_at desc").paginate(:page => params[:page], :per_page => 20)
 
     respond_to do |format|
       format.html # index.html.erb

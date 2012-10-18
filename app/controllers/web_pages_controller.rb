@@ -2,7 +2,7 @@ class WebPagesController < ApplicationController
   # GET /web_pages
   # GET /web_pages.json
   def index
-    @web_pages = WebPage.all
+    @web_pages = WebPage.order("created_at desc").paginate(:page => params[:page], :per_page => 20)
 
     respond_to do |format|
       format.html # index.html.erb
