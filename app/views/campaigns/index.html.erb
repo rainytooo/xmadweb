@@ -11,7 +11,7 @@
 
 <% @campaigns.each do |campaign| %>
   <tr>
-    <td><%= web_page.id%></td>
+    <td><%= campaign.id%></td>
     <td><%= link_to campaign.name, campaign %></td>
     <td><%= campaign.description %></td>
     <td><%= link_to 'Edit', edit_campaign_path(campaign) %></td>
