@@ -6,7 +6,9 @@ class ClicksController < ApplicationController
   # GET /clicks
   # GET /clicks.json
   def index
-    @clicks = Click.paginate(:page => params[:page], :per_page => 20)
+    time_range = (Time.now.midnight - 1.day)..Time.now.midnight
+    puts time_range
+    @clicks = Click.where('record_date' => time_range).paginate(:page => params[:page], :per_page => 20)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -39,7 +41,7 @@ class ClicksController < ApplicationController
   end
 
   # 查询出所在时间短的总流量
-  def sum_date
+  def search_result
     conditions = " 1=1"
     if !params[:web_page].empty?
       @web_page = params[:web_page]
@@ -64,11 +66,11 @@ class ClicksController < ApplicationController
     if !params[:start_date].empty?
       t = DateTime.strptime(params[:start_date] + " CCT", "%Y-%m-%d")
       time_range = (t.midnight - 1.day)..t.midnight
-      @all = Click.where('record_date' => time_range).where(conditions).sum("clicks")
+      @clicks = Click.where('record_date' => time_range).where(conditions).paginate(:page => params[:page], :per_page => 20)
     else
-      @all = Click.where(conditions).sum("clicks")
+      @clicks = Click.where(conditions).paginate(:page => params[:page], :per_page => 20)
     end
-    
+    @click_count = @clicks.count
   end
 
   # 如果没有显示内容可以允许添加内容
@@ -114,7 +116,7 @@ class ClicksController < ApplicationController
   # 如果没有分类可以允许添加内容
   def add_category
     @click = params[:id]
-    @categories = TagCategory.paginate(:page => params[:page], :per_page => 20)
+    @categories = TagCategory.where("id != uid").paginate(:page => params[:page], :per_page => 20)
   end
 
   def save_category

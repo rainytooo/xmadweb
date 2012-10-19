@@ -8,7 +8,13 @@
 
 <% @all.each do |t| %>
   <tr>    
-  	<td><%= link_to TagCategory.find(t.category).name, "/tag_categories/detail?id=#{t.category}" %></td>
+  	<td>
+  		<% if t.category %>
+  		<%= link_to TagCategory.find(t.category).name, "/tag_categories/detail?id=#{t.category}" %>
+   		<% else %>
+  		no data
+  		<% end %>
+  	</td>
     <td><%= t.sum_category %></td>
   </tr>
 <% end %>

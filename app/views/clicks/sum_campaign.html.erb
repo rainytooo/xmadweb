@@ -8,7 +8,13 @@
 
 <% @all.each do |campaign| %>
   <tr>
-    <td><%=  link_to Campaign.find(campaign.campaign).name, "/campaigns/detail?id=#{campaign.campaign}" %></td>
+    <td>
+    	<% if campaign.campaign %>
+    	<%=  link_to Campaign.find(campaign.campaign).name, "/campaigns/detail?id=#{campaign.campaign}" %>
+    	<% else%>
+    	no  data
+    	<% end %>
+    </td>
     <td title="详细"><%= campaign.sum_campaign %></td>
   </tr>
 <% end %>

@@ -8,7 +8,13 @@
 
 <% @all.each do |p| %>
   <tr>
-    <td><%= link_to Position.find(p.position).name, "/positions/detail?id=#{p.position}"  %></td>
+    <td>
+    	<% if p.position%>
+    	<%= link_to Position.find(p.position).name, "/positions/detail?id=#{p.position}"  %>
+  		<% else %>
+  		no data
+    	<% end %>
+    </td>
     <td><%= p.sum_position %></td>
   </tr>
 <% end %>

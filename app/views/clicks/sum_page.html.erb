@@ -8,7 +8,13 @@
 
 <% @all.each do |p| %>
   <tr>    
-  	<td><%= link_to WebPage.find(p.page).content, "/web_pages/detail?id=#{p.page}"  %></td>
+  	<td>
+  		<% if p.page %>
+  		<%= link_to WebPage.find(p.page).content, "/web_pages/detail?id=#{p.page}"  %>
+  		<% else %>
+  		no data
+  		<% end %>
+  	</td>
     <td><%= p.sum_page %></td>
   </tr>
 <% end %>

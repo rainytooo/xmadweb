@@ -7,7 +7,7 @@
 <h1>点击量分类列表</h1>
 <%= link_to '新建', new_click_path %>
 
-<h4>根据条件查询</h4>
+<p style=" font-size:24px">根据条件查询</p>
 <%= form_tag(search_result_clicks_path, :method => :get) do %>
   <p>
     日期: <input type="text" id="datepicker" name="start_date"> 
@@ -19,7 +19,7 @@
     <%= submit_tag("查询") %>
   </p>
 <% end %>
-
+<h4>点击量统计:<%= @click_count %>次</h4>
 <ul>
   <li><%= link_to "类别", tag_categories_path %>：<%= link_to "父类别", tag_categories_path%>：<%= link_to "页面", web_pages_path%>：<%= link_to "位置", positions_path %>：<%= link_to "活动", campaigns_path %></li>
 </ul>
@@ -44,7 +44,7 @@
     <td><%= click.clicks %></td>
     <td>
       <% if click.category.nil? %>
-        <%= link_to "类别", "clicks/add_category?id=#{click.id}" %>
+        <%= link_to "类别", "add_category?id=#{click.id}" %>
       <%else%>
         <%= TagCategory.find(click.category).name %>
       <% end %>
