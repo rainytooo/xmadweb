@@ -1,0 +1,300 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>底层页---右面</title>
+<!-- include style file and js file  -->
+{dede:include filename="static_files_inc.htm"/}
+<script src="http://img.xiaoma.com/statics/js/xmutil.js" type="text/javascript"></script>
+<style>
+.XMIfrimRight{ width:250px; float:left;}
+.XMIfrimRight .GuangGaoPic{ width:300px; height:auto; float:left; margin-bottom:10px;}
+.XMIfrimRight .XMIfrimRightCatText{ width:298px; border:1px solid #d5e2f3; height:auto; float:left; margin-bottom:10px; padding-bottom:10px;}
+.XMIfrimRight .XMIfrimRightCatText dt{ width:100%; height:26px; line-height:26px; background:url({dede:global.cfg_templets_skin/}/images/widthBg.png); background-position:0px -270px; float:left;}
+.XMIfrimRight .XMIfrimRightCatText dt span{ float:left; font-size:14px; margin-left:10px; display:inline;}
+.XMIfrimRight .XMIfrimRightCatText dt a{ float:right; margin-right:10px; display:inline; color:#999;}
+.XMIfrimRight .XMIfrimRightCatText dd{ width:100%; height:auto; float:left; margin-top:10px;}
+.XMIfrimRight .XMIfrimRightCatText dd p{ width:3px; height:3px; float:left; background-color:#000099; margin-left:10px; margin-top:7px;}
+.XMIfrimRight .XMIfrimRightCatText dd a{ float:left; margin-left:5px; color:#000099;}
+.XMIfrimRight .XMIfrimRightBox{ float:left; width:298px; height:auto; padding-bottom:10px; margin-bottom:10px; border:1px solid #dfdfdf; background:#f1f1f1;}
+.XMIfrimRight .XMIfrimRightBox ul{ height:auto; float:left; width:100%;}
+.XMIfrimRight .XMIfrimRightBox ul li{ width:130px; height:auto; margin-left:10px; display:inline; float:left; margin-top:5px;}
+.XMIfrimRight .XMIfrimRightBox ul li a{ color:#333;}
+
+
+.XMIfrimRight .XMIfrimRightCatPic{ width:298px; border:1px solid #d5e2f3; height:auto; float:left; margin-bottom:10px; padding-bottom:10px;}
+.XMIfrimRight .XMIfrimRightCatPic dt{ width:100%; height:26px; line-height:26px; background:url({dede:global.cfg_templets_skin/}/images/widthBg.png); background-position:0px -270px; float:left;}
+.XMIfrimRight .XMIfrimRightCatPic dt span{ float:left; font-size:14px; margin-left:10px; display:inline;}
+.XMIfrimRight .XMIfrimRightCatPic dt a{ float:right; margin-right:10px; display:inline; color:#999;}
+.XMIfrimRight .XMIfrimRightCatPic dd{ float:left; width:130px; height:auto; margin-top:10px; margin-left:10px; display:inline;}
+.XMIfrimRight .XMIfrimRightCatPic dd a img{ float:left; width:63px; height:90px;margin-left: 33px;}
+.XMIfrimRight .XMIfrimRightCatPic dd a p{ float:left; width:130px; text-align:center; margin-top:5px;}
+
+
+.XMIfrimRight .XMIfrimRightXuanXK{ width:298px; height:auto; float:left; margin-bottom:10px; border:1px solid #d7e0eb;}
+.XMIfrimRight .XMIfrimRightXuanXK dl{ width:100%; height:30px; line-height:30px; float:left; position:relative; z-index:2}
+.XMIfrimRight .XMIfrimRightXuanXK dl dt{ float:left; font-size:14px; width:auto; padding-left:10px;}
+.XMIfrimRight .XMIfrimRightXuanXK dl dd{ float:right; font-size:12px; border-left:1px solid #d7e0eb; padding-left:8px; padding-right:8px; cursor:pointer;}
+
+.XMIfrimRight .XMIfrimRightXuanXK ul{ width:100%; height:auto; float:left; border-top:1px solid #d7e0eb; margin-top:-1px; position:relative; z-index:1; background-color:#f1f7fb;}
+.XMIfrimRight .XMIfrimRightXuanXK ul li{ width:100%; height:auto; float:left;}
+.XMIfrimRight .XMIfrimRightXuanXK ul li .XMXuanXKUlList{ width:280px; float:left; margin-left:10px; display:inline; height:25px; line-height:25px;}
+.XMIfrimRight .XMIfrimRightXuanXK ul li .XMXuanXKUlList p{ float:left; background:url({dede:global.cfg_templets_skin/}/images/smallBg.png); background-position:0px -379px; width:14px; height:9px; margin-top:8px; display:inline}
+.XMIfrimRight .XMIfrimRightXuanXK ul li .XMXuanXKUlList a{ float:left; margin-left:5px; display:inline; color:#333;}
+.XMIfrimRight .XMIfrimRightXuanXK ul li .XMXuanXKUlImg{ float:left; width:120px; height:auto; margin-top:10px; margin-left:10px; display:inline; margin-right:10px;}
+.XMIfrimRight .XMIfrimRightXuanXK ul li .XMXuanXKUlImg img{ width:120px; height:110px; float:left}
+.XMIfrimRight .XMIfrimRightXuanXK ul li .XMXuanXKUlImg p{ width:100%; height:30px; text-align:center; float:left}
+
+.XMIfrimRight .XMIfrimRightXuanXK ul li .XMXuanXKUlList .XMXuanXKUlListP{ width:13px; height:12px; margin-top:5px;}
+
+.clickXuanXK{ background-color:#f1f7fb;}
+
+
+.XMIfrimRight .XMIfrimRightZhuanT{ width:298px; border:1px solid #d5e2f3; height:auto; float:left; margin-bottom:10px; padding-bottom:10px;}
+.XMIfrimRight .XMIfrimRightZhuanT dt{ width:100%; height:26px; line-height:26px; background:url({dede:global.cfg_templets_skin/}/images/widthBg.png); background-position:0px -270px; float:left;}
+.XMIfrimRight .XMIfrimRightZhuanT dt span{ float:left; font-size:14px; margin-left:10px; display:inline;}
+.XMIfrimRight .XMIfrimRightZhuanT dt a{ float:right; margin-right:10px; display:inline; color:#999;}
+.XMIfrimRight .XMIfrimRightZhuanT dd{ float:left; width:130px; height:auto; margin-top:10px; margin-left:10px; display:inline;}
+.XMIfrimRight .XMIfrimRightZhuanT dd p{ float:left; width:2px; height:2px; background:#10056b; margin-top:8px;}
+.XMIfrimRight .XMIfrimRightZhuanT dd a{ float:right; width:120px; overflow:hidden; height:15px;}
+
+
+.XMIfrimRight .XMIfrimRightXuanXKNe{ width:298px; height:auto; float:left; margin-bottom:10px; border:1px solid #d7e0eb;}
+.XMIfrimRight .XMIfrimRightXuanXKNe dl{ width:100%; height:24px; float:left; position:relative; z-index:2; background:url({dede:global.cfg_templets_skin/}/images/widthBg.png); background-position:0px -669px}
+.XMIfrimRight .XMIfrimRightXuanXKNe dl dt{ float:left;}
+.XMIfrimRight .XMIfrimRightXuanXKNe dl dd{ float:left; font-size:12px;  cursor:pointer; width:70px; height:31px;  background:url({dede:global.cfg_templets_skin/}/images/widthBg.png); background-position:-70px -640px; text-align:center; line-height:24px;}
+
+
+.XMIfrimRight .XMIfrimRightXuanXKNe ul{ width:100%; height:auto; float:left; border-top:1px solid #d7e0eb; margin-top:-1px; position:relative; z-index:1;}
+.XMIfrimRight .XMIfrimRightXuanXKNe ul li{ width:100%; height:auto; float:left;}
+.XMIfrimRight .XMIfrimRightXuanXKNe ul li .XMXuanXKUlList{ width:280px; float:left; margin-left:10px; display:inline; height:25px; line-height:25px;}
+.XMIfrimRight .XMIfrimRightXuanXKNe ul li .XMXuanXKUlList p{ float:left;width:3px; height:3px; margin-top:12px; display:inline;width:2px; height:2px; background:#10056b;}
+.XMIfrimRight .XMIfrimRightXuanXKNe ul li .XMXuanXKUlList a{ float:left; margin-left:5px; display:inline; color:#333;}
+
+
+
+</style>
+
+</head>
+
+<body>
+<div class="XMIfrimRight" id="XMIfrimRight">
+	
+    <dl class="XMIfrimRightCatText">
+    	<dt><span>高分案例</span><a href="http://toeflvip.xiaoma.com/gaofenanli/" target="_blank" title="托福高分案例">更多</a></dt>
+    	{dede:arclist limit='0,10' typeid='215' titlelen='60'}
+    	<dd><p></p><a href="[field:arcurl/]" title="[field:title/]" target="_blank">[field:title/]</a></dd>
+    	{/dede:arclist}
+        
+    </dl>
+    
+    <a href="http://toeflvip.xiaoma.com/20120728/zhuanti/shitingke.html"  target="_blank"><img src="http://pics1.xiaoma.com.cn/xiaoma/adimgs/20120730/1v1st_300.jpg" class="GuangGaoPic" style="height:150px;"/></a>
+    <!--  -->
+    <div class="XMIfrimRightBox">
+    	<ul>
+        	<li><a href="http://mall.xiaoma.com/goods-48.html" target="_blank">托福点题班(名师授课)</a></li>
+        	<li><a href="http://mall.xiaoma.com/goods-45.html" target="_blank" title="SAT暑期精品10人小班（强化）">SAT10人班（强化）</a></li>
+        	<li><a href="http://mall.xiaoma.com/goods-49.html" target="_blank" title="TOEFL考前冲刺班">TOEFL考前冲刺班</a></li>
+        	<li><a href="http://mall.xiaoma.com/goods-41.html" target="_blank" title="VIP1对1小时计划">VIP1对1小时计划</a></li>
+        	<li><a href="http://mall.xiaoma.com/goods-23.html" target="_blank" title="TOEFL听写训练营">TOEFL听写训练营</a></li>
+        	<li><a href="http://mall.xiaoma.com/goods-42.html" target="_blank" title="托福暑期精品10人小班（基础）">托福10人班（基础）</a></li>
+        </ul>
+    </div>
+    <dl class="XMIfrimRightCatPic">
+    	<dt><span>小马图书</span><a href="http://mall.xiaoma.com" target="_blank">更多</a></dt>
+        <dd><a href="http://mall.xiaoma.com/goods-9.html" target="_blank"><img src="http://img.xiaoma.com/album/201206/29/dfxz.jpg" alt="新托福巅峰写作"/><p>新托福巅峰写作</p></a></dd>
+        <dd><a href="http://mall.xiaoma.com/goods-10.html" target="_blank"><img src="http://img.xiaoma.com/album/201206/29/xzjj.jpg" alt="小马写作机经"/><p>小马写作机经</p></a></dd>
+        <dd><a href="http://mall.xiaoma.com/goods-6.html" target="_blank"><img src="http://img.xiaoma.com/album/201206/29/tfdcs.jpg" alt="TOEFL单词树"/><p>TOEFL单词树</p></a></dd>
+        <dd><a href="http://mall.xiaoma.com/goods-7.html" target="_blank"><img src="http://img.xiaoma.com/album/201206/29/satdcs.jpg" alt="SAT单词树"/><p>SAT单词树</p></a></dd>
+    </dl>
+    <dl class="XMIfrimRightZhuanT">
+    	<dt><span>课程特色</span><a href="http://toeflvip.xiaoma.com/kechengtese/" target="_blank">更多</a></dt>
+		{dede:arclist limit='0,8' typeid='223' titlelen='60'}
+    	<dd><p></p><a href="[field:arcurl/]" title="[field:title/]" target="_blank">[field:title/]</a></dd>
+    	{/dede:arclist}
+        
+
+		<!--
+        <dd><p></p><a href="http://toeflvip.xiaoma.com/kechengtese/20120728/93773.html" target="_blank" title="吴晓林阅读首次课分析报告">吴晓林阅读首次课分析报告</a></dd>
+        <dd><p></p><a href="http://toeflvip.xiaoma.com/kechengtese/20120728/93772.html" target="_blank" title="马凌超阅读首次课分析报告">马凌超阅读首次课分析报告</a></dd>
+        <dd><p></p><a href="http://toeflvip.xiaoma.com/kechengtese/20120728/93771.html" target="_blank" title="李兆俞听力首次课分析报告">李兆俞听力首次课分析报告</a></dd>
+        <dd><p></p><a href="http://toeflvip.xiaoma.com/kechengtese/20120728/93770.html" target="_blank" title="李锡瑞阅读首次课分析报告">李锡瑞阅读首次课分析报告</a></dd>
+        <dd><p></p><a href="http://toeflvip.xiaoma.com/kechengtese/20120728/93769.html" target="_blank" title="蒋纬杰阅读首次课分析报告">蒋纬杰阅读首次课分析报告</a></dd>
+        <dd><p></p><a href="http://toeflvip.xiaoma.com/kechengtese/20120723/93502.html" target="_blank" title="三维导学">三维导学</a></dd>
+        <dd><p></p><a href="http://toeflvip.xiaoma.com/kechengtese/20120724/93541.html" target="_blank" title="小马过河网络课程模块设置">小马过河网络课程模块设置</a></dd>
+        <dd><p></p><a href="http://toeflvip.xiaoma.com/kechengtese/20120723/93504.html" target="_blank" title="制定专属学习计划">制定专属学习计划</a></dd>
+		-->
+    </dl>
+    <div class="XMIfrimRightXuanXK">
+    	<dl>
+        	<dt>小马名师</dt>
+            <dd class="clickXuanXK">2</dd>
+            <dd>1</dd>
+        </dl>
+        <ul>
+        	<li>
+            	<div class="XMXuanXKUlImg">
+                	<a href="http://toeflvip.xiaoma.com/shitingke/20120604/92485.html" target="_blank">
+                	<img src="http://img.xiaoma.com/album/201206/29/jaijia.jpg" />
+                    <p>苏显嘉</p>
+                    </a>
+                </div>
+                <div class="XMXuanXKUlImg">
+                	<a href="http://toeflvip.xiaoma.com/shitingke/20120604/92486.html" target="_blank">
+                	<img src="http://img.xiaoma.com/album/201206/29/lizhonghua.jpg" />
+                    <p>李忠华</p>
+                    </a>
+                </div>
+				{dede:arclist limit='0,6' typeid='219' titlelen='60'}
+    	      <div class="XMXuanXKUlList"><p></p><a href="[field:arcurl/]" title="[field:title/]"    target="_blank">[field:title/]</a></div>
+    	      {/dede:arclist}
+		     <!--
+		
+				
+            	<div class="XMXuanXKUlList"><p></p><a href="http://toeflvip.xiaoma.com/shitingke/20120604/92487.html" target="_blank" title="小马过河SAT试听课—许建军老师">小马过河SAT试听课—许建军老师</a></div>
+            	<div class="XMXuanXKUlList"><p></p><a href="http://toeflvip.xiaoma.com/shitingke/20120604/92484.html" target="_blank" title="小马过河托福口语试听课—杨璐老师">小马过河托福口语试听课—杨璐老师</a></div>
+            	<div class="XMXuanXKUlList"><p></p><a href="http://toeflvip.xiaoma.com/mingshifangtan/20120701/92984.html" target="_blank" title="小马过河国际教育刘志超老师访谈">小马过河国际教育刘志超老师访谈</a></div>
+            	<div class="XMXuanXKUlList"><p></p><a href="http://toeflvip.xiaoma.com/mingshijieshao/20120701/93006.html" target="_blank" title="小马过河托福名师许向博">小马过河托福名师许向博</a></div>
+            	<div class="XMXuanXKUlList"><p></p><a href="http://toeflvip.xiaoma.com/mingshijieshao/20120701/93003.html" target="_blank" title="小马过河托福名师刘迪">小马过河托福名师刘迪</a></div>
+            	<div class="XMXuanXKUlList"><p></p><a href="http://toeflvip.xiaoma.com/mingshijieshao/20120701/93002.html" target="_blank" title="小马过河托福名师李炯">小马过河托福名师李炯</a></div>
+				-->
+				
+            </li>
+            <li style=" display:none;">
+           	    <div class="XMXuanXKUlImg">
+                	<a href="http://toeflvip.xiaoma.com/shitingke/20120604/92487.html" target="_blank">
+                	<img src="http://img.xiaoma.com/album/201206/29/xujianjun_st.png" />
+                    <p>徐建军</p>
+                    </a>
+                </div>
+                <div class="XMXuanXKUlImg">
+                	<a href="http://toeflvip.xiaoma.com/shitingke/20120604/92484.html" target="_blank">
+                	<img src="http://img.xiaoma.com/album/201206/29/yanglu_st.png" />
+                    <p>杨璐</p>
+                    </a>
+                </div>
+				{dede:arclist limit='0,6' typeid='224' titlelen='60'}
+    	      <div class="XMXuanXKUlList"><p></p><a href="[field:arcurl/]" title="[field:title/]"    target="_blank">[field:title/]</a></div>
+    	      {/dede:arclist}
+				<!--
+				
+            	<div class="XMXuanXKUlList"><p></p><a href="http://toeflvip.xiaoma.com/mingshijieshao/20120701/93001.html" target="_blank">小马过河托福名师—简洁老师</a></div>
+            	<div class="XMXuanXKUlList"><p></p><a href="http://toeflvip.xiaoma.com/mingshijieshao/20120705/93119.html" target="_blank">小马过河托福老师冯若</a></div>
+            	<div class="XMXuanXKUlList"><p></p><a href="http://toeflvip.xiaoma.com/mingshijieshao/20120701/93005.html" target="_blank">小马过河托福名师—苏显嘉老师</a></div>
+            	<div class="XMXuanXKUlList"><p></p><a href="http://toeflvip.xiaoma.com/mingshijieshao/20120701/93007.html" target="_blank">小马过河托福名师—李忠华老师</a></div>
+            	<div class="XMXuanXKUlList"><p></p><a href="http://toeflvip.xiaoma.com/mingshijieshao/20120701/93009.html" target="_blank">小马过河托福名师—马骏老师</a></div>
+				-->
+            	
+            </li>
+        </ul>
+    </div>
+    <a href="http://products.xiaoma.com/sj/" target="_blank" onclick="_gaq.push(['_trackEvent', '8_2', 'clicked', '4_10_7'])"><img src="http://pics1.xiaoma.com.cn/xiaoma/adimgs/20120901/TOEFL300.jpg" class="GuangGaoPic" style=" height:254px;"/></a>
+    <div class="XMIfrimRightXuanXK">
+    	<dl>
+        	<dt>课程推荐</dt>
+            <dd class="clickXuanXK">2</dd>
+            <dd>1</dd>
+        </dl>
+        <ul>
+        	<li>
+            	<div class="XMXuanXKUlList"><p style="background-position:0px 0px;" class="XMXuanXKUlListP"></p><a href="http://mall.xiaoma.com/goods-34.html" target="_blank">TOEFL全日制1对1</a></div>
+                <div class="XMXuanXKUlList"><p style="background-position:0px -12px;" class="XMXuanXKUlListP"></p><a href="http://mall.xiaoma.com/goods-48.html" target="_blank">托福点题班</a></div>
+				<div class="XMXuanXKUlList"><p style="background-position:0px -24px;" class="XMXuanXKUlListP"></p><a href="http://mall.xiaoma.com/goods-49.html" target="_blank">TOEFL考前冲刺班</a></div>
+                <div class="XMXuanXKUlList"><p style="background-position:0px -36px;" class="XMXuanXKUlListP"></p><a href="http://mall.xiaoma.com/goods-42.html" target="_blank">托福暑期精品10人小班（基础）</a></div>
+                <div class="XMXuanXKUlList"><p style="background-position:0px -48px;" class="XMXuanXKUlListP"></p><a href="http://mall.xiaoma.com/goods-43.html" target="_blank">托福暑期精品10人小班（强化）</a></div>
+                <div class="XMXuanXKUlList"><p style="background-position:0px -60px;" class="XMXuanXKUlListP"></p><a href="http://mall.xiaoma.com/goods-41.html" target="_blank">VIP1对1小时计划</a></div>
+                <div class="XMXuanXKUlList"><p style="background-position:0px -72px;" class="XMXuanXKUlListP"></p><a href="http://mall.xiaoma.com/goods-39.html" target="_blank">SAT考前强化8-12人班</a></div>
+				<div class="XMXuanXKUlList"><p style="background-position:0px -84px;" class="XMXuanXKUlListP"></p><a href="http://mall.xiaoma.com/goods-45.html" target="_blank">SAT暑期精品10人小班（强化）</a></div>
+                <div class="XMXuanXKUlList"><p style="background-position:0px -96px;" class="XMXuanXKUlListP"></p><a href="http://mall.xiaoma.com/goods-44.html" target="_blank">SAT暑期精品10人小班（基础）</a></div>
+                <div class="XMXuanXKUlList"><p style="background-position:0px -108px;" class="XMXuanXKUlListP"></p><a href="http://mall.xiaoma.com/goods-23.html" target="_blank">TOEFL听写训练营</a></div>
+                
+            </li>
+            <li style=" display:none;">
+            	<div class="XMXuanXKUlList"><p style="background-position:0px 0px;" class="XMXuanXKUlListP"></p><a href="http://mall.xiaoma.com/goods-15.html" target="_blank">托福网络课程</a></div>
+                <div class="XMXuanXKUlList"><p style="background-position:0px -12px;" class="XMXuanXKUlListP"></p><a href="http://mall.xiaoma.com/goods-15.html" target="_blank">TOEFL模考班</a></div>
+                <div class="XMXuanXKUlList"><p style="background-position:0px -24px;" class="XMXuanXKUlListP"></p><a href="http://mall.xiaoma.com/goods-12.html" target="_blank">小马过河SAT视听课—许建军老师</a></div>
+                <div class="XMXuanXKUlList"><p style="background-position:0px -36px;" class="XMXuanXKUlListP"></p><a href="http://products.xiaoma.com/dtb/" target="_blank">"四大名补"托福点题班</a></div>
+                <div class="XMXuanXKUlList"><p style="background-position:0px -48px;" class="XMXuanXKUlListP"></p><a href="http://mall.xiaoma.com/goods-47.html" target="_blank">雅思暑期精品10人小班（强化）师</a></div>
+                <div class="XMXuanXKUlList"><p style="background-position:0px -60px;" class="XMXuanXKUlListP"></p><a href="http://mall.xiaoma.com/goods-40.html" target="_blank">TOEFL词汇训练营</a></div>
+                <div class="XMXuanXKUlList"><p style="background-position:0px -72px;" class="XMXuanXKUlListP"></p><a href="http://mall.xiaoma.com/goods-38.html" target="_blank">全日制精英计划B</a></div>
+                <div class="XMXuanXKUlList"><p style="background-position:0px -84px;" class="XMXuanXKUlListP"></p><a href="http://mall.xiaoma.com/goods-37.html" target="_blank">全日制精英计划A</a></div>
+                <div class="XMXuanXKUlList"><p style="background-position:0px -96px;" class="XMXuanXKUlListP"></p><a href="http://mall.xiaoma.com/goods-36.html" target="_blank">10000魔鬼词汇大师班</a></div>
+                <div class="XMXuanXKUlList"><p style="background-position:0px -108px;" class="XMXuanXKUlListP"></p><a href="http://mall.xiaoma.com/goods-22.html" target="_blank">SAT词汇填空训练营</a></div>
+            </li>
+        </ul>
+    </div>
+    <div class="XMIfrimRightXuanXKNe">
+    	<dl>
+        	<dt></dt>
+            <dd style="background-position:0px -640px;">托福机经</dd>
+            <dd>sat</dd>
+        </dl>
+        <ul>
+        	<li>
+			  {dede:arclist limit='0,9' typeid='15' titlelen='60'}
+    	      <div class="XMXuanXKUlList"><p></p><a href="[field:arcurl/]" title="[field:title/]"    target="_blank">[field:title/]</a></div>
+    	      {/dede:arclist}
+			<!--
+            	<div class="XMXuanXKUlList"><p></p><a href="http://toefl.xiaoma.com/tuofujijing/20120731/93870.html" target="_blank" title="2012年7月28日托福考试回忆：阅读部分">2012年7月28日托福考试回忆：阅读部分</a></div>
+                <div class="XMXuanXKUlList"><p></p><a href="http://toefl.xiaoma.com/tuofujijing/20120731/93869.html" target="_blank" title="2012年7月28日托福考试回忆：听力部分">2012年7月28日托福考试回忆：听力部分</a></div>
+                <div class="XMXuanXKUlList"><p></p><a href="http://toefl.xiaoma.com/tuofujijing/20120731/93868.html" target="_blank" title="2012年7月28日托福考试回忆：口语部分">2012年7月28日托福考试回忆：口语部分</a></div>
+                <div class="XMXuanXKUlList"><p></p><a href="http://toefl.xiaoma.com/tuofujijing/20120727/93707.html" target="_blank" title="2012年6月17日托福机经小范围第9套">2012年6月17日托福机经小范围第9套</a></div>
+                <div class="XMXuanXKUlList"><p></p><a href="http://toefl.xiaoma.com/tuofujijing/20120727/93706.html" target="_blank" title="2012年6月17日托福机经小范围第8套">2012年6月17日托福机经小范围第8套</a></div>
+                <div class="XMXuanXKUlList"><p></p><a href="http://toefl.xiaoma.com/tuofujijing/20120727/93705.html" target="_blank" title="2012年6月17日托福机经小范围第7套">2012年6月17日托福机经小范围第7套</a></div>
+                <div class="XMXuanXKUlList"><p></p><a href="http://toefl.xiaoma.com/tuofujijing/20120727/93704.html" target="_blank" title="2012年6月17日托福机经小范围第6套">2012年6月17日托福机经小范围第6套</a></div>
+                <div class="XMXuanXKUlList"><p></p><a href="http://toefl.xiaoma.com/tuofujijing/20120727/93703.html" target="_blank" title="2012年6月17日托福机经小范围第5套">2012年6月17日托福机经小范围第5套</a></div>
+                <div class="XMXuanXKUlList"><p></p><a href="http://toefl.xiaoma.com/tuofujijing/20120727/93702.html" target="_blank" title="2012年6月17日托福机经小范围第4套">2012年6月17日托福机经小范围第4套</a></div>
+				-->
+            </li>
+            <li style=" display:none;">
+			  {dede:arclist limit='0,9' typeid='45' titlelen='60'}
+    	      <div class="XMXuanXKUlList"><p></p><a href="[field:arcurl/]" title="[field:title/]"    target="_blank">[field:title/]</a></div>
+    	      {/dede:arclist}
+			<!--
+            	<div class="XMXuanXKUlList"><p></p><a href="http://sat.xiaoma.com/SATtiankong/20120814/94196.html" target="_blank" title="破解SAT填空题的三大要点(一)">破解SAT填空题的三大要点(一)</a></div>
+                <div class="XMXuanXKUlList"><p></p><a href="http://sat.xiaoma.com/SATtiankong/20120814/94197.html" target="_blank" title="破解SAT填空题的三大要点">破解SAT填空题的三大要点(二)</a></div>
+                <div class="XMXuanXKUlList"><p></p><a href="http://sat.xiaoma.com/SATtiankong/20120814/94198.html" target="_blank" title="七种应对SAT填空题的答题方法">七种应对SAT填空题的答题方法</a></div>
+                <div class="XMXuanXKUlList"><p></p><a href="http://sat.xiaoma.com/SATtiankong/20120814/94199.html" target="_blank" title="45个SAT填空题高频词汇分享">45个SAT填空题高频词汇分享</a></div>
+                <div class="XMXuanXKUlList"><p></p><a href="http://sat.xiaoma.com/SATtiankong/20120814/94200.html" target="_blank" title="SAT填空题的四类逻辑结构总结">SAT填空题的四类逻辑结构总结</a></div>
+                <div class="XMXuanXKUlList"><p></p><a href="http://sat.xiaoma.com/SATyuedu/20120730/93844.html" target="_blank" title="美国高考SAT阅读测试的应对策略">美国高考SAT阅读测试的应对策略</a></div>
+                <div class="XMXuanXKUlList"><p></p><a href="http://sat.xiaoma.com/SATzixun/20120731/93883.html" target="_blank" title="SAT改错题的3点小窍门">SAT改错题的3点小窍门</a></div>
+                <div class="XMXuanXKUlList"><p></p><a href="http://sat.xiaoma.com/SATyuedu/20120730/93854.html" target="_blank" title="SAT考试的词汇特点与解析">SAT考试的词汇特点与解析</a></div>
+                <div class="XMXuanXKUlList"><p></p><a href="http://sat.xiaoma.com/SATyuedu/20120730/93853.html" target="_blank" title="名师指导: SAT阅读740分是如何炼成的">名师指导: SAT阅读740分是如何炼成的</a></div>
+				-->
+            </li>
+        </ul>
+    </div>
+  
+</div>
+
+</body>
+<script type="text/javascript">
+
+$(function(){
+	$('.XMIfrimRightXuanXK').find('dd').mouseover(function(){
+		$(this).addClass('clickXuanXK');
+		$(this).siblings().removeClass('clickXuanXK');
+		
+		$(this).parent().parent().find('li').hide();
+		$(this).parent().parent().find('li').eq($(this).index()-1).show();
+	});
+	$('.XMIfrimRightXuanXKNe').find('dd').mouseover(function(){
+		$(this).parent().find('dd').css('background-position','-70px -640px');
+		$(this).css('background-position','0px -640px');
+		
+		$(this).parent().parent().find('li').hide();
+		$(this).parent().parent().find('li').eq($(this).index()-1).show();
+	});
+	var Hei = document.getElementById('XMIfrimRight').offsetHeight;
+	var HeiN = document.body.offsetHeight+document.documentElement.offsetHeight;
+	document.title += "-----------"+Hei+"!!!!!"+HeiN;
+	var date_now = new Date();
+	var test_sem_cookie_expires = new Date(date_now.getTime() + 1000*60*50);
+	CookieUtil.set("XMrig_hei",Hei,test_sem_cookie_expires,"/","xiaoma.com");
+})
+//window.parent.document.getElementById('XMright').style.height  = document.getElementById('XMIfrimRight').offsetHeight + "px";
+
+</script>
+</html>

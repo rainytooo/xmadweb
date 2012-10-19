@@ -1,0 +1,579 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{dede:field.seotitle /} - {dede:global.cfg_webname/}</title>
+<meta name="keywords" content="{dede:field.keywords/}" />
+<meta name="description" content="{dede:field.description function='html2text(@me)'/}" />
+<!-- include style file and js file  -->
+{dede:include filename="static_files_inc.htm"/}
+<script type="text/javascript" src="http://img.xiaoma.com/js/jquery_1.7.1.min.js"></script>
+<script type="text/javascript" src="http://img.xiaoma.com/js/leyu/move.js"></script>
+<script type="text/javascript" src="http://img.xiaoma.com/js/leyu/TextJs_n1.js"></script>
+<!--[if IE 6]>
+<script src="png.js" mce_src="http://img.xiaoma.com/js/leyu/png.js"></script>
+<script type="text/javascript">DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<script>
+$(function(){
+	$('.BGnav').find('li').hover(function(){
+		
+		$(this).find('p').animate({opacity:"1"},50);
+		$(this).find('a').addClass('BGnavH');
+	},function(){
+		if($(this).attr('id')=='BGnavCli'){
+			return;
+		}
+		$(this).find('p').animate({opacity:"0"},50);
+		$(this).find('a').removeClass('BGnavH');
+	});
+})
+</script>
+
+<style>
+.Cen{  width:960px; margin:0px auto; height:auto; }
+.BGbenner{ width:100%; height:377px; display: block; background:url({dede:global.cfg_templets_skin/}/images/banner.gif) center; float:left;}
+
+.BGnav{ width:100%; height:43px; background:url({dede:global.cfg_templets_skin/}/images/1Dui1_nav_bg.jpg) repeat-x; float:left;}
+
+.CenBGbenner{ float:left; margin-top:10px; margin-bottom:10px;}
+.BGnav ul{ width:960px; margin:0px auto; height:auto; height:40px; overflow:hidden;}
+.BGnav ul li{ width:auto;  float:left; margin-top:7px; height:29px; line-height:29px; position:relative; width:106px;}
+.BGnav ul li a{ font-size:14px; color:#fff; width:104px; text-align:center; height:16px; line-height:16px; border-left:1px solid #cb0c06; border-right:1px solid #f28080; float:left; margin-top:5px; z-index:3; position:absolute;}
+.BGnav ul li p{ position:absolute; background:url({dede:global.cfg_templets_skin/}/images/1Dui1_nav_bg_but.jpg);background-position:center; background-repeat:no-repeat; width:100px; height:29px; z-index:2; top:0px; filter:Alpha(Opacity=0); opacity:0; left:3px;}
+.BGnav ul li .BGnavH{ font-weight:bold; color:#e60707; text-decoration:none; }
+</style>
+<style>
+.SZcenLeft{ float:left; width:720px; height:auto;}
+.SZcenRight{ float:right; width:230px; height:auto;}
+.SZcenTabBox{ float:left; width:100%; height:auto; margin-bottom:20px;}
+.SZcenTabBox .SZcenTabBoxTop{ float:left; width:100%; height:38px; background:url({dede:global.cfg_templets_skin/}/images/XMShiZiLiLiangBG.png);}
+.SZcenTabBox .SZcenTabBoxTop b{ width:187px; height:38px; line-height:38px; text-align:center; float:left; font-size:16px; color:#FFF;}
+.SZcenTabBox .SZcenTabBoxTop a{ width:auto; height:38px; line-height:38px; text-align:center; float:right; font-size:12px; color:red; margin-right:10px;}
+.SZcenTabBox .SZcenTabBoxTex{ width:360px; height:auto; border-bottom:1px dotted #828282; float:left; padding-bottom:20px; margin-top:20px;}
+.SZcenTabBox .SZcenTabBoxTex .SZcenTabBoxTexL{ width:120px; float:left; height:auto;}
+.SZcenTabBox .SZcenTabBoxTex .SZcenTabBoxTexL img{ float:left; padding:2px; border:1px solid #ccc; width:110px; height:135px;}
+.SZcenTabBox .SZcenTabBoxTex .SZcenTabBoxTexL div{ float:left; width:100%; height:auto;	}
+.SZcenTabBox .SZcenTabBoxTex .SZcenTabBoxTexL div p{ float:left; width:16px; height:16px; background:url({dede:global.cfg_templets_skin/}/images/jiathis_ico.png); background-position:0px -96px; margin-top:10px; margin-left:20px; display:inline;}
+.SZcenTabBox .SZcenTabBoxTex .SZcenTabBoxTexL div a{ float:left; width:67px; height:18px; background:url({dede:global.cfg_templets_skin/}/images/widthBg.png); background-position:0px -603px; margin-top:10px; margin-left:20px; display:inline;}
+.SZcenTabBox .SZcenTabBoxTex .SZcenTabBoxTexR{ width:220px; float:right; }
+.SZcenTabBox .SZcenTabBoxTex .SZcenTabBoxTexR dl{ width:100%; float:left; height:auto; margin-bottom:10px;height:145px;overflow:hidden;}
+.SZcenTabBox .SZcenTabBoxTex .SZcenTabBoxTexR dl dt{ width:100%; float:left; height:auto;}
+.SZcenTabBox .SZcenTabBoxTex .SZcenTabBoxTexR dl dt a{ font-size:14px; font-weight:bold; color:#000;}
+.SZcenTabBox .SZcenTabBoxTex .SZcenTabBoxTexR dl dd{ width:100%; float:left; line-height:16px; color:#666; margin-top:5px; display:inline;}
+
+.SZcenTabBox .SZcenTabBoxTex .SZcenTabBoxTexR .SZcenTabBoxTexRZJA{ width:60px; height:17px; float:left; background:url({dede:global.cfg_templets_skin/}/images/widthBg.png); background-position:0px -586px;}
+.SZcenTabBox .SZcenTabBoxTex .SZcenTabBoxTexR .SZcenTabBoxTexRCGA{ float:left; color:red; margin-left:15px; display:inline;}
+.SZcenTabBox .SZcenTabBoxTex .SZcenTabBoxTexR p{ width:14px; height:9px; font-size:0px; background:url({dede:global.cfg_templets_skin/}/images/smallBg.png); background-position:0px -379px; float:left; margin-top:3px; margin-left:5px; display:inline;}
+.SZcenTabBox .SZcenTabBoxTex .SZcenTabBoxTexR .SZcenTabBoxTexRXGA{ float:left; display:inline; margin-left:5px;}
+
+
+.SZcenRBox{ float:left; width:100%; height:auto;}
+.SZcenRBox .SZcenRBoxTop{ width:100%; height:33px; background:url({dede:global.cfg_templets_skin/}/images/XMShiZiLiLiangBG.png); background-position:0px -38px;}
+.SZcenRBox .SZcenRBoxTop b{ float:left; font-size:14px; line-height:33px; height:33px; color:#005516; margin-left:10px; display:inline;}
+.SZcenRBox .SZcenRBoxTop a{ float:right; width:36px; height:17px; border:1px solid #e0dfdf; background:#fff; text-align:center; line-height:17px; margin-top:8px; margin-right:8px; display:inline;}
+
+.SZcenRBox .SZcenRBoxTex{ width:228px; height:auto; float:left; border-left:1px solid #c7dccc; border-right:1px solid #c7dccc; padding-bottom:10px; border-bottom:1px solid #c7dccc; margin-bottom:8px;}
+.SZcenRightGuangGao{ float:left;margin-bottom:5px;}
+.SZcenRBox .SZcenRBoxTex .SZcenRBoxTexHBTJ dt{ float:left; width:100%; height:auto; }
+.SZcenRBox .SZcenRBoxTex .SZcenRBoxTexHBTJ dt img{ float:left; width:105px; height:70px; margin-top:10px; margin-left:10px; display:inline;}
+.SZcenRBox .SZcenRBoxTex .SZcenRBoxTexHBTJ dt b{ float:right; width:100px; text-align:center; font-size:14px; margin-right:5px; display:inline; margin-top:10px;}
+.SZcenRBox .SZcenRBoxTex .SZcenRBoxTexHBTJ dt p{ float:right; width:100px; margin-right:5px; display:inline; line-height:20px; margin-top:5px;}
+.SZcenRBox .SZcenRBoxTex .SZcenRBoxTexHBTJ li{ float:left; width:100%; height:auto; border-bottom:1px dotted #ccc; padding-bottom:10px;}
+.SZcenRBox .SZcenRBoxTex .SZcenRBoxTexHBTJ li img{ float:left; width:105px; height:70px; margin-top:10px; margin-left:10px; display:inline;}
+.SZcenRBox .SZcenRBoxTex .SZcenRBoxTexHBTJ  b{ float:right; width:100px; text-align:center; font-size:14px; margin-right:5px; display:inline; margin-top:10px;}
+.SZcenRBox .SZcenRBoxTex .SZcenRBoxTexHBTJ li p{ float:right; width:100px; margin-right:5px; display:inline; line-height:20px; margin-top:5px;}
+.SZcenRBox .SZcenRBoxTex .SZcenRBoxTexHBTJ dd{ width:100%; float:left; height:auto; margin-top:5px;}
+.SZcenRBox .SZcenRBoxTex .SZcenRBoxTexHBTJ dd p{width:14px; height:9px; font-size:0px; background:url({dede:global.cfg_templets_skin/}/images/smallBg.png); background-position:0px -379px; float:left; margin-top:3px; margin-left:10px; display:inline;}
+.SZcenRBox .SZcenRBoxTex .SZcenRBoxTexHBTJ dd a{ width:180px; height:18px; float:left; overflow:hidden; margin-left:5px; display:inline; color:#666;}
+
+.SZcenRBox .SZcenRBoxTex .SZcenRBoxTexKCTJ{ float:left; width:100%; height:auto;}
+.SZcenRBox .SZcenRBoxTex .SZcenRBoxTexKCTJ li{ float:left; width:100%; height:auto; margin-top:10px;}
+.SZcenRBox .SZcenRBoxTex .SZcenRBoxTexKCTJ li p{width:3px; height:3px; font-size:0px; float:left; margin-top:8px; margin-left:10px; display:inline; background:#666666;}
+.SZcenRBox .SZcenRBoxTex .SZcenRBoxTexKCTJ li a{ width:180px; height:18px; float:left; overflow:hidden; margin-left:5px; display:inline; color:#666;}
+
+.SZcenRBox .SZcenRBoxTex .SZcenRBoxTexMSWB{ float:left; width:100%; height:auto;}
+.SZcenRBox .SZcenRBoxTex .SZcenRBoxTexMSWB li{ float:left; width:100%; height:auto; margin-top:10px; height:60px; overflow:hidden;}
+.SZcenRBox .SZcenRBoxTex .SZcenRBoxTexMSWB li img{ width:50px; height:50px; float:left; margin-left:10px; display:inline;}
+.SZcenRBox .SZcenRBoxTex .SZcenRBoxTexMSWB li .SZcenRBoxTexMSWBLS{ float:left; width:auto; height:auto; color:#a4591f; margin-left:10px; display:inline;}
+.SZcenRBox .SZcenRBoxTex .SZcenRBoxTexMSWB li .SZcenRBoxTexMSWBST{ float:left; width:58px; height:19px; background:url({dede:global.cfg_templets_skin/}/images/widthBg.png); background-position:0px -620px; margin-left:5px; display:inline;}
+.SZcenRBox .SZcenRBoxTex .SZcenRBoxTexMSWB li p{ width:150px; float:left; height:auto; line-height:20px; color:#666; margin-left:10px; display:inline;}
+
+
+
+.XMCenBot{ float:left; width:958px; border:1px solid #ccc;padding-bottom:20px;}
+.XMCenBot .XMCenBotTop{ float:left; width:100%; border-bottom:1px solid #ccc; height:30px; background:url(({dede:global.cfg_templets_skin/}/images/TopBg.png); background-position:0px -180px;}
+.XMCenBot .XMCenBotTop b{ font-size:14px; float:left; margin-left:10px; margin-top:6px; display:inline;}
+.XMCenBot img{ float:left; margin-left:25px; margin-top:20px; display:inline;}
+.XMCenBot ul{ float:left; width:940px; height:auto;}
+.XMCenBot ul li{ float:left; margin-left:25px; display:inline; margin-top:10px; padding-right:20px;}
+.XMCenBot ul li a{ font-size:12px; color:#333;}
+#BGnavCli{}
+#BGnavCli p{ filter:Alpha(Opacity=100); opacity:1;}
+#BGnavCli a{ font-weight:bold; color:#e60707; text-decoration:none; }
+</style>
+
+</head>
+
+<body>
+<!-- top head nav -->
+{dede:include filename="top_head_nav.htm"/} 
+<a href="#" class="BGbenner"></a>
+<div class="BGnav">
+	<ul>
+    	<li><a href="http://www.xiaoma.com" style=" border-left:none;">小马过河</a><p></p></li>        
+        <li><a href="http://toeflvip.xiaoma.com" >托福vip1对1</a><p></p></li>
+        <li><a href="http://toeflvip.xiaoma.com/kcjs/">课程介绍</a><p></p></li>
+        <li id="BGnavCli"><a href="http://toeflvip.xiaoma.com/szll/">师资力量</a><p></p></li>
+        <li><a href="http://toeflvip.xiaoma.com/gxtf/">各项提分</a><p></p></li>
+        <li><a href="http://toeflvip.xiaoma.com/msdy/">名师答疑</a><p></p></li>
+        <li><a href="http://toeflvip.xiaoma.com/xyxg/">学员效果</a><p></p></li>
+        <li><a href="http://toeflvip.xiaoma.com/bmlc/">报名流程</a><p></p></li>
+        <li><a href="http://www.xiaoma.com/help/about.html" style="border-right:none;">关于小马</a><p></p></li>
+    </ul>
+</div>
+<div class="Cen">
+<script src="http://www.xiaoma.com/plus/ad_js.php?aid=121" language="javascript"></script>
+	
+	
+    <div class="SZcenLeft">
+    	<div class="SZcenTabBox">
+    		<div class="SZcenTabBoxTop">
+				<B>小马名师风采</B>
+				<a href="http://toeflvip.xiaoma.com/mingshijieshao/">更多</a>
+			</div>
+            <div class="SZcenTabBoxTex">
+            	<div class="SZcenTabBoxTexL">
+                	<a href="http://toeflvip.xiaoma.com/mingshijieshao/20120701/93009.html" target="_blank"><img src="http://img.xiaoma.com/adimages/20120710/majun.jpg" /></a>
+                    <div><a href="http://chat.looyu.com/chat/chat/p.do?c=46101&f=96991&g=5127" target="_blank" onclick="_gaq.push(['_trackEvent', 'looyu', 'clicked_button', 'mingshi'])"></a>
+</div>
+                </div>
+                <div class="SZcenTabBoxTexR">
+            		<dl>
+                    	<dt><a href="http://toeflvip.xiaoma.com/mingshijieshao/20120701/93009.html
+" target="_blank">小马过河名师--马骏</a></dt>
+                        <dd>2003 年北京新东方国外考试部托福教师，托福听力首席主讲。</dd>
+                        <dd>2004 年北京新东方国外考试部主任助理，北京新东方SAT项目创始人。</dd>
+                        <dd>2005 年独立主编全国第一套SAT培训教材。</dd>
+                       
+                    </dl>
+                    <a href="http://mall.xiaoma.com/goods-48.html" target="_blank" class="SZcenTabBoxTexRZJA"></a>
+                    <a href="http://mall.xiaoma.com/goods-48.html" target="_blank" class="SZcenTabBoxTexRCGA">托福听力</a>
+					
+                
+                    
+            	</div>
+            </div>
+            <div class="SZcenTabBoxTex">
+            	<div class="SZcenTabBoxTexL">
+                	<a href="http://toeflvip.xiaoma.com/mingshijieshao/20120701/93008.html
+" target="_blank"><img src="http://img.xiaoma.com/adimages/20120710/xujianjun.jpg" /></a>
+                    <div><a href="http://chat.looyu.com/chat/chat/p.do?c=46101&f=96991&g=5127" target="_blank" onclick="_gaq.push(['_trackEvent', 'looyu', 'clicked_button', 'mingshi'])"></a></div>
+                </div>
+                <div class="SZcenTabBoxTexR">
+            		<dl>
+                    	<dt><a href="http://toeflvip.xiaoma.com/mingshijieshao/20120701/93008.html
+" target="_blank">小马过河名师--许建军</a></dt>
+                        <dd>2002 加盟新东方，参与创建天津新东方学校。</dd>
+                        <dd>2003 年天津新东方国外考试部主任。</dd>
+                        <dd>2004 年创建新东方“词汇魔鬼训练营”。</dd>
+                        <dd>2005 年新东方集团第一批教师培训师。</dd>
+                        
+                    </dl>
+                    <a href="http://mall.xiaoma.com/goods-48.html" target="_blank" class="SZcenTabBoxTexRZJA"></a>
+                    <a href="http://mall.xiaoma.com/goods-48.html" target="_blank" class="SZcenTabBoxTexRCGA">托福词汇</a>
+                    <p></p>
+                    <a href="http://toeflvip.xiaoma.com/shitingke/20120604/92487.html" target="_blank" class="SZcenTabBoxTexRXGA">相关视频</a>
+            	</div>
+            </div>
+            <div class="SZcenTabBoxTex">
+            	<div class="SZcenTabBoxTexL">
+                	<a href="http://toeflvip.xiaoma.com/mingshijieshao/20120701/93007.html" target="_blank"><img src="http://img.xiaoma.com/adimages/20120710/lizhonghua.jpg" /></a>
+                    <div><a href="http://chat.looyu.com/chat/chat/p.do?c=46101&f=96991&g=5127" target="_blank" onclick="_gaq.push(['_trackEvent', 'looyu', 'clicked_button', 'mingshi'])"></a></div>
+                </div>
+                <div class="SZcenTabBoxTexR">
+            		<dl>
+                    	<dt><a href="http://toeflvip.xiaoma.com/mingshijieshao/20120701/93007.html
+" target="_blank">小马过河名师--李忠华</a></dt>
+                        <dd>2001-2002 吉林艺术学院 英语部讲师。</dd>
+                        <dd>2002 年加入新东方。</dd>
+                        <dd>2002-2003 北京新东方Ellis 学院讲师。</dd>
+                        <dd>2003-2005 广州新东方新概念部讲师。</dd>
+						<dd>2005-2007 深圳新东方新概念部、国外部、中学部、听口部讲师。</dd>
+                        
+                    </dl>
+                    <a href="http://mall.xiaoma.com/goods-34.html" target="_blank" class="SZcenTabBoxTexRZJA"></a>
+                    <a href="http://mall.xiaoma.com/goods-34.html" target="_blank" class="SZcenTabBoxTexRCGA">托福阅读</a>
+                    <p></p>
+                    <a href="http://toeflvip.xiaoma.com/shitingke/20120604/92486.html" target="_blank" class="SZcenTabBoxTexRXGA">相关视频</a>
+            	</div>
+            </div>
+            <div class="SZcenTabBoxTex">
+            	<div class="SZcenTabBoxTexL">
+                	<a href="http://mall.xiaoma.com/goods-34.html" target="_blank"><img src="http://img.xiaoma.com/adimages/20120710/xuxiangbojpg.jpg" /></a>
+                    <div><a href="http://chat.looyu.com/chat/chat/p.do?c=46101&f=96991&g=5127" target="_blank" onclick="_gaq.push(['_trackEvent', '5_1', 'clicked', '2_17_10'])"></a></div>
+                </div>
+                <div class="SZcenTabBoxTexR">
+            		<dl>
+                    	<dt><a href="http://toeflvip.xiaoma.com/mingshijieshao/20120701/93006.html" target="_blank">小马过河名师--许向博</a></dt>
+                        <dd>2003 年加入新东方。</dd>
+                        <dd>2004 年参与组建广州新东方新概念部门。</dd>
+                        <dd>2006 年参与创建济南新东方学校。</dd>
+                        <dd>2008 年与马骏老师组建新东方国际预备学校教学团队。</dd>
+                        
+                        
+                    </dl>
+                    <a href="http://mall.xiaoma.com/goods-34.html" target="_blank" class="SZcenTabBoxTexRZJA"></a>
+                    <a href="http://mall.xiaoma.com/goods-34.html" target="_blank" class="SZcenTabBoxTexRCGA">托福写作</a>
+                    
+                    
+            	</div>
+            </div>
+            
+    	</div>
+        <div class="SZcenTabBox">
+    		<div class="SZcenTabBoxTop"><B>小马名师风采</B><a href="http://toeflvip.xiaoma.com/mingshijieshao/">更多</a></div>
+            <div class="SZcenTabBoxTex">
+            	<div class="SZcenTabBoxTexL">
+                	<img src="http://img.xiaoma.com/adimages/20120710/suxianjia.jpg" /></a>
+                    <div><a href="http://chat.looyu.com/chat/chat/p.do?c=46101&f=96991&g=5127" target="_blank" onclick="_gaq.push(['_trackEvent', '5_1', 'clicked', '2_17_10'])"></a></div>
+                </div>
+                <div class="SZcenTabBoxTexR">
+            		<dl>
+                    	<dt><a href="http://toeflvip.xiaoma.com/mingshijieshao/20120701/93005.html" target="_blank">小马过河名师--苏显嘉</a></dt>
+                        <dd>曾任教于香港科技大学，面向本科生全英文授课，教龄4 年。</dd>
+                        <dd>参与创建小马过河网，连续4 年无偿解答备考学员问题。</dd>
+                        <dd>出版托福听力百问百答。</dd>
+                        <dd>小马过河托福备考社区首席在线讲师。</dd>
+                       
+                    </dl>
+                    <a href="http://mall.xiaoma.com/goods-34.html" target="_blank" class="SZcenTabBoxTexRZJA"></a>
+                    <a href="http://mall.xiaoma.com/goods-34.html" target="_blank" class="SZcenTabBoxTexRCGA">托福听力</a>
+                    <p></p>
+                    <a href="http://toeflvip.xiaoma.com/shitingke/20120604/92485.html" target="_blank" class="SZcenTabBoxTexRXGA">相关视频</a>
+            	</div>
+            </div>
+           
+            <div class="SZcenTabBoxTex">
+            	<div class="SZcenTabBoxTexL">
+                	<img src="http://img.xiaoma.com/adimages/20120710/yanglu.jpg" /></a>
+                    <div><a href="http://chat.looyu.com/chat/chat/p.do?c=46101&f=96991&g=5127" target="_blank" onclick="_gaq.push(['_trackEvent', '5_1', 'clicked', '2_17_10'])"></a></div>
+                </div>
+                <div class="SZcenTabBoxTexR">
+            		<dl>
+                    	<dt><a href="http://toeflvip.xiaoma.com/mingshijieshao/20120701/93004.html" target="_blank">小马过河名师--杨璐</a></dt>
+                        <dd>2006 年开始教授留学考试类课程，对托福口语、雅思口语及SAT 写作有独特的授课方式。</dd>
+                        <dd>2008 年起从事语言学、语音学、第二外语教学研究。</dd>
+                        <dd>2008 年北京新东方VIP部SAT写作组长。</dd>
+                        
+                        
+                    </dl>
+                    <a href="http://mall.xiaoma.com/goods-34.html" target="_blank" class="SZcenTabBoxTexRZJA"></a>
+                    <a href="http://mall.xiaoma.com/goods-34.html" target="_blank" class="SZcenTabBoxTexRCGA">托福口语</a>
+                    <p></p>
+                    <a href="http://toeflvip.xiaoma.com/shitingke/20120604/92484.html" target="_blank" class="SZcenTabBoxTexRXGA">相关视频</a>
+            	</div>
+            </div>
+			<div class="SZcenTabBoxTex">
+            	<div class="SZcenTabBoxTexL"><a href="http://toeflvip.xiaoma.com/mingshijieshao/20120701/93003.html" target="_blank">
+                	<img src="http://img.xiaoma.com/adimages/20120710/liudi.jpg" /></a>
+                    <div><a href="http://chat.looyu.com/chat/chat/p.do?c=46101&f=96991&g=5127" target="_blank" onclick="_gaq.push(['_trackEvent', '5_1', 'clicked', '2_17_10'])"></a></div>
+                </div>
+                <div class="SZcenTabBoxTexR">
+            		<dl>
+                    	<dt><a href="http://toeflvip.xiaoma.com/mingshijieshao/20120701/93003.html" target="_blank">小马过河名师--刘迪</a></dt>
+                        <dd>2007 年放弃新加坡国立大学和香港大学的博士录取，供职新东方。</dd>
+                        <dd>北京新东方VIP 学习部SSAT 项目创始人。</dd>
+                        <dd>2010 年在北京新东方组建SSAT 教学团队。</dd>
+                        
+						<dd></dd>
+						                        
+                    </dl>
+                    <a href="http://mall.xiaoma.com/goods-34.html" target="_blank" class="SZcenTabBoxTexRZJA"></a>
+                    <a href="http://mall.xiaoma.com/goods-34.html" target="_blank" class="SZcenTabBoxTexRCGA">托福听力</a>
+                    
+                    
+            	</div>
+            </div>
+            <div class="SZcenTabBoxTex">
+            	<div class="SZcenTabBoxTexL"><a href="http://toeflvip.xiaoma.com/mingshijieshao/20120701/93001.html" target="_blank">
+                	<img src="http://img.xiaoma.com/adimages/20120710/jianjie.jpg" /></a>
+                    <div><a href="http://chat.looyu.com/chat/chat/p.do?c=46101&f=96991&g=5127" target="_blank" onclick="_gaq.push(['_trackEvent', '5_1', 'clicked', '2_17_10'])"></a></div>
+                </div>
+                <div class="SZcenTabBoxTexR">
+            		<dl>
+                    	<dt><a href="http://toeflvip.xiaoma.com/mingshijieshao/20120701/93001.html" target="_blank">小马过河名师--简洁</a></dt>
+                        <dd>北京新东方学校VIP部首席主讲。</dd>
+                        <dd>李阳疯狂英语首席主讲。</dd>
+                        <dd>北京邮电大学世纪学院首席主讲。</dd>
+                        <dd>北京语言大学成教院讲师。</dd>
+                        <dd>北京海淀外国语实验学校国际部首席主讲。</dd>
+						<dd></dd>
+                        
+                    </dl>
+                    <a href="http://mall.xiaoma.com/goods-34.html" target="_blank" class="SZcenTabBoxTexRZJA"></a>
+                    <a href="http://mall.xiaoma.com/goods-34.html" target="_blank" class="SZcenTabBoxTexRCGA">托福听力</a>
+                    
+            	</div>
+            </div>
+            
+    	</div>
+        <div class="SZcenTabBox">
+    		<div class="SZcenTabBoxTop"><B>小马名师风采</B><a href="http://toeflvip.xiaoma.com/mingshijieshao/">更多</a></div>
+            <div class="SZcenTabBoxTex">
+            	<div class="SZcenTabBoxTexL"><a href="http://toeflvip.xiaoma.com/mingshijieshao/20120701/93002.html" target="_blank">
+                	<img src="http://img.xiaoma.com/adimages/20120710/lijiong.jpg" /></a>
+                    <div><a href="http://chat.looyu.com/chat/chat/p.do?c=46101&f=96991&g=5127" target="_blank" onclick="_gaq.push(['_trackEvent', '5_1', 'clicked', '2_17_10'])"></a></div>
+                </div>
+                <div class="SZcenTabBoxTexR">
+            		<dl>
+                    	<dt><a href="http://toeflvip.xiaoma.com/mingshijieshao/20120701/93002.html" target="_blank">小马过河名师--李炯</a></dt>
+                        <dd>2008 年西南政法大学翻译课老师。</dd>
+                        <dd>2009 年四川外国语学院泛读课程教师。</dd>
+                        <dd>2009 年加入新东方，任SAT 阅读项目组组长。</dd>
+                        <dd></dd>
+                        <dd></dd>
+                        <dd></dd>
+                    </dl>
+                    <a href="http://mall.xiaoma.com/goods-34.html" target="_blank" class="SZcenTabBoxTexRZJA"></a>
+                    <a href="http://mall.xiaoma.com/goods-34.html" target="_blank" class="SZcenTabBoxTexRCGA">托福听力</a>
+                    
+            	</div>
+            </div>
+            <div class="SZcenTabBoxTex">
+            	<div class="SZcenTabBoxTexL"><a href="http://toeflvip.xiaoma.com/mingshijieshao/20120705/93121.html" target="_blank">
+                	<img src="http://img.xiaoma.com/adimages/20120710/zhengjie.jpg" /></a>
+                    <div><a href="http://chat.looyu.com/chat/chat/p.do?c=46101&f=96991&g=5127" target="_blank" onclick="_gaq.push(['_trackEvent', '5_1', 'clicked', '2_17_10'])"></a></div>
+                </div>
+                <div class="SZcenTabBoxTexR">
+            		<dl>
+                    	<dt><a href="http://toeflvip.xiaoma.com/mingshijieshao/20120705/93121.html" target="_blank">小马过河名师--郑婕</a></dt>
+                        <dd>2006-2008 年北京新东方国际预备学校老师。</dd>
+                        <dd>2009-2010 年北京新东方 VIP 学习部口语教研组长。</dd>
+                        <dd>2010 年参与组建新东方 SSAT 教学团队。</dd>
+                        <dd></dd>
+                        <dd></dd>
+                        <dd></dd>
+                    </dl>
+                    <a href="http://mall.xiaoma.com/goods-34.html" target="_blank" class="SZcenTabBoxTexRZJA"></a>
+                    <a href="http://mall.xiaoma.com/goods-34.html" target="_blank" class="SZcenTabBoxTexRCGA">托福口语</a>
+                    
+            	</div>
+            </div>
+            <div class="SZcenTabBoxTex">
+            	<div class="SZcenTabBoxTexL"><a href="http://toeflvip.xiaoma.com/mingshijieshao/20120713/93222.html" target="_blank">
+                	<img src="http://pics1.xiaoma.com.cn//xiaoma/cms/uploads/allimg/121015/zhangmei.jpg" /></a>
+                    <div><a href="http://chat.looyu.com/chat/chat/p.do?c=46101&f=96991&g=5127" target="_blank" onclick="_gaq.push(['_trackEvent', '5_1', 'clicked', '2_17_10'])"></a></div>
+                </div>
+                <div class="SZcenTabBoxTexR">
+            		<dl>
+                    	<dt><a href="http://toeflvip.xiaoma.com/mingshijieshao/20120713/93222.html" target="_blank">小马过河名师--张梅</a></dt>
+                        <dd>英语语言学学士，英语专业八级。</dd>
+                        <dd>2009 年在加拿大国际学校任托福阅读教师。</dd>
+                        
+                        <dd>011 年至今在小马过河国际教育任托福阅读讲师。</dd>
+                       
+                        <dd></dd>
+						<dd></dd>
+                    </dl>
+                    <a href="http://mall.xiaoma.com/goods-34.html" target="_blank" class="SZcenTabBoxTexRZJA"></a>
+                    <a href="http://mall.xiaoma.com/goods-34.html" target="_blank" class="SZcenTabBoxTexRCGA">托福阅读</a>
+                    
+            	</div>
+            </div>
+            <div class="SZcenTabBoxTex">
+            	<div class="SZcenTabBoxTexL"><a href="http://toeflvip.xiaoma.com/mingshijieshao/20120705/93119.html" target="_blank">
+                	<img src="http://img.xiaoma.com/adimages/20120710/fengruo.jpg" /></a>
+                    <div><a href="http://chat.looyu.com/chat/chat/p.do?c=46101&f=96991&g=5127" target="_blank" onclick="_gaq.push(['_trackEvent', '5_1', 'clicked', '2_17_10'])"></a></div>
+                </div>
+                <div class="SZcenTabBoxTexR">
+            		<dl>
+                    	<dt><a href="http://toeflvip.xiaoma.com/mingshijieshao/20120705/93119.html" target="_blank">小马过河名师--冯若</a></dt>
+                        <dd>2009 年新东方优秀写作教师。</dd>
+                        <dd>三年写作教龄，小马过河托福写作主讲。</dd>
+                        <dd></dd>
+                        <dd></dd>
+                        <dd></dd>
+                        <dd></dd>
+                    </dl>
+                    <a href="http://mall.xiaoma.com/goods-34.html" target="_blank" class="SZcenTabBoxTexRZJA"></a>
+                    <a href="http://mall.xiaoma.com/goods-34.html" target="_blank" class="SZcenTabBoxTexRCGA">托福写作</a>
+                    
+            	</div>
+            </div>
+            <div class="SZcenTabBoxTex">
+            	<div class="SZcenTabBoxTexL"><a href="http://toeflvip.xiaoma.com/mingshijieshao/20120704/93095.html" target="_blank">
+                	<img src="http://img.xiaoma.com/adimages/20120710/liyan.jpg" /></a>
+                    <div><a href="http://chat.looyu.com/chat/chat/p.do?c=46101&f=96991&g=5127" target="_blank" onclick="_gaq.push(['_trackEvent', '5_1', 'clicked', '2_17_10'])"></a></div>
+                </div>
+                <div class="SZcenTabBoxTexR">
+            		<dl>
+                    	<dt><a href="http://toeflvip.xiaoma.com/mingshijieshao/20120704/93095.html" target="_blank">小马过河名师--李妍</a></dt>
+                        <dd>曾任北京新东方 VIP 教学部阅读主讲。</dd>
+                        <dd>小马过河国际教育托福阅读教学专家。</dd>
+                        <dd>小马过河论坛阅读训练营项目负责人。</dd>
+                        <dd>小马过河论坛阅读训练营在线讲师。</dd>
+                        <dd></dd>
+                        <dd></dd>
+                    </dl>
+                    <a href="http://mall.xiaoma.com/goods-34.html" target="_blank" class="SZcenTabBoxTexRZJA"></a>
+                    <a href="http://mall.xiaoma.com/goods-34.html" target="_blank" class="SZcenTabBoxTexRCGA">托福阅读</a>
+                    
+            	</div>
+            </div>
+            <div class="SZcenTabBoxTex">
+            	<div class="SZcenTabBoxTexL"><a href="http://toeflvip.xiaoma.com/mingshijieshao/20120713/93224.html" target="_blank">
+                	<img src="http://img.xiaoma.com/adimages/20120720/liuzhichao.jpg" /></a>
+                    <div><a href="http://chat.looyu.com/chat/chat/p.do?c=46101&f=96991&g=5127" target="_blank" onclick="_gaq.push(['_trackEvent', 'looyu', 'clicked_button', 'mingshi'])"></a></div>
+                </div>
+                <div class="SZcenTabBoxTexR">
+            		<dl>
+                    	<dt><a href="http://toeflvip.xiaoma.com/mingshijieshao/20120713/93224.html" target="_blank">小马过河名师--刘志超</a></dt>
+                        <dd>小马过河首席托福写作老师。</dd>
+                        <dd>小马过河在线写作训练营创始人。</dd>
+                        <dd>批判性的分析，理性的严谨，中西方文化结合，旁征博引给学生写作思路扩展。</dd>
+                        
+                        <dd></dd>
+                        <dd></dd>
+                    </dl>
+                    <a href="http://mall.xiaoma.com/goods-34.html" target="_blank" class="SZcenTabBoxTexRZJA"></a>
+                    <a href="http://mall.xiaoma.com/goods-34.html" target="_blank" class="SZcenTabBoxTexRCGA">托福写作</a>
+                    
+            	</div>
+            </div>
+    	</div>
+    </div>
+    <div class="SZcenRight">
+    	<div class="SZcenRBox">
+        	<div class="SZcenRBoxTop">
+            	<b>高分学员案例</b>
+                <a href="http://toeflvip.xiaoma.com/gaofenanli/" target="_blank">更多</a>
+            </div>
+            <div class="SZcenRBoxTex">
+            	<dl class="SZcenRBoxTexHBTJ">
+                	<dt>
+                    	<a href="http://toeflvip.xiaoma.com/gaofenanli/20120706/93155.html" target="_blank"><img src="http://img.xiaoma.com/adimages/20120720/shensiyu.jpg" /></a>
+                        <b><a href="http://toeflvip.xiaoma.com/gaofenanli/20120706/93155.html" target="_blank">托福高分学员案例沈思羽</a></b>
+					{dede:arclist titlelen='400' limit='0,5' typeid='215'}
+                            	<dd>
+                                	<p></p>
+                                    <a href="[field:arcurl/]" title="[field:title/]" target="_blank">[field:title/]</a>
+                                    
+                                </dd>
+                    {/dede:arclist}
+                        
+                    </dt>
+<!--
+                    <dd><p></p><a href="http://toeflvip.xiaoma.com/gaofenanli/20120705/93123.html" target="_blank">托福高分学员案例林晓娴</a></dd>
+                    <dd><p></p><a href="http://toeflvip.xiaoma.com/gaofenanli/20120701/92969.html" target="_blank">托福高分学员案例王海萍</a></dd>
+                    <dd><p></p><a href="http://toeflvip.xiaoma.com/gaofenanli/20120701/92967.html" target="_blank">托福高分学员案例：从86到115</a></dd>
+                    <dd><p></p><a href="http://toeflvip.xiaoma.com/gaofenanli/20120701/92961.html" target="_blank">托福高分学员案例：60天从50分到106分</a></dd>
+                    <dd><p></p><a href="http://toeflvip.xiaoma.com/gaofenanli/20120701/92970.html" target="_blank">托福高分学员案例王胤喆 </a></dd>
+	-->
+                </dl>
+            </div>
+        </div>
+        <div class="SZcenRBox">
+        	<div class="SZcenRBoxTop">
+            	<b>试听课</b>
+                <a href="http://toeflvip.xiaoma.com/shitingke/" target="_blank">更多</a>
+            </div>
+            <div class="SZcenRBoxTex">
+            	<ul class="SZcenRBoxTexKCTJ">
+                	<li><p></p><a href="http://toeflvip.xiaoma.com/shitingke/20120604/92485.html" target="_blank">小马过河托福听力试听课—苏显嘉老师</a></li>
+                	<li><p></p><a href="http://toeflvip.xiaoma.com/shitingke/20120604/92486.html" target="_blank">小马过河托福阅读试听课—李忠华老师</a></li>
+                	<li><p></p><a href="http://toeflvip.xiaoma.com/shitingke/20120604/92484.html" target="_blank">小马过河托福口语试听课—杨璐老师</a></li>
+                	<li><p></p><a href="http://toeflvip.xiaoma.com/shitingke/20120604/92487.html" target="_blank">小马过河SAT试听课—许建军老师</a></li>
+                	
+                </ul>
+            </div>
+        </div>
+        <div class="SZcenRBox">
+        	<div class="SZcenRBoxTop">
+            	<b>名师访谈</b>
+                <a href="http://toeflvip.xiaoma.com/mingshifangtan/" target="_blank">更多</a>
+            </div>
+            <div class="SZcenRBoxTex">
+            	<ul class="SZcenRBoxTexHBTJ">
+                	<li>
+                    	<a href="http://toeflvip.xiaoma.com/mingshijieshao/20120701/93009.html" target="_blank"><img src="{dede:global.cfg_templets_skin/}/images/majun.jpg" /></a>
+                        <b><a href="http://toeflvip.xiaoma.com/mingshifangtan/20120701/92989.html" target="_blank">马骏老师专访</a></b>
+                        <p>精细化教学管理和服务才是成绩提高的关键</p>
+                    </li>
+                    <li>
+                    	<a href="http://toeflvip.xiaoma.com/mingshijieshao/20120701/93008.html" target="_blank"><img src="http://img.xiaoma.com/adimages/20120720/xujianjun.jpg" />
+                        <b><a href="#" target="_blank">许建军老师访谈</a></b>
+                        <p>小马过河全日制1对1教学的特殊之处</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="SZcenRBox">
+        	<div class="SZcenRBoxTop">
+            	<b>名师答疑</b>
+                <a href="http://toeflvip.xiaoma.com/mingshidayi/" target="_blank">更多</a>
+            </div>
+            <div class="SZcenRBoxTex">
+            	<ul class="SZcenRBoxTexMSWB">
+                	<li>
+                    	 <a href="http://toeflvip.xiaoma.com/mingshijieshao/20120701/93008.html" target="_blank"> <img src="http://img.xiaoma.com/adimages/20120720/xujianjun1.jpg" ></a>
+                        <a href="http://toeflvip.xiaoma.com/mingshijieshao/20120701/93008.html" target="_blank" class="SZcenRBoxTexMSWBLS">许建军老师</a>
+                        <p><a href="http://toeflvip.xiaoma.com/mingshidayi/20120701/92982.html" target="_blank" >名师答疑—关于托福全日制课程 (一)</a></p>
+                    </li>
+                    <li>
+                    	 <a href="http://toeflvip.xiaoma.com/mingshijieshao/20120701/93006.html" target="_blank"><img src="http://img.xiaoma.com/adimages/20120720/xuxiangbo.jpg" /></a>
+                        <a href="http://toeflvip.xiaoma.com/mingshijieshao/20120701/93006.html" target="_blank" class="SZcenRBoxTexMSWBLS">许向博老师</a>
+                        <p><a href="http://toeflvip.xiaoma.com/mingshijieshao/20120701/93006.html" target="_blank">名师答疑—关于托福全日制课程 (二)</a></p>
+                    </li>
+                    <li>
+                    	<a href="http://toeflvip.xiaoma.com/mingshijieshao/20120701/93004.html" target="_blank"><img src="http://img.xiaoma.com/adimages/20120720/yanglu.jpg" /></a>
+                        <a href="http://toeflvip.xiaoma.com/mingshijieshao/20120701/93004.html" target="_blank" class="SZcenRBoxTexMSWBLS">杨璐老师</a>
+                        <p><a href="http://toeflvip.xiaoma.com/mingshidayi/20120701/92975.html" target="_blank">名师答疑——关于托福考试</a></p>
+                    </li>
+                    <li>
+                    	<a href="http://toeflvip.xiaoma.com/mingshijieshao/20120701/93003.html" target="_blank" ><img src="http://img.xiaoma.com/adimages/20120720/liudi.jpg" /></a>
+                        <a href="http://toeflvip.xiaoma.com/mingshijieshao/20120701/93003.html" target="_blank" class="SZcenRBoxTexMSWBLS">刘迪老师</a>
+                        <p><a href="http://toeflvip.xiaoma.com/mingshidayi/20120701/92979.html" target="_blank" >名师答疑——关于SAT考试</a></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <a href="http://mall.xiaoma.com/goods-48.html" target="_blank" class="SZcenRightGuangGao"><img src="{dede:global.cfg_templets_skin/}/images/guanggao5.jpg" /></a>
+        <div class="SZcenRBox">
+        	<div class="SZcenRBoxTop">
+            	<b>学生感言</b>
+                <a href="http://toeflvip.xiaoma.com/xueshengganyan/" target="_blank">更多</a>
+            </div>
+            <div class="SZcenRBoxTex">
+            	<ul class="SZcenRBoxTexKCTJ">
+{dede:arclist titlelen='400' limit='0,8' typeid='216'}
+                            	<li>
+                                	<p></p>
+                                    <a href="[field:arcurl/]" title="[field:title/]" target="_blank">[field:title/]</a>
+                                </li>
+{/dede:arclist}
+<!--
+                    <li><p></p><a href="http://toeflvip.xiaoma.com/xueshengganyan/20120701/93017.html" target="_blank">关于托福1对1的课程</a></li>
+                	<li><p></p><a href="http://toeflvip.xiaoma.com/xueshengganyan/20120701/93011.html" target="_blank">这是一个值得纪念的暑假</a></li>
+                	<li><p></p><a href="http://toeflvip.xiaoma.com/xueshengganyan/20120701/93019.html" target="_blank">致小马的一封感谢信</a></li>
+                	<li><p></p><a href="http://toeflvip.xiaoma.com/xueshengganyan/20120701/93018.html" target="_blank">离梦想更近一点</a></li>
+                	<li><p></p><a href="http://toeflvip.xiaoma.com/xueshengganyan/20120701/93016.html" target="_blank">对老师的感激与敬佩</a></li>
+                	<li><p></p><a href="http://toeflvip.xiaoma.com/xueshengganyan/20120701/93015.html" target="_blank">坚持就是胜利</a></li>
+                	<li><p></p><a href="http://toeflvip.xiaoma.com/xueshengganyan/20120701/93014.html" target="_blank">没有什么不可能</a></li>
+                	<li><p></p><a href="http://toeflvip.xiaoma.com/xueshengganyan/20120701/93012.html" target="_blank">在小马过河培训60天的感言</a></li>
+-->
+                </ul>
+            </div>
+        </div>
+        <a href="http://mall.xiaoma.com/goods-43.html" target="_blank" class="SZcenRightGuangGao"><img src="http://img.xiaoma.com/adimages/20120720/tuofushirenban.jpg" /></a>
+    </div>
+    
+    <div class="blank5"></div>
+	<a href="http://toeflvip.xiaoma.com/20120728/zhuanti/shitingke.html" onclick="_gaq.push(['_trackEvent', '6_2', 'clicked', '2_14_11'])"><img src="http://pics1.xiaoma.com.cn/xiaoma/adimgs/20120730/1v1_960x80.jpg" class="CenBGbenner"/></a>
+    
+</div>
+</div>
+<!-- bottom_foot -->
+{dede:include filename="bottom_foot.htm"/} 
+</body>
+</html>
