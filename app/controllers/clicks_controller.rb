@@ -9,7 +9,7 @@ class ClicksController < ApplicationController
     time_range = (Time.now.midnight - 1.day)..Time.now.midnight
     puts time_range
     @clicks = Click.where('record_date' => time_range).paginate(:page => params[:page], :per_page => 20)
-
+    @click_count = Click.where('record_date' => time_range).sum(:clicks)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @clicks }
@@ -71,8 +71,6 @@ class ClicksController < ApplicationController
       @clicks = Click.where('record_date' => time_range).where(conditions).paginate(:page => params[:page], :per_page => 20)
       
       @click_count = Click.where('record_date' => time_range).where(conditions).sum(:clicks)
-      puts '-------------------------'
-      puts "#{@click_count}"
     else
       @clicks = Click.where(conditions).paginate(:page => params[:page], :per_page => 20)
       @click_count = Click.where(conditions).sum(:clicks)
