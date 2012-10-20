@@ -69,11 +69,12 @@ class ClicksController < ApplicationController
       @time = @t.strftime("%Y-%m-%d")
       time_range = ((@t.midnight + 1.second) - 1.day)..@t.midnight
       @clicks = Click.where('record_date' => time_range).where(conditions).paginate(:page => params[:page], :per_page => 20)
+      @click_count = Click.where('record_date' => time_range).where(conditions).count("clicks")
     else
       @clicks = Click.where(conditions).paginate(:page => params[:page], :per_page => 20)
+      @click_count = Click.where(conditions).count("clicks")
     end
 
-    @click_count = @clicks.count
   end
 
   # 如果没有显示内容可以允许添加内容
