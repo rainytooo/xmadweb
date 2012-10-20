@@ -2,6 +2,11 @@
   $(function() {
     $( "#datepicker" ).datepicker();
     $( "#datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
+    $( "#datepicker" ).val("<%= @time %>");
+    $( "#web_page" ).val("<%= @web_page%>");
+    $( "#category" ).val("<%= @category%>");
+    $( "#position" ).val("<%= @position%>");
+    $( "#campaign" ).val("<%= @campaign%>");
   });
 </script>
 <h1>点击量分类列表</h1>
@@ -11,7 +16,7 @@
 <%= form_tag(search_result_clicks_path, :method => :get) do %>
   <p>
     日期: <input type="text" id="datepicker" name="start_date"> 
-    分类: <%= select_tag(:category, options_for_select(TagCategory.where("id NOT IN (1,2)").all.collect { |p| [p.name, p.id]}), { :include_blank => true })%>
+    分类: <%= select_tag(:category, options_for_select(TagCategory.where("id != uid").all.collect { |p| [p.name, p.id]}), { :include_blank => true })%>
     页面: <%= select_tag(:web_page, options_for_select(WebPage.all.collect { |p| [p.content, p.id]}), { :include_blank => true })%>
     位置: <%= select_tag(:position, options_for_select(Position.all.collect { |p| [p.name, p.id]}), { :include_blank => true })%>
     活动: <%= select_tag(:campaign, options_for_select(Campaign.all.collect { |p| [p.name, p.id]}), { :include_blank => true })%>

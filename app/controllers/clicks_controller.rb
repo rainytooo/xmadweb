@@ -22,6 +22,7 @@ class ClicksController < ApplicationController
 
   # 查询出所有的活动点击量
   def sum_campaign
+    # @all = "select a.*, b.* From (SELECT *, sum(clicks) as sum_campaign FROM `clicks` GROUP BY campaign) a JOIN `campaigns` b ON a.campaign = b.id;";
     @all = Click.select("*, sum(clicks) as sum_campaign").group("campaign")
   end
 
@@ -64,12 +65,14 @@ class ClicksController < ApplicationController
     end
 
     if !params[:start_date].empty?
-      t = DateTime.strptime(params[:start_date] + " CCT", "%Y-%m-%d")
-      time_range = (t.midnight - 1.day)..t.midnight
+      @t = DateTime.strptime(params[:start_date] + " CCT", "%Y-%m-%d")
+      @time = @t.strftime("%Y-%m-%d")
+      time_range = ((@t.midnight + 1.second) - 1.day)..@t.midnight
       @clicks = Click.where('record_date' => time_range).where(conditions).paginate(:page => params[:page], :per_page => 20)
     else
       @clicks = Click.where(conditions).paginate(:page => params[:page], :per_page => 20)
     end
+
     @click_count = @clicks.count
   end
 
