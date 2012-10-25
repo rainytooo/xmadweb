@@ -2,6 +2,7 @@
 class CampaignsController < ApplicationController
   before_filter :authorize_not_student!
   before_filter :authorize_activity!
+  before_filter :authorize_super_admin!
 
   def index
     @campaigns = Campaign.order("created_at desc").paginate(:page => params[:page], :per_page => 20)

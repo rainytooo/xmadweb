@@ -1,3 +1,7 @@
+<%= form_tag(sum_position_clicks_path, :method => :get) do %>
+  <%= render 'search'%>
+<% end %>
+
 <h1>位置统计总表</h1>
 <%= link_to '返回', clicks_path %>
 <table>

@@ -28,14 +28,12 @@
   <tr style="font-size:15pt;margin:5px;">
     <th>标记名称</th>
     <th>点击次数</th>
-    <td><%= link_to "分类", sum_category_clicks_path %></td>
-    <td>父分类</td>
+    <td><%= link_to "父分类", sum_category_clicks_path %></td>
+    <td>分类</td>
     <td><%= link_to "页面", sum_page_clicks_path%></td>
     <td><%= link_to "位置", sum_position_clicks_path %></td>
     <td><%= link_to "活动", sum_campaign_clicks_path %></td>
     <td>记录时间</td>
-    <th></th>
-    <th></th>
   </tr>
 
 <% @clicks.each do |click| %>
@@ -78,8 +76,6 @@
       <% end %>  
     </td>
     <td><%= click.record_date %></td>
-    <td><%= link_to '编辑', edit_click_path(click) %></td>
-    <td><%= link_to '删除', click, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>

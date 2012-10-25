@@ -1,3 +1,7 @@
+<%= form_tag(sum_page_clicks_path, :method => :get) do %>
+  <%= render 'search'%>
+<% end %>
+
 <h1>页面统计总表</h1>
 <%= link_to '返回', clicks_path %>
 <table>
