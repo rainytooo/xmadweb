@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Current date:</b>
+  <%= @google_analytic.current_date %>
+</p>
+
+<p>
+  <b>Unique visitor:</b>
+  <%= @google_analytic.unique_visitor %>
+</p>
+
+<p>
+  <b>Visit product:</b>
+  <%= @google_analytic.visit_product %>
+</p>
+
+<p>
+  <b>Product page:</b>
+  <%= @google_analytic.product_page %>
+</p>
+
+<p>
+  <b>Average page:</b>
+  <%= @google_analytic.average_page %>
+</p>
+
+<p>
+  <b>Conversion1:</b>
+  <%= @google_analytic.conversion1 %>
+</p>
+
+<p>
+  <b>Stay time:</b>
+  <%= @google_analytic.stay_time %>
+</p>
+
+<p>
+  <b>Bounce rate:</b>
+  <%= @google_analytic.bounce_rate %>
+</p>
+
+<p>
+  <b>Click:</b>
+  <%= @google_analytic.click %>
+</p>
+
+<p>
+  <b>Conversion2:</b>
+  <%= @google_analytic.conversion2 %>
+</p>
+
+
+<%= link_to 'Edit', edit_google_analytic_path(@google_analytic) %> |
+<%= link_to 'Back', google_analytics_path %>

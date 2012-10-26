@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121019061756) do
+ActiveRecord::Schema.define(:version => 20121026092443) do
 
   create_table "advertisements", :force => true do |t|
     t.string   "domain"
@@ -114,6 +114,19 @@ ActiveRecord::Schema.define(:version => 20121019061756) do
     t.string   "parent_tel"
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
+  end
+
+  create_table "google_analytics", :force => true do |t|
+    t.string  "current_date"
+    t.integer "unique_visitor"
+    t.integer "visit_product"
+    t.integer "product_page"
+    t.string  "average_page"
+    t.string  "conversion1"
+    t.string  "stay_time"
+    t.string  "bounce_rate"
+    t.integer "click"
+    t.string  "conversion2"
   end
 
   create_table "lessons", :force => true do |t|

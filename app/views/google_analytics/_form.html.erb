@@ -1,0 +1,57 @@
+<%= form_for(@google_analytic) do |f| %>
+  <% if @google_analytic.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@google_analytic.errors.count, "error") %> prohibited this google_analytic from being saved:</h2>
+
+      <ul>
+      <% @google_analytic.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :current_date %><br />
+    <%= f.text_field :current_date %>
+  </div>
+  <div class="field">
+    <%= f.label :unique_visitor %><br />
+    <%= f.number_field :unique_visitor %>
+  </div>
+  <div class="field">
+    <%= f.label :visit_product %><br />
+    <%= f.number_field :visit_product %>
+  </div>
+  <div class="field">
+    <%= f.label :product_page %><br />
+    <%= f.number_field :product_page %>
+  </div>
+  <div class="field">
+    <%= f.label :average_page %><br />
+    <%= f.text_field :average_page %>
+  </div>
+  <div class="field">
+    <%= f.label :conversion1 %><br />
+    <%= f.text_field :conversion1 %>
+  </div>
+  <div class="field">
+    <%= f.label :stay_time %><br />
+    <%= f.text_field :stay_time %>
+  </div>
+  <div class="field">
+    <%= f.label :bounce_rate %><br />
+    <%= f.text_field :bounce_rate %>
+  </div>
+  <div class="field">
+    <%= f.label :click %><br />
+    <%= f.number_field :click %>
+  </div>
+  <div class="field">
+    <%= f.label :conversion2 %><br />
+    <%= f.text_field :conversion2 %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

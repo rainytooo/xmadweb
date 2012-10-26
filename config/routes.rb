@@ -1,6 +1,9 @@
 # encoding: utf-8
 Xmadweb::Application.routes.draw do
 
+  # 统计谷歌广告
+  resources :google_analytics
+
   # 关联广告页面
   resources :web_pages do
     get 'all', :on => :collection
@@ -140,7 +143,7 @@ Xmadweb::Application.routes.draw do
     post 'save_position', :on => :collection
 
     get 'add_campaign', :on => :collection
-    post 'add_campaign', :on => :collection
+    post 'save_campaign', :on => :collection
 
     get 'add_page', :on => :collection
     post 'save_page', :on => :collection
