@@ -1,4 +1,8 @@
 class GoogleAnalyticsController < ApplicationController
+  before_filter :authorize_not_student!
+  before_filter :authorize_activity!
+  before_filter :authorize_super_admin!
+  
   # GET /google_analytics
   # GET /google_analytics.json
   def index
@@ -6,7 +10,7 @@ class GoogleAnalyticsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @google_analytics }
+      format.json { render json: @google_analytics } 
     end
   end
 
