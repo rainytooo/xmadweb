@@ -24,7 +24,7 @@ class ClicksController < ApplicationController
   def sum_campaign
     if params[:start_date] && params[:end_date]
       if params[:start_date].strip.empty? && params[:end_date].strip.empty?
-        @all = Click.select("*, sum(clicks) as sum_campaign").group("campaign")
+        time_range = (Time.now.midnight - 1.day)..Time.now.midnight
       else
         @t = DateTime.strptime(params[:start_date] + " CCT", "%Y-%m-%d")
         @t1 = DateTime.strptime(params[:end_date] + " CCT", "%Y-%m-%d")
@@ -32,65 +32,65 @@ class ClicksController < ApplicationController
         @time1 = @t1.strftime("%Y-%m-%d")
         time_range = @time..@time1
         # @all = "select a.*, b.* From (SELECT *, sum(clicks) as sum_campaign FROM `clicks` GROUP BY campaign) a JOIN `campaigns` b ON a.campaign = b.id;";
-        @all = Click.where('record_date' => time_range).select("*, sum(clicks) as sum_campaign").group("campaign")
       end
     else
-      @all = Click.select("*, sum(clicks) as sum_campaign").group("campaign")
+      time_range = (Time.now.midnight - 1.day)..Time.now.midnight
     end
+    @all = Click.where('record_date' => time_range).select("*, sum(clicks) as sum_campaign").group("campaign")
   end
 
   # 查询出所有位置点击量
   def sum_position
     if params[:start_date] && params[:end_date]
       if params[:start_date].strip.empty? && params[:end_date].strip.empty?
-        @all = Click.select("*, sum(clicks) as sum_position").group("position")
+        time_range = (Time.now.midnight - 1.day)..Time.now.midnight
       else
         @t = DateTime.strptime(params[:start_date] + " CCT", "%Y-%m-%d")
         @t1 = DateTime.strptime(params[:end_date] + " CCT", "%Y-%m-%d")
         @time = @t.strftime("%Y-%m-%d")
         @time1 = @t1.strftime("%Y-%m-%d")
         time_range = @time..@time1
-        @all = Click.where('record_date' => time_range).select("*, sum(clicks) as sum_position").group("position")
       end
     else
-      @all = Click.select("*, sum(clicks) as sum_position").group("position")
+      time_range = (Time.now.midnight - 1.day)..Time.now.midnight
     end
+    @all = Click.where('record_date' => time_range).select("*, sum(clicks) as sum_position").group("position")
   end
 
   # 查询出所有的页面击量
   def sum_page
     if params[:start_date] && params[:end_date]
       if params[:start_date].strip.empty? && params[:end_date].strip.empty?
-        @all = Click.select("*, sum(clicks) as sum_page").group("page")
+        time_range = (Time.now.midnight - 1.day)..Time.now.midnight
       else
         @t = DateTime.strptime(params[:start_date] + " CCT", "%Y-%m-%d")
         @t1 = DateTime.strptime(params[:end_date] + " CCT", "%Y-%m-%d")
         @time = @t.strftime("%Y-%m-%d")
         @time1 = @t1.strftime("%Y-%m-%d")
         time_range = @time..@time1
-        @all = Click.where('record_date' => time_range).select("*, sum(clicks) as sum_page").group("page")
       end
     else
-      @all = Click.select("*, sum(clicks) as sum_page").group("page")
+      time_range = (Time.now.midnight - 1.day)..Time.now.midnight
     end
+    @all = Click.where('record_date' => time_range).select("*, sum(clicks) as sum_page").group("page")
   end
 
   # 查询出所有的类别点击量
   def sum_category
     if params[:start_date] && params[:end_date]
       if params[:start_date].strip.empty? && params[:end_date].strip.empty?
-        @all = Click.select("*, sum(clicks) as sum_category").group("category")
+        time_range = (Time.now.midnight - 1.day)..Time.now.midnight
       else
         @t = DateTime.strptime(params[:start_date] + " CCT", "%Y-%m-%d")
         @t1 = DateTime.strptime(params[:end_date] + " CCT", "%Y-%m-%d")
         @time = @t.strftime("%Y-%m-%d")
         @time1 = @t1.strftime("%Y-%m-%d")
         time_range = @time..@time1
-        @all = Click.where('record_date' => time_range).select("*, sum(clicks) as sum_category").group("category")
       end
     else
-      @all = Click.select("*, sum(clicks) as sum_category").group("category")
+      time_range = (Time.now.midnight - 1.day)..Time.now.midnight
     end
+    @all = Click.where('record_date' => time_range).select("*, sum(clicks) as sum_category").group("category")
   end
 
   # 查询出所在时间短的总流量

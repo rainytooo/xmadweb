@@ -19,7 +19,7 @@
   		no data
     	<% end %>
     </td>
-    <td><%= p.sum_position %></td>
+    <td><%= number_with_precision(p.sum_position, :precision => 0) %></td>
   </tr>
 <% end %>
 </table>
