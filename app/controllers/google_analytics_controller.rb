@@ -6,7 +6,7 @@ class GoogleAnalyticsController < ApplicationController
   # GET /google_analytics
   # GET /google_analytics.json
   def index
-    @google_analytics = GoogleAnalytic.order("created_at desc").paginate(:page => params[:page], :per_page => 20)
+    @google_analytics = GoogleAnalytic.order("current_date desc").paginate(:page => params[:page], :per_page => 20)
 
     respond_to do |format|
       format.html # index.html.erb
