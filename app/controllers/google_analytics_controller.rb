@@ -14,14 +14,22 @@ class GoogleAnalyticsController < ApplicationController
     end
   end
 
-  # GET /google_analytics/1
-  # GET /google_analytics/1.json
+
   def show
     @google_analytic = GoogleAnalytic.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @google_analytic }
+    end
+  end
+
+  def show_traffic
+    @traffic = GoogleTrafficRanking.where("`current_date`=? and channel_type=?",params[:dt],params[:t])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @traffic }
     end
   end
 

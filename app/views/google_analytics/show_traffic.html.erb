@@ -1,0 +1,24 @@
+<table >
+<% @traffic.each do |t| %>
+	<tr>
+		<td><%= t.current_date%></td>
+		<td><%= t.source_name%></td>
+		<td><%= t.visits%></td>
+		<td>
+			<% if t.channel_type == '0'%>
+				SAT
+			<% elsif t.channel_type == '1'%>
+				TOEFL
+			<% elsif t.channel_type == '2'%>
+				GRE
+			<% elsif t.channel_type == '3'%>
+				IELTS
+			<% elsif t.channel_type == '4'%>
+				留学
+			<% else %>
+				Error
+			<% end %>
+		</td>
+	</tr>
+<% end %>
+</table>

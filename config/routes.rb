@@ -2,7 +2,9 @@
 Xmadweb::Application.routes.draw do
 
   # 统计谷歌广告
-  resources :google_analytics
+  resources :google_analytics do
+    get 'show_traffic', :on => :collection
+  end
 
   # 关联广告页面
   resources :web_pages do

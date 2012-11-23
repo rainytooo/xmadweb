@@ -12,11 +12,16 @@
     <th>产品页跳出率</th>
     <th>乐语点击量含qq</th>
     <th>目标2转化率</th>
+    <th>Sat</th>
+    <th>Toefl</th>
+    <th>Gre</th>
+    <th>Ielts</th>
+    <th>Liuxue</th>
   </tr>
 
 <% @google_analytics.each do |google_analytic| %>
   <tr>
-    <td><%= link_to google_analytic.current_date, google_analytic %></td>
+    <td><%= google_analytic.current_date %></td>
     <td><%= google_analytic.unique_visitor %></td>
     <td><%= google_analytic.visit_product %></td>
     <td><%= google_analytic.product_page %></td>
@@ -26,6 +31,31 @@
     <td><%= google_analytic.bounce_rate %></td>
     <td><%= google_analytic.click %></td>
     <td><%= google_analytic.conversion2 %></td>
+    <td>
+        <% if google_analytic.sat %>
+        <%= link_to google_analytic.sat, "/google_analytics/show_traffic?dt=#{google_analytic.current_date}&t=0"%>
+        <% end %>
+    </td>
+    <td>
+        <% if google_analytic.toefl %>
+        <%= link_to google_analytic.toefl, "/google_analytics/show_traffic?dt=#{google_analytic.current_date}&t=2" %>
+        <% end %>
+    </td>
+    <td>
+        <% if google_analytic.gre%>
+        <%= link_to google_analytic.gre, "/google_analytics/show_traffic?dt=#{google_analytic.current_date}&t=1"%>
+        <% end %>
+    </td>
+    <td>
+        <% if google_analytic.ielts%>
+        <%= link_to google_analytic.ielts, "/google_analytics/show_traffic?dt=#{google_analytic.current_date}&t=3"%>
+        <% end %>
+    </td>
+    <td>
+        <% if google_analytic.liuxue%>
+        <%= link_to google_analytic.liuxue, "/google_analytics/show_traffic?dt=#{google_analytic.current_date}&t=4"%>
+        <% end %>
+    </td>
   </tr>
 <% end %>
 </table>
