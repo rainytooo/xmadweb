@@ -13,6 +13,15 @@ class GoogleAnalyticsController < ApplicationController
       format.json { render json: @google_analytics } 
     end
   end
+  
+  def user_index
+    @google_analytics = GoogleAnalytic.order("id desc").paginate(:page => params[:page], :per_page => 20)
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @google_analytics } 
+    end
+  end
 
 
   def show
@@ -25,7 +34,7 @@ class GoogleAnalyticsController < ApplicationController
   end
 
   def show_traffic
-    @traffic = GoogleTrafficRanking.where("`current_date`=? and channel_type=?",params[:dt],params[:t])
+    @traffic = GoogleTrafficRanking.where("`current_date`=? and channel_type=?",params[:dt],params[:t]).order("visits desc")
 
     respond_to do |format|
       format.html # show.html.erb

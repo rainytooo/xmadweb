@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121123021033) do
+ActiveRecord::Schema.define(:version => 20121126053810) do
 
   create_table "advertisements", :force => true do |t|
     t.string   "domain"
@@ -132,13 +132,14 @@ ActiveRecord::Schema.define(:version => 20121123021033) do
     t.string  "toefl"
     t.string  "ielts"
     t.string  "liuxue"
+    t.integer "page_view"
   end
 
   create_table "google_traffic_rankings", :force => true do |t|
-    t.string "current_date"
-    t.string "source_name"
-    t.string "visits"
-    t.string "channel_type"
+    t.string  "current_date"
+    t.string  "source_name"
+    t.integer "visits"
+    t.integer "channel_type"
   end
 
   create_table "lessons", :force => true do |t|

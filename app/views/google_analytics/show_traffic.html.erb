@@ -5,15 +5,15 @@
 		<td><%= t.source_name%></td>
 		<td><%= t.visits%></td>
 		<td>
-			<% if t.channel_type == '0'%>
+			<% if t.channel_type == 0%>
 				SAT
-			<% elsif t.channel_type == '1'%>
+			<% elsif t.channel_type == 2%>
 				TOEFL
-			<% elsif t.channel_type == '2'%>
+			<% elsif t.channel_type == 1%>
 				GRE
-			<% elsif t.channel_type == '3'%>
+			<% elsif t.channel_type == 3%>
 				IELTS
-			<% elsif t.channel_type == '4'%>
+			<% elsif t.channel_type == 4%>
 				留学
 			<% else %>
 				Error

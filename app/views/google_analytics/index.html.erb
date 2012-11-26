@@ -1,5 +1,6 @@
-<h1>Listing google_analytics</h1>
+<h1>谷歌数据列表</h1>
 
+  <%= link_to "谷歌数据（编辑版）", user_index_google_analytics_path%>
 <table border="1">
   <tr>
     <th>日期</th>
@@ -12,11 +13,6 @@
     <th>产品页跳出率</th>
     <th>乐语点击量含qq</th>
     <th>目标2转化率</th>
-    <th>Sat</th>
-    <th>Toefl</th>
-    <th>Gre</th>
-    <th>Ielts</th>
-    <th>Liuxue</th>
   </tr>
 
 <% @google_analytics.each do |google_analytic| %>
@@ -31,31 +27,6 @@
     <td><%= google_analytic.bounce_rate %></td>
     <td><%= google_analytic.click %></td>
     <td><%= google_analytic.conversion2 %></td>
-    <td>
-        <% if google_analytic.sat %>
-        <%= link_to google_analytic.sat, "/google_analytics/show_traffic?dt=#{google_analytic.current_date}&t=0"%>
-        <% end %>
-    </td>
-    <td>
-        <% if google_analytic.toefl %>
-        <%= link_to google_analytic.toefl, "/google_analytics/show_traffic?dt=#{google_analytic.current_date}&t=2" %>
-        <% end %>
-    </td>
-    <td>
-        <% if google_analytic.gre%>
-        <%= link_to google_analytic.gre, "/google_analytics/show_traffic?dt=#{google_analytic.current_date}&t=1"%>
-        <% end %>
-    </td>
-    <td>
-        <% if google_analytic.ielts%>
-        <%= link_to google_analytic.ielts, "/google_analytics/show_traffic?dt=#{google_analytic.current_date}&t=3"%>
-        <% end %>
-    </td>
-    <td>
-        <% if google_analytic.liuxue%>
-        <%= link_to google_analytic.liuxue, "/google_analytics/show_traffic?dt=#{google_analytic.current_date}&t=4"%>
-        <% end %>
-    </td>
   </tr>
 <% end %>
 </table>

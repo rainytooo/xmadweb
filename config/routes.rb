@@ -4,6 +4,7 @@ Xmadweb::Application.routes.draw do
   # 统计谷歌广告
   resources :google_analytics do
     get 'show_traffic', :on => :collection
+    get 'user_index', :on => :collection
   end
 
   # 关联广告页面
