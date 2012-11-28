@@ -162,6 +162,7 @@ Xmadweb::Application.routes.draw do
     get 'sum_position', :on => :collection
     get 'sum_page', :on => :collection
     get 'sum_category', :on => :collection
+    get 'sum_child_category', :on => :collection
     get 'search_result', :on => :collection
   end
 

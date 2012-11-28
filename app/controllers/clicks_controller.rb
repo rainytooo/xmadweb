@@ -90,6 +90,24 @@ class ClicksController < ApplicationController
     else
       time_range = (Time.now.midnight - 1.day)..Time.now.midnight
     end
+    @all = Click.where('record_date' => time_range).select("*, sum(clicks) as sum_category").group("up_category")
+  end
+
+  # 查询出所有的子类别点击量
+  def sum_child_category
+    if params[:start_date] && params[:end_date]
+      if params[:start_date].strip.empty? && params[:end_date].strip.empty?
+        time_range = (Time.now.midnight - 1.day)..Time.now.midnight
+      else
+        @t = DateTime.strptime(params[:start_date] + " CCT", "%Y-%m-%d")
+        @t1 = DateTime.strptime(params[:end_date] + " CCT", "%Y-%m-%d")
+        @time = @t.strftime("%Y-%m-%d")
+        @time1 = @t1.strftime("%Y-%m-%d")
+        time_range = @time..@time1
+      end
+    else
+      time_range = (Time.now.midnight - 1.day)..Time.now.midnight
+    end
     @all = Click.where('record_date' => time_range).select("*, sum(clicks) as sum_category").group("category")
   end
 

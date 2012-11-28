@@ -1,0 +1,29 @@
+<%= form_tag(sum_category_clicks_path, :method => :get) do %>
+  <%= render 'search'%>
+<% end %>
+
+<h1>分类统计总表</h1>
+<%= link_to '返回', clicks_url%>
+<table>
+  <tr>
+    <th>名称</th>
+    <th>点击量</th>
+  </tr>
+
+<% @all.each do |t| %>
+  <tr>    
+  	<td>
+  		<% if t.category %>
+  		<%= link_to TagCategory.find(t.category).name, "/tag_categories/detail?id=#{t.up_category}" %>
+   		<% else %>
+  		no data
+  		<% end %>
+  	</td>
+    <td>
+      <% if t.sum_category %>
+      <%= number_with_precision(t.sum_category, :precision => 0) %>
+      <% end %>
+    </td>
+  </tr>
+<% end %>
+</table>
