@@ -28,8 +28,14 @@ class TagCategoriesController < ApplicationController
       @t = DateTime.strptime(params[:start_date] + " CCT", "%Y-%m-%d")
       time_range = (@t.midnight - 1.day + 1.second)..@t.midnight
     end
-    @clicks = Click.where('record_date' => time_range).where("category = #{params[:id]}").paginate(:page => params[:page], :per_page => 10)
-    @total = Click.where('record_date' => time_range).where("category = #{params[:id]}").sum("clicks")
+    @cat_id = params[:id]
+    if [1,2].include?@cat_id
+      @clicks = Click.where('record_date' => time_range).where("category = #{params[:id]}").paginate(:page => params[:page], :per_page => 10)
+      @total = Click.where('record_date' => time_range).where("category = #{params[:id]}").sum("clicks")
+    else
+      @clicks = Click.where('record_date' => time_range).where("up_category = #{params[:id]}").paginate(:page => params[:page], :per_page => 10)
+      @total = Click.where('record_date' => time_range).where("up_category = #{params[:id]}").sum("clicks")
+    end
   end
 
   # GET /tag_categories/new

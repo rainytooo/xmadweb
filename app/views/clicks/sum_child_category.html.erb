@@ -14,7 +14,7 @@
   <tr>    
   	<td>
   		<% if t.category %>
-  		<%= link_to TagCategory.find(t.category).name, "/tag_categories/detail?id=#{t.up_category}" %>
+  		<%= link_to TagCategory.find(t.up_category).name, "/tag_categories/detail?id=#{t.up_category}" %>
    		<% else %>
   		no data
   		<% end %>

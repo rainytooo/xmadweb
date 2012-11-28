@@ -7,7 +7,11 @@
 
 
 <h1>分类流量详细列表</h1>
-<%= link_to '返回', sum_category_clicks_path %>
+<% if [1,2].include?@cat_id %>
+  <%= link_to '返回', sum_category_clicks_path %>
+<% else %>
+  <%= link_to '返回', sum_child_category_clicks_path %>
+<% end %>
 <%= form_tag(detail_tag_categories_path, :method => :get) do %>
   <p>
     日期: <input type="text" id="datepicker" name="start_date" value="<%= @t%>"> 

@@ -90,7 +90,7 @@ class ClicksController < ApplicationController
     else
       time_range = (Time.now.midnight - 1.day)..Time.now.midnight
     end
-    @all = Click.where('record_date' => time_range).select("*, sum(clicks) as sum_category").group("up_category")
+    @all = Click.where('record_date' => time_range).select("*, sum(clicks) as sum_category").group("category")
   end
 
   # 查询出所有的子类别点击量
@@ -108,7 +108,7 @@ class ClicksController < ApplicationController
     else
       time_range = (Time.now.midnight - 1.day)..Time.now.midnight
     end
-    @all = Click.where('record_date' => time_range).select("*, sum(clicks) as sum_category").group("category")
+    @all = Click.where('record_date' => time_range).select("*, sum(clicks) as sum_category").group("up_category")
   end
 
   # 查询出所在时间短的总流量
