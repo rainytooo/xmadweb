@@ -19,7 +19,11 @@
   		no data
   		<% end %>
   	</td>
-    <td><%= number_with_precision(p.sum_page, :precision => 0) %></td>
+    <td>
+      <% if p.sum_page %>
+      <%= number_with_precision(p.sum_page, :precision => 0) %>
+      <% end %>
+    </td>
   </tr>
 <% end %>
 </table>

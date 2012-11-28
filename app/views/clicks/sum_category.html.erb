@@ -19,7 +19,11 @@
   		no data
   		<% end %>
   	</td>
-    <td><%= number_with_precision(p.sum_category, :precision => 0) %></td>
+    <td>
+      <% if t.sum_category %>
+      <%= number_with_precision(t.sum_category, :precision => 0) %>
+      <% end %>
+    </td>
   </tr>
 <% end %>
 </table>

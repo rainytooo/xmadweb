@@ -19,7 +19,11 @@
     	no  data
     	<% end %>
     </td>
-    <td title="详细"><%= number_with_precision(campaign.sum_campaign, :precision => 0) %></td>
+    <td title="详细">
+      <% if campaign.sum_campaign%>
+      <%= number_with_precision(campaign.sum_campaign, :precision => 0) %>
+      <% end %>
+    </td>
   </tr>
 <% end %>
 </table>
