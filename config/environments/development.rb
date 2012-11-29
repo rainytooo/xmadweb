@@ -35,6 +35,6 @@ Xmadweb::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
   
-  config.host_url = "http://192.168.0.106:3000/"
-  config.staticfile_server_url = "http://192.168.0.106:3000/"
+  config.host_url = "http://localhost:3000/"
+  config.staticfile_server_url = "http://localhost:3000/"
 end
