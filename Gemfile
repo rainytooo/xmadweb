@@ -15,6 +15,8 @@ gem 'dynamic_form'
 
 gem 'execjs'
 
+gem 'libv8'
+
 gem 'therubyracer'
 
 gem 'devise', '2.0.4'

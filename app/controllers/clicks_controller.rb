@@ -8,7 +8,7 @@ class ClicksController < ApplicationController
   # GET /clicks.json
   def index
     time_range = (Time.now.midnight - 1.day)..Time.now.midnight
-    @clicks = Click.where('record_date' => time_range).paginate(:page => params[:page], :per_page => 20)
+    @clicks = Click.where('record_date' => time_range).paginate(:page => params[:page], :per_page => 20).order("id DESC")
     @click_count = Click.where('record_date' => time_range).sum(:clicks)
     respond_to do |format|
       format.html # index.html.erb
@@ -131,18 +131,18 @@ class ClicksController < ApplicationController
 
     if !params[:category].empty?
       @category = params[:category]
-      conditions << " and category = #{@category}"
+      conditions << " and up_category = #{@category}"
     end
 
     if !params[:start_date].empty?
       @t = DateTime.strptime(params[:start_date] + " CCT", "%Y-%m-%d")
       @time = @t.strftime("%Y-%m-%d")
       time_range = ((@t.midnight + 1.second) - 1.day)..@t.midnight
-      @clicks = Click.where('record_date' => time_range).where(conditions).paginate(:page => params[:page], :per_page => 20)
+      @clicks = Click.where('record_date' => time_range).where(conditions).paginate(:page => params[:page], :per_page => 20).order("id DESC")
       
       @click_count = Click.where('record_date' => time_range).where(conditions).sum(:clicks)
     else
-      @clicks = Click.where(conditions).paginate(:page => params[:page], :per_page => 20)
+      @clicks = Click.where(conditions).paginate(:page => params[:page], :per_page => 20).order("id DESC")
       @click_count = Click.where(conditions).sum(:clicks)
     end
 

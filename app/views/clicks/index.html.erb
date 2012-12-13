@@ -19,11 +19,11 @@
     <%= submit_tag("查询") %>
   </p>
 <% end %>
-<h4>昨日点击量共:<%= @click_count %>次</h4>
+
 <ul>
   <li><%= link_to "类别", tag_categories_path %>：<%= link_to "页面", web_pages_path%>：<%= link_to "位置", positions_path %>：<%= link_to "活动", campaigns_path %>：<%= link_to "谷歌数据", google_analytics_path %></li>
 </ul>
-
+<h4>昨日点击量共:<%= @click_count %>次</h4>
 <table border="1">
   <tr style="font-size:15pt;margin:5px;">
     <th>标记名称</th>

@@ -29,7 +29,8 @@ class TagCategoriesController < ApplicationController
       time_range = (@t.midnight - 1.day + 1.second)..@t.midnight
     end
     @cat_id = params[:id]
-    if [1,2].include?@cat_id
+    print "--------------#{[1,2].include?@cat_id }"
+    if ['1','2'].include?@cat_id
       @clicks = Click.where('record_date' => time_range).where("category = #{params[:id]}").paginate(:page => params[:page], :per_page => 10)
       @total = Click.where('record_date' => time_range).where("category = #{params[:id]}").sum("clicks")
     else

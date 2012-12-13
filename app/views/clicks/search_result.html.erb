@@ -26,15 +26,15 @@
 <% end %>
 <h4>点击量统计:<%= @click_count %>次</h4>
 <ul>
-  <li><%= link_to "类别", tag_categories_path %>：<%= link_to "父类别", tag_categories_path%>：<%= link_to "页面", web_pages_path%>：<%= link_to "位置", positions_path %>：<%= link_to "活动", campaigns_path %></li>
+  <li><%= link_to "谷歌数据", google_analytics_path %></li>
 </ul>
 
 <table border="1">
   <tr style="font-size:15pt;margin:5px;">
     <th>标记名称</th>
     <th>点击次数</th>
-    <td><%= link_to "分类", sum_category_clicks_path %></td>
-    <td>父分类</td>
+    <td><%= link_to "父分类", sum_category_clicks_path %></td>
+    <td><%= link_to "分类", sum_child_category_clicks_path%></td>
     <td><%= link_to "页面", sum_page_clicks_path%></td>
     <td><%= link_to "位置", sum_position_clicks_path %></td>
     <td><%= link_to "活动", sum_campaign_clicks_path %></td>
