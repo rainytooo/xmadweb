@@ -8,7 +8,7 @@ class ClicksController < ApplicationController
   # GET /clicks.json
   def index
     time_range = (Time.now.midnight - 1.day)..Time.now.midnight
-    @clicks = Click.where('record_date' => time_range).paginate(:page => params[:page], :per_page => 20).order("id DESC")
+    @clicks = Click.where('record_date' => time_range).paginate(:page => params[:page], :per_page => 20).order("clicks DESC")
     @click_count = Click.where('record_date' => time_range).sum(:clicks)
     respond_to do |format|
       format.html # index.html.erb
@@ -275,4 +275,25 @@ class ClicksController < ApplicationController
       format.html { redirect_to clicks_url }
     end
   end
+
+  # bbs 核心用户
+  def core_customer
+    time_range = (Time.now.midnight - 1.day)..Time.now.midnight
+    @customers = CoreBbsCustomer.where('current_date' => time_range).paginate(:page => params[:page], :per_page => 20)
+    
+    respond_to do |format|
+      format.html
+    end
+  end
+
+  # xiaoma.com首页访问来源
+  def front_traffic
+    time_range = (Time.now.midnight - 1.day)..Time.now.midnight
+    @triffs = FrontTraffic.where('current_date' => time_range).paginate(:page => params[:page], :per_page => 20)
+    
+    respond_to do |format|
+      format.html
+    end
+  end
+
 end

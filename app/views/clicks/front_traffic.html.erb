@@ -1,0 +1,24 @@
+<h1>首页流量来源</h1>
+
+<table border='1'>
+	<tr>
+		<td>日期</td>
+		<td>来源名称</td>
+		<td>点击次数</td>
+		<td>数据1</td>
+		<td>数据2</td>
+		<td>转化率1</td>
+		<td>转化率2</td>
+	</tr>
+	<% @triffs.each do |t|%>
+	<tr>
+		<td><%= t.current_date%></td>
+		<td><%= t.source_name %></td>
+		<td><%= t.clicks%></td>
+		<td><%= t.data1 %></td>
+		<td><%= t.data2 %></td>
+		<td><%= t.rate1%></td>
+		<td><%= t.rate2%></td>
+	</tr>
+	<% end %>
+</table>

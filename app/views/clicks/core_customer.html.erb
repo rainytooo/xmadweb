@@ -1,0 +1,30 @@
+<h1>核心用户</h1>
+
+<table border='1'>
+	<tr>
+		<td>用户编号</td>
+		<td>日期</td>
+		<td>好友</td>
+		<td>操作数</td>
+		<td>日志数</td>
+		<td>帖子数</td>
+		<td>主题数</td>
+		<td>分享数</td>
+		<td>在线时间</td>
+		<td>回复数</td>
+	</tr>
+	<% @customers.each do |c| %>
+	<tr>
+		<td><%= c.uid%></td>
+		<td><%= c.current_date %></td>
+		<td><%= c.friend %></td>
+		<td><%= c.doing %></td>
+		<td><%= c.blog %></td>
+		<td><%= c.post %></td>
+		<td><%= c.thread %></td>
+		<td><%= c.share %></td>
+		<td><%= c.online %></td>
+		<td><%= c.post_back %></td>
+	</tr>
+	<% end %>
+</table>

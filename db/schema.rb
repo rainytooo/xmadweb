@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121126053810) do
+ActiveRecord::Schema.define(:version => 20121225140400) do
 
   create_table "advertisements", :force => true do |t|
     t.string   "domain"
@@ -41,6 +41,21 @@ ActiveRecord::Schema.define(:version => 20121126053810) do
     t.integer "page"
     t.integer "up_category"
     t.string  "tag_type"
+  end
+
+  create_table "core_bbs_customers", :force => true do |t|
+    t.integer  "uid"
+    t.string   "current_date"
+    t.integer  "friend"
+    t.integer  "doing"
+    t.integer  "blog"
+    t.integer  "post"
+    t.integer  "thread"
+    t.integer  "share"
+    t.integer  "online"
+    t.integer  "post_back"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "course_contents", :force => true do |t|
@@ -114,6 +129,18 @@ ActiveRecord::Schema.define(:version => 20121126053810) do
     t.string   "parent_tel"
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
+  end
+
+  create_table "front_traffics", :force => true do |t|
+    t.string   "current_date"
+    t.string   "source_name"
+    t.integer  "clicks"
+    t.integer  "data1"
+    t.integer  "data2"
+    t.string   "rate1"
+    t.string   "rate2"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "google_analytics", :force => true do |t|

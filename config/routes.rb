@@ -164,6 +164,9 @@ Xmadweb::Application.routes.draw do
     get 'sum_category', :on => :collection
     get 'sum_child_category', :on => :collection
     get 'search_result', :on => :collection
+
+    get 'core_customer', :on => :collection
+    get 'front_traffic', :on => :collection
   end
 
 
