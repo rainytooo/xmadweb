@@ -66,7 +66,6 @@ GEM
       capybara (>= 1.1.2)
       cucumber (>= 1.1.8)
       nokogiri (>= 1.5.0)
-    daemon_controller (1.1.0)
     database_cleaner (0.9.1)
     devise (2.0.4)
       bcrypt-ruby (~> 3.0)
@@ -83,7 +82,6 @@ GEM
     factory_girl_rails (4.1.0)
       factory_girl (~> 4.1.0)
       railties (>= 3.0.0)
-    fastthread (1.0.7)
     ffi (1.2.0)
     gherkin (2.11.5)
       json (>= 1.4.6)
@@ -116,11 +114,6 @@ GEM
       net-ssh (>= 1.99.1)
     nokogiri (1.5.5)
     orm_adapter (0.0.7)
-    passenger (3.0.18)
-      daemon_controller (>= 1.0.0)
-      fastthread (>= 1.0.1)
-      rack
-      rake (>= 0.8.1)
     polyglot (0.3.3)
     rack (1.4.1)
     rack-cache (1.2)
@@ -220,7 +213,6 @@ DEPENDENCIES
   libv8
   minitest
   mysql2
-  passenger (~> 3.0.18)
   rails (= 3.2.2)
   rspec-rails (~> 2.8.1)
   rvm-capistrano (~> 1.2.7)

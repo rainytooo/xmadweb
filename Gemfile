@@ -71,7 +71,7 @@ end
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
-gem "passenger", "~> 3.0.18"
+# gem "passenger", "~> 3.0.18"
 
 # use to read xml
 gem "spreadsheet", "~> 0.7.3"
