@@ -31,39 +31,39 @@
   <div style="display:inline;"><%= link_to "Campaign视图", index_campaign_clicks_path %></div>
   <div style="display:inline;"><%= link_to "自然流量", front_traffic_clicks_path %></div>
 </div>
+
 <h4>昨日点击量共:<%= @click_count %>次</h4>
 <table border="0" cellpadding="0" cellspacing="0" style="width:800px;">
   <tr>
-    <td width="15%"><%= link_to "页面", sum_page_clicks_path%></td>
+    <td width="20%"><%= link_to "活动", sum_campaign_clicks_path %></td>
     <td width="15%"><%= link_to "位置", sum_position_clicks_path %></td>
     <td width="15%"><%= link_to "分类", sum_child_category_clicks_path%></td>
     <td width="15%"><%= link_to "父分类", sum_category_clicks_path %></td>
-    <td width="20%"><%= link_to "活动", sum_campaign_clicks_path %></td>
+    <td width="15%"><%= link_to "页面", sum_page_clicks_path%></td>
     <td width="10%">点击</td>
     <td width="10%">标记</td>
   </tr>
   <% @clicks.each do |click| %>
   <tr>
     <td>
-      <% if click.page.nil? %>
-        <%= link_to "页面", "clicks/add_page?id=#{click.id}" %>
+      <% if click.campaign.nil? %>
+        <%= link_to "活动", "clicks/add_campaign?id=#{page.id}" %>
       <%else%>
-        <%= WebPage.find(click.page).content %>
-      <% end %>     
+        <%= Campaign.find(click.campaign).name %>
+      <% end %>  
     </td>
     <th colspan="7">
         
   <table border="0" cellpadding="0" cellspacing="0" width="680px;">
-    <% @pages.where("page = #{click.page}").each do |page|%>
+    <% @cams.where("page = #{click.page}").each do |page|%>
     <tr>
-        <td width='120'>
-          <% if page.position.nil? %>
-            <%= link_to "位置", "clicks/add_position?id=#{page.id}" %>
+        <td width="120">
+          <% if click.page.nil? %>
+            <%= link_to "页面", "clicks/add_page?id=#{click.id}" %>
           <%else%>
-            <%= Position.find(page.position).name %>
-          <% end %>
+            <%= WebPage.find(click.page).content %>
+          <% end %>     
         </td>
-
         <td width="120">
           <% if page.up_category.nil? %>
             <%= link_to "父类别", "clicks/add_up_category?id=#{page.id}" %>
@@ -78,12 +78,12 @@
             <%= TagCategory.find(page.category).name %>
           <% end %>
         </td>
-        <td width="160">
-          <% if page.campaign.nil? %>
-            <%= link_to "活动", "clicks/add_campaign?id=#{page.id}" %>
+        <td width='120'>
+          <% if page.position.nil? %>
+            <%= link_to "位置", "clicks/add_position?id=#{page.id}" %>
           <%else%>
-            <%= Campaign.find(page.campaign).name %>
-          <% end %>  
+            <%= Position.find(page.position).name %>
+          <% end %>
         </td>
         <td width="80"><%= page.clicks %></td>
         <td width="80"><%= page.tagname %></td>

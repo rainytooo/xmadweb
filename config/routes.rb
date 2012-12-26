@@ -167,6 +167,7 @@ Xmadweb::Application.routes.draw do
 
     get 'core_customer', :on => :collection
     get 'front_traffic', :on => :collection
+    get 'index_campaign', :on => :collection
   end
 
 

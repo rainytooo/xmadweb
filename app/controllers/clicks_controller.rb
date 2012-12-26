@@ -4,8 +4,7 @@ class ClicksController < ApplicationController
   before_filter :authorize_activity!
   before_filter :authorize_super_admin!
   
-  # GET /clicks
-  # GET /clicks.json
+  # 以页面为中心
   def index
     time_range = (Time.now.midnight - 1.day)..Time.now.midnight
     @clicks = Click.where('record_date' => time_range).paginate(:page => params[:page], :per_page => 20).group("page")
@@ -17,8 +16,15 @@ class ClicksController < ApplicationController
     end
   end
 
-  def detail
-
+  # 以广告系列为中心
+  def index_campaign
+    time_range = (Time.now.midnight - 1.day)..Time.now.midnight
+    @clicks = Click.where('record_date' => time_range).paginate(:page => params[:page], :per_page => 20).group("campaign")
+    @click_count = Click.where('record_date' => time_range).sum(:clicks)
+    @cams = Click.where('record_date' => time_range)
+    respond_to do |format|
+      format.html # index.html.erb
+    end
   end
 
   # 查询出所有的活动点击量
@@ -109,7 +115,7 @@ class ClicksController < ApplicationController
     else
       time_range = (Time.now.midnight - 1.day)..Time.now.midnight
     end
-    @all = Click.where('record_date' => time_range).select("*, sum(clicks) as sum_category").group("up_category")
+    @all = Click.where('record_date' => time_range).select("*, sum(clicks) as sum_category").group("up_category").order("sum_category DESC")
   end
 
   # 查询出所在时间短的总流量
@@ -147,6 +153,19 @@ class ClicksController < ApplicationController
       @pages = Click.where(conditions)
       @click_count = Click.where(conditions).sum(:clicks)
     end
+
+    # if !params[:start_date].empty?
+    #   @t = DateTime.strptime(params[:start_date] + " CCT", "%Y-%m-%d")
+    #   @time = @t.strftime("%Y-%m-%d")
+    #   time_range = ((@t.midnight + 1.second) - 1.day)..@t.midnight
+    #   @clicks = Click.where('record_date' => time_range).where(conditions).paginate(:page => params[:page], :per_page => 20).group("`campaign`")#.order("clicks DESC")
+    #   @cams = Click.where('record_date' => time_range).where(conditions)
+    #   @click_count = Click.where('record_date' => time_range).where(conditions).sum(:clicks)
+    # else
+    #   @clicks = Click.where(conditions).paginate(:page => params[:page], :per_page => 20).group("`campaign`") #.order("clicks DESC")
+    #   @cams = Click.where(conditions)
+    #   @click_count = Click.where(conditions).sum(:clicks)
+    # end
 
   end
 
