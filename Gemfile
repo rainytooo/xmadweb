@@ -65,7 +65,7 @@ end
 # Deploy with Capistrano
 group :development do
   gem 'capistrano'
-  gem 'capistrano-rvm'
+  gem "rvm-capistrano", "~> 1.2.7"
 end
  
 # To use debugger
