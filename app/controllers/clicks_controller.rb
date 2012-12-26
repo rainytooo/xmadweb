@@ -36,7 +36,7 @@ class ClicksController < ApplicationController
     else
       time_range = (Time.now.midnight - 1.day)..Time.now.midnight
     end
-    @all = Click.where('record_date' => time_range).select("*, sum(clicks) as sum_campaign").group("campaign")
+    @all = Click.where('record_date' => time_range).select("*, sum(clicks) as sum_campaign").group("campaign").order("sum_campaign DESC")
   end
 
   # 查询出所有位置点击量
@@ -54,7 +54,7 @@ class ClicksController < ApplicationController
     else
       time_range = (Time.now.midnight - 1.day)..Time.now.midnight
     end
-    @all = Click.where('record_date' => time_range).select("*, sum(clicks) as sum_position").group("position")
+    @all = Click.where('record_date' => time_range).select("*, sum(clicks) as sum_position").group("position").order("sum_position DESC")
   end
 
   # 查询出所有的页面击量
@@ -72,7 +72,7 @@ class ClicksController < ApplicationController
     else
       time_range = (Time.now.midnight - 1.day)..Time.now.midnight
     end
-    @all = Click.where('record_date' => time_range).select("*, sum(clicks) as sum_page").group("page")
+    @all = Click.where('record_date' => time_range).select("*, sum(clicks) as sum_page").group("page").order("sum_page DESC")
   end
 
   # 查询出所有的类别点击量
@@ -90,7 +90,7 @@ class ClicksController < ApplicationController
     else
       time_range = (Time.now.midnight - 1.day)..Time.now.midnight
     end
-    @all = Click.where('record_date' => time_range).select("*, sum(clicks) as sum_category").group("category")
+    @all = Click.where('record_date' => time_range).select("*, sum(clicks) as sum_category").group("category").order("sum_category DESC")
   end
 
   # 查询出所有的子类别点击量
@@ -289,7 +289,7 @@ class ClicksController < ApplicationController
   # xiaoma.com首页访问来源
   def front_traffic
     time_range = (Time.now.midnight - 1.day)..Time.now.midnight
-    @triffs = FrontTraffic.where('current_date' => time_range).paginate(:page => params[:page], :per_page => 20)
+    @triffs = FrontTraffic.where('current_date' => time_range).order("clicks DESC").paginate(:page => params[:page], :per_page => 25)
     
     respond_to do |format|
       format.html

@@ -27,19 +27,25 @@
 <h4>昨日点击量共:<%= @click_count %>次</h4>
 <table border="1">
   <tr style="font-size:15pt;margin:5px;">
-    <td><%= link_to "位置", sum_position_clicks_path %></td>
-    <th>标记名称</th>
-    <td><%= link_to "父分类", sum_category_clicks_path %></td>
-    <td><%= link_to "分类", sum_child_category_clicks_path%></td>
     <td><%= link_to "页面", sum_page_clicks_path%></td>
+    <td><%= link_to "位置", sum_position_clicks_path %></td>
+    <td><%= link_to "分类", sum_child_category_clicks_path%></td>
+    <td><%= link_to "父分类", sum_category_clicks_path %></td>
     <td><%= link_to "活动", sum_campaign_clicks_path %></td>
     <th>点击次数</th>
+    <th>标记名称</th>
     <td>记录时间</td>
   </tr>
 
 <% @clicks.each do |click| %>
   <tr style="padding:5px">
-    <td><%= link_to click.tagname, click%></td>
+    <td>
+      <% if click.page.nil? %>
+        <%= link_to "页面", "clicks/add_page?id=#{click.id}" %>
+      <%else%>
+        <%= WebPage.find(click.page).content %>
+      <% end %>     
+    </td>
     <td>
       <% if click.position.nil? %>
         <%= link_to "位置", "clicks/add_position?id=#{click.id}" %>
@@ -62,13 +68,6 @@
       <% end %>
     </td>
     <td>
-      <% if click.page.nil? %>
-        <%= link_to "页面", "clicks/add_page?id=#{click.id}" %>
-      <%else%>
-        <%= WebPage.find(click.page).content %>
-      <% end %>     
-    </td>
-    <td>
       <% if click.campaign.nil? %>
         <%= link_to "活动", "clicks/add_campaign?id=#{click.id}" %>
       <%else%>
@@ -76,6 +75,7 @@
       <% end %>  
     </td>
     <td><%= click.clicks %></td>
+    <td><%= link_to click.tagname, click%></td>
     <td><%= click.record_date %></td>
   </tr>
 <% end %>
