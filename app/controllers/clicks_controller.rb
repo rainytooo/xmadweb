@@ -307,10 +307,20 @@ class ClicksController < ApplicationController
     end
   end
 
-  # xiaoma.com首页访问来源
-  def front_traffic
+  # refferal访问来源
+  def refferal_traffic
     time_range = (Time.now.midnight - 1.day)..Time.now.midnight
-    @triffs = FrontTraffic.where('current_date' => time_range).order("clicks DESC").paginate(:page => params[:page], :per_page => 25)
+    @triffs = FrontTraffic.where('current_date' => time_range).order("clicks DESC")
+    
+    respond_to do |format|
+      format.html
+    end
+  end
+
+  # organic访问来源
+  def organic_traffic
+    time_range = (Time.now.midnight - 1.day)..Time.now.midnight
+    @triffs = OrganicTraffic.where('current_date' => time_range).order("clicks DESC").paginate(:page => params[:page], :per_page => 50)
     
     respond_to do |format|
       format.html

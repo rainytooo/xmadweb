@@ -1,5 +1,5 @@
-<h1>首页流量来源</h1>
-
+<h1>自然搜索流量</h1>
+<%= link_to '返回', clicks_path %>
 <table border='1'>
 	<tr>
 		<td>日期</td>
@@ -13,11 +13,11 @@
 	<% @triffs.each do |t|%>
 	<tr>
 		<td><%= t.current_date%></td>
-		<td><%= t.source_name %></td>
+		<td><%= t.keyword %></td>
 		<td><%= t.clicks%></td>
 		<td><%= t.data1 %></td>
 		<td>
-			<% if t.data1 == 0 %>
+			<% if t.data1 == 0 || t.rate1 == '0.0'%>
 			0
 			<% else %>
 			<%= t.rate1%>%
@@ -25,7 +25,7 @@
 		</td>
 		<td><%= t.data2 %></td>
 		<td>
-			<% if t.data2 == 0 %>
+			<% if t.data2 == 0 || t.rate2 == '0.0'%>
 			0
 			<% else %>
 			<%= t.rate2%>%
@@ -34,3 +34,5 @@
 	</tr>
 	<% end %>
 </table>
+
+<%=h will_paginate @triffs, :previous_label => '上一页',  :next_label => '下一页'%>
