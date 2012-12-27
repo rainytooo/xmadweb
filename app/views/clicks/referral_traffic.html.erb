@@ -1,6 +1,7 @@
 <h1>引荐流量来源</h1>
 <%= link_to '返回', clicks_path %>
 <h4>昨日共：<%= @count_triffs%>次访问</h4>
+<%= link_to "导出Excel", root_url%>  
 <table border='1'>
 	<tr>
 		<td>日期</td>
@@ -16,20 +17,20 @@
 		<td><%= t.current_date%></td>
 		<td><%= t.source_name %></td>
 		<td><%= t.clicks%></td>
-		<td><%= t.data1 %></td>
+		<td><%= t.goal1 %></td>
 		<td>
-			<% if t.data1 == 0 || t.rate1 == '0.0'%>
+			<% if t.goal1 == 0 || t.conversion1_rate == '0.0'%>
 			0
 			<% else %>
-			<%= t.rate1%>%
+			<%= t.conversion1_rate %>%
 			<% end %>
 		</td>
-		<td><%= t.data2 %></td>
+		<td><%= t.goal3 %></td>
 		<td>
-			<% if t.data2 == 0 || t.rate2 == '0.0'%>
+			<% if t.goal3 == 0 || t.conversion3_rate == '0.0'%>
 			0
 			<% else %>
-			<%= t.rate2%>%
+			<%= t.conversion3_rate%>%
 			<% end %>
 		</td>
 	</tr>

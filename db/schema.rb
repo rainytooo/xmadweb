@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121227045937) do
+ActiveRecord::Schema.define(:version => 20121227080154) do
 
   create_table "advertisements", :force => true do |t|
     t.string   "domain"
@@ -122,16 +122,6 @@ ActiveRecord::Schema.define(:version => 20121227045937) do
     t.datetime "updated_at",              :null => false
   end
 
-  create_table "front_traffics", :force => true do |t|
-    t.date    "current_date"
-    t.string  "source_name"
-    t.integer "clicks"
-    t.integer "data1"
-    t.integer "data2"
-    t.string  "rate1"
-    t.string  "rate2"
-  end
-
   create_table "google_analytics", :force => true do |t|
     t.string  "current_date"
     t.integer "unique_visitor"
@@ -178,13 +168,13 @@ ActiveRecord::Schema.define(:version => 20121227045937) do
   end
 
   create_table "organic_traffics", :force => true do |t|
-    t.date    "current_date"
     t.string  "keyword"
     t.integer "clicks"
-    t.integer "data1"
-    t.integer "data2"
-    t.string  "rate1"
-    t.string  "rate2"
+    t.integer "goal1"
+    t.float   "conversion1_rate"
+    t.integer "goal3"
+    t.float   "conversion3_rate"
+    t.date    "current_date"
   end
 
   create_table "paper_words", :force => true do |t|
@@ -208,6 +198,16 @@ ActiveRecord::Schema.define(:version => 20121227045937) do
     t.text     "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "referral_traffics", :force => true do |t|
+    t.string  "source_name"
+    t.integer "clicks"
+    t.integer "goal1"
+    t.float   "conversion1_rate"
+    t.integer "goal3"
+    t.float   "conversion3_rate"
+    t.date    "current_date"
   end
 
   create_table "result_papers", :force => true do |t|

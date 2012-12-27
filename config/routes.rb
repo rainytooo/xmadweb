@@ -166,7 +166,7 @@ Xmadweb::Application.routes.draw do
     get 'search_result', :on => :collection
 
     get 'core_customer', :on => :collection
-    get 'refferal_traffic', :on => :collection
+    get 'referral_traffic', :on => :collection
     get 'organic_traffic', :on => :collection
     get 'index_campaign', :on => :collection
   end
