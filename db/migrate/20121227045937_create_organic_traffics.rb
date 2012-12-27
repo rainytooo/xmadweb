@@ -9,7 +9,7 @@ class CreateOrganicTraffics < ActiveRecord::Migration
       t.string :rate1
       t.string :rate2
 
-      t.timestamps
+      # t.timestamps
     end
   end
 end

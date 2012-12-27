@@ -311,7 +311,7 @@ class ClicksController < ApplicationController
   def refferal_traffic
     time_range = (Time.now.midnight - 1.day)..Time.now.midnight
     @triffs = FrontTraffic.where('current_date' => time_range).order("clicks DESC")
-    
+    @count_triffs = FrontTraffic.where('current_date' => time_range).sum('clicks')
     respond_to do |format|
       format.html
     end
@@ -321,7 +321,7 @@ class ClicksController < ApplicationController
   def organic_traffic
     time_range = (Time.now.midnight - 1.day)..Time.now.midnight
     @triffs = OrganicTraffic.where('current_date' => time_range).order("clicks DESC").paginate(:page => params[:page], :per_page => 50)
-    
+    @count_triffs = OrganicTraffic.where('current_date' => time_range).sum("clicks")
     respond_to do |format|
       format.html
     end

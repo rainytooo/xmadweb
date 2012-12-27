@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121227013753) do
+ActiveRecord::Schema.define(:version => 20121227045937) do
 
   create_table "advertisements", :force => true do |t|
     t.string   "domain"
@@ -178,15 +178,13 @@ ActiveRecord::Schema.define(:version => 20121227013753) do
   end
 
   create_table "organic_traffics", :force => true do |t|
-    t.date     "current_date"
-    t.string   "keyword"
-    t.integer  "clicks"
-    t.integer  "data1"
-    t.integer  "data2"
-    t.string   "rate1"
-    t.string   "rate2"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.date    "current_date"
+    t.string  "keyword"
+    t.integer "clicks"
+    t.integer "data1"
+    t.integer "data2"
+    t.string  "rate1"
+    t.string  "rate2"
   end
 
   create_table "paper_words", :force => true do |t|
