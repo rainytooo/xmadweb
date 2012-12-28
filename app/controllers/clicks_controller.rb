@@ -312,8 +312,6 @@ class ClicksController < ApplicationController
     time_range = (Time.now.midnight - 1.day)..Time.now.midnight
     @triffs = ReferralTraffic.where('current_date' => time_range).order("clicks DESC")
     @count_triffs = ReferralTraffic.where('current_date' => time_range).sum('clicks')
-    export_xls(@triffs, ReferralTraffic)
-    CommentMailer.comment_notify_email("zhanghuaxun@xiaoma.com", "helloworld", 'helllloooooo')
     respond_to do |format|
       format.html
       format.json { @triffs }
@@ -323,57 +321,11 @@ class ClicksController < ApplicationController
   # organic访问来源
   def organic_traffic
     time_range = (Time.now.midnight - 1.day)..Time.now.midnight
-    all = OrganicTraffic.where('current_date' => time_range).order("clicks DESC")
-    @triffs = all.paginate(:page => params[:page], :per_page => 50)
+    @triffs = OrganicTraffic.where('current_date' => time_range).order("clicks DESC").paginate(:page => params[:page], :per_page => 50)
     @count_triffs = OrganicTraffic.where('current_date' => time_range).sum("clicks")
-    export_xls(all, OrganicTraffic)
     respond_to do |format|
       format.html
     end
   end
-
-
-  # # 测试发送emaiil
-  # def send_email(comment)
-  #   @user = User.find(5)
-  #   # @comment = @post.comments.new(params[:comment])
-  #   CommentMailer.comment_notify_email(comment).deliver
-
-  # end
-
-  private   
-    def export_xls(objs, model)  
-      count_row = 0
-      count_col = 0
-      xls_report = StringIO.new  
-      book = Spreadsheet::Workbook.new
-      sheet1 = book.create_worksheet :name => "traffics"  
-        
-      blue = Spreadsheet::Format.new :color => :blue, :weight => :bold, :size => 10  
-      sheet1.row(0).default_format = blue  
-      @cols = model.column_names
-
-      # sheet1.row(0).concat %w{
-      @cols.each do |col| 
-        sheet1[count_row, count_col] = col
-        count_col = count_col + 1
-      end
-      # }  
-      count_row = count_row + 1
-      count_col = 0
-      
-      objs.each do |obj|
-        @cols.each do |col| 
-          sheet1[count_row,count_col]=obj["#{col}"]
-          count_col = count_col + 1
-        end
-        count_col = 0 
-        count_row = count_row + 1
-      end  
-      
-      filepath=Rails.root+"public/download/#{model}.xls" 
-      book.write filepath
-      xls_report.string  
-    end 
 
 end

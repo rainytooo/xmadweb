@@ -1,0 +1,3 @@
+TrafficMailer#send_traffic
+
+Hi, find me in app/views/traffic_mailer/send_traffic
