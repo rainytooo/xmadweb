@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121227080154) do
+ActiveRecord::Schema.define(:version => 20121228045211) do
 
   create_table "advertisements", :force => true do |t|
     t.string   "domain"
@@ -171,9 +171,9 @@ ActiveRecord::Schema.define(:version => 20121227080154) do
     t.string  "keyword"
     t.integer "clicks"
     t.integer "goal1"
-    t.float   "conversion1_rate"
+    t.string  "conversion1_rate"
     t.integer "goal3"
-    t.float   "conversion3_rate"
+    t.string  "conversion3_rate"
     t.date    "current_date"
   end
 
@@ -204,9 +204,9 @@ ActiveRecord::Schema.define(:version => 20121227080154) do
     t.string  "source_name"
     t.integer "clicks"
     t.integer "goal1"
-    t.float   "conversion1_rate"
+    t.string  "conversion1_rate"
     t.integer "goal3"
-    t.float   "conversion3_rate"
+    t.string  "conversion3_rate"
     t.date    "current_date"
   end
 

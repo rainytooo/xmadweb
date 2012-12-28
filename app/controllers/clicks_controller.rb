@@ -312,7 +312,8 @@ class ClicksController < ApplicationController
     time_range = (Time.now.midnight - 1.day)..Time.now.midnight
     @triffs = ReferralTraffic.where('current_date' => time_range).order("clicks DESC")
     @count_triffs = ReferralTraffic.where('current_date' => time_range).sum('clicks')
-    export_xls(@triffs, ReferralTraffic) 
+    export_xls(@triffs, ReferralTraffic)
+    CommentMailer.comment_notify_email("zhanghuaxun@xiaoma.com", "helloworld", 'helllloooooo')
     respond_to do |format|
       format.html
       format.json { @triffs }
@@ -330,6 +331,16 @@ class ClicksController < ApplicationController
       format.html
     end
   end
+
+
+  # # 测试发送emaiil
+  # def send_email(comment)
+  #   @user = User.find(5)
+  #   # @comment = @post.comments.new(params[:comment])
+  #   CommentMailer.comment_notify_email(comment).deliver
+
+  # end
+
   private   
     def export_xls(objs, model)  
       count_row = 0

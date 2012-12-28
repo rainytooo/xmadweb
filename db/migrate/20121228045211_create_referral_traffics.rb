@@ -4,9 +4,9 @@ class CreateReferralTraffics < ActiveRecord::Migration
       t.string :source_name
       t.integer :clicks
       t.integer :goal1
-      t.float :conversion1_rate
+      t.string :conversion1_rate
       t.integer :goal3
-      t.float :conversion3_rate
+      t.string :conversion3_rate
       t.date :current_date
 
       # t.timestamps

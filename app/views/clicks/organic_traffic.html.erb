@@ -22,7 +22,7 @@
 			<% if t.goal1 == 0 || t.conversion1_rate == '0.0'%>
 			0
 			<% else %>
-			<%= t.conversion1_rate %>%
+			<%= t.conversion1_rate %>
 			<% end %>
 		</td>
 		<td><%= t.goal3 %></td>
@@ -30,9 +30,10 @@
 			<% if t.goal3 == 0 || t.conversion3_rate == '0.0'%>
 			0
 			<% else %>
-			<%= t.conversion3_rate%>%
+			<%= t.conversion3_rate%>
 			<% end %>
 		</td>
 	</tr>
 	<% end %>
 </table>
+<%=h will_paginate @triffs, :previous_label => '上一页',  :next_label => '下一页'%>

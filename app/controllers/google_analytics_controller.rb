@@ -1,7 +1,7 @@
 class GoogleAnalyticsController < ApplicationController
   before_filter :authorize_not_student!
   before_filter :authorize_activity!
-  before_filter :authorize_super_admin!, :except => [:user_index, :show_traffic]
+  before_filter :authorize_super_admin!
   
   # GET /google_analytics
   # GET /google_analytics.json

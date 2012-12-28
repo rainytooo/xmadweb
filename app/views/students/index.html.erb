@@ -7,12 +7,13 @@
 </h5>
 <br/>
 
-<h4>根据客户名称查询</h4>
 <%= form_tag(search_index_students_path, :method => :get) do %>
-    <p>
+    <p style="display:inline;">
         客户名称: <input type="text"  name="name">
     </p>
-  <%= submit_tag("查询") %>
+  	<p style="display:inline;">
+  		<%= submit_tag("查询") %>
+  	</p>
 <% end %>
 
 <h6>现有督导:</h6>
