@@ -72,7 +72,7 @@ Xmadweb::Application.configure do
   config.action_mailer.delivery_method = :smtp
    
   config.action_mailer.smtp_settings = {
-    :address              => "smtp.qq.com",
+    :address              => "localhost",
     :port                 => 25,
     :domain               => 'www.xiaoma.com',
     :user_name            => 'noreply@xiaoma.com',
