@@ -12,12 +12,11 @@ class HomeController < ApplicationController
 		if email1
 			if (email =~ email1).nil?
 		    	flash[:notice] = '发送失败，您的email地址不合法!'
-		    	redirect_to root_url
 		    else
 		    	TrafficMailer.send_traffic(email1).deliver
 		    	flash[:notice] = '发送成功!'
-		    	redirect_to root_url
 			end
+			redirect_to root_url
 		end
     end
 end
