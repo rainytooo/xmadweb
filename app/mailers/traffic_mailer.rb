@@ -1,6 +1,7 @@
 # encoding: utf-8
 class TrafficMailer < ActionMailer::Base
-  default from: "noreply@xiaoma.com"
+  default :from => "noreply@xiaoma.com"
+  
   @@arr = []
   def send_traffic(recipient)
     # 先生成excel文件
