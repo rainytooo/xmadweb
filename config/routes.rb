@@ -137,8 +137,6 @@ Xmadweb::Application.routes.draw do
 
   
   root :to => "home#index"
-  # 发送邮件到指定email里面
-  post "home/send_mail"
   
   devise_for :users
 

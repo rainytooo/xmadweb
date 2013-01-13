@@ -1,9 +1,9 @@
-/* 
- * Theme Name: Zwiki
- * Theme URI: http://zwiki.sinaapp.com
+/*
+* Theme Name: Zwiki
+* Theme URI: http://zwiki.sinaapp.com
 */
 body{font:14px/20px arial,helvetica,clean,sans-serif;}
-h1, h2, h3, h4, h5, h6 {font-family: Georgia,Times,sans-serif,Arial;  line-height:100%; margin-top: 0.5em; margin-bottom: 0.5em;}
+h1, h2, h3, h4, h5, h6 {font-family: Georgia,Times,sans-serif,Arial; line-height:100%; margin-top: 0.5em; margin-bottom: 0.5em;}
 h1 {font-size: 25px; color: #0C7823;}
 h2 {font-size: 20px; color: #000;}
 h3 {font-size: 1.6em; color: #333333;}
@@ -28,95 +28,95 @@ del {text-decoration: line-through; color: #777777;}
 
 /* My style.css */
 .common_table table {
-	font: 12px Arial,Helvetica,sans-serif;
+font: 12px Arial,Helvetica,sans-serif;
 }
 
 .top-nav {
-	clear: both;
-	width: 100%;
-	color: #D4D4D4;
-	margin-bottom: 20px;
-	height: 30px;
-	border-bottom: 1px dashed #D4D4D4;
-	border-bottom-width: 1px;
-	border-bottom-style: dashed;
-	border-bottom-color: #D4D4D4;
+clear: both;
+width: 100%;
+color: #D4D4D4;
+margin-bottom: 20px;
+height: 30px;
+border-bottom: 1px dashed #D4D4D4;
+border-bottom-width: 1px;
+border-bottom-style: dashed;
+border-bottom-color: #D4D4D4;
 }
 
 .top-nav .bd {
-	width: 950px;
-	margin: 0 auto;
-	margin-top: 0px;
-	margin-right: auto;
-	margin-bottom: 0px;
-	margin-left: auto;
+width: 950px;
+margin: 0 auto;
+margin-top: 0px;
+margin-right: auto;
+margin-bottom: 0px;
+margin-left: auto;
 }
 .top-nav-info {
-	float: right;
-	margin-top: 5px;
+float: right;
+margin-top: 5px;
 }
 
 .top-nav-items {
-	float: left;
-	font-size: 12px;
-	margin-top: 3px;
+float: left;
+font-size: 12px;
+margin-top: 3px;
 }
 
 ul {
-	list-style-type: none;
-	margin: 0;
-	margin-top: 0px;
-	margin-right: 0px;
-	margin-bottom: 0px;
-	margin-left: 0px;
-	padding: 0;
-	padding-top: 0px;
-	padding-right: 0px;
-	padding-bottom: 0px;
-	padding-left: 0px;
+list-style-type: none;
+margin: 0;
+margin-top: 0px;
+margin-right: 0px;
+margin-bottom: 0px;
+margin-left: 0px;
+padding: 0;
+padding-top: 0px;
+padding-right: 0px;
+padding-bottom: 0px;
+padding-left: 0px;
 }
 
 .top-nav-items li {
-	float: left;
-	display: inline;
-	margin: 2px 20px 0 0;
+float: left;
+display: inline;
+margin: 2px 20px 0 0;
 }
 
 .top-nav li.on, .top-nav li.on a:link, .top-nav li.on a:visited, .top-nav li.on a:hover, .top-nav li.on a:active {
-	color: #219A44;
-	font-weight: 800;
+color: #219A44;
+font-weight: 800;
 }
 
 .top-nav-items li.top-nav-more {
-	position: relative;
-	z-index: 50;
-	left: 0;
-	top: -1px;
-	_top: 2px;
+position: relative;
+z-index: 50;
+left: 0;
+top: -1px;
+_top: 2px;
 }
 
 .top-nav-items li {
-	float: left;
-	display: inline;
-	margin: 2px 20px 0 0;
+float: left;
+display: inline;
+margin: 2px 20px 0 0;
 }
 
 .top-nav-items li .top-nav-more-items {
-	position: absolute;
-	width: 50px;
-	height: 60px;
-	height: 64px	9;
-	_height: 60px;
-	padding: 1px 4px;
-	zoom: 1;
-	z-index: 2;
+position: absolute;
+width: 50px;
+height: 60px;
+height: 64px	9;
+_height: 60px;
+padding: 1px 4px;
+zoom: 1;
+z-index: 2;
 }
 
 .top-nav-items li .top-nav-more-items a {
-	padding: 0;
+padding: 0;
 }
 .top-nav-items li.top-nav-more a {
-	color: #566D5E;
+color: #566D5E;
 }
 .top-nav-items li.top-nav-more a {
 color: #566D5E;
@@ -156,13 +156,13 @@ body{
     width:960px;
     margin: 0 auto;
     padding: 0;
-    color:#4C4C4C; 
+    color:#4C4C4C;
 }
 
 #content {
-	height:auto   !important;   
-	height:400px;   
-	min-height:400px;
+height:auto !important;
+height:400px;
+min-height:400px;
 }
 
 h2,h3,h4,h5,h6{
@@ -246,12 +246,12 @@ footer,footer a,footer a:visited{
   margin-top:30px;
 }
 article a[href^="http://"],article a[href^="https://"]{
-  background:transparent url(bg/icons.png) no-repeat scroll right -16px; 
+  background:transparent url(bg/icons.png) no-repeat scroll right -16px;
   padding:0 16px 0 0;
 }
 article a.external{
-  background:transparent url(bg/icons.png) no-repeat scroll right -16px; 
-  padding:0 16px 0 0; 
+  background:transparent url(bg/icons.png) no-repeat scroll right -16px;
+  padding:0 16px 0 0;
   display:inline-block;
 }
 article a[href^="http://"]:hover,article a[href^="https://"]:hover{
@@ -278,17 +278,17 @@ footer{
 margin:0;
 }
 #footer {
-	border-top: 1px dashed #D4D4D4;
-	width: 960px;
-	text-align: center;
-	margin: 0 auto;
-	padding-top: 1em;
-	margin-top: 1.5em;
-	margin-bottom: 1.5em;
+border-top: 1px dashed #D4D4D4;
+width: 960px;
+text-align: center;
+margin: 0 auto;
+padding-top: 1em;
+margin-top: 1.5em;
+margin-bottom: 1.5em;
 }
 
 span.red {
-	color: red;
+color: red;
 }
 
 /* css for timepicker */

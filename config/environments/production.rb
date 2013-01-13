@@ -71,15 +71,7 @@ Xmadweb::Application.configure do
   config.action_mailer.default_url_options = { :host => 'dept.vip.xiaoma.com' }
   config.action_mailer.delivery_method = :smtp
    
-  # config.action_mailer.smtp_settings = {
-  #   :address              => "smtp.qq.com",
-  #   :port                 => 25,
-  #   :domain               => 'www.xiaoma.com',
-  #   :user_name            => 'noreply@xiaoma.com',
-  #   :password             => '1q2w3e4r',
-  #   :authentication       => 'plain',
-  #   :enable_starttls_auto => true  }
-    config.action_mailer.smtp_settings = {
+  config.action_mailer.smtp_settings = {
     :address              => "smtp.qq.com",
     :port                 => 25,
     :domain               => 'www.xiaoma.com',

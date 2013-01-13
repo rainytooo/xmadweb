@@ -1,7 +1,6 @@
 # encoding: utf-8
 class TrafficMailer < ActionMailer::Base
-  # default :from => "noreply@xiaoma.com"
-  default :from => "goodboyryan007@gmail.com"
+  default :from => "noreply@xiaoma.com"
 
   @@arr = []
   def send_traffic(recipient)
@@ -9,22 +8,22 @@ class TrafficMailer < ActionMailer::Base
     time_range = (Time.now.midnight - 1.day)..Time.now.midnight
     @now = Time.now
     @@arr = []
-    # traverse_dir("#{Rails.root}/download/triffs/")
+    traverse_dir("#{Rails.root}/download/triffs/")
 
     
-    # if !@@arr.include?"#{@now.strftime('%Y-%m-%d')}-ReferralTraffic.xls"
-    #     @triffs = ReferralTraffic.where('current_date' => time_range).order("clicks DESC")
-    #     export_xls(@triffs, ReferralTraffic)
-    # end
-    # if !@@arr.include?"#{@now.strftime('%Y-%m-%d')}-OrganicTraffic.xls"
-    #     @triff1s = OrganicTraffic.where('current_date' => time_range).order("clicks DESC")
-    #     export_xls(@triff1s, OrganicTraffic)
-    # end
-    # if !@@arr.include?"#{@now.strftime('%Y-%m-%d')}-Campaign.xls"
-    #     @all = Click.select("campaign, sum(clicks) as sum_campaign").group("campaign").where('record_date' => time_range).order("sum_campaign DESC")
-    #     @count_all = Click.where('record_date' => time_range).sum("clicks")
-    #     export_camp_xls(@all, @count_all, Campaign)
-    # end
+    if !@@arr.include?"#{@now.strftime('%Y-%m-%d')}-ReferralTraffic.xls"
+        @triffs = ReferralTraffic.where('current_date' => time_range).order("clicks DESC")
+        export_xls(@triffs, ReferralTraffic)
+    end
+    if !@@arr.include?"#{@now.strftime('%Y-%m-%d')}-OrganicTraffic.xls"
+        @triff1s = OrganicTraffic.where('current_date' => time_range).order("clicks DESC")
+        export_xls(@triff1s, OrganicTraffic)
+    end
+    if !@@arr.include?"#{@now.strftime('%Y-%m-%d')}-Campaign.xls"
+        @all = Click.select("campaign, sum(clicks) as sum_campaign").group("campaign").where('record_date' => time_range).order("sum_campaign DESC")
+        @count_all = Click.where('record_date' => time_range).sum("clicks")
+        export_camp_xls(@all, @count_all, Campaign)
+    end
 
 
     @recipients = recipient
@@ -108,7 +107,6 @@ class TrafficMailer < ActionMailer::Base
 
       sheet1[1, 1] = count_all
       count_row = count_row + 2
-      puts "--------------#{objs.class}"
       
       objs.each do |obj|
         [0, 1].each do |col| 

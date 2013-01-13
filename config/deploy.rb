@@ -12,27 +12,27 @@ set :deploy_via, :remote_cache
 
 set :normalize_asset_timestamps, false
 # set :default_environment, {
-#   'PATH'                    => "#{rvm_path}/gems/ruby/1.9.1/bin:#{rvm_bin_path}/bin:$PATH",
-#   'RUBY_VERSION'    => '1.9.2',
-#   'GEM_HOME'        => "#{rvm_path}/gems/#{rvm_ruby_string}",
-#   'GEM_PATH'        => "#{rvm_path}/gems/#{rvm_ruby_string}",
-#   'BUNDLE_PATH'     => "#{rvm_path}/gems/#{rvm_ruby_string}"
+# 'PATH' => "#{rvm_path}/gems/ruby/1.9.1/bin:#{rvm_bin_path}/bin:$PATH",
+# 'RUBY_VERSION' => '1.9.2',
+# 'GEM_HOME' => "#{rvm_path}/gems/#{rvm_ruby_string}",
+# 'GEM_PATH' => "#{rvm_path}/gems/#{rvm_ruby_string}",
+# 'BUNDLE_PATH' => "#{rvm_path}/gems/#{rvm_ruby_string}"
 # }
 
 set :application, "xmadweb.com"
-set :repository,  "git@github.com:rainytooo/xmadweb.git"
+set :repository, "git@github.com:rainytooo/xmadweb.git"
 
 set :scm, :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 
 
-role :web, "img.xiaoma.com"                          # Your HTTP server, Apache/etc
-role :app, "img.xiaoma.com"                          # This may be the same as your `Web` server
-role :db,  "img.xiaoma.com", :primary => true # This is where Rails migrations will run
-#role :db,  "your slave db-server here"
+role :web, "img.xiaoma.com" # Your HTTP server, Apache/etc
+role :app, "img.xiaoma.com" # This may be the same as your `Web` server
+role :db, "img.xiaoma.com", :primary => true # This is where Rails migrations will run
+#role :db, "your slave db-server here"
 set :port, 22229
 set :use_sudo, true
-set :user, "wch"    # 上传了ssh的public key
+set :user, "wch" # 上传了ssh的public key
 set :web_user, "nobody"
 #set :password, "passwd"
 default_run_options[:pty] = true
@@ -55,7 +55,7 @@ after "bundle:install", "symlink_database_yml"
 after "deploy:symlink", "custom:set_permissions_for_runtime"
 
 namespace :deploy do
-  task :start, :roles => :web, :except => { :no_release => true } do  
+  task :start, :roles => :web, :except => { :no_release => true } do
     run "cd /etc/init.d && #{try_sudo} ./nginx start"
   end
   task :stop, :roles => :web, :except => { :no_release => true } do
