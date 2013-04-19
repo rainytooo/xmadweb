@@ -1,0 +1,54 @@
+<style type="text/css">
+.fixed:after { content: "."; display: block; clear: both; height: 0; visibility: hidden; }
+.fixed { display: block; min-height: 1%; }
+*html .fixed { height: 1%; }
+.clear { diplay: block!important; float: none!important; clear: both; overflow: hidden; width: auto!important; height: 0!important; margin: 0 auto!important; padding: 0!important; font-size: 0; line-height: 0; }
+.more { float: right; }
+.more a { font-weight: normal; font-size: 12px; }
+.fl, .fr { display: inline; float: left; }
+.fr { float: right; }
+
+body{background:#2d2d2d;}
+.main{width:960px;margin:0 auto;padding-top:30px;font-family:"微软雅黑";}
+.main h1{width:242px;height:62px;margin:0 auto;}
+.main .content{width:910px;margin:0 auto 35px;}
+.main .content .sort{margin-top:35px;}
+
+.sort .articleTab{width:573px;margin:0 auto;border:0;border-collapse: collapse;}
+.sort .articleTab li{width:573px;height:61px;line-height:61px;background:url(/images/articletr_bg.png) no-repeat;}
+
+.sort .articleTab li.articleTit{height:50px;line-height:50px;background:url(/images/articleTit_bg.png) no-repeat;}
+.sort .articleTab li.articlePage{height:63px;padding-top:20px;background:url(/images/articlePage_bg.png) no-repeat;}
+
+.page{width:435px;height:37px;margin:0 auto;border-right:1px #000 solid;}
+.page a{display:block;float:left;width:87px;height:37px;line-height:37px;text-align:center;font-size:16px;color:#fff;background:url(/images/page_bg.png) no-repeat;}
+.page a:hover{background:url(/images/pageHover_bg.png) no-repeat;color:#000;text-decoration:none;}
+.page .hover{background:url(/images/pageHover_bg.png) no-repeat;color:#000;}
+</style>
+
+<div class="main">
+	<h1><img src="/images/webTit.png" width="242" height="62" alt="考试结果" /></h1>
+    <div class="content">
+    	<div class="sort">
+            <div class="article">
+            	<ul class="articleTab">
+                    
+                    <li class="articleTit">
+                    	<p style="display: inline;margin-left:20px;">试卷名称</p>
+                    	<p style="display: inline;margin-left:350px;">测试时间</p>
+                    </li>
+                    <% @words.each do  |word|%>
+                    <li>
+                    	<p style="display: inline;margin-left:20px;"><%= link_to word.word_child_category.title, word %></p>
+						<p style="display: inline;margin-left:350px;"><%= word.created_at.strftime("%Y-%m-%d %H:%S")%></p>
+                    </li>
+                    <% end %>
+                    <li class="articlePage" style="text-align:center;">
+                        <%=h will_paginate @words, :previous_label => '上一页',  :next_label => '下一页'%>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+<h1>词汇列表</h1>
+<%= link_to '添加一个词汇', new_vocabulary_path %>
+<table>
+  <tr>
+    <th>词汇</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @vocabularies.each do |vocabulary| %>
+  <tr>
+    <td><%= link_to  vocabulary.name, vocabulary %></td>
+    <td><%= link_to '编辑', edit_vocabulary_path(vocabulary) %></td>
+    <td><%= link_to '添加意思', new_vocabulary_vocabulary_meaning_path(vocabulary)%></td>
+    <td><%= link_to '删除', vocabulary, confirm: '确定删除?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+
+<%=h will_paginate @vocabularies, :previous_label => '上一页',  :next_label => '下一页'%>

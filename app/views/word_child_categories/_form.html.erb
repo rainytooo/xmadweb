@@ -1,0 +1,27 @@
+<%= form_for([@word_category, @word_child_category]) do |f| %>
+  <% if @word_child_category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@word_child_category.errors.count, "error") %> prohibited this word_child_category from being saved:</h2>
+
+      <ul>
+      <% @word_child_category.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :word_category_id, :value => "#{@word_category.id}" %>
+
+  <div class="field">
+    <%= f.label :title, "子类别名称"%><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :desc, "子类别描述"%><br />
+    <%= f.text_area :desc %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

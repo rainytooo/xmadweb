@@ -1,0 +1,7 @@
+<table>
+	<% @word_child_categories.each do |word_child_category| %>
+	<tr>
+		<td><%= link_to word_child_category.title, show_word_word_category_word_child_category_path(@word_category,word_child_category)%></td>
+	</tr>
+	<% end %>
+</table>

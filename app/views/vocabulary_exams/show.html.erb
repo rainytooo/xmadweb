@@ -1,0 +1,91 @@
+<p id="notice"><%= notice %></p>
+<style type="text/css">
+html, div, p, ul, li, dl, dt, dd, h1, h2, h3, h4, h5, h6, form, input, select, button, textarea, iframe, table, th, td { margin: 0; padding: 0; }
+
+ul, li { list-style-type: none; }
+h1, h2, h3, h4, h5, h6 { font-size: 14px; }
+body, input, select, button, textarea { font-size: 12px; font-family: Tahoma, Geneva, sans-serif; }
+button { cursor: pointer; }
+i, em, cite { font-style: normal; }
+body { background: #fff; color: #363636; line-height: 1.2; }
+a, a:link { color: #222; text-decoration: none; }
+a:visited {  }
+a:active, a:hover { text-decoration: underline; }
+a:focus { outline: none; }
+ 
+
+img { border: 0 none; vertical-align: top; }
+.fixed:after { content: "."; display: block; clear: both; height: 0; visibility: hidden; }
+.fixed { display: block; min-height: 1%; }
+*html .fixed { height: 1%; }
+.clear { diplay: block!important; float: none!important; clear: both; overflow: hidden; width: auto!important; height: 0!important; margin: 0 auto!important; padding: 0!important; font-size: 0; line-height: 0; }
+.more { float: right; }
+.more a { font-weight: normal; font-size: 12px; }
+.fl, .fr { display: inline; float: left; }
+.fr { float: right; }
+
+
+
+
+body{background:#2d2d2d;}
+.main{width:960px;margin:0 auto;padding-top:30px;font-family:"微软雅黑";}
+.main h1{width:591px;height:69px;margin:0 auto;background:url(/images/mark/contentTit.png) no-repeat;line-height:69px;text-align:center;font-size:40px;color:#fff;}
+.main .content{width:910px;margin:0 auto 35px;}
+.main .content .sort{margin-top:35px;}
+
+.sort .articleTab{width:573px;margin:0 auto;border:0;border-collapse: collapse;}
+.sort .articleTab li{width:573px;height:61px;line-height:61px;background:url(/images/mark/articletr_bg.png) no-repeat;}
+.sort .articleTab li p{float:left;width:143px;text-align:center;font-size:16px;}
+.sort .articleTab li p img{margin-top:20px;}
+.sort .articleTab li.articleTit{height:50px;line-height:50px;background:url(/images/mark/articleTit_bg.png) no-repeat;}
+.sort .articleTab li.articlePage{height:63px;padding-top:20px;background:url(/images/mark/articlePage_bg.png) no-repeat;}
+
+.page{width:435px;height:37px;margin:0 auto;border-right:1px #000 solid;}
+.page a{display:block;float:left;width:87px;height:37px;line-height:37px;text-align:center;font-size:16px;color:#fff;background:url(/images/mark/page_bg.png) no-repeat;}
+.page a:hover{background:url(/images/mark/pageHover_bg.png) no-repeat;color:#000;text-decoration:none;}
+.page .hover{background:url(/images/mark/pageHover_bg.png) no-repeat;color:#000;}
+
+</style>
+<div class="main">
+    <h1><%= @vocabulary_exam.word_child_category.title%></h1>
+    <div class="content">
+        <div class="sort">
+            <div class="article">
+                <ul class="articleTab">
+                    <li class="articleTit">
+                        <p>单词</p>
+                        <p>您的答案</p>
+                        <p>是否正确</p>
+                        <p>参考答案</p>
+                    </li>
+                    <% @vocabulary_exam.vocabulary_answers.each do |voc|%>
+                    <% word = Vocabulary.find(voc.vocabulary_id)%>
+                    <li>
+                        <p><%= word.name %></p>
+                        <p><%= voc.content%></p>
+                        <p>
+                            <% if voc.is_correct %>
+                                <img src="/images/mark/right.png" width="32" height="25" alt="正确" />
+                            <% else %>
+                                <img src="/images/mark/error.png" width="20" height="19" alt="错误" />
+                            <% end %>
+                        </p>
+                        <p style="font-size:9px;">
+                            <% word.vocabulary_meanings.each do |m|%>
+                                <%= m.content %>
+                            <% end %>
+                        </p>
+                    </li>
+                    <% end %>
+                    
+                    <li class="articlePage">
+                        <div class="page">
+                            <a class="hover" href="<%= my_vocabulary_exams_url%>" >返回</a>
+                        </div>                      
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>

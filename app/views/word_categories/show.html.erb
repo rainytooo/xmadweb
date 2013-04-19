@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @word_category.title %>
+</p>
+
+<p>
+  <b>Desc:</b>
+  <%= @word_category.desc %>
+</p>
+
+
+<%= link_to '编辑', edit_word_category_path(@word_category) %> |
+<%= link_to '返回', word_categories_path %>

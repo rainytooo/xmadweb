@@ -1,0 +1,46 @@
+<style type="text/css">
+.fixed:after { content: "."; display: block; clear: both; height: 0; visibility: hidden; }
+.fixed { display: block; min-height: 1%; }
+*html .fixed { height: 1%; }
+.clear { diplay: block!important; float: none!important; clear: both; overflow: hidden; width: auto!important; height: 0!important; margin: 0 auto!important; padding: 0!important; font-size: 0; line-height: 0; }
+.more { float: right; }
+.more a { font-weight: normal; font-size: 12px; }
+.fl, .fr { display: inline; float: left; }
+.fr { float: right; }
+
+body{background:#2d2d2d;}
+.main{width:960px;margin:0 auto;padding-top:30px;font-family:"微软雅黑";}
+.main h1{width:236px;height:56px;margin:0 auto;}
+.main .content{width:910px;margin:0 auto 35px;}
+.main .content .sort{margin-top:35px;}
+.sort .menu{float:left;width:201px;height:153px;padding-top:58px;background:url(/images/menu_bg.png) no-repeat;}
+.sort .menu p{width:201px;margin:0 auto 32px;text-align:center;font-size:24px;color:#fff;}
+.sort .groupTab{float:left;width:696px;height:258px;margin-left:12px;border:0;background:url(/images/group_bg.png) no-repeat;}
+.sort .groupTab li{float:left;width:174px;height:52px;line-height:52px;text-align:center;font-size:16px;}
+
+</style>
+<div class="main" style="background:#2d2d2d;">
+	<h1><img src="/images/webTit.png" alt="单词考试" /></h1>
+    <div class="content">
+    	<% @word_lists.each do |word_category| %>
+    	<div class="sort">
+        	<div class="menu">
+            	<p><%= word_category.title%></p>
+            	<p>（<%= word_category.word_child_categories.size%>组）</p>
+            </div>
+            <div class="group">
+              <ul class="groupTab">
+                  <% word_category.word_child_categories.each do |word_child_category| %>
+                  <li>
+                    <%= link_to word_child_category.title, show_word_word_category_word_child_category_path(word_category,word_child_category)%>
+                  </li>
+                  <% end %>
+              </ul>
+            </div>
+            
+        </div>
+        <div class="clear"></div>
+        <% end %>
+    </div>
+</div>
+

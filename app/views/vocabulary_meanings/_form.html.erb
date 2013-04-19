@@ -1,0 +1,23 @@
+<%= form_for([@vocabulary, @vocabulary_meaning]) do |f| %>
+  <% if @vocabulary_meaning.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@vocabulary_meaning.errors.count, "error") %> prohibited this vocabulary_meaning from being saved:</h2>
+
+      <ul>
+      <% @vocabulary_meaning.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :vocabulary_id, :value => "#{@vocabulary.id}" %>
+
+  <div class="field">
+    <%= f.label :content, "意思"%><br />
+    <%= f.text_area :content %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

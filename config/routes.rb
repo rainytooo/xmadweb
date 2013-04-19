@@ -1,7 +1,54 @@
 # encoding: utf-8
 Xmadweb::Application.routes.draw do
 
-  
+
+  # 考生的试卷
+  # 作者： ryan
+  # 添加时间: 2013-4-17
+  # 修改添加看自己的试卷
+  # 2013-4-18
+  resources :vocabulary_exams do 
+    # 试卷
+    collection do
+        post "save_voc"
+    end
+    get "my", :on => :collection
+  end
+
+  # 单词和意思
+  # 作者： ryan
+  # 添加时间: 2013-4-16
+  resources :vocabularies  do 
+    resources :vocabulary_meanings
+  end
+  # 显示个人的考试列表
+  # 作者： ryan
+  # 添加时间: 2013-4-18
+  resources :word_child_categories do
+    get "me", :on => :collection
+  end
+
+  # 单词类别
+  # 作者： ryan
+  # 添加时间: 2013-4-15
+  # 修改时间： 2013-4-16
+  # 添加三个方法
+  resources :word_categories do 
+    get 'list', :on => :collection
+    resources :word_child_categories do 
+      member do
+        get 'upload_word'
+        # 显示词表
+        get "show_word"
+      end
+
+      collection do
+        post 'save_upload'
+        get "list"
+        post "save_voc"
+      end
+    end
+  end
 
   # 统计谷歌广告
   resources :google_analytics do

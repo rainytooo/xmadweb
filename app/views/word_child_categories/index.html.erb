@@ -1,0 +1,22 @@
+<h1><%= link_to @word_category.title, word_category_path(@word_category), :style => "color:red;margin-right:15px;"%>的子分类</h1>
+
+<%= link_to '新建子分类', new_word_category_word_child_category_path(@word_category) %>
+<table>
+  <tr>
+    <th>子类名称</th>
+    <th>描述</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @word_child_categories.each do |word_child_category| %>
+  <tr>
+    <td><%= link_to word_child_category.title, [@word_category, word_child_category]%></td>
+    <td><%= word_child_category.desc %></td>
+    <td><%= link_to '上传单词', upload_word_word_category_word_child_category_path(@word_category, word_child_category) %></td>
+    <td><%= link_to '编辑', edit_word_category_word_child_category_path(@word_category,word_child_category) %></td>
+    <td><%= link_to '删除', word_category_word_child_category_path(@word_category, word_child_category), confirm: '确定删除?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>

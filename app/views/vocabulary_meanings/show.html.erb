@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>单词:</b>
+  <%= @vocabulary_meaning.vocabulary.name %>
+</p>
+
+<p>
+  <b>意思:</b>
+  <%= @vocabulary_meaning.content %>
+</p>
+
+
+<%= link_to '编辑', edit_vocabulary_vocabulary_meaning_path(@vocabulary, @vocabulary_meaning) %> |
+<%= link_to '返回', vocabulary_vocabulary_meanings_path(@vocabulary) %>

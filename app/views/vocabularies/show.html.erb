@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>词汇:</b>
+  <%= @vocabulary.name %>
+</p>
+<p>
+	<b>意思:</b>
+	<% @vocabulary.vocabulary_meanings.each do |m|%>
+		<%= m.content%>
+	<% end %>
+</p>
+<p>
+	<b>标签:</b>
+	<% @vocabulary.vocabulary_type_list.each do |info_tag| %>
+	    <%= info_tag %>
+	<% end %>
+</p>
+<%= link_to '编辑', edit_vocabulary_path(@vocabulary) %> |
+<%= link_to '返回', vocabularies_path %>

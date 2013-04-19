@@ -1,0 +1,4 @@
+<h1>给<%= link_to @vocabulary.name, @vocabulary, :style => "margin-right:10px;margin-left:10px;color:red;"%>添加意思</h1>
+<%= link_to '返回', vocabulary_vocabulary_meanings_path(@vocabulary) %>
+
+<%= render 'form' %>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>单词父类:</b>
+  <%= @word_child_category.word_category.title %>
+</p>
+
+<p>
+  <b>类别名称:</b>
+  <%= @word_child_category.title %>
+</p>
+
+<p>
+  <b>描述:</b>
+  <%= @word_child_category.desc %>
+</p>
+<p>
+	<b>单词:</b>
+	<% @word_child_category.vocabularies.each do |cat|%>
+		<div><%= link_to cat.name, root_url%></div>
+	<% end %>
+</p>
+<%= link_to '编辑', edit_word_category_word_child_category_path(@word_category, @word_child_category) %> |
+<%= link_to '返回', word_category_word_child_categories_path(@word_category) %>

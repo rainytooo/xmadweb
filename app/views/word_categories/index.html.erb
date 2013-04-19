@@ -1,0 +1,20 @@
+<h1>单词类别列表</h1>
+<%= link_to '添加新类别', new_word_category_path %>
+<table>
+  <tr>
+    <th>列表名称</th>
+    <th>描述</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @word_categories.each do |word_category| %>
+  <tr>
+    <td><%= link_to word_category.title,  word_category%></td>
+    <td><%= word_category.desc %></td>
+    <td><%= link_to '子分类' , word_category_word_child_categories_path(word_category)%></td>
+    <td><%= link_to '编辑', edit_word_category_path(word_category) %></td>
+    <td><%= link_to '删除', word_category, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>

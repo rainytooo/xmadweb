@@ -1,0 +1,18 @@
+<h1>词汇<%= link_to @vocabulary.name, @vocabulary, :style => "color:blue;"%>的意思</h1>
+<div><%= link_to "添加新意思", new_vocabulary_vocabulary_meaning_path(@vocabulary), :style => "margin-right:10px;margin-left:10px;color:red;"%></h3>
+<table>
+  <tr>
+    <th>意思</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @vocabulary_meanings.each do |vocabulary_meaning| %>
+  <tr>
+    <td><%= vocabulary_meaning.content %></td>
+    <td><%= link_to '编辑', edit_vocabulary_vocabulary_meaning_path(@vocabulary,vocabulary_meaning) %></td>
+    <td><%= link_to '删除', [@vocabulary ,vocabulary_meaning], confirm: '确定删除?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>

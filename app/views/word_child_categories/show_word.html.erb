@@ -1,0 +1,86 @@
+<script type="text/javascript">
+	$(function(){
+		$("#sub").click(function(){
+			var flag = true;
+			$("input[name^='voc\[']").each(function(){
+				if($(this).val() == ""){
+					alert("您的试题没做完，请做完后提交！");
+					$(this).focus();
+					flag = false;
+					return false;
+				}
+			});
+			if(flag){
+				$("form").submit();
+			}
+		});
+	});
+</script>
+
+<style type="text/css">
+.fixed:after { content: "."; display: block; clear: both; height: 0; visibility: hidden; }
+.fixed { display: block; min-height: 1%; }
+*html .fixed { height: 1%; }
+.clear { diplay: block!important; float: none!important; clear: both; overflow: hidden; width: auto!important; height: 0!important; margin: 0 auto!important; padding: 0!important; font-size: 0; line-height: 0; }
+.more { float: right; }
+.more a { font-weight: normal; font-size: 12px; }
+.fl, .fr { display: inline; float: left; }
+.fr { float: right; }
+
+
+
+body{background:#2d2d2d;}
+.main{width:960px;margin:0 auto;padding:40px;font-family:"微软雅黑";}
+.main h1{width:591px;height:69px;margin:0 auto;background:url(/images/contentTit.png) no-repeat;line-height:69px;text-align:center;font-size:40px;color:#fff;}
+.main .container{width:586px;margin:35px auto 100px;}
+.container h2{width:272px;height:31px;background:url(/images/conTit_bg.png) no-repeat;line-height:31px;text-align:center;font-size:16px;font-weight:normal;color:#fff;}
+.container .termSort{width:586px;margin:25px auto;padding-bottom:20px;position:relative;background:url(/images/sortBbg.png) bottom left no-repeat;}
+.container .termSort ul{width:586px;margin:0 auto;padding:15px 0 0;background:url(/images/sortTbg.png) top left no-repeat; }
+.termSort ul li{width:556px;height:59px;margin:0 auto;padding:0 15px;line-height:59px;font-size:16px;background:url(/images/sortbg.png) no-repeat;}
+.termSort ul li span{display:block;float:left;padding-left:10px;color:#000;}
+.termSort ul li input{float:right;width:275px;height:38px;line-height:40px;padding-left:20px;margin-top:13px;font-size:16px;background:url(/images/inputDa_bg.png) no-repeat;border:0;}
+
+.container .page{float:left;width:435px;height:37px;border-right:1px #000 solid;}
+.container .page a{display:block;float:left;width:87px;height:37px;line-height:37px;text-align:center;font-size:16px;color:#fff;background:url(/images/page_bg.png) no-repeat;}
+.container .page a:hover{background:url(/images/pageHover_bg.png) no-repeat;color:#000;text-decoration:none;}
+.container .page .hover{background:url(/images/pageHover_bg.png) no-repeat;color:#000;}
+.container a.sub{position:relative;display:block;float:left;width:143px;height:40px;line-height:40px;text-align:center;font-size:16px;color:#fff;background:url(/images/sub_bg.png) no-repeat;}
+.container a.sub:hover{text-decoration:none;color:#000;}
+</style>
+
+<%= form_tag save_voc_vocabulary_exams_path  do %>
+	<%= hidden_field_tag 'user_id', "#{current_user.id}"%>
+	<%= hidden_field_tag 'child_id', "#{@word_child_category.id}"%>
+	
+	<div class="main">
+		<h1 style="color:#fff;">
+			<p style="display:inline;margin-right:45px;"><%= @word_child_category.title%></p>
+			<p style="display:inline;font-size:28px;"><%= @word_child_category.word_category.title%></p>
+		</h1>
+	    <div class="container">
+	    	<h2>
+	    		<div>根据单词写出汉语意思</div>
+	    		<div style="color:red;">Tip:多个意思以“，”隔开</div>
+	    	</h2>
+	        <div class="termSort">
+	            <p></p>
+				<ul>
+					<% @word_list.each do |voc|  %>
+		            	<li>
+		            		<span><%= voc.name %></span>
+		            		<%= text_field_tag "voc[#{voc.id}]", nil%>
+		            	</li>
+	            	<% end %>
+	            </ul>
+	        </div>
+
+	        <%= link_to "返回", "/word_categories/list", :class => "sub", :style => "margin-right:300px;"%>
+	        <a class="sub" id="sub" href="#">提交试卷</a>
+	    </div>
+	</div>
+<% end %>
+
+
+	
+
+	

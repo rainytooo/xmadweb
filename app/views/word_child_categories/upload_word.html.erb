@@ -1,0 +1,16 @@
+<h1>上传词汇</h1>
+  
+  
+  <%= form_tag save_upload_word_category_word_child_categories_path(@word_category), :multipart => true do %>
+    <div class="control-group">
+  
+      <div class="controls">
+        <h5>批量上传：<%= file_field_tag "upload_file" %></h5>
+        <%= hidden_field_tag 'id', "#{@word_child_category.id}"%>
+      </div>
+    </div>
+      <div class="form-actions">
+          <%=submit_tag '确定上传', :class => 'btn btn-primary' %>
+          <%= link_to "返回", [@word_category, @word_child_category], :class => 'btn btn-primary' %>
+      </div>
+  <% end %>

@@ -1,0 +1,28 @@
+<%= form_for(@vocabulary) do |f| %>
+  <% if @vocabulary.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@vocabulary.errors.count, "error") %> prohibited this vocabulary from being saved:</h2>
+
+      <ul>
+      <% @vocabulary.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name, "单词" %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :vocabulary_types,'标签' %><br /> 
+    <%= f.text_field :vocabulary_type_list,:size=>'60' %>*多个标签以","隔开 
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

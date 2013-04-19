@@ -1,0 +1,17 @@
+<h1></h1>
+
+<table>
+  <tr>
+    <th>用户</th>
+    <th>试题名称</th>
+    <th>做题时间</th>
+  </tr>
+
+<% @vocabulary_exams.each do |vocabulary_exam| %>
+  <tr>
+    <td><%= User.find(vocabulary_exam.user_id).email %></td>
+    <td><%= link_to vocabulary_exam.word_child_category.title , vocabulary_exam%></td>
+    <td><%= vocabulary_exam.created_at.strftime("%Y-%m-%d %H:%m") %></td>
+  </tr>
+<% end %>
+</table>
